@@ -4,7 +4,7 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            background-color: #FAF9F6
+            background-color: #FAF9F6;
         }
 
         .caixa-login{
@@ -51,7 +51,7 @@
         }
 
         .lembrar{
-          margin-bottom:90px
+          margin-bottom:90px;
 
         }
 
@@ -70,10 +70,10 @@
           cursor: pointer;
           text-align:center;
           line-height: 45px;
-          color:#FFFFFF
+          color:#FFFFFF;
         }
 
-        .a {
+        a {
             text-align: center;
             margin-top: 20px;
             cursor: pointer;
