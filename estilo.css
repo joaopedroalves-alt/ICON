@@ -36,13 +36,13 @@
           height: 40px;
           border: 1px solid #CCCCCC;
           border-radius: 8px;
-          padding: 2px;
+          padding: 10px;
           font-family: 'Montserrat', sans-serif;
           margin:0px;
           border:none;
           outline:none;
           background-color:#faf9f5;
-            box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
         }
 
         .campo p{
@@ -51,7 +51,7 @@
         }
 
         .lembrar{
-          margin-bottom:90px;
+          margin-bottom:80px;
 
         }
 
@@ -71,11 +71,24 @@
           text-align:center;
           line-height: 45px;
           color:#FFFFFF;
+          transition:0.2s;
+          user-select: none;
+          box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.3);   
         }
+        .entrar:active{
+            transform:translateX(3px);
+            box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
+        }
+        
 
-        a {
-            text-align: center;
-            margin-top: 20px;
-            cursor: pointer;
-            
+        .caixa-login-a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        cursor: pointer;
+        color: #333;
+        text-decoration: underline;
+        }
+        .caixa-login-a:active {
+        color:#536680;            
         }
