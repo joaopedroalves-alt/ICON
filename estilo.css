@@ -92,3 +92,22 @@
         .caixa-login-a:active {
         color:#536680;            
         }
+        .fundologo {
+        width:35vw;
+        height: 100vh;
+        background: 
+          linear-gradient(
+            to left,
+            transparent 85%,
+            #f8faf6 100%
+          ),
+        url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
+        
+        background-size: cover;
+        background-position: center;
+        transform: translate(0px, 0px) scale(1.8, 1.8) skew(-9deg, 0deg);
+        position:fixed;
+        top:0px;
+        right:0px;
+        opacity:0.95;
+}
