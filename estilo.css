@@ -9,10 +9,11 @@
 
         .caixa-login{
             background-color: #FFFFFF;
+            top:20%;
             width: 400px;
             height: 450px;
             position: absolute;
-            left: 10%;
+            left: 15%;
             border-radius: 20px;
             box-shadow: 3px 6px 6px 0px rgba(0, 0, 0, 0.2);
             padding: 25px;
@@ -89,9 +90,13 @@
         color: #333;
         text-decoration: underline;
         }
+
         .caixa-login-a:active {
         color:#536680;            
         }
+
+
+
         .fundologo {
         width:35vw;
         height: 100vh;
@@ -112,16 +117,41 @@
         opacity:0.95;
         }
 
-        .saudacao{
+        .direita{
           position: fixed;
-          top: 0;
+          top:0;
           right: 0;
           width: 25vw;
           height: 100vh;
-          z-index: 2;
+          right:10%;
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
+          justify-content: center;
+          margin-bottom: 0px;
+          transform: translateY(-5%);
+        }
+
+        .saudacao{
+          margin-bottom: 0px;
+        }
+        
+        .ICON{
+          font-size: 100px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+        }
+
+        .instituto{
+          margin-bottom: 0px;
+        }
+
+        .logo{
+          width:770px;
+          height:455px;
+          position: relative;
+          margin-bottom: 0px;
+
         }
         
