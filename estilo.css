@@ -12,6 +12,8 @@ body{
     background-image:
       url("marcadagua.png");
       background-repeat:repeat;
+    overflow-x:hidden;
+    color:#30343b;
 }
 
 .caixa-login{
@@ -162,4 +164,366 @@ p{
 
 .descrição{
     margin-bottom: 0px;
+}
+
+.molecules{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    z-index:-1;
+    overflow:hidden;
+    background:#f7f7f5;
+    pointer-events:none;
+}
+
+.molecules svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.connections{
+    stroke:#d7dde0;
+    stroke-width:2;
+    opacity:.95;
+}
+
+.nodes circle{
+    fill:#f7f7f5;
+    stroke:#d7dde0;
+    stroke-width:2;
+    opacity:.95;
+}
+
+header{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    background:rgba(247,247,245,.94);
+    border-bottom:1px solid #d8d8d8;
+    position:relative;
+    z-index:10;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    width:770px;
+    height:455px;
+    position: relative;
+    margin-bottom:0px;
+}
+
+.logo img{
+    width:75%;
+    height:auto;
+    object-fit:contain;
+    display:block;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:200px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#383838;
+    font-size:180%;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#2d79ae;
+}
+
+.btn-agendar{
+    padding:24px 42px;
+    border-radius:30px;
+    color:white;
+    font-size:150%;
+    text-decoration:none;
+    cursor:pointer;
+    white-space:nowrap;
+    background:linear-gradient(
+        90deg,
+        #5e7fc9,
+        #5ebbd6
+    );
+    transition:.3s;
+}
+
+.btn-agendar:hover{
+    transform:scale(1.04);
+}
+
+.hero{
+    min-height:800px;
+    position:relative;
+    display:flex;
+    align-items:flex-start;
+    padding:90px 36px 150px;
+    overflow:hidden;
+}
+
+.hero-image{
+    position:absolute;
+    right:0;
+    top:0;
+    width:58%;
+    height:65%;
+    background-image: url("./imagens/consulta.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index:1;
+    -webkit-mask-image:
+    linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,.25) 12%,
+        black 28%,
+        black 100%
+    ),
+    linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0,0,0,.25) 12%,
+        black 30%,
+        black 100%
+    );
+    mask-image:
+    linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,.25) 12%,
+        black 28%,
+        black 100%
+    ),
+    linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0,0,0,.25) 12%,
+        black 30%,
+        black 100%
+    );
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+.content{
+    position:relative;
+    z-index:3;
+    width:58%;
+}
+
+.content h1{
+    font-size:60px;
+    line-height:1.5;
+    letter-spacing:.7px;
+    margin-bottom:40px;
+    font-weight:780;
+    color:#30343b;
+}
+
+.content h1 span{
+    display:block;
+    font-size:60px;
+    background:linear-gradient(
+        90deg,
+        #5de0e6,
+        #0902d4
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.info{
+    display:flex;
+    gap:25px;
+    font-size:25px;
+    margin-top:20px;
+}
+
+.info p{
+    white-space:nowrap;
+}
+
+.cards{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:140px;
+    z-index:5;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+}
+
+.card{
+    min-height:102px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px 20px;
+    background:rgba(255,255,255,.93);
+    border-radius:18px;
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.12);
+    border:1px solid #eeeeee;
+}
+
+.card-icon{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#f7f7f5;
+}
+
+.card-icon img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.card p{
+    font-size:25px;
+    line-height:1.3;
+    color:#30343b;
+}
+
+@media(max-width:1000px){
+
+    nav{
+        gap:35px;
+    }
+
+    .hero-image{
+        width:55%;
+    }
+
+    .content{
+        width:65%;
+    }
+
+    .content h1{
+        font-size:34px;
+    }
+
+    .content h1 span{
+        font-size:43px;
+    }
+
+    .info{
+        font-size:16px;
+    }
+
+    .card p{
+        font-size:17px;
+    }
+}
+
+@media(max-width:800px){
+
+    header{
+        padding:0 18px;
+    }
+
+    .logo img{
+        width:140px;
+    }
+
+    nav{
+        gap:18px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+    .btn-agendar{
+        padding:12px 20px;
+        font-size:16px;
+    }
+
+    .hero{
+        min-height:650px;
+        padding-bottom:270px;
+    }
+
+    .content{
+        width:80%;
+    }
+
+    .hero-image{
+        width:100%;
+        opacity:.28;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2, 1fr);
+        bottom:25px;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        height:auto;
+        flex-direction:column;
+        gap:15px;
+        padding:18px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        padding:35px 20px 470px;
+        min-height:900px;
+    }
+
+    .content{
+        width:100%;
+    }
+
+    .content h1{
+        font-size:30px;
+    }
+
+    .content h1 span{
+        font-size:38px;
+    }
+
+    .info{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .info p{
+        white-space:normal;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        left:15px;
+        right:15px;
+        bottom:20px;
+    }
+
+    .card{
+        min-height:85px;
+    }
 }
