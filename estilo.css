@@ -176,6 +176,8 @@ body:not(:has(header)) .logo{
 
 body:has(header){
     background:#f7f7f5;
+    background-image:url("marcadagua.png");
+    background-repeat:repeat;
     color:#30343b;
     overflow-x:hidden;
     margin:0;
