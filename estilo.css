@@ -570,4 +570,18 @@ nav a:hover{
     .card{
         min-height:85px;
     }
+    .caixa-cadastro{
+    position: fixed;
+    background-color: #FFFFFF;
+    top:5%;
+    width: 450px;
+    height: 650px;
+    position: absolute;
+    left: 10%;
+    border-radius: 20px;
+    box-shadow: 3px 6px 6px 0px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    z-index:1;
+}
+
 }
