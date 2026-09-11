@@ -37,8 +37,24 @@ body:not(:has(header)) h1{
     margin-bottom: 35px;
 }
 
-.campo{
-    margin-bottom: 0px;
+
+
+.nova-senha{
+    margin-bottom: 35px;
+}
+
+.nova-senha input{
+    width: 95%;
+    height: 40px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin:0px;
+    border:none;
+    outline:none;
+    background-color:#faf9f5;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
 }
 
 body:not(:has(header)) p{
@@ -64,15 +80,26 @@ body:not(:has(header)) p{
     margin-bottom: 8px;
 }
 
-.lembrar{
+.confirmar-senha{
     margin-bottom:80px;
 }
 
-.lembrar input{
-    border: #CCCCCC;
+.confirmar-senha input{
+    width: 95%;
+    height: 40px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin:0px;
+    border:none;
+    outline:none;
+    background-color:#faf9f5;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
+
 }
 
-.entrar{
+.finalizar{
     display: block;
     width: 95%;
     height: 45px;
@@ -88,9 +115,10 @@ body:not(:has(header)) p{
     user-select: none;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.3);
     text-decoration: none;
+    margin-bottom: 10px;
 }
 
-.entrar:active{
+.finalizar:active{
     transform:translateX(3px);
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
 }
@@ -176,8 +204,6 @@ body:not(:has(header)) .logo{
 
 body:has(header){
     background:#f7f7f5;
-    background-image:url("marcadagua.png");
-    background-repeat:repeat;
     color:#30343b;
     overflow-x:hidden;
     margin:0;
