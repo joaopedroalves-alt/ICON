@@ -21,12 +21,12 @@
 
         <div class="campo">
             <p>Email ou CPF</p>
-            <input type="text" placeholder=" Digite seu Email ou CPF">
+            <input type="text" placeholder=" Digite seu Email ou CPF" id="usuario">
         </div>
 
-        <div class="campo">
+        <div class="campo"  >
             <p>Senha</p>
-            <input type="password" placeholder=" Digite sua senha">
+            <input type="password" placeholder=" Digite sua senha" id="senha">
         </div>
 
         <div class="lembrar">
@@ -34,9 +34,10 @@
             Lembrar-me
         </div>
 
-        <a href="index.html" class="entrar">Entrar</a>
+        <a class="entrar" onclick="nome()">Entrar</a>
 
         <a href="redefinir-senha.html" class="caixa-login-a">Esqueci minha senha</a>
+        <div id="mensagem"></div>
 
     </div>
 
@@ -61,6 +62,21 @@
         </p>
 
     </div>
+    <script>
+      function nome(){
+        let usuario = document.getElementById("usuario").value.trim().toLowerCase();
+        let senha = document.getElementById("senha").value;
+
+        if(usuario === "cliente" && senha === "123456")
+          window.location.href = "cliente.html";
+        else if(usuario === "medico" && senha === "123456")
+          window.location.href = "medico.html";
+        else if(usuario === "administrador" && senha === "123456")
+          window.location.href = "administrador.html";
+        else
+    document.getElementById("mensagem").innerHTML = "<br><br>Usuário ou senha não confere"
+    }
+
 
 </body>
 
