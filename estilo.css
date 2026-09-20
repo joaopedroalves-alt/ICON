@@ -155,8 +155,8 @@
 
 .caixa-cadastro {
     background-color: #FFFFFF;
-    width: 450px;
-    height: 650px;
+    width: 600px;
+    height: auto;
     position: absolute;
     top: 5%;
     left: 10%;
