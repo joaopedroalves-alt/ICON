@@ -738,5 +738,8 @@ nav a:hover {
         .rodape{
             background-color: #091d8d91;
         }
+body {
+    background-color: red;
+}
         
 ```
