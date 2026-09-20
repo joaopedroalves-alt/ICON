@@ -630,14 +630,14 @@ nav a:hover {
         min-height: 85px;
     }
 }
-.header{
+        .index .header{
             background-color: #091d8d;
             width: 100%;
             top: 0px;
             position: fixed;
         }
 
-        .subheader{
+        .index .subheader{
             height: 90px;
             padding: 3px;
             display: flex;
@@ -648,22 +648,22 @@ nav a:hover {
             background-size: cover;
             background-position: center;
         }
-        .logotexto{
+        .index .logotexto{
             height: 80px;
             margin-left: 20px;
         }
-        .textologo{
+        .index .textologo{
             height:150px;
             margin-left: 10px;
             margin-top: 15px;
         }
-        .fotodeperfil{
+        .index.fotodeperfil{
             height: 60px;
             margin-right: 20px;
             margin-left: auto;
         }
 
-        .menu_de_navegacao{
+        .index.menu_de_navegacao{
             background-image:
                 linear-gradient(rgba(118, 179, 248, 0.4), rgba(118, 179, 248, 0.4)),
                 url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
@@ -674,37 +674,37 @@ nav a:hover {
             align-items: center;
             padding: 0 150px;
         }
-        .menu_de_navegacao a{
+        .index.menu_de_navegacao a{
             color: white;
             text-decoration: none;
             font-size: 18px;
             transition:0.3s;
             border-bottom: 2px solid transparent;
         }
-        .menu_de_navegacao a:hover{
+        .index.menu_de_navegacao a:hover{
             color:rgb(240, 238, 238);
             border-bottom: 2px solid rgb(240, 238, 238);   
         }
-        .menu_de_navegacao a:active{
+        .index.menu_de_navegacao a:active{
             color:rgb(172, 168, 168);
             border-bottom: 2px solid rgb(172, 168, 168);   
         }
 
-        .textodireita{
+        .index.textodireita{
             padding: 0px;
             margin-left:20px;
             margin-right: 30px;
             text-align: left;
             margin: 20px;
         }
-        .texto{
+        .index.texto{
             font-size: 40px;
             color: rgb(46, 45, 45);
             text-align: left;
             padding: 5px;
             font-weight: bold;
         }
-        .textogradiente{
+        .index.textogradiente{
             font-size: 60px;
             color: rgb(46, 45, 45);
             text-align: left;
@@ -717,10 +717,10 @@ nav a:hover {
             font-weight: bold;
         }
 
-        .imagem{
+        .index.imagem{
             margin-left:0px;
         }
-        .imagematendimento{
+        .index.imagematendimento{
             width: 825px;
             height: 650px;
             right: 0px;
@@ -730,15 +730,12 @@ nav a:hover {
             z-index: -4;
         }
 
-        .flashcard{
+        .index.flashcard{
             background-color: #bab9e0;
             z-index: 1;
         }
 
-        .rodape{
+        .index.rodape{
             background-color: #091d8d91;
         }
-.header {
-    background-color: red;
-} 
 ```
