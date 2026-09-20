@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="py-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css?v=1">
+    <link rel="scriptsheet" href="script.js">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="caixa-cadastro" style="height: 500px ;width: 600px" >
+      <h1>finalize o Cadastro</h1>
+      <p><b>Convênio</b></p>
+      <div class="linha-cadastro">
+        <div class="campo-cadastro">
+          <p>Convênio</p>
+          <select id="convenio">
+          <option value="" disabled selected hidden>Selecione o convênio</option>
+          <option value="particular">Particular</option>
+          <option value="unimed">Unimed</option>
+          <option value="bradesco">Bradesco Saúde</option>
+          <option value="sulamerica">SulAmérica</option>
+          <option value="amil">Amil</option>
+          <option value="hapvida">Hapvida NotreDame Intermédica</option>
+          <option value="porto">Porto Saúde</option>
+          <option value="cassi">Cassi</option>
+          <option value="caixa">Caixa Saúde</option>
+          <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="campo-cadastro">        
+          <p>N de carteirinha</p>
+          <input type="text" placeholder="0000000000000">
+        </div>
+        <div class="campo-cadastro">        
+          <p>Validade</p>
+          <input type="date" placeholder="0000000000000">
+        </div>
+      </div>
+
+
+
+
+      <br>
+
+
+      <p><b>Senha</b></p>
+
+
+
+
+      <div class="linha-cadastro">
+       
+        <div class="campo-cadastro">        
+          <p>Senha</p>
+          <input type="text" placeholder="Cadastre uma senha">
+          <p style=": "><i>"Não esqueça, se possivel anote"</i></p>
+        </div>
+
+      </div>
+      <br><br>
+
+      <button class="finalizar" onclick="Cadastrar()">Finalizar cadastro</button>
+
+    </div>
+    <script>
+  function Cadastrar(){
+
+    window.location.href = "EXEMPLO.html";
+
+}
+    </script>
+   
+    <div class="fundologo"></div>
+
+    <div class="direita">
+
+        <h2 class="saudacao">Seja bem-vindo!</h2>
+
+        <p class="ICON">ICON</p>
+        <p class="instituto">
+            INSTITUTO DE
+            <br>
+            COGNIÇÃO E NEUROPSICOLOGIA
+        </p>
+
+
+        <img class="logo" src="https://uploads.onecompiler.io/44nnydek6/1789056536104/logoicon.png.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
+
+
+        <p class="descrição">
+            Inovação e precisão no cuidado neuropsicológico.
+        </p>
+
+    </div>
+</body>
+</html>
