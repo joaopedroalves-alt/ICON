@@ -580,54 +580,5 @@ nav a:hover {
 
 @media (max-width: 600px) {
 
-    header {
-        height: auto;
-        flex-direction: column;
-        gap: 15px;
-        padding: 18px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero {
-        padding: 35px 20px 470px;
-        min-height: 900px;
-    }
-
-    .content {
-        width: 100%;
-    }
-
-    .content h1 {
-        font-size: 30px;
-    }
-
-    .content h1 span {
-        font-size: 38px;
-    }
-
-    .info {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .info p {
-        white-space: normal;
-    }
-
-    .cards {
-        flex-direction: column;
-        left: 15px;
-        right: 15px;
-        bottom: 20px;
-    }
-
-    .card {
-        width: 100%;
-        min-height: 85px;
-    }
 }
 ```
