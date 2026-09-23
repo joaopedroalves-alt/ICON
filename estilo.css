@@ -629,4 +629,114 @@ header {
         width: 100%;
         min-height: 85px;
     }
+/* INDEX */
+
+.header{
+            background-color: #091d8d;
+            width: 100%;
+            top: 0px;
+            position: fixed;
+        }
+
+        .subheader{
+            height: 90px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            background-image:
+                linear-gradient(rgba(4, 121, 255, 0.4), rgba(4, 121, 255, 0.4)),
+                url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
+            background-size: cover;
+            background-position: center;
+        }
+        .logotexto{
+            height: 80px;
+            margin-left: 20px;
+        }
+        .textologo{
+            height:150px;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+        .fotodeperfil{
+            height: 60px;
+            margin-right: 20px;
+            margin-left: auto;
+        }
+
+        .menu_de_navegacao{
+            background-image:
+                linear-gradient(rgba(118, 179, 248, 0.4), rgba(118, 179, 248, 0.4)),
+                url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
+                box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 150px;
+        }
+        .menu_de_navegacao a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition:0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .menu_de_navegacao a:hover{
+            color:rgb(240, 238, 238);
+            border-bottom: 2px solid rgb(240, 238, 238);   
+        }
+        .menu_de_navegacao a:active{
+            color:rgb(172, 168, 168);
+            border-bottom: 2px solid rgb(172, 168, 168);   
+        }
+
+        .textodireita{
+            padding: 0px;
+            margin-left:20px;
+            margin-right: 30px;
+            text-align: left;
+            margin: 20px;
+        }
+        .texto{
+            font-size: 40px;
+            color: rgb(46, 45, 45);
+            text-align: left;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .textogradiente{
+            font-size: 60px;
+            color: rgb(46, 45, 45);
+            text-align: left;
+            padding: 5px;
+            background-image: linear-gradient(to right, #94ddff, #019ffa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-weight: bold;
+        }
+
+        .imagem{
+            margin-left:0px;
+        }
+        .imagematendimento{
+            width: 825px;
+            height: 650px;
+            right: 0px;
+            position: absolute;
+            top: 150px;
+            opacity: 0.8;
+            z-index: -4;
+        }
+
+        .flashcard{
+            background-color: #bab9e0;
+            z-index: 1;
+        }
+
+        .rodape{
+            background-color: #091d8d91;
+        }
 ```
