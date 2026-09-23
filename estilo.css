@@ -252,6 +252,7 @@
    INDEX
 ========================= */
 
+```css
 .index-body {
     background: #f7f7f5;
     color: #30343b;
@@ -260,7 +261,12 @@
     height: auto;
     display: block;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("marcadagua.png");
+    background-repeat: repeat;
 }
+
+```
+
 
 
 /* FUNDO */
@@ -696,7 +702,7 @@ header {
             margin-left:20px;
             margin-right: 30px;
             text-align: left;
-            margin: 20px;
+            margin: 160px 20px 20px 20px;
         }
         .texto{
             font-size: 40px;
