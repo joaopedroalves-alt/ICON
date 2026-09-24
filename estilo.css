@@ -597,7 +597,7 @@ nav a:hover {
 ========================= */
 
 .header {
-    background-color: #091d8d;
+    z-index:999999999;
     width: 100%;
     top: 0px;
     position: fixed;
@@ -609,32 +609,44 @@ nav a:hover {
     display: flex;
     align-items: center;
     background-image:
-        linear-gradient(rgba(4, 121, 255, 0.4), rgba(4, 121, 255, 0.4)),
+        linear-gradient(rgba(34,142,162,0.3), rgba(34,142,162,0.3)),
         url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
     background-size: cover;
     background-position: center;
 }
-
 .logotexto {
     height: 80px;
     margin-left: 20px;
 }
-
 .textologo {
     height: 150px;
     margin-left: 10px;
     margin-top: 15px;
 }
-
-.fotodeperfil {
-    height: 60px;
-    margin-right: 20px;
+.fzrlog{
     margin-left: auto;
+    margin-right: 30px;
+    font-size: 20px;
+}
+.fzrlog a{
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    border-bottom: 2px solid transparent;
+}
+.fzrlog a:hover{
+    color: rgb(240, 238, 238);
+    border-bottom: 2px solid rgb(240, 238, 238);
+}
+.fzrlog a:active{
+    color: rgb(172, 168, 168);
+    border-bottom: 2px solid rgb(172, 168, 168);
 }
 
 .menu_de_navegacao {
+    
     background-image:
-        linear-gradient(rgba(118, 179, 248, 0.4), rgba(118, 179, 248, 0.4)),
+        linear-gradient(rgba(72, 209, 233, 0.2), rgba(72, 209, 233, 0.2)),
         url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
     height: 50px;
@@ -666,12 +678,9 @@ nav a:hover {
 .textodireita {
     padding: 0px;
     text-align: left;
-    margin: 0px 20px 20px 20px;
-    padding-top: 180px;
+    margin: 0px 20px 20px 0px;
+    padding-top: 300px;
 }
-
-
-
 .texto {
     font-size: 40px;
     color: rgb(46, 45, 45);
@@ -679,13 +688,12 @@ nav a:hover {
     padding: 5px;
     font-weight: bold;
 }
-
 .textogradiente {
     font-size: 60px;
     color: rgb(46, 45, 45);
     text-align: left;
     padding: 5px;
-    background-image: linear-gradient(to right, #94ddff, #019ffa);
+    background-image: linear-gradient(to right, #5de0e6, #004aad);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -696,7 +704,6 @@ nav a:hover {
 .imagem {
     margin-left: 0px;
 }
-
 .imagematendimento {
     width: 825px;
     height: 650px;
@@ -707,11 +714,145 @@ nav a:hover {
     z-index: -4;
 }
 
-.flashcard {
-    background-color: #bab9e0;
-    z-index: 1;
+.flashcards {
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+    .flashcard {
+    width: 300px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(150px);
+}
+.imagensflashcards {
+    width: 70px;
+    height: 60px;
+    object-fit: contain;
+    transform: translateX(-15px);
 }
 
 .rodape {
-    background-color: #091d8d91;
+    background-color: rgba(34,142,162,0.5);
+    position: absolute;
+    top: 900px;
+    width: 100%;
+}
+.rodape1{
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.rodape2 {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.rodape2 a{
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block;
+    font-weight: 300;
+    transition: 0.3s;
+    border-bottom: 2px solid transparent;
+}
+.rodape2 a:hover{
+    color: white;
+    border-bottom: 2px solid;
+}
+.rodape2 a:active{
+    color: rgb(172, 168, 168);
+    border-bottom: 2px solid rgb(172, 168, 168);
+}
+.FAQ {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: flex-start;
+}
+.iconlogo{
+    display: block;
+    width: 33.33%;
+    text-align: center;
+    object-fit: contain;
+    margin-bottom: 0px;
+}
+.logorodape.texto{
+    width: 60%;
+    height: auto;
+}
+.logorodape.logobranca{
+    width: 50%;
+    height: auto;
+    transform: translateY(-50px);
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 1000px;
+}
+.socialmedia{
+    width: 33.33%;
+    font-weight: bold;
+    color: white;
+    padding-left: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.linha-rodape {
+    width: 85%;
+    border: none;
+    border-top: 3px solid white;
+}
+
+.rodape3{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.rodape3 a{
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block;
+    font-weight: 300;
+    transition: 0.3s;
+    border-bottom: 2px solid transparent;
+}
+.rodape3 a:hover{
+    color: white;
+    border-bottom: 2px solid;
+}
+.rodape3 a:active{
+    color: rgb(172, 168, 168);
+    border-bottom: 2px solid rgb(172, 168, 168);
 }
