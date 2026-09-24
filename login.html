@@ -69,11 +69,11 @@
         let senha = document.getElementById("senha").value;
 
         if(usuario === "cliente" && senha === "123456")
-          window.location.href = "cliente.html";
+          window.location.href = "dashboardcliente.html";
         else if(usuario === "medico" && senha === "123456")
-          window.location.href = "medico.html";
+          window.location.href = "dashboardmedico.html";
         else if(usuario === "administrador" && senha === "123456")
-          window.location.href = "administrador.html";
+          window.location.href = "dashboardadministrador.html";
         else
     document.getElementById("mensagem").innerHTML = "<br><br>Usuário ou senha não confere"
     }
