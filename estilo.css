@@ -4,6 +4,25 @@
 
 
 /* =========================
+   CONFIGURAÇÃO GERAL
+========================= */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #FAF9F6;
+    background-image: url("imagens/marcadagua.png");
+    background-repeat: repeat;
+}
+
+.formulario-body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
    LOGIN / REDEFINIR SENHA
 ========================= */
 
@@ -167,23 +186,7 @@
 
 
 /* =========================
-   FUNDO DOS FORMULÁRIOS
-========================= */
-
-.formulario-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    background-color: #FAF9F6;
-    background-image: url("imagens/marcadagua.png");
-    background-repeat: repeat;
-}
-
-
-/* =========================
-   PARTE DIREITA
+   PARTE DIREITA - LOGIN
 ========================= */
 
 .fundologo {
@@ -262,342 +265,11 @@
 
 
 /* =========================
-   HEADER
-========================= */
-
-header {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 28px;
-    background: rgba(247, 247, 245, 0.94);
-    border-bottom: 1px solid #d8d8d8;
-    position: relative;
-    z-index: 10;
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-}
-
-header .logo img {
-    width: 75%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-
-
-/* =========================
-   MENU
-========================= */
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 200px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #383838;
-    font-size: 180%;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #2d79ae;
-}
-
-
-/* BOTÃO */
-
-.btn-agendar {
-    padding: 24px 42px;
-    border-radius: 30px;
-    color: white;
-    font-size: 150%;
-    text-decoration: none;
-    cursor: pointer;
-    white-space: nowrap;
-    background: linear-gradient(
-        90deg,
-        #5e7fc9,
-        #5ebbd6
-    );
-    transition: 0.3s;
-}
-
-.btn-agendar:hover {
-    transform: scale(1.04);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 800px;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    padding: 90px 36px 150px;
-    overflow: hidden;
-}
-
-.hero-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 58%;
-    height: 65%;
-    background-image: url("./imagens/consulta.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-
-
-/* =========================
-   TEXTO
-========================= */
-
-.content {
-    position: relative;
-    z-index: 3;
-    width: 58%;
-}
-
-.content h1 {
-    font-size: 60px;
-    line-height: 1.5;
-    letter-spacing: 0.7px;
-    margin-bottom: 40px;
-    font-weight: 780;
-    color: #30343b;
-    text-align: left;
-}
-
-.content h1 span {
-    display: block;
-    font-size: 60px;
-    background: linear-gradient(
-        90deg,
-        #5de0e6,
-        #0902d4
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.info {
-    display: flex;
-    gap: 25px;
-    font-size: 25px;
-    margin-top: 20px;
-}
-
-.info p {
-    margin-bottom: 5px;
-    white-space: nowrap;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.cards {
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 140px;
-    z-index: 5;
-    display: flex;
-    gap: 18px;
-}
-
-.card {
-    width: 25%;
-    min-height: 102px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 18px 20px;
-    background: rgba(255, 255, 255, 0.93);
-    border-radius: 18px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-    border: 1px solid #eeeeee;
-}
-
-.card-icon {
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #f7f7f5;
-}
-
-.card-icon img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-}
-
-.card p {
-    font-size: 25px;
-    line-height: 1.3;
-    color: #30343b;
-}
-
-
-/* =========================
-   TELAS MENORES
-========================= */
-
-@media (max-width: 1000px) {
-    nav {
-        gap: 35px;
-    }
-
-    .hero-image {
-        width: 55%;
-    }
-
-    .content {
-        width: 65%;
-    }
-
-    .content h1 {
-        font-size: 34px;
-    }
-
-    .content h1 span {
-        font-size: 43px;
-    }
-
-    .info {
-        font-size: 16px;
-    }
-
-    .card p {
-        font-size: 17px;
-    }
-}
-
-@media (max-width: 800px) {
-    header {
-        padding: 0 18px;
-    }
-
-    header .logo img {
-        width: 140px;
-    }
-
-    nav {
-        gap: 18px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-    .btn-agendar {
-        padding: 12px 20px;
-        font-size: 16px;
-    }
-
-    .hero {
-        min-height: 650px;
-        padding-bottom: 270px;
-    }
-
-    .content {
-        width: 80%;
-    }
-
-    .hero-image {
-        width: 100%;
-        opacity: 0.28;
-    }
-
-    .cards {
-        flex-wrap: wrap;
-        bottom: 25px;
-    }
-
-    .card {
-        width: calc(50% - 9px);
-    }
-}
-
-@media (max-width: 600px) {
-    header {
-        height: auto;
-        flex-direction: column;
-        gap: 15px;
-        padding: 18px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero {
-        padding: 35px 20px 470px;
-        min-height: 900px;
-    }
-
-    .content {
-        width: 100%;
-    }
-
-    .content h1 {
-        font-size: 30px;
-    }
-
-    .content h1 span {
-        font-size: 38px;
-    }
-
-    .info {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .info p {
-        white-space: normal;
-    }
-
-    .cards {
-        flex-direction: column;
-        left: 15px;
-        right: 15px;
-        bottom: 20px;
-    }
-
-    .card {
-        width: 100%;
-        min-height: 85px;
-    }
-}
-
-
-/* =========================
-   INDEX - ELEMENTOS ATUAIS
+   HEADER INDEX
 ========================= */
 
 .header {
-    z-index:999999999;
+    z-index: 999999999;
     width: 100%;
     top: 0px;
     position: fixed;
@@ -609,42 +281,52 @@ nav a:hover {
     display: flex;
     align-items: center;
     background-image:
-        linear-gradient(rgba(34,142,162,0.3), rgba(34,142,162,0.3)),
+        linear-gradient(rgba(34, 142, 162, 0.3), rgba(34, 142, 162, 0.3)),
         url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
     background-size: cover;
     background-position: center;
 }
+
 .logotexto {
     height: 80px;
     margin-left: 20px;
 }
+
 .textologo {
     height: 150px;
     margin-left: 10px;
     margin-top: 15px;
 }
-.fzrlog{
+
+.fzrlog {
     margin-left: auto;
     margin-right: 30px;
     font-size: 20px;
 }
-.fzrlog a{
+
+.fzrlog a {
     color: white;
     text-decoration: none;
     transition: 0.3s;
     border-bottom: 2px solid transparent;
 }
-.fzrlog a:hover{
+
+.fzrlog a:hover {
     color: rgb(240, 238, 238);
     border-bottom: 2px solid rgb(240, 238, 238);
 }
-.fzrlog a:active{
+
+.fzrlog a:active {
     color: rgb(172, 168, 168);
     border-bottom: 2px solid rgb(172, 168, 168);
 }
 
+
+/* =========================
+   MENU INDEX
+========================= */
+
 .menu_de_navegacao {
-    
     background-image:
         linear-gradient(rgba(72, 209, 233, 0.2), rgba(72, 209, 233, 0.2)),
         url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
@@ -675,12 +357,17 @@ nav a:hover {
 }
 
 
+/* =========================
+   TEXTO INDEX
+========================= */
+
 .textodireita {
     padding: 0px;
     text-align: left;
     margin: 0px 20px 20px 0px;
     padding-top: 300px;
 }
+
 .texto {
     font-size: 40px;
     color: rgb(46, 45, 45);
@@ -688,6 +375,7 @@ nav a:hover {
     padding: 5px;
     font-weight: bold;
 }
+
 .textogradiente {
     font-size: 60px;
     color: rgb(46, 45, 45);
@@ -704,6 +392,7 @@ nav a:hover {
 .imagem {
     margin-left: 0px;
 }
+
 .imagematendimento {
     width: 825px;
     height: 650px;
@@ -714,6 +403,11 @@ nav a:hover {
     z-index: -4;
 }
 
+
+/* =========================
+   FLASHCARDS
+========================= */
+
 .flashcards {
     z-index: 0;
     display: flex;
@@ -721,7 +415,8 @@ nav a:hover {
     align-items: center;
     padding: 0 50px;
 }
-    .flashcard {
+
+.flashcard {
     width: 300px;
     height: 100px;
     background-color: #ffffff;
@@ -736,6 +431,7 @@ nav a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     transform: translateY(150px);
 }
+
 .imagensflashcards {
     width: 70px;
     height: 60px;
@@ -743,13 +439,19 @@ nav a:hover {
     transform: translateX(-15px);
 }
 
+
+/* =========================
+   RODAPÉ
+========================= */
+
 .rodape {
-    background-color: rgba(34,142,162,0.5);
+    background-color: rgba(34, 142, 162, 0.5);
     position: absolute;
     top: 900px;
     width: 100%;
 }
-.rodape1{
+
+.rodape1 {
     font-weight: bold;
     color: white;
     display: flex;
@@ -769,8 +471,9 @@ nav a:hover {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.rodape2 a{
-    color:white;
+
+.rodape2 a {
+    color: white;
     text-decoration: none;
     font-size: 18px;
     display: inline-block;
@@ -778,14 +481,17 @@ nav a:hover {
     transition: 0.3s;
     border-bottom: 2px solid transparent;
 }
-.rodape2 a:hover{
+
+.rodape2 a:hover {
     color: white;
     border-bottom: 2px solid;
 }
-.rodape2 a:active{
+
+.rodape2 a:active {
     color: rgb(172, 168, 168);
     border-bottom: 2px solid rgb(172, 168, 168);
 }
+
 .FAQ {
     width: 33.33%;
     display: flex;
@@ -794,25 +500,29 @@ nav a:hover {
     gap: 15px;
     align-items: flex-start;
 }
-.iconlogo{
+
+.iconlogo {
     display: block;
     width: 33.33%;
     text-align: center;
     object-fit: contain;
     margin-bottom: 0px;
 }
-.logorodape.texto{
+
+.logorodape.texto {
     width: 60%;
     height: auto;
 }
-.logorodape.logobranca{
+
+.logorodape.logobranca {
     width: 50%;
     height: auto;
     transform: translateY(-50px);
     background-color: rgba(0, 0, 0, 0.02);
     border-radius: 1000px;
 }
-.socialmedia{
+
+.socialmedia {
     width: 33.33%;
     font-weight: bold;
     color: white;
@@ -830,7 +540,7 @@ nav a:hover {
     border-top: 3px solid white;
 }
 
-.rodape3{
+.rodape3 {
     color: white;
     display: flex;
     justify-content: space-between;
@@ -839,8 +549,9 @@ nav a:hover {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.rodape3 a{
-    color:white;
+
+.rodape3 a {
+    color: white;
     text-decoration: none;
     font-size: 18px;
     display: inline-block;
@@ -848,11 +559,143 @@ nav a:hover {
     transition: 0.3s;
     border-bottom: 2px solid transparent;
 }
-.rodape3 a:hover{
+
+.rodape3 a:hover {
     color: white;
     border-bottom: 2px solid;
 }
-.rodape3 a:active{
+
+.rodape3 a:active {
+    color: rgb(172, 168, 168);
+    border-bottom: 2px solid rgb(172, 168, 168);
+}
+
+
+/* =========================
+   PÁGINAS ADMIN / CLIENTE / MÉDICO
+========================= */
+
+.subheader-admin {
+    background-color: rgba(3, 19, 229, 0.5);
+}
+
+.subheader-cliente {
+    background-color: rgba(6, 210, 160, 0.5);
+}
+
+.subheader-medico {
+    background-color: rgba(0, 145, 255, 0.5);
+}
+/* =========================
+   INTRANET
+========================= */
+
+.header-intranet {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+}
+
+
+/* =========================
+   SUBHEADER
+========================= */
+
+.subheader-intranet {
+    height: 90px;
+    padding: 3px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+}
+
+.subheader-intranet.cliente {
+    background-color: rgba(6, 210, 160, 0.5);
+}
+
+.subheader-intranet.profissional {
+    background-color: rgba(0, 145, 255, 0.5);
+}
+
+.subheader-intranet.admin {
+    background-color: rgba(3, 19, 229, 0.5);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logotexto-intranet {
+    height: 80px;
+    margin-left: 20px;
+}
+
+
+/* =========================
+   PERFIL
+========================= */
+
+.perfil-intranet {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.perfil-intranet img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu-intranet {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+.menu-intranet.cliente {
+    background-color: #06D2A0;
+}
+
+.menu-intranet.profissional {
+    background-color: #0091FF;
+}
+
+.menu-intranet.admin {
+    background-color: #0313E5;
+}
+
+.menu-intranet a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.menu-intranet a:hover {
+    color: rgb(240, 238, 238);
+    border-bottom: 2px solid rgb(240, 238, 238);
+}
+
+.menu-intranet a:active {
     color: rgb(172, 168, 168);
     border-bottom: 2px solid rgb(172, 168, 168);
 }
