@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="py-BR">
 
@@ -7,100 +8,131 @@
     <link rel="scriptsheet" href="script.js">
     <title>Cadastro</title>
 </head>
+
 <body class="formulario-body">
 
     <div class="caixa-cadastro">
 
-      <h1>finalize o Cadastro</h1>
+        <h1>finalize o Cadastro</h1>
 
-      <p><b>Responsável</b></p>
+        <p><b>Responsável</b></p>
 
-      <div class="linha-cadastro">
-     
-        <div class="campo-cadastro">
+        <div class="linha-cadastro">
 
-          <p>Nome do Responsável</p>
-          <input type="text" placeholder="Coloque o Nome completo">
+            <div class="campo-cadastro">
 
-        </div>
+                <p>Nome do Responsável</p>
+                <input type="text" placeholder="Coloque o Nome completo">
 
-        <div class="campo-cadastro">        
-          <p>Parentesco</p>
-          <input type="text" placeholder="Coloque o parentesco" style="width: 150px">
+            </div>
 
-        </div>
+            <div class="campo-cadastro">
+                <p>Parentesco</p>
+                <input type="text" placeholder="Coloque o parentesco" style="width: 150px">
 
-        <div class="campo-cadastro">        
-          <p>Telefone do Responsável</p>
-          <input type="text" placeholder="(00) 00000-0000" style="width: 120px">
+            </div>
 
-        </div>
+            <div class="campo-cadastro">
+                <p>Telefone do Responsável</p>
+                <input type="text" placeholder="(00) 00000-0000" style="width: 120px">
 
-      </div>
-      <br>
-      <p><b>Convênio</b></p>
-      <div class="linha-cadastro">
-        <div class="campo-cadastro">
-          <p>Convênio</p>
-          <select id="convenio" style="width: 160px">
-          <option value="" disabled selected hidden>Selecione o convênio</option>
-          <option value="particular">Particular</option>
-          <option value="unimed">Unimed</option>
-          <option value="bradesco">Bradesco Saúde</option>
-          <option value="sulamerica">SulAmérica</option>
-          <option value="amil">Amil</option>
-          <option value="hapvida">Hapvida NotreDame Intermédica</option>
-          <option value="porto">Porto Saúde</option>
-          <option value="cassi">Cassi</option>
-          <option value="caixa">Caixa Saúde</option>
-          <option value="outro">Outro</option>
-          </select>
-        </div>
-        <div class="campo-cadastro">        
-          <p>N de carteirinha</p>
-          <input type="text" placeholder="0000000000000" style="width: 120px">
-
-        </div>
-        <div class="campo-cadastro">        
-          <p>Validade</p>
-          <input type="date" placeholder="0000000000000">
+            </div>
 
         </div>
 
-      </div>
+        <br>
 
-      <br>
+        <p><b>Convênio</b></p>
 
-      <p><b>Senha</b></p>
+        <div class="linha-cadastro">
 
-      <div class="linha-cadastro">
-        <div class="campo-cadastro">       
-          <p>Senha</p>
-          <input type="text" placeholder="Cadastre uma senha" style="width: 150px">
-          <p style=": "><i>"Não esqueça, se possivel anote"</i></p>
+            <div class="campo-cadastro">
+
+                <p>Convênio</p>
+
+                <select id="convenio" style="width: 160px">
+
+                    <option value="" disabled selected hidden>Selecione o convênio</option>
+                    <option value="particular">Particular</option>
+                    <option value="unimed">Unimed</option>
+                    <option value="bradesco">Bradesco Saúde</option>
+                    <option value="sulamerica">SulAmérica</option>
+                    <option value="amil">Amil</option>
+                    <option value="hapvida">Hapvida NotreDame Intermédica</option>
+                    <option value="porto">Porto Saúde</option>
+                    <option value="cassi">Cassi</option>
+                    <option value="caixa">Caixa Saúde</option>
+                    <option value="outro">Outro</option>
+
+                </select>
+
+            </div>
+
+            <div class="campo-cadastro">
+                <p>N de carteirinha</p>
+                <input type="text" placeholder="0000000000000" style="width: 120px">
+            </div>
+
+            <div class="campo-cadastro">
+                <p>Validade</p>
+                <input type="date" placeholder="0000000000000">
+            </div>
+
         </div>
-      </div>
-      <br><br>
-      <button class="finalizar" onclick="Cadastrar()">Finalizar cadastro</button>
+
+        <br>
+
+        <p><b>Senha</b></p>
+
+        <div class="linha-cadastro">
+
+            <div class="campo-cadastro">
+
+                <p>Senha</p>
+                <input type="text" placeholder="Cadastre uma senha" style="width: 150px">
+
+                <p style=": ">
+                    <i>"Não esqueça, se possivel anote"</i>
+                </p>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <button class="finalizar" onclick="Cadastrar()">Finalizar cadastro</button>
+
     </div>
+
     <script>
-  function Cadastrar(){
-    window.location.href = "login.html";
-}
+        function Cadastrar() {
+            window.location.href = "login.html";
+        }
     </script>
+
     <div class="fundologo"></div>
+
     <div class="direita">
+
         <h2 class="saudacao">Seja bem-vindo!</h2>
+
         <p class="ICON">ICON</p>
+
         <p class="instituto">
             INSTITUTO DE
             <br>
             COGNIÇÃO E NEUROPSICOLOGIA
         </p>
-        <img class="logo" src="https://uploads.onecompiler.io/44nnydek6/1789056536104/logoicon.png.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
+
+        <img class="logo" src="imagens/logoicon.png.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
+
         <p class="descrição">
             Inovação e precisão no cuidado neuropsicológico.
         </p>
+
     </div>
+
 </body>
 </html>
+```
