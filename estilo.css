@@ -214,7 +214,7 @@ body {
     background-color: #FFFFFF;
     top: 10%;
     width: 800px;
-    height: 750px;
+    height: auto;
     position: absolute;
     left: 10%;
     border-radius: 20px;
