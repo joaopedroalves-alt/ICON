@@ -408,7 +408,7 @@ body {
 
 
 .fzrlog a {
-    color:black;
+    color:rgb(40, 41, 43);
     text-decoration: none;
     transition: 0.3s;
     border-bottom: 2px solid transparent;
@@ -416,14 +416,14 @@ body {
 
 
 .fzrlog a:hover {
-    color: rgb(240, 238, 238);
-    border-bottom: 2px solid rgb(240, 238, 238);
+    color: rgb(47, 84, 133);
+    border-bottom: 2px solid rgb(47, 84, 133);
 }
 
 
 .fzrlog a:active {
-    color: rgb(172, 168, 168);
-    border-bottom: 2px solid rgb(172, 168, 168);
+    color: rgb(83, 155, 248);
+    border-bottom: 2px solid rgb(83, 155, 248);
 }
 
 
@@ -448,7 +448,7 @@ body {
 
 
 .menu_de_navegacao a {
-    color: white;
+    color: rgb(40, 41, 43);
     text-decoration: none;
     font-size: 18px;
     transition: 0.3s;
@@ -457,14 +457,14 @@ body {
 
 
 .menu_de_navegacao a:hover {
-    color: rgb(240, 238, 238);
-    border-bottom: 2px solid rgb(240, 238, 238);
+    color: rgb(47, 84, 133);
+    border-bottom: 2px solid rgb(47, 84, 133);
 }
 
 
 .menu_de_navegacao a:active {
-    color: rgb(172, 168, 168);
-    border-bottom: 2px solid rgb(172, 168, 168);
+    color: rgb(83, 155, 248);
+    border-bottom: 2px solid rgb(83, 155, 248);
 }
 
 
@@ -571,7 +571,7 @@ body {
 
 
 .rodape {
-    background-color: rgba(34, 142, 162, 0.5);
+    background-color: rgba(34, 142, 162, 0.8);
     position: absolute;
     top: 900px;
     width: 100%;
@@ -868,6 +868,3 @@ body {
     color: rgb(172, 168, 168);
     border-bottom: 2px solid rgb(172, 168, 168);
 }
-
-
-
