@@ -2,62 +2,522 @@
 <html lang="py-BR">
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="estilo.css?v=1">
+    <link rel="scriptsheet" href="script.js">
     <title>Cadastro</title>
 </head>
-<body class="formulario-body">
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <div class="caixa-cadastro">
 
 
-    <h1 >Cadastre seu usuário</h1>
-   
-    <div class="campo">
-            <p>Nome de usuário</p>
-            <input type="text" placeholder=" Cadastre o Nome do usuário">
+
+
+
+
+
+
+      <h1>Cadastre seu usuário</h1>
+
+
+
+
+
+
+
+
+      <p><b>Informações Pessoais</b></p>
+
+
+
+
+
+
+
+
+      <div class="linha-cadastro">
+     
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">
+
+
+
+
+
+
+
+
+          <p>Nome Completo*</p>
+          <input type="text" placeholder="Coloque seu Nome completo">
+
+
+
+
+
+
+
+
         </div>
-   
-    <div class="campo">
-            <p>Email</p>
-            <input type="text" placeholder=" Cadastre seu Email">
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Data de nascimento*</p>
+          <input type="date" placeholder="dd/mm/aaaa">
+
+
+
+
+
+
+
+
         </div>
 
 
-    <div class="campo">
-            <p>CPF</p>
-            <input type="text" placeholder=" Cadastre seu CPF">
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Gênero</p>
+          <select id="genero">
+            <option value="" disabled selected hidden>Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+
+
+
+
+
+
+
+
         </div>
-   
 
-        <div class="lembrar">
-            <br>
-            <input type="checkbox">
-            Lembrar-me
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>CPF</p>
+          <input type="text" placeholder="000.000.000-00" style="width: 120px;">
+
+
+
+
+
+
+
+
         </div>
-   
 
 
-    <a href="cadastro1.html" class="entrar">Continuar</a>
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>RG</p>
+          <input type="text" placeholder="00.000.000-0" style="width: 120px;">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Estado Civil</p>
+          <input type="text" placeholder="Coloque o Nome completo">
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <div class="campo-cadastro">        
+          <p>Deficiencia</p>
+          <select id="deficiencia">
+            <option value="" disabled selected hidden>Selecione</option>
+            <option value="nenhuma">Nenhuma</option>
+            <option value="fisica">Deficiência física (motora)</option>
+            <option value="amputacao">Amputação ou ausência de membro</option>
+            <option value="paralisia_cerebral">Paralisia cerebral</option>
+            <option value="nanismo">Nanismo</option>
+            <option value="cegueira">Cegueira</option>
+            <option value="baixa_visao">Baixa visão</option>
+            <option value="auditiva">Deficiência auditiva (surdez)</option>
+            <option value="surdocegueira">Surdocegueira</option>
+            <option value="fala">Deficiência de fala</option>
+            <option value="intelectual">Deficiência intelectual</option>
+            <option value="autismo">Transtorno do Espectro Autista (TEA)</option>
+            <option value="down">Síndrome de Down</option>
+            <option value="tdah">TDAH</option>
+            <option value="aprendizagem">Transtorno de aprendizagem (ex.: dislexia)</option>
+            <option value="multipla">Deficiência múltipla</option>
+            <option value="outra">Outra</option>
+          </select>
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+      <br>
+      <p><b>Contato</b></p>
+
+
+
+
+
+
+
+
+      <div class="linha-cadastro">
+       
+        <div class="campo-cadastro">        
+          <p>Telefone*</p>
+          <input type="text" placeholder="(00) 00000-0000" style="width: 120px;">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Email</p>
+          <input type="text" placeholder="Email@gmail.com">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Endereço</p>
+          <input type="text" placeholder="Coloque seu endereço">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Número</p>
+          <input type="text" placeholder="N" style="width: 50px;" >
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Complemento</p>
+          <input type="text" placeholder="Complemento(opcional)">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Bairro</p>
+          <input type="text" placeholder="Coloque seu bairro">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Cidade</p>
+          <input type="text" placeholder="Coloque sua cidade">
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>Estado</p>
+          <select id="estado" style="width: 80px">
+            <option value="" disabled selected hidden>Estado</option>
+            <option value="AL">(AL)</option>
+            <option value="AP">(AP)</option>
+            <option value="AM">(AM)</option>
+            <option value="BA">(BA)</option>
+            <option value="CE">(CE)</option>
+            <option value="DF">(DF)</option>
+            <option value="ES">(ES)</option>
+            <option value="GO">(GO)</option>
+            <option value="MA">(MA)</option>
+            <option value="MT">(MT)</option>
+            <option value="MS">(MS)</option>
+            <option value="MG">(MG)</option>
+            <option value="PA">(PA)</option>
+            <option value="PB">(PB)</option>
+            <option value="PR">(PR)</option>
+            <option value="PE">(PE)</option>
+            <option value="PI">(PI)</option>
+            <option value="RJ">(RJ)</option>
+            <option value="RN">(RN)</option>
+            <option value="RS">(RS)</option>
+            <option value="RO">(RO)</option>
+            <option value="RR">(RR)</option>
+            <option value="SC">(SC)</option>
+            <option value="SP">(SP)</option>
+            <option value="SE">(SE)</option>
+            <option value="TO">(TO)</option>
+          </select>
+       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="campo-cadastro">        
+          <p>CEP</p>
+          <input type="text" placeholder="00000-00" style="width: 90px">
+       
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+ 
+      <br>
+      <input type="checkbox" id="criança" >
+      <b>Necessidade de Responsável.</b>
+      <br>
+
+
+
+
+
+
+
+
+      <button class="finalizar" onclick="confirmar()">Continuar</button>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     </div>
+    <script>
+  function confirmar(){
+  let adulto = document.getElementById("criança").checked
+
+
+  if (adulto){
+    window.location.href = "cadastro1_2.html";
+  } else {
+    window.location.href = "cadastro1_1.html";
+  }
+}
+    </script>
+   
+
+
+
+
+
+
+
+
+
+
 
 
     <div class="fundologo"></div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="direita">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <h2 class="saudacao">Seja bem-vindo!</h2>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <p class="ICON">ICON</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <p class="instituto">
@@ -67,7 +527,35 @@
         </p>
 
 
-        <img class="logo" src="imagens/logo.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <img class="logo" src="https://uploads.onecompiler.io/44nnydek6/1789056536104/logoicon.png.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <p class="descrição">
@@ -75,6 +563,34 @@
         </p>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
