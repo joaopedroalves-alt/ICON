@@ -12,335 +12,16 @@ body {
 }
 
 
-/* =========================================================
-   LOGIN / CADASTRO / REDEFINIÇÃO
-========================================================= */
-
-.formulario-body {
-    height: 100vh;
-
-    display: flex;
-    align-items: center;
-
-    background-color: #F4F8F9;
-    background-image: url("imagens/marcadagua.png");
-    background-repeat: repeat;
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-.caixa-login {
-    background-color: #FFFFFF;
-
-    width: 450px;
-    height: 550px;
-
-    position: absolute;
-
-    top: 20%;
-    left: 15%;
-
-    border-radius: 20px;
-
-    box-shadow: 3px 6px 6px 0px rgba(0, 35, 60, 0.2);
-
-    padding: 25px;
-
-    z-index: 1;
-}
-
-.caixa-login h1 {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.campo p {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.campo input {
-    width: 95%;
-    height: 37px;
-
-    border: none;
-    border-radius: 8px;
-
-    padding: 10px;
-
-    font-family: 'Montserrat', sans-serif;
-
-    margin: 0;
-
-    outline: none;
-
-    background-color: #F4F8F9;
-
-    box-shadow: 2px 2px 0px 0px rgba(0, 35, 60, 0.2);
-}
-
-.lembrar {
-    margin-top: 20px;
-}
-
-.entrar {
-    display: block;
-
-    width: 95%;
-    height: 45px;
-
-    border: none;
-    border-radius: 30px;
-
-    background-color: #168A9A;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    text-align: center;
-    line-height: 45px;
-
-    color: #FFFFFF;
-
-    transition: 0.2s;
-
-    user-select: none;
-
-    box-shadow: 3px 3px 0px 0px rgba(0, 35, 60, 0.3);
-
-    text-decoration: none;
-
-    margin-top: 100px;
-}
-
-.entrar:active {
-    transform: translateX(3px);
-
-    box-shadow: 1px 1px 0px 0px rgba(0, 35, 60, 0.1);
-}
-
-.caixa-login-a {
-    display: block;
-
-    text-align: center;
-
-    margin-top: 20px;
-
-    cursor: pointer;
-
-    color: #263C46;
-
-    text-decoration: underline;
-}
-
-.caixa-login-a:active {
-    color: #168A9A;
-}
-
-
-/* =========================
-   REDEFINIÇÃO DE SENHA
-========================= */
-
-.nova-senha {
-    margin-bottom: 35px;
-}
-
-.nova-senha input,
-.confirmar-senha input {
-    width: 95%;
-    height: 37px;
-
-    border: none;
-    border-radius: 8px;
-
-    padding: 10px;
-
-    font-family: 'Montserrat', sans-serif;
-
-    margin: 0;
-
-    outline: none;
-
-    background-color: #F4F8F9;
-
-    box-shadow: 2px 2px 0px 0px rgba(0, 35, 60, 0.2);
-}
-
-.confirmar-senha {
-    margin-bottom: 80px;
-}
-
-.finalizar {
-    display: block;
-
-    width: 95%;
-    height: 45px;
-
-    border: none;
-    border-radius: 30px;
-
-    background-color: #168A9A;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    text-align: center;
-    line-height: 45px;
-
-    color: #FFFFFF;
-
-    transition: 0.2s;
-
-    user-select: none;
-
-    box-shadow: 3px 3px 0px 0px rgba(0, 35, 60, 0.3);
-
-    text-decoration: none;
-
-    margin-bottom: 10px;
-}
-
-.finalizar:active {
-    transform: translateX(3px);
-
-    box-shadow: 1px 1px 0px 0px rgba(0, 35, 60, 0.1);
-}
-
-
-/* =========================
-   CADASTRO
-========================= */
-
-.caixa-cadastro {
-    background-color: #FFFFFF;
-
-    width: 600px;
-    height: auto;
-
-    position: absolute;
-
-    top: 5%;
-    left: 10%;
-
-    border-radius: 20px;
-
-    box-shadow: 3px 6px 6px 0px rgba(0, 35, 60, 0.2);
-
-    padding: 25px;
-
-    z-index: 1;
-}
-
-
-/* =========================
-   FUNDO DO LOGIN
-========================= */
-
-.fundologo {
-    width: 35vw;
-    height: 100vh;
-
-    background:
-        linear-gradient(
-            to left,
-            transparent 85%,
-            #F4F8F9 100%
-        ),
-        url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
-
-    background-size: cover;
-    background-position: center;
-
-    transform:
-        translate(0px, 0px)
-        scale(1.8, 1.8)
-        skew(-9deg, 0deg);
-
-    position: fixed;
-
-    top: 0;
-    right: 0;
-
-    opacity: 0.95;
-}
-
-.direita {
-    position: fixed;
-
-    top: 0;
-    right: 10%;
-
-    width: 25vw;
-    height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
-
-    justify-content: center;
-
-    margin-bottom: 0;
-
-    transform: translateY(-5%);
-}
-
-.saudacao {
-    margin-bottom: 0;
-}
-
-.ICON {
-    font-size: 100px;
-
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.instituto {
-    margin-bottom: 0;
-}
-
-.logo {
-    width: 770px;
-    height: 455px;
-
-    position: relative;
-
-    margin-bottom: 0;
-}
-
-.descrição {
-    margin-bottom: 0;
-}
-
-
-/* =========================================================
-   INDEX — NOVO
-========================================================= */
-
-
 /* =========================
    FUNDO
 ========================= */
 
 .index-body {
     background-color: #f7f7f5;
-
     background-image: url("imagens/marcadagua.png");
-
     background-repeat: repeat;
 
     color: #30343b;
-
     overflow-x: hidden;
 }
 
@@ -353,7 +34,6 @@ body {
     width: 100%;
 
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -366,11 +46,9 @@ body {
     padding: 3px;
 
     display: flex;
-
     align-items: center;
 
     position: relative;
-
     overflow: hidden;
 
     background-image:
@@ -381,45 +59,35 @@ body {
         url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
 
     background-size: cover;
-
     background-position: center;
 }
 
 
-/* =========================
-   LOGOS DO HEADER
-========================= */
+/* LOGOS */
 
 .logo-header,
 .texto-logo-header,
 .fzrlog {
     position: relative;
-
     z-index: 2;
 }
 
 .logotexto {
     height: 80px;
-
     margin-left: 20px;
 }
 
 .textologo {
     height: 150px;
-
     margin-left: 10px;
-
     margin-top: 15px;
 }
 
 
-/* =========================
-   LOGIN DO HEADER
-========================= */
+/* LOGIN */
 
 .fzrlog {
     margin-left: auto;
-
     margin-right: 30px;
 
     font-size: 20px;
@@ -427,7 +95,6 @@ body {
 
 .fzrlog a {
     color: rgb(22, 28, 124);
-
     text-decoration: none;
 
     border-bottom: 2px solid transparent;
@@ -437,37 +104,26 @@ body {
 
 .fzrlog a:hover {
     color: #3e4dd3;
-
     border-bottom: 2px solid #3e4dd3;
-}
-
-.fzrlog a:active {
-    color: #B8E9E7;
-
-    border-bottom: 2px solid #B8E9E7;
 }
 
 
 /* =========================
-   MENU DE NAVEGAÇÃO
+   NAVEGAÇÃO
 ========================= */
 
 .menu_de_navegacao {
     height: 50px;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     padding: 0 150px;
 
-    background-image:
-        url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
+    background-image: url("https://uploads.onecompiler.io/44nnydek6/1788519616760/background_ICON.png");
 
     background-size: cover;
-
     background-position: center;
 
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
@@ -475,11 +131,9 @@ body {
 
 .menu_de_navegacao a {
     color: rgb(22, 28, 124);
-
     text-decoration: none;
 
     font-size: 17px;
-
     font-weight: 500;
 
     transition: 0.3s;
@@ -489,32 +143,22 @@ body {
 
 .menu_de_navegacao a:hover {
     color: #3e4dd3;
-
     border-bottom: 2px solid #3e4dd3;
 }
-
-.menu_de_navegacao a:active {
-    color: #B8E9E7;
-
-    border-bottom: 2px solid #B8E9E7;
-}
-
 .menu_de_navegacao a.active {
     color: #3ba2f7;
-
     border-bottom: 2px solid #3ba2f7;
 }
 
 
-/* =========================================================
+/* =========================
    INÍCIO
-========================================================= */
+========================= */
 
 .secao-inicio {
     min-height: 850px;
 
     display: flex;
-
     align-items: center;
 
     padding: 180px 8% 100px;
@@ -524,13 +168,11 @@ body {
 
 .inicio-texto {
     width: 52%;
-
     z-index: 2;
 }
 
 .inicio-pequeno {
     font-size: 14px;
-
     font-weight: 600;
 
     letter-spacing: 2px;
@@ -561,9 +203,7 @@ body {
         );
 
     background-clip: text;
-
     -webkit-background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
@@ -580,9 +220,7 @@ body {
 }
 
 
-/* =========================
-   BOTÕES
-========================= */
+/* BOTÕES */
 
 .inicio-botoes {
     display: flex;
@@ -630,17 +268,15 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    IMAGEM DO INÍCIO
-========================================================= */
+========================= */
 
 .inicio-imagem {
     width: 48%;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     position: relative;
@@ -652,7 +288,6 @@ body {
     position: absolute;
 
     width: 100%;
-
     max-width: 650px;
 
     height: auto;
@@ -698,9 +333,9 @@ body {
 }
 
 
-/* =========================================================
-   SEÇÕES DO INDEX
-========================================================= */
+/* =========================
+   SEÇÕES
+========================= */
 
 .secao {
     width: 88%;
@@ -720,7 +355,6 @@ body {
 
 .titulo-secao {
     display: flex;
-
     align-items: center;
 
     gap: 20px;
@@ -755,9 +389,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    SOBRE
-========================================================= */
+========================= */
 
 .sobre-conteudo {
     display: flex;
@@ -836,9 +470,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    SERVIÇOS
-========================================================= */
+========================= */
 
 .servicos-lista {
     display: grid;
@@ -899,9 +533,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    PROFISSIONAIS
-========================================================= */
+========================= */
 
 .profissionais-lista {
     display: grid;
@@ -954,9 +588,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    FUNCIONAMENTO
-========================================================= */
+========================= */
 
 .funcionamento-conteudo {
     display: flex;
@@ -1016,10 +650,9 @@ body {
     color: #555;
 }
 
-
-/* =========================================================
+/* =========================
    RODAPÉ
-========================================================= */
+========================= */
 
 .rodape {
     background-color: rgba(34, 142, 162, 0.8);
@@ -1038,32 +671,27 @@ body {
 
 .rodape1 {
     font-weight: bold;
-
     color: white;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     padding: 0 150px;
 
     margin-top: 30px;
-
     margin-bottom: 30px;
 }
 
 
 /* =========================
-   LINHAS
+   LINHA
 ========================= */
 
 .linha-rodape {
     width: 85%;
 
     border: none;
-
     border-top: 3px solid white;
 }
 
@@ -1076,15 +704,12 @@ body {
     color: white;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: stretch;
 
     padding: 0 100px;
 
     margin-top: 30px;
-
     margin-bottom: 30px;
 }
 
@@ -1097,9 +722,7 @@ body {
     width: 33.33%;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: space-between;
 
     align-items: flex-start;
@@ -1127,12 +750,14 @@ body {
     border-bottom: 2px solid transparent;
 }
 
+
 .rodape2 a:hover,
 .rodape3 a:hover {
     color: white;
 
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid;
 }
+
 
 .rodape2 a:active,
 .rodape3 a:active {
@@ -1158,15 +783,15 @@ body {
     margin-bottom: 0;
 }
 
+
 .logorodape.texto {
     width: 60%;
-
     height: auto;
 }
 
+
 .logorodape.logobranca {
     width: 50%;
-
     height: auto;
 
     transform: translateY(-50px);
@@ -1185,15 +810,12 @@ body {
     width: 33.33%;
 
     font-weight: bold;
-
     color: white;
 
     padding-left: 200px;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: space-between;
 
     align-items: flex-start;
@@ -1208,28 +830,24 @@ body {
     color: white;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: stretch;
 
     padding: 0 100px;
 
     margin-top: 30px;
-
     margin-bottom: 0;
 }
 
 
 /* =========================
-   COLUNAS
+   COLUNAS DE LINKS
 ========================= */
 
 .explore,
 .serviços,
 .profissionais {
     display: flex;
-
     flex-direction: column;
 
     justify-content: space-between;
@@ -1247,10 +865,9 @@ body {
     width: 25%;
 }
 
-
-/* =========================================================
+/* =========================
    ÂNCORAS
-========================================================= */
+========================= */
 
 #inicio,
 #sobre,
@@ -1259,165 +876,3 @@ body {
 #funcionamento {
     scroll-margin-top: 150px;
 }
-
-
-/* =========================================================
-   INTRANET
-========================================================= */
-
-.header-intranet {
-    width: 100%;
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    z-index: 999999;
-}
-
-
-/* =========================
-   SUBHEADER
-========================= */
-
-.subheader-intranet {
-    height: 90px;
-
-    padding: 3px 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    background-size: cover;
-
-    background-position: center;
-}
-
-.subheader-intranet.cliente {
-    background-color: rgba(6, 210, 160, 0.5);
-}
-
-.subheader-intranet.profissional {
-    background-color: rgba(0, 145, 255, 0.5);
-}
-
-.subheader-intranet.admin {
-    background-color: rgba(3, 19, 229, 0.5);
-}
-
-
-/* =========================
-   LOGO INTRANET
-========================= */
-
-.logotexto-intranet {
-    height: 80px;
-
-    margin-left: 20px;
-}
-
-
-/* =========================
-   PERFIL
-========================= */
-
-.perfil-intranet {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    color: white;
-
-    font-size: 20px;
-
-    margin-right: 20px;
-}
-
-.perfil-intranet img {
-    width: 55px;
-
-    height: 55px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-}
-
-
-/* =========================
-   MENU INTRANET
-========================= */
-
-.menu-intranet {
-    height: 50px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 0 100px;
-
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
-.menu-intranet.cliente {
-    background-color: #06D2A0;
-}
-
-.menu-intranet.profissional {
-    background-color: #0091FF;
-}
-
-.menu-intranet.admin {
-    background-color: #0313E5;
-}
-
-.menu-intranet a {
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 18px;
-
-    transition: 0.3s;
-
-    border-bottom: 2px solid transparent;
-}
-
-.menu-intranet a:hover {
-    color: rgb(240, 238, 238);
-
-    border-bottom: 2px solid rgb(240, 238, 238);
-}
-
-.menu-intranet a:active {
-    color: rgb(172, 168, 168);
-
-    border-bottom: 2px solid rgb(172, 168, 168);
-}
-
-
-/* =========================================================
-   CORES DOS PERFIS
-========================================================= */
-
-.subheader-admin {
-    background-color: rgba(3, 19, 229, 0.5);
-}
-
-.subheader-cliente {
-    background-color: rgba(6, 210, 160, 0.5);
-}
-
-.subheader-medico {
-    background-color: rgba(0, 145, 255, 0.5);
-}
-
