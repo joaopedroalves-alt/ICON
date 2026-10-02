@@ -184,7 +184,15 @@
 
         <div class="campo-cadastro">        
           <p>Estado Civil</p>
-          <input type="text" placeholder="Coloque o Nome completo">
+          <select id="estado-civil">
+            <option value="" disable selected hidden>Selecione</option>
+            <opttion value="solteir@">Solteiro(a)</opttion>
+            <option value="uniao-estavel">União Estável</option>
+            <option value ="casad@">Casado(a)</option>
+            <option value="divorciad@">Divorciado(a)</option>
+            <option value="viuv@">Viúvo(a)</option>
+          </select>
+          
 
 
 
@@ -197,34 +205,28 @@
 
 
         <div class="campo-cadastro">        
-          <p>Deficiencia</p>
-          <select id="deficiencia">
+          <p>Aspecto físico-mental</p>
+          <select id="asp-fis-ment">
             <option value="" disabled selected hidden>Selecione</option>
             <option value="nenhuma">Nenhuma</option>
             <option value="fisica">Deficiência física (motora)</option>
             <option value="amputacao">Amputação ou ausência de membro</option>
             <option value="paralisia_cerebral">Paralisia cerebral</option>
-            <option value="nanismo">Nanismo</option>
             <option value="cegueira">Cegueira</option>
             <option value="baixa_visao">Baixa visão</option>
-            <option value="auditiva">Deficiência auditiva (surdez)</option>
+            <option value="auditiva">Deficiência auditiva</option>
             <option value="surdocegueira">Surdocegueira</option>
             <option value="fala">Deficiência de fala</option>
             <option value="intelectual">Deficiência intelectual</option>
-            <option value="autismo">Transtorno do Espectro Autista (TEA)</option>
-            <option value="down">Síndrome de Down</option>
+            <option value="tea">Transtorno do Espectro Autista (TEA)</option>
+            <option value="sind-down">Síndrome de Down</option>
             <option value="tdah">TDAH</option>
-            <option value="aprendizagem">Transtorno de aprendizagem (ex.: dislexia)</option>
-            <option value="multipla">Deficiência múltipla</option>
-            <option value="outra">Outra</option>
+            <option value="aprendizagem">Transtorno de Aprendizagem (ex.: dislexia)</option>
+            <option value="multipla">Aspectos múltiplos</option>
+            <option value="outra">Outro(s)</option>
           </select>
 
-
-
-
-
-
-          </div>
+        </div>
 
 
 
@@ -265,7 +267,7 @@
 
         <div class="campo-cadastro">        
           <p>Email</p>
-          <input type="text" placeholder="Email@gmail.com">
+          <input type="text" placeholder="email@gmail.com">
        
         </div>
 
