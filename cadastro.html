@@ -4,18 +4,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="estilo.css?v=1">
@@ -24,105 +12,27 @@
 </head>
 <body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="caixa-cadastro">
-
-
-
-
-
-
-
 
       <h1>Cadastre seu usuário</h1>
 
-
-
-
-
-
-
-
       <p><b>Informações Pessoais</b></p>
 
-
-
-
-
-
-
-
       <div class="linha-cadastro">
-     
-
-
-
-
-
-
 
 
         <div class="campo-cadastro">
 
-
-
-
-
-
-
-
           <p>Nome Completo*</p>
-          <input type="text" placeholder="Coloque seu Nome completo">
-
-
-
-
-
-
-
+          <input id="nome_completo"type="text" placeholder="Coloque seu Nome completo">
 
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Data de nascimento*</p>
-          <input type="date" placeholder="dd/mm/aaaa">
-
-
-
-
-
-
-
+          <input id="data_nascimento" type="date" placeholder="dd/mm/aaaa">
 
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Gênero</p>
@@ -133,213 +43,107 @@
             <option value="outro">Outro</option>
           </select>
 
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
 
 
         <div class="campo-cadastro">        
           <p>CPF</p>
-          <input type="text" placeholder="000.000.000-00" style="width: 120px;">
-
-
-
-
-
-
-
+          <input id="cpf" type="text" placeholder="000.000.000-00" style="width: 120px;">
 
         </div>
-
-
-
-
-
-
 
 
         <div class="campo-cadastro">        
           <p>RG</p>
-          <input type="text" placeholder="00.000.000-0" style="width: 120px;">
+          <input id="rg" type="text" placeholder="00.000.000-0" style="width: 120px;">
        
         </div>
 
-
-
-
-
-
-
-
         <div class="campo-cadastro">        
           <p>Estado Civil</p>
-          <input type="text" placeholder="Coloque o Nome completo">
-
-
-
-
-
-
-
-
+          <select id="estado-civil">
+            <option value="" disable selected hidden>Selecione</option>
+            <option value="solteir@">Solteiro(a)</option>
+            <option value="uniao-estavel">União Estável</option>
+            <option value ="casad@">Casado(a)</option>
+            <option value="divorciad@">Divorciado(a)</option>
+            <option value="viuv@">Viúvo(a)</option>
+          </select>
+          
         </div>
 
-
         <div class="campo-cadastro">        
-          <p>Deficiencia</p>
-          <select id="deficiencia">
+          <p>Aspecto físico-mental</p>
+          <select id="asp-fis-ment">
             <option value="" disabled selected hidden>Selecione</option>
             <option value="nenhuma">Nenhuma</option>
             <option value="fisica">Deficiência física (motora)</option>
             <option value="amputacao">Amputação ou ausência de membro</option>
             <option value="paralisia_cerebral">Paralisia cerebral</option>
-            <option value="nanismo">Nanismo</option>
             <option value="cegueira">Cegueira</option>
             <option value="baixa_visao">Baixa visão</option>
-            <option value="auditiva">Deficiência auditiva (surdez)</option>
+            <option value="auditiva">Deficiência auditiva</option>
             <option value="surdocegueira">Surdocegueira</option>
             <option value="fala">Deficiência de fala</option>
             <option value="intelectual">Deficiência intelectual</option>
-            <option value="autismo">Transtorno do Espectro Autista (TEA)</option>
-            <option value="down">Síndrome de Down</option>
+            <option value="tea">Transtorno do Espectro Autista (TEA)</option>
+            <option value="sind-down">Síndrome de Down</option>
             <option value="tdah">TDAH</option>
-            <option value="aprendizagem">Transtorno de aprendizagem (ex.: dislexia)</option>
-            <option value="multipla">Deficiência múltipla</option>
-            <option value="outra">Outra</option>
+            <option value="aprendizagem">Transtorno de Aprendizagem (ex.: dislexia)</option>
+            <option value="multipla">Aspectos múltiplos</option>
+            <option value="outra">Outro(s)</option>
           </select>
 
-
-
-
-
-
-          </div>
-
-
-
-
-
-
-
+        </div>
 
       </div>
 
-
-
-
       <br>
       <p><b>Contato</b></p>
-
-
-
-
-
-
-
 
       <div class="linha-cadastro">
        
         <div class="campo-cadastro">        
           <p>Telefone*</p>
-          <input type="text" placeholder="(00) 00000-0000" style="width: 120px;">
+          <input id="telefone" type="text" placeholder="(00) 00000-0000" style="width: 120px;">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Email</p>
-          <input type="text" placeholder="Email@gmail.com">
+          <input id="email" type="text" placeholder="email@gmail.com">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Endereço</p>
-          <input type="text" placeholder="Coloque seu endereço">
+          <input id="endereco" type="text" placeholder="Coloque seu endereço">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Número</p>
-          <input type="text" placeholder="N" style="width: 50px;" >
+          <input id="numero" type="text" placeholder="N" style="width: 50px;" >
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Complemento</p>
-          <input type="text" placeholder="Complemento(opcional)">
+          <input id="complemento" type="text" placeholder="Complemento(opcional)">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Bairro</p>
-          <input type="text" placeholder="Coloque seu bairro">
+          <input id="bairro" type="text" placeholder="Coloque seu bairro">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Cidade</p>
-          <input type="text" placeholder="Coloque sua cidade">
+          <input id="cidade" type="text" placeholder="Coloque sua cidade">
        
         </div>
-
-
-
-
-
-
-
 
         <div class="campo-cadastro">        
           <p>Estado</p>
@@ -375,25 +179,11 @@
        
         </div>
 
-
-
-
-
-
-
-
         <div class="campo-cadastro">        
           <p>CEP</p>
-          <input type="text" placeholder="00000-00" style="width: 90px">
+          <input id="cep" type="text" placeholder="00000-00" style="width: 90px">
        
         </div>
-
-
-
-
-
-
-
 
       </div>
  
@@ -402,123 +192,46 @@
       <b>Necessidade de Responsável.</b>
       <br>
 
-
-
-
-
-
-
-
       <button class="finalizar" onclick="confirmar()">Continuar</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
     <script>
-  function confirmar(){
-  let adulto = document.getElementById("criança").checked
-
-
-  if (adulto){
-    window.location.href = "cadastro1.html";
-  } else {
-    window.location.href = "cadastro2.html";
-  }
+      function confirmar(){
+        let adulto = document.getElementById("criança").checked
+        let nome_completo = document.getElementById("nome_completo").value.trim().toLowerCase();
+        let data_nascimento = document.getElementById("data_nascimento").value;
+        let genero = document.getElementById("genero").value;
+        let cpf = document.getElementById("cpf").value.trim();
+        let rg = document.getElementById("rg").value.trim();
+        let estado_civil = document.getElementById("estado-civil").value;
+        let asp_fis_ment = document.getElementById("asp-fis-ment").value;
+        let telefone = document.getElementById("telefone").value.trim();
+        let email = document.getElementById("email").value.trim().toLowerCase();
+        let endereco = document.getElementById("endereco").value.trim().toLowerCase();
+        let numero = document.getElementById("numero").value.trim();
+        let complemento = document.getElementById("complemento").value.trim().toLowerCase();
+        let bairro = document.getElementById("bairro").value.trim().toLowerCase();
+        let cidade = document.getElementById("cidade").value.trim().toLowerCase();
+        let estado = document.getElementById("estado").value;
+        let cep = document.getElementById("cep").value.trim();
+        
+        if(nome_completo === "" || data_nascimento === "" || genero === "" || cpf === "" || rg === "" || estado_civil === "" || asp_fis_ment === "" || telefone === "" || email === "" || endereco === "" || numero === "" || bairro === "" || cidade === "" || estado === "" || cep === ""){
+          alert("Por favor, preencha todos os campos obrigatórios.");
+        } else if (adulto){
+          window.location.href = "cadastro2.html";
+        } else if (adulto === false){
+          window.location.href = "cadastro1.html";
+        }
 }
     </script>
    
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="fundologo"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="direita">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <h2 class="saudacao">Seja bem-vindo!</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <p class="ICON">ICON</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <p class="instituto">
             INSTITUTO DE
@@ -526,71 +239,14 @@
             COGNIÇÃO E NEUROPSICOLOGIA
         </p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <img class="logo" src="https://uploads.onecompiler.io/44nnydek6/1789056536104/logoicon.png.png" alt="Logo do Instituto de Cognição e Neuropsicologia">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <p class="descrição">
             Inovação e precisão no cuidado neuropsicológico.
         </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     </div>
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

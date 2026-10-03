@@ -30,31 +30,24 @@
         </div>
         <div class="campo-cadastro">        
           <p>N de carteirinha</p>
-          <input type="text" placeholder="0000000000000">
+          <input id="carteirinha" type="text" placeholder="0000000000000">
         </div>
         <div class="campo-cadastro">        
           <p>Validade</p>
-          <input type="date" placeholder="0000000000000">
+          <input id="validade" type="date" placeholder="0000000000000">
         </div>
       </div>
 
-
-
-
       <br>
 
-
       <p><b>Senha</b></p>
-
-
-
 
       <div class="linha-cadastro">
        
         <div class="campo-cadastro">        
           <p>Senha</p>
-          <input type="text" placeholder="Cadastre uma senha">
-          <p style=": "><i>"Não esqueça, se possivel anote"</i></p>
+          <input id="senha" type="password" placeholder="Cadastre uma senha">
+          <p><i>Não esqueça, se possivel anote</i></p>
         </div>
 
       </div>
@@ -64,11 +57,18 @@
 
     </div>
     <script>
-  function Cadastrar(){
+      function Cadastrar(){
+        let convenio = document.getElementById("convenio").value;
+        let senha = document.getElementById("senha").value;
+        let carteirinha = document.getElementById("carteirinha").value;
+        let validade = document.getElementById("validade").value;
 
-    window.location.href = "cadastro2.html";
-
-}
+        if(convenio === "" || senha === "" || carteirinha === "" || validade === ""){
+          alert("Preencha todos os campos obrigatórios");
+        } else {
+          window.location.href = "login.html";
+        }
+      }
     </script>
    
     <div class="fundologo"></div>
