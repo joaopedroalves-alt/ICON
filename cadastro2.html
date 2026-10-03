@@ -20,19 +20,19 @@
         <div class="campo-cadastro">
 
           <p>Nome do Responsável</p>
-          <input type="text" placeholder="Coloque o Nome completo">
+          <input id="nome_responsavel" type="text" placeholder="Coloque o Nome completo">
 
         </div>
 
         <div class="campo-cadastro">        
           <p>Parentesco</p>
-          <input type="text" placeholder="Coloque o parentesco" style="width: 150px">
+          <input id="parentesco" type="text" placeholder="Coloque o parentesco" style="width: 150px">
 
         </div>
 
         <div class="campo-cadastro">        
           <p>Telefone do Responsável</p>
-          <input type="text" placeholder="(00) 00000-0000" style="width: 120px">
+          <input id="telefone_responsavel" type="text" placeholder="(00) 00000-0000" style="width: 120px">
 
         </div>
 
@@ -58,12 +58,12 @@
         </div>
         <div class="campo-cadastro">        
           <p>N de carteirinha</p>
-          <input type="text" placeholder="0000000000000" style="width: 120px">
+          <input id="carteirinha" type="text" placeholder="0000000000000" style="width: 120px">
 
         </div>
         <div class="campo-cadastro">        
           <p>Validade</p>
-          <input type="date" placeholder="0000000000000">
+          <input id="validade" type="date" placeholder="0000000000000">
 
         </div>
 
@@ -76,17 +76,29 @@
       <div class="linha-cadastro">
         <div class="campo-cadastro">       
           <p>Senha</p>
-          <input type="text" placeholder="Cadastre uma senha" style="width: 150px">
-          <p style=": "><i>"Não esqueça, se possivel anote"</i></p>
+          <input id="senha" type="password" placeholder="Cadastre uma senha" style="width: 150px">
+          <p><i>Não esqueça, se possivel anote</i></p>
         </div>
       </div>
       <br><br>
       <button class="finalizar" onclick="Cadastrar()">Finalizar cadastro</button>
     </div>
     <script>
-  function Cadastrar(){
-    window.location.href = "login.html";
-}
+      function Cadastrar(){
+        let convenio = document.getElementById("convenio").value;
+        let senha = document.getElementById("senha").value;
+        let carteirinha = document.getElementById("carteirinha").value;
+        let validade = document.getElementById("validade").value;
+        let nome_responsavel = document.getElementById("nome_responsavel").value;
+        let parentesco = document.getElementById("parentesco").value;
+        let telefone_responsavel = document.getElementById("telefone_responsavel").value;
+
+        if(convenio === "" || senha === "" || carteirinha === "" || validade === "" || nome_responsavel === "" || parentesco === "" || telefone_responsavel === ""){
+          alert("Preencha todos os campos obrigatórios");
+        } else {
+          window.location.href = "login.html";
+        }
+      }
     </script>
     <div class="fundologo"></div>
     <div class="direita">
