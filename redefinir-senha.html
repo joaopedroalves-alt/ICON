@@ -21,20 +21,20 @@
 
         <div class="campo">
             <p>Email ou CPF</p>
-            <input type="text" placeholder=" Digite seu Email ou CPF">
+            <input id="email_cpf" type="text" placeholder=" Digite seu Email ou CPF">
         </div>
 
         <div class="nova-senha">
             <p>Senha</p>
-            <input type="password" placeholder=" Digite sua nova senha">
+            <input id="nova_senha" type="password" placeholder=" Digite sua nova senha">
         </div>
 
         <div class="confirmar-senha">
 	    <p>Confirmar senha</p>
-            <input type="password" placeholder=" Confirme a senha">
+            <input id="confirmar_senha" type="password" placeholder=" Confirme a senha">
         </div>
 
-        <a href="login" class="finalizar">Finalizar</a>
+        <a class="finalizar" onclick="redefinirSenha()">Finalizar</a>
 
     </div>
 
@@ -59,6 +59,25 @@
         </p>
 
     </div>
+    <script>
+        function redefinirSenha() {
+            let email_cpf = document.getElementById("email_cpf").value;
+            let nova_senha = document.getElementById("nova_senha").value;
+            let confirmar_senha = document.getElementById("confirmar_senha").value;
+
+            if (email_cpf === "" || nova_senha === "" || confirmar_senha === "") {
+                alert("Preencha todos os campos obrigatórios");
+            } else if (nova_senha.length < 8 || confirmar_senha.length < 8) {
+                alert("A senha deve ter no mínimo 8 caracteres");
+            }
+            else if (nova_senha !== confirmar_senha) {
+                alert("As senhas não coincidem");
+            } else {
+                window.location.href = "login.html";
+            }
+        }
+
+    </script>
 
 </body>
 
