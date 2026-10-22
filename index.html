@@ -1,619 +1,658 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./estilo.css?v=1">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
+    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>ICON - Instituto de Cognição e Neuropsicologia</title>
 </head>
 
 <body class="index-body">
 
     <!-- =========================
-         HEADER
+         CABEÇALHO EM DUAS BARRAS
     ========================== -->
-
     <header class="header">
+        <!-- 1ª Barra: Logomarca e Botão de Login -->
+        <div class="subheader">
+            <a href="#inicio" class="logo">
+                <img src="imagens/logobranca.png" alt="Logo ICON">
+                <img src="imagens/textoicon.png" alt="ICON">
+            </a>
 
-            <div class="subheader">
-
-                <a href="#inicio" class="logo-header">
-                    <img src="imagens/logobranca.png"
-                        alt="Logo do ICON"
-                        class="logotexto">
+            <!-- Botão de Fazer Login com Modal Centralizado -->
+            <div class="login-dropdown-wrapper">
+                <a href="#" class="botao-login" id="btn-abrir-login">
+                    Fazer login
                 </a>
 
-                <a href="#inicio" class="texto-logo-header">
-                    <img src="imagens/textoicon.png"
-                        alt="ICON"
-                        class="textologo">
-                </a>
+                <!-- Modal de Autenticação / Registo (Centralizado com Backdrop Blur) -->
+                <div class="login-dropdown-container" id="loginDropdown">
+                    <div class="auth-box-wrapper" id="authBox">
+                        
+                        <!-- Lado Esquerdo: Apresentação / Boas-vindas -->
+                        <div class="auth-panel auth-panel-left">
+                            <div class="auth-panel-content">
+                                <div class="auth-logo">
+                                    <img src="imagens/logobranca.png" alt="Logo">
+                                    <img src="imagens/textoicon.png" alt="ICON">
+                                </div>
+                                <div class="auth-welcome-text">
+                                    <span class="titulo-pequeno">PORTAL INSTITUCIONAL</span>
+                                    <h2>Bem-vindo <br><span>de volta.</span></h2>
+                                    <p>Acesse sua conta para gerenciar atendimentos e acompanhar prontuários com total segurança.</p>
+                                </div>
+                            </div>
+                            <div class="auth-switcher-prompt">
+                                <span>Ainda não possui acesso?</span>
+                                <button type="button" id="goToRegister" class="auth-switch-btn">Registrar-se →</button>
+                            </div>
+                        </div>
 
-                <h2 class="fzrlog">
-                    <a href="login.html">Fazer login</a>
-                </h2>
+                        <!-- Lado Direito: Formulários (Login / Cadastro) -->
+                        <div class="auth-panel auth-panel-right">
+                            
+                            <!-- Formulário de Login -->
+                            <form class="auth-form active-form" id="formLogin" onsubmit="return false;">
+                                <div class="auth-form-header">
+                                    <span class="login-etiqueta">AUTENTICAÇÃO</span>
+                                    <h2>Entrar na conta</h2>
+                                    <p>Insira suas credenciais institucionais.</p>
+                                </div>
+                                <div class="campo-login">
+                                    <label>E-mail institucional</label>
+                                    <input type="email" placeholder="seu.email@icon.com.br" required>
+                                </div>
+                                <div class="campo-login">
+                                    <div class="campo-login-topo">
+                                        <label>Senha</label>
+                                        <a href="#">Esqueceu?</a>
+                                    </div>
+                                    <input type="password" placeholder="••••••••" required>
+                                </div>
+                                <button type="submit" class="botao-login-formulario">Entrar na plataforma</button>
+                            </form>
 
+                            <!-- Formulário de Registro Multietapas -->
+                            <form class="auth-form" id="formRegister" onsubmit="return false;">
+                                <div class="auth-form-header">
+                                    <span class="login-etiqueta" id="registroEtiquetaStep">ETAPA 1 DE 3</span>
+                                    <h2 id="registroTituloStep">Informações Pessoais</h2>
+                                    <p id="registroSubtituloStep">Preencha os dados do paciente.</p>
+                                </div>
+
+                                <div class="steps-progress-bar">
+                                    <div class="step-dot active" id="dot1">1</div>
+                                    <div class="step-line" id="line1"></div>
+                                    <div class="step-dot" id="dot2">2</div>
+                                    <div class="step-line" id="line2"></div>
+                                    <div class="step-dot" id="dot3">3</div>
+                                </div>
+
+                                <!-- Etapa 1: Dados Pessoais -->
+                                <div class="form-step-page active" id="stepPage1">
+                                    <div class="grid-campos-2col">
+                                        <div class="campo-login col-span-2">
+                                            <label>Nome Completo *</label>
+                                            <input type="text" id="regNome" placeholder="Seu nome completo" required>
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Data de Nascimento *</label>
+                                            <input type="date" id="regDataNasc" required>
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Gênero</label>
+                                            <select id="regGenero">
+                                                <option value="" disabled selected hidden>Selecione</option>
+                                                <option value="masculino">Masculino</option>
+                                                <option value="feminino">Feminino</option>
+                                                <option value="outro">Outro</option>
+                                            </select>
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>CPF</label>
+                                            <input type="text" id="regCPF" placeholder="000.000.000-00">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>RG</label>
+                                            <input type="text" id="regRG" placeholder="00.000.000-0">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Estado Civil</label>
+                                            <input type="text" id="regEstadoCivil" placeholder="Estado civil">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Deficiência</label>
+                                            <select id="regDeficiencia">
+                                                <option value="nenhuma" selected>Nenhuma</option>
+                                                <option value="fisica">Física</option>
+                                                <option value="autismo">Autismo (TEA)</option>
+                                                <option value="tdah">TDAH</option>
+                                                <option value="outra">Outra</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Etapa 2: Contato e Endereço -->
+                                <div class="form-step-page" id="stepPage2">
+                                    <div class="grid-campos-2col">
+                                        <div class="campo-login">
+                                            <label>Telefone *</label>
+                                            <input type="text" id="regTelefone" placeholder="(00) 00000-0000" required>
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>E-mail *</label>
+                                            <input type="email" id="regEmail" placeholder="Email@gmail.com" required>
+                                        </div>
+                                        <div class="campo-login col-span-2">
+                                            <label>Endereço</label>
+                                            <input type="text" id="regEndereco" placeholder="Endereço completo">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Número</label>
+                                            <input type="text" id="regNumero" placeholder="Nº">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Bairro</label>
+                                            <input type="text" id="regBairro" placeholder="Bairro">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Cidade</label>
+                                            <input type="text" id="regCidade" placeholder="Cidade">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>CEP</label>
+                                            <input type="text" id="regCEP" placeholder="00000-000">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Etapa 3: Responsável (se menor), Convênio e Senha -->
+                                <div class="form-step-page" id="stepPage3">
+                                    <!-- Bloco do Responsável Legal (Exibido automaticamente se < 18 anos) -->
+                                    <div class="bloco-responsavel-legal" id="blocoResponsavel" style="display: none;">
+                                        <div class="responsavel-header">
+                                            <span>DADOS DO RESPONSÁVEL LEGAL</span>
+                                        </div>
+                                        <div class="grid-campos-2col">
+                                            <div class="campo-login col-span-2">
+                                                <label>Nome do Responsável *</label>
+                                                <input type="text" id="respNome" placeholder="Nome completo do responsável">
+                                            </div>
+                                            <div class="campo-login">
+                                                <label>Parentesco</label>
+                                                <input type="text" id="respParentesco" placeholder="Ex: Pai / Mãe">
+                                            </div>
+                                            <div class="campo-login">
+                                                <label>Telefone do Responsável</label>
+                                                <input type="text" id="respTelefone" placeholder="(00) 00000-0000">
+                                            </div>
+                                        </div>
+                                        <div class="linha-divisora-suave"></div>
+                                    </div>
+
+                                    <div class="grid-campos-2col">
+                                        <div class="campo-login col-span-2">
+                                            <label>Convênio</label>
+                                            <select id="regConvenio">
+                                                <option value="particular" selected>Particular</option>
+                                                <option value="unimed">Unimed</option>
+                                                <option value="bradesco">Bradesco Saúde</option>
+                                                <option value="sulamerica">SulAmérica</option>
+                                                <option value="outro">Outro</option>
+                                            </select>
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Nº de Carteirinha</label>
+                                            <input type="text" id="regCarteirinha" placeholder="0000000000000">
+                                        </div>
+                                        <div class="campo-login">
+                                            <label>Validade</label>
+                                            <input type="date" id="regValidadeConvenio">
+                                        </div>
+                                        <div class="campo-login col-span-2">
+                                            <label>Senha *</label>
+                                            <input type="password" id="regSenha" placeholder="Cadastre uma senha" required>
+                                            <span class="dica-campo">"Não esqueça, se possível anote"</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botões de Navegação Entre Passos -->
+                                <div class="botoes-passos-container">
+                                    <button type="button" id="btnStepVoltar" class="btn-step-secundario" style="display: none;">← Voltar</button>
+                                    <button type="button" id="btnStepAvancar" class="botao-login-formulario">Continuar →</button>
+                                </div>
+
+                                <div class="auth-switcher-prompt mobile-switch">
+                                    <button type="button" id="goToLogin" class="auth-switch-btn">← Já possuo conta</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
+        </div>
 
-
-
-
-
+        <!-- 2ª Barra: Menu de Navegação -->
         <nav class="menu_de_navegacao">
+            <div class="menu-container">
+                <a href="#inicio">Início</a>
 
-            <a href="#inicio">Início</a>
+                <div class="nav-dropdown">
+                    <span class="dropdown-toggle">Sobre nós ▾</span>
+                    <div class="dropdown-menu">
+                        <a href="#sobre">● O Instituto</a>
+                        <a href="#sobre">● Nossa Proposta</a>
+                        <a href="#sobre">● Diferenciais</a>
+                    </div>
+                </div>
 
-            <a href="#sobre">Sobre nós</a>
+                <div class="nav-dropdown">
+                    <span class="dropdown-toggle">Serviços ▾</span>
+                    <div class="dropdown-menu">
+                        <a href="#servicos">● Avaliação Neuropsicológica</a>
+                        <a href="#servicos">● Psicoterapia</a>
+                        <a href="#servicos">● Avaliação Cognitiva</a>
+                        <a href="#servicos">● Laudos e Relatórios</a>
+                    </div>
+                </div>
 
-            <a href="#servicos">Serviços</a>
+                <div class="nav-dropdown">
+                    <span class="dropdown-toggle">Profissionais ▾</span>
+                    <div class="dropdown-menu">
+                        <a href="#profissionais">● Neuropsicólogos</a>
+                        <a href="#profissionais">● Psicólogos</a>
+                        <a href="#profissionais">● Psiquiatras</a>
+                        <a href="#profissionais">● Neurologistas</a>
+                    </div>
+                </div>
 
-            <a href="#profissionais">Profissionais</a>
-
-            <a href="#funcionamento">Funcionamento</a>
-
+                <a href="#funcionamento">Funcionamento</a>
+                <a href="#faq">Dúvidas</a>
+            </div>
         </nav>
-
     </header>
 
+    <main>
 
-    <!-- =========================
-         INÍCIO
-    ========================== -->
-
-    <section id="inicio" class="secao-inicio">
-
-        <div class="inicio-texto">
-
-            <p class="inicio-pequeno">
-                INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA
-            </p>
-
-            <h1>
-                Excelência em
-                <span>Neuropsicologia</span>
-            </h1>
-
-            <p class="inicio-descricao">
-                Cuidado especializado para compreender a mente,
-                desenvolver potencialidades e promover qualidade de vida.
-            </p>
-
-            <div class="inicio-botoes">
-
-                <a href="#servicos" class="botao-principal">
-                    Conheça nossos serviços
-                </a>
-
-                <a href="login.html" class="botao-secundario">
-                    Acessar sistema
-                </a>
-
+        <!-- HERO SECTION -->
+        <section class="hero-index" id="inicio">
+            <div class="hero-conteudo">
+                <div class="hero-texto">
+                    <div class="titulo-pequeno">INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</div>
+                    <h1>Ciência e rigor para <span>compreender pessoas.</span></h1>
+                    <p>Avaliação diagnóstica de alta precisão, acompanhamento clínico e reabilitação cognitiva fundamentados em sólidas evidências científicas e acolhimento humanizado.</p>
+                    <div class="hero-botoes">
+                        <a href="#" class="botao-principal" onclick="document.getElementById('btn-abrir-login').click(); return false;">Agendar atendimento</a>
+                        <a href="#sobre" class="botao-link">Conheça o Instituto →</a>
+                    </div>
+                </div>
+                <div class="hero-imagem">
+                    <div class="elemento-geometrico"></div>
+                    <img src="imagens/imagematendimento.png" alt="Atendimento clínico neuropsicológico">
+                </div>
             </div>
+        </section>
 
-        </div>
+        <!-- INDICADORES -->
+        <section class="indicadores">
+            <div class="indicador">
+                <strong>Avaliação</strong>
+                <span>Neuropsicológica Avançada</span>
+            </div>
+            <div class="indicador">
+                <strong>Atendimento</strong>
+                <span>Multidisciplinar e Clínico</span>
+            </div>
+            <div class="indicador">
+                <strong>Prática Baseada</strong>
+                <span>Estritamente em Evidências</span>
+            </div>
+            <div class="indicador">
+                <strong>Emissão de Laudos</strong>
+                <span>Especializados e Técnicos</span>
+            </div>
+        </section>
 
-        <div class="inicio-imagem">
-
-            <img src="imagens/imagematendimento.png"
-                class="imagem-inicio imagem-inicio1"
-                alt="Atendimento neuropsicológico">
-
-            <img src="imagens/imagem-inicio2.png"
-                class="imagem-inicio imagem-inicio2"
-                alt="">
-
-            <img src="imagens/imagem-inicio3.png"
-                class="imagem-inicio imagem-inicio3"
-                alt="">
-
-        </div>
-
-
-
-    </section>
-
-
-    <!-- =========================
-         SOBRE NÓS
-    ========================== -->
-
-    <section id="sobre" class="secao conteudo-secao">
-
-        <div class="titulo-secao">
-
-            <span>01</span>
-
-            <h2>Sobre nós</h2>
-
-        </div>
-
-
-        <div class="sobre-conteudo">
-
+        <!-- SOBRE -->
+        <section class="sobre-index" id="sobre">
             <div class="sobre-texto">
-
-                <h3>
-                    Cuidar da mente é compreender cada pessoa.
-                </h3>
-
-                <p>
-                    A ICON — Instituto de Cognição e Neuropsicologia —
-                    é voltada para a avaliação, compreensão e acompanhamento
-                    dos diferentes aspectos da cognição e do comportamento.
-                </p>
-
-                <p>
-                    Nosso trabalho busca oferecer um atendimento
-                    individualizado, ético e baseado em evidências,
-                    respeitando as necessidades de cada paciente.
-                </p>
-
+                <div class="titulo-pequeno">INSTITUCIONAL</div>
+                <h1>Excelência técnica a serviço <span>do desenvolvimento humano.</span></h1>
+                <p>O <strong>ICON — Instituto de Cognição e Neuropsicologia</strong> consolida-se como um centro de referência voltado à investigação rigorosa das funções superiores do cérebro, da cognição e do comportamento humano.</p>
+                <p>Nossa atuação une tecnologia aplicada à saúde e sensibilidade clínica, assegurando diagnósticos minuciosos e planos de intervenção terapêutica estruturados sob medida para cada paciente.</p>
+                <a href="#servicos" class="botao-secundario">Conhecer portfólio de serviços →</a>
             </div>
-
-
-            <div class="sobre-destaques">
-
-                <div class="destaque">
-
-                    <strong>01</strong>
-
-                    <h3>Atendimento humanizado</h3>
-
-                    <p>
-                        Cada atendimento considera a individualidade
-                        e as necessidades de cada pessoa.
-                    </p>
-
+            <div class="sobre-dados">
+                <div class="dado">
+                    <strong>100%</strong>
+                    <span>Compromisso com o rigor científico e ético</span>
                 </div>
-
-
-                <div class="destaque">
-
-                    <strong>02</strong>
-
-                    <h3>Base científica</h3>
-
-                    <p>
-                        Avaliações e acompanhamentos fundamentados
-                        em conhecimentos científicos.
-                    </p>
-
+                <div class="linha-dado"></div>
+                <div class="dado">
+                    <strong>Foco</strong>
+                    <span>Na individualidade e potencial de cada indivíduo</span>
                 </div>
+            </div>
+        </section>
 
+        <!-- SERVIÇOS -->
+        <section class="servicos-index" id="servicos">
+            <div class="titulo-secao">
+                <div class="titulo-pequeno">ÁREAS DE ATUAÇÃO</div>
+                <h1>Serviços Especializados</h1>
+                <p>Intervenções clínicas fundamentadas na interface entre a neurociência moderna e a prática psicológica.</p>
             </div>
 
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         SERVIÇOS
-    ========================== -->
-
-    <section id="servicos" class="secao conteudo-secao">
-
-        <div class="titulo-secao">
-
-            <span>02</span>
-
-            <h2>Serviços</h2>
-
-        </div>
-
-
-        <p class="descricao-secao">
-            Conheça algumas das áreas de atuação da ICON.
-        </p>
-
-
-        <div class="servicos-lista">
-
-            <div class="servico">
-
-                <span>01</span>
-
-                <div>
-                    <h3>Avaliação Neuropsicológica</h3>
-
-                    <p>
-                        Investigação de funções cognitivas,
-                        comportamentais e emocionais.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="servico">
-
-                <span>02</span>
-
-                <div>
-                    <h3>Avaliação Psicológica</h3>
-
-                    <p>
-                        Avaliação de aspectos psicológicos
-                        de acordo com as necessidades apresentadas.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="servico">
-
-                <span>03</span>
-
-                <div>
-                    <h3>Psicoterapia</h3>
-
-                    <p>
-                        Acompanhamento psicológico individualizado
-                        para diferentes demandas.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="servico">
-
-                <span>04</span>
-
-                <div>
-                    <h3>Reabilitação Neuropsicológica</h3>
-
-                    <p>
-                        Estratégias destinadas ao desenvolvimento
-                        e à adaptação das funções cognitivas.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="servico">
-
-                <span>05</span>
-
-                <div>
-                    <h3>Avaliação Cognitiva</h3>
-
-                    <p>
-                        Investigação de diferentes habilidades
-                        relacionadas ao funcionamento cognitivo.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="servico">
-
-                <span>06</span>
-
-                <div>
-                    <h3>Orientação Familiar</h3>
-
-                    <p>
-                        Orientação e acompanhamento para familiares
-                        durante o processo de avaliação e tratamento.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROFISSIONAIS
-    ========================== -->
-
-    <section id="profissionais" class="secao conteudo-secao">
-
-        <div class="titulo-secao">
-
-            <span>03</span>
-
-            <h2>Profissionais</h2>
-
-        </div>
-
-
-        <p class="descricao-secao">
-            Uma equipe multidisciplinar voltada ao cuidado
-            e à compreensão do funcionamento humano.
-        </p>
-
-
-        <div class="profissionais-lista">
-
-            <div class="profissional">
-
-                <span>01</span>
-
-                <h3>Neuropsicólogos</h3>
-
-                <p>
-                    Avaliação e acompanhamento das funções cognitivas,
-                    emocionais e comportamentais.
-                </p>
-
-            </div>
-
-
-            <div class="profissional">
-
-                <span>02</span>
-
-                <h3>Psicólogos</h3>
-
-                <p>
-                    Atendimento psicológico e acompanhamento
-                    de diferentes demandas.
-                </p>
-
-            </div>
-
-
-            <div class="profissional">
-
-                <span>03</span>
-
-                <h3>Psiquiatras</h3>
-
-                <p>
-                    Avaliação e acompanhamento especializado
-                    em saúde mental.
-                </p>
-
-            </div>
-
-
-            <div class="profissional">
-
-                <span>04</span>
-
-                <h3>Neurologistas</h3>
-
-                <p>
-                    Avaliação especializada relacionada
-                    ao funcionamento neurológico.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FUNCIONAMENTO
-    ========================== -->
-
-    <section id="funcionamento" class="secao conteudo-secao">
-
-        <div class="titulo-secao">
-
-            <span>04</span>
-
-            <h2>Funcionamento</h2>
-
-        </div>
-
-
-        <div class="funcionamento-conteudo">
-
-            <div class="funcionamento-texto">
-
-                <h3>
-                    Como funciona o atendimento?
-                </h3>
-
-                <p>
-                    O primeiro passo é compreender a necessidade
-                    apresentada pelo paciente e identificar qual
-                    atendimento é mais adequado.
-                </p>
-
-                <p>
-                    A partir disso, o profissional responsável
-                    orienta as próximas etapas do acompanhamento.
-                </p>
-
-            </div>
-
-
-            <div class="etapas">
-
-                <div class="etapa">
-
-                    <span>01</span>
-
-                    <div>
-                        <h3>Agendamento</h3>
-                        <p>Escolha o serviço e o horário disponível.</p>
+            <div class="lista-servicos">
+                <div class="servico">
+                    <div class="servico-numero">01</div>
+                    <div class="servico-conteudo">
+                        <h2>Avaliação Neuropsicológica</h2>
+                        <p>Mapeamento detalhado das funções cognitivas (atenção, memória, linguagem, funções executivas) para suporte diagnóstico diferencial.</p>
                     </div>
-
+                    <img src="imagens/cerebroflashcard.png" alt="Cérebro">
+                    <a href="#">→</a>
                 </div>
 
-
-                <div class="etapa">
-
-                    <span>02</span>
-
-                    <div>
-                        <h3>Atendimento</h3>
-                        <p>Realização da avaliação ou acompanhamento.</p>
+                <div class="servico">
+                    <div class="servico-numero">02</div>
+                    <div class="servico-conteudo">
+                        <h2>Psicoterapia</h2>
+                        <p>Acompanhamento clínico individualizado para manejo de transtornos emocionais, comportamentais e desenvolvimento de estratégias de enfrentamento.</p>
                     </div>
-
+                    <img src="imagens/pessoasflashcard.png" alt="Pessoas">
+                    <a href="#">→</a>
                 </div>
 
-
-                <div class="etapa">
-
-                    <span>03</span>
-
-                    <div>
-                        <h3>Acompanhamento</h3>
-                        <p>Orientações e definição das próximas etapas.</p>
+                <div class="servico">
+                    <div class="servico-numero">03</div>
+                    <div class="servico-conteudo">
+                        <h2>Avaliação Cognitiva</h2>
+                        <p>Investigação analítica de habilidades mentais específicas para fins de monitoramento evolutivo ou orientação escolar/profissional.</p>
                     </div>
-
+                    <img src="imagens/graficoflashcard.png" alt="Gráfico">
+                    <a href="#">→</a>
                 </div>
 
+                <div class="servico">
+                    <div class="servico-numero">04</div>
+                    <div class="servico-conteudo">
+                        <h2>Laudos e Relatórios Técnicos</h2>
+                        <p>Elaboração de documentação formal de alta precisão destinada a equipes médicas, instituições educacionais ou instâncias jurídicas.</p>
+                    </div>
+                    <img src="imagens/docflashcard.png" alt="Documento">
+                    <a href="#">→</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFISSIONAIS -->
+        <section class="profissionais-index" id="profissionais">
+            <div class="titulo-secao">
+                <div class="titulo-pequeno">CORPO CLÍNICO</div>
+                <h1>Especialistas Qualificados</h1>
+                <p>Equipe multidisciplinar dedicada à investigação neuropsicológica e ao cuidado integral.</p>
             </div>
 
-        </div>
+            <div class="lista-profissionais">
+                <div class="profissional">
+                    <div class="foto-profissional">MS</div>
+                    <div class="dados-profissional">
+                        <h2>Dra. Mariana Silva</h2>
+                        <p>Neuropsicóloga Clínica</p>
+                        <span>CRP 00/00000</span>
+                    </div>
+                    <a href="#">Ver perfil →</a>
+                </div>
 
-    </section>
+                <div class="profissional">
+                    <div class="foto-profissional">JO</div>
+                    <div class="dados-profissional">
+                        <h2>Dr. João Oliveira</h2>
+                        <p>Psicólogo Clínico</p>
+                        <span>CRP 00/00000</span>
+                    </div>
+                    <a href="#">Ver perfil →</a>
+                </div>
 
+                <div class="profissional">
+                    <div class="foto-profissional">AS</div>
+                    <div class="dados-profissional">
+                        <h2>Dra. Ana Souza</h2>
+                        <p>Psiquiatra</p>
+                        <span>CRM 00/00000</span>
+                    </div>
+                    <a href="#">Ver perfil →</a>
+                </div>
 
-    <!-- =========================
-         RODAPÉ
-    ========================== -->
+                <div class="profissional">
+                    <div class="foto-profissional">RC</div>
+                    <div class="dados-profissional">
+                        <h2>Dr. Rafael Costa</h2>
+                        <p>Neurologista</p>
+                        <span>CRM 00/00000</span>
+                    </div>
+                    <a href="#">Ver perfil →</a>
+                </div>
+            </div>
+        </section>
 
+        <!-- FUNCIONAMENTO -->
+        <section class="funcionamento-index" id="funcionamento">
+            <div class="titulo-secao">
+                <div class="titulo-pequeno">FLUXO OPERACIONAL</div>
+                <h1>Etapas do Atendimento</h1>
+            </div>
+
+            <div class="linha-etapas">
+                <div class="etapa">
+                    <div class="numero-etapa">01</div>
+                    <h2>Triagem Inicial</h2>
+                    <p>Compreensão prévia da demanda clínica apresentada pelo paciente ou responsável.</p>
+                </div>
+                <div class="etapa">
+                    <div class="numero-etapa">02</div>
+                    <h2>Agendamento</h2>
+                    <p>Definição do cronograma de sessões e instrumentação adequada.</p>
+                </div>
+                <div class="etapa">
+                    <div class="numero-etapa">03</div>
+                    <h2>Avaliação / Sessões</h2>
+                    <p>Aplicação de testes padronizados e condução do plano terapêutico.</p>
+                </div>
+                <div class="etapa">
+                    <div class="numero-etapa">04</div>
+                    <h2>Devolutiva e Laudo</h2>
+                    <p>Entrega de relatórios técnicos pormenorizados e orientações finais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-index" id="faq">
+            <div class="titulo-secao">
+                <div class="titulo-pequeno">ESCLARECIMENTOS</div>
+                <h1>Dúvidas Frequentes</h1>
+            </div>
+
+            <div class="perguntas">
+                <div class="pergunta">
+                    <h2>Quais profissionais compõem a equipe do ICON?</h2>
+                    <p>O corpo clínico é formado por especialistas em neuropsicologia, psicologia, psiquiatria e neurologia com sólida formação acadêmica.</p>
+                </div>
+                <div class="pergunta">
+                    <h2>Como é estruturada uma avaliação neuropsicológica?</h2>
+                    <p>Consiste em entrevistas clínicas iniciais, aplicação de baterias de testes neuropsicológicos normatizados e análise minuciosa dos dados.</p>
+                </div>
+                <div class="pergunta">
+                    <h2>O instituto emite laudos para fins educacionais ou jurídicos?</h2>
+                    <p>Sim, todos os documentos emitidos possuem rigor técnico e científico aptos para subsidiar escolas, médicos e instâncias legais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="cta-index">
+            <div>
+                <div class="titulo-pequeno">ICON INSTITUTO</div>
+                <h1>Pronto para iniciar sua avaliação?</h1>
+                <p>Acesse o sistema institucional e conheça nossa infraestrutura de gestão.</p>
+            </div>
+            <a href="#" class="botao-cta" onclick="document.getElementById('btn-abrir-login').click(); return false;">Acessar plataforma →</a>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
     <footer class="rodape">
-
-        <div class="rodape1">
-
-            <div>
-                Whatsapp<br>
-                (00)00000-0000
+        <div class="rodape-principal">
+            <div class="rodape-logo">
+                <img src="imagens/textoicon.png" alt="ICON">
+                <p>Instituto de Cognição e Neuropsicologia. Ciência, precisão e cuidado humano.</p>
             </div>
 
-            <div>
-                Localização<br>
-                Google Maps
+            <div class="rodape-coluna">
+                <h2>Explore</h2>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#profissionais">Profissionais</a>
+                <a href="#funcionamento">Funcionamento</a>
             </div>
 
-            <div>
-                Linhas de ônibus<br>
-                XXXX/XXXX
+            <div class="rodape-coluna">
+                <h2>Serviços</h2>
+                <a href="#servicos">Avaliação Neuropsicológica</a>
+                <a href="#servicos">Psicoterapia</a>
+                <a href="#servicos">Avaliação Cognitiva</a>
+                <a href="#servicos">Laudos e Relatórios</a>
             </div>
 
+            <div class="rodape-coluna">
+                <h2>Contato</h2>
+                <p>WhatsApp<br>(00) 00000-0000</p>
+                <p>E-mail<br>contato@icon.com.br</p>
+            </div>
         </div>
 
-
-        <hr class="linha-rodape">
-
-
-        <div class="rodape2">
-
-            <div class="FAQ">
-
-                <h2>Dúvidas frequentes:</h2>
-
-                <a href="#">● Quais profissionais atendem a ICON?</a>
-
-                <a href="#">● Qual o período de atendimento?</a>
-
-                <a href="#">● Para o que serve a neuropsicologia?</a>
-
-                <a href="#">● Com qual idade eu devo fazer esses exames?</a>
-
-                <a href="#">● A ICON aceita quais planos de saúde?</a>
-
-            </div>
-
-
-            <div class="iconlogo">
-
-                <img src="imagens/textoicon.png"
-                    alt="Logo do ICON"
-                    class="logorodape texto">
-
-                <br>
-
-                <img src="imagens/logobranca.png"
-                    alt="Logo do ICON"
-                    class="logorodape logobranca">
-
-            </div>
-
-
-            <div class="socialmedia">
-
-                <h2>Redes sociais:</h2>
-
-                Instagram:<br>
-                <a href="#">@ICON</a>
-
-                Facebook:<br>
-                <a href="#">@ICON</a>
-
-                LinkedIn:<br>
-                <a href="#">@ICON</a>
-
-                Email:<br>
-                <a href="#">contato@icon.com.br</a>
-
-            </div>
-
+        <div class="rodape-final">
+            <span>© 2026 ICON — Instituto de Cognição e Neuropsicologia</span>
+            <span>Protótipo Acadêmico Institucional</span>
         </div>
-
-
-        <hr class="linha-rodape">
-
-
-        <div class="rodape3">
-
-            <div class="explore">
-
-                <h2>Explore:</h2>
-
-                <a href="#inicio">● Início</a>
-                <a href="#sobre">● Sobre nós</a>
-                <a href="#servicos">● Serviços</a>
-                <a href="#profissionais">● Profissionais</a>
-                <a href="#funcionamento">● Funcionamento</a>
-
-            </div>
-
-
-            <div class="serviços">
-
-                <h2>Serviços:</h2>
-
-                <a href="#">● Avaliação neuropsicológica</a>
-                <a href="#">● Avaliação Psicológica</a>
-                <a href="#">● Psicoterapia</a>
-                <a href="#">● Reabilitação Neuropsicológica</a>
-                <a href="#">● Avaliação Cognitiva</a>
-                <a href="#">● Avaliação Infantil e Adolescente</a>
-                <a href="#">● Orientação e Acompanhamento Familiar</a>
-                <a href="#">● Emissão de Laudos e Relatórios</a>
-
-            </div>
-
-
-            <div class="profissionais">
-
-                <h2>Profissionais:</h2>
-
-                <a href="#">● Neuropsicólogos</a>
-                <a href="#">● Psicólogos</a>
-                <a href="#">● Psiquiatras</a>
-                <a href="#">● Neurologistas</a>
-
-            </div>
-
-        </div>
-
     </footer>
 
+    <!-- SCRIPT DE INTERAÇÃO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnAbrirLogin = document.getElementById("btn-abrir-login");
+            const loginDropdown = document.getElementById("loginDropdown");
+            const authBox = document.getElementById("authBox");
+            const goToRegister = document.getElementById("goToRegister");
+            const goToLogin = document.getElementById("goToLogin");
+            const formLogin = document.getElementById("formLogin");
+            const formRegister = document.getElementById("formRegister");
+
+            // Abrir/Fechar Modal
+            btnAbrirLogin.addEventListener("click", function (e) {
+                e.preventDefault();
+                loginDropdown.classList.toggle("ativo");
+            });
+
+            // Fechar ao Clicar Fora
+            loginDropdown.addEventListener("click", function (e) {
+                if (e.target === loginDropdown) {
+                    loginDropdown.classList.remove("ativo");
+                }
+            });
+
+            // Alternar para Registo
+            goToRegister.addEventListener("click", function () {
+                authBox.classList.add("modo-registro");
+                formLogin.classList.remove("active-form");
+                formRegister.classList.add("active-form");
+            });
+
+            // Voltar para Login
+            goToLogin.addEventListener("click", function () {
+                authBox.classList.remove("modo-registro");
+                formRegister.classList.remove("active-form");
+                formLogin.classList.add("active-form");
+            });
+
+            // Lógica de Cadastro e Menor de Idade
+            let currentStep = 1;
+            const btnAvancar = document.getElementById("btnStepAvancar");
+            const btnVoltar = document.getElementById("btnStepVoltar");
+            const regDataNasc = document.getElementById("regDataNasc");
+            const blocoResponsavel = document.getElementById("blocoResponsavel");
+
+            regDataNasc.addEventListener("change", function () {
+                if (!this.value) return;
+                const nascimento = new Date(this.value);
+                const hoje = new Date();
+                let idade = hoje.getFullYear() - nascimento.getFullYear();
+                const m = hoje.getMonth() - nascimento.getMonth();
+                if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+                    idade--;
+                }
+
+                if (idade < 18) {
+                    blocoResponsavel.style.display = "block";
+                } else {
+                    blocoResponsavel.style.display = "none";
+                }
+            });
+
+            btnAvancar.addEventListener("click", function () {
+                if (currentStep < 3) {
+                    currentStep++;
+                    atualizarPassos();
+                } else {
+                    alert("Cadastro realizado com sucesso!");
+                    loginDropdown.classList.remove("ativo");
+                }
+            });
+
+            btnVoltar.addEventListener("click", function () {
+                if (currentStep > 1) {
+                    currentStep--;
+                    atualizarPassos();
+                }
+            });
+
+            function atualizarPassos() {
+                document.querySelectorAll(".form-step-page").forEach((el, index) => {
+                    el.classList.toggle("active", index + 1 === currentStep);
+                });
+
+                document.getElementById("dot1").classList.toggle("active", currentStep >= 1);
+                document.getElementById("dot2").classList.toggle("active", currentStep >= 2);
+                document.getElementById("dot3").classList.toggle("active", currentStep >= 3);
+                
+                document.getElementById("line1").classList.toggle("active", currentStep >= 2);
+                document.getElementById("line2").classList.toggle("active", currentStep >= 3);
+
+                const titulos = ["Informações Pessoais", "Contato e Endereço", "Finalizar Cadastro"];
+                const subtitulos = ["Preencha os dados do paciente.", "Informe os dados de localização.", "Convênio, responsável e acesso."];
+                
+                document.getElementById("registroEtiquetaStep").innerText = `ETAPA ${currentStep} DE 3`;
+                document.getElementById("registroTituloStep").innerText = titulos[currentStep - 1];
+                document.getElementById("registroSubtituloStep").innerText = subtitulos[currentStep - 1];
+
+                btnVoltar.style.display = currentStep > 1 ? "block" : "none";
+                btnAvancar.innerText = currentStep === 3 ? "Finalizar Cadastro ✓" : "Continuar →";
+            }
+        });
+    </script>
 </body>
 
 </html>
-
