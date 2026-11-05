@@ -711,3 +711,104 @@ a {
     color: #718890;
     font-size: 10px;
 }
+
+/* =========================================================
+   FILTROS DE PROFISSIONAIS
+========================================================= */
+
+.filtros-profissionais {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: -18px 0 28px;
+}
+
+.filtro-profissional {
+    padding: 9px 14px;
+    border: 1px solid var(--cor-borda);
+    background: transparent;
+    color: var(--cor-texto-secundario);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transicao-rapida);
+}
+
+.filtro-profissional:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque-escuro);
+}
+
+.filtro-profissional.ativo {
+    border-color: var(--cor-destaque-escuro);
+    background-color: var(--cor-destaque-escuro);
+    color: var(--cor-branco);
+}
+
+.perfil-indisponivel {
+    color: var(--cor-destaque-escuro);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.mensagem-sem-profissionais {
+    padding: 24px 10px;
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+}
+
+.mensagem-sem-profissionais[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .filtros-profissionais {
+        gap: 7px;
+    }
+
+    .filtro-profissional {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .perfil-indisponivel {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   INTERAÇÕES E ACESSIBILIDADE — COMPLEMENTO
+========================================================= */
+.acoes-cabecalho { display: flex; align-items: center; }
+.botao-menu-mobile { display: none; border: 1px solid var(--cor-turquesa); background: transparent; color: var(--cor-turquesa-claro); padding: 8px 11px; font-size: 19px; cursor: pointer; }
+.fechar-modal { position: absolute; top: 12px; right: 15px; z-index: 5; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.25); background: rgba(7,29,43,.15); color: inherit; font-size: 27px; line-height: 1; cursor: pointer; }
+.auth-box-wrapper { position: relative; }
+body.modal-aberto { overflow: hidden; }
+.texto-ajuda-senha { color: var(--cor-destaque); font-size: 10px; }
+.aviso-demonstracao { margin: 0 0 12px; padding: 9px 11px; background: #fff4dc; color: #76551b; border-left: 3px solid #d9a441; font-size: 10px; line-height: 1.5; }
+.pergunta h2 { cursor: pointer; }
+.pergunta h2:focus-visible, .botao-menu-mobile:focus-visible, .fechar-modal:focus-visible { outline: 2px solid var(--cor-turquesa); outline-offset: 3px; }
+.pergunta h2::after { content: "+"; float: right; color: var(--cor-destaque); font-size: 18px; }
+.pergunta.pergunta-aberta h2::after { content: "−"; }
+.pergunta p[hidden] { display: none; }
+
+@media (max-width: 850px) {
+    .subheader { gap: 12px; }
+    .botao-menu-mobile { display: inline-flex; align-items: center; justify-content: center; }
+    .menu_de_navegacao { display: none; }
+    .menu_de_navegacao.menu-aberto { display: block; }
+    .menu-container { height: auto; padding: 12px 5%; align-items: stretch; flex-direction: column; gap: 7px; }
+    .menu-container > a, .dropdown-toggle { display: block; padding: 10px 4px; }
+    .nav-dropdown { display: block; }
+    .dropdown-menu { position: static; display: none; transform: none; width: 100%; opacity: 1; visibility: visible; box-shadow: none; border-radius: 0; }
+    .nav-dropdown:hover .dropdown-menu { transform: none; }
+    .nav-dropdown.dropdown-aberto .dropdown-menu { display: block; }
+    .login-dropdown-wrapper { margin-left: auto; }
+}
+@media (max-width: 600px) {
+    .auth-box-wrapper { width: 94%; max-height: 92vh; overflow-y: auto; }
+    .fechar-modal { position: sticky; float: right; top: 5px; margin: 5px 5px -40px 0; }
+}
