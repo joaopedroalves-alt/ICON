@@ -603,6 +603,33 @@
             $$(".menu-container > a, .dropdown-menu a").forEach(link => link.addEventListener("click", fecharMenuMobile));
 
             // ==========================================
+            // ROLAGEM SUAVE DAS ÂNCORAS
+            // ==========================================
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const destino = this.getAttribute("href");
+            
+                    if (!destino || destino === "#") return;
+            
+                    const secao = document.querySelector(destino);
+            
+                    if (!secao) return;
+            
+                    e.preventDefault();
+            
+                    const alturaHeader = document.querySelector(".header").offsetHeight;
+                    const posicao = secao.getBoundingClientRect().top + window.scrollY - alturaHeader;
+            
+                    window.history.pushState(null, "", destino);
+            
+                    window.scrollTo({
+                        top: posicao,
+                        behavior: "smooth"
+                    });
+                });
+            });
+
+            // ==========================================
             // MODAL DE LOGIN / CADASTRO
             // ==========================================
             const modal = $("#loginDropdown");
