@@ -24,6 +24,10 @@
                 <img src="imagens/textoicon.png" alt="ICON">
             </a>
 
+            <div class="acoes-cabecalho">
+                <button type="button" class="botao-menu-mobile" id="btn-menu-mobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
+            </div>
+
             <!-- Botão de Fazer Login com Modal Centralizado -->
             <div class="login-dropdown-wrapper">
                 <a href="#" class="botao-login" id="btn-abrir-login">
@@ -31,8 +35,9 @@
                 </a>
 
                 <!-- Modal de Autenticação / Registo (Centralizado com Backdrop Blur) -->
-                <div class="login-dropdown-container" id="loginDropdown">
-                    <div class="auth-box-wrapper" id="authBox">
+                <div class="login-dropdown-container" id="loginDropdown" aria-hidden="true">
+                    <div class="auth-box-wrapper" id="authBox" role="dialog" aria-modal="true" aria-label="Acesso à plataforma">
+                        <button type="button" class="fechar-modal" id="fechar-modal" aria-label="Fechar janela">×</button>
                         
                         <!-- Lado Esquerdo: Apresentação / Boas-vindas -->
                         <div class="auth-panel auth-panel-left">
@@ -57,7 +62,7 @@
                         <div class="auth-panel auth-panel-right">
                             
                             <!-- Formulário de Login -->
-                            <form class="auth-form active-form" id="formLogin" onsubmit="return false;">
+                            <form class="auth-form active-form" id="formLogin">
                                 <div class="auth-form-header">
                                     <span class="login-etiqueta">AUTENTICAÇÃO</span>
                                     <h2>Entrar na conta</h2>
@@ -65,20 +70,21 @@
                                 </div>
                                 <div class="campo-login">
                                     <label>E-mail institucional</label>
-                                    <input type="email" placeholder="seu.email@icon.com.br" required>
+                                    <input id="loginEmail" type="email" placeholder="seu.email@icon.com.br" autocomplete="username" required>
                                 </div>
                                 <div class="campo-login">
                                     <div class="campo-login-topo">
                                         <label>Senha</label>
-                                        <a href="#">Esqueceu?</a>
+                                        <span class="texto-ajuda-senha">Acesso demonstrativo</span>
                                     </div>
-                                    <input type="password" placeholder="••••••••" required>
+                                    <input id="loginSenha" type="password" placeholder="••••••••" autocomplete="current-password" required>
                                 </div>
                                 <button type="submit" class="botao-login-formulario">Entrar na plataforma</button>
                             </form>
 
                             <!-- Formulário de Registro Multietapas -->
-                            <form class="auth-form" id="formRegister" onsubmit="return false;">
+                            <form class="auth-form" id="formRegister">
+                                <p class="aviso-demonstracao">Demonstração acadêmica: os dados não são enviados nem armazenados.</p>
                                 <div class="auth-form-header">
                                     <span class="login-etiqueta" id="registroEtiquetaStep">ETAPA 1 DE 3</span>
                                     <h2 id="registroTituloStep">Informações Pessoais</h2>
@@ -268,10 +274,10 @@
                 <div class="nav-dropdown">
                     <span class="dropdown-toggle">Profissionais ▾</span>
                     <div class="dropdown-menu">
-                        <a href="#profissionais">● Neuropsicólogos</a>
-                        <a href="#profissionais">● Psicólogos</a>
-                        <a href="#profissionais">● Psiquiatras</a>
-                        <a href="#profissionais">● Neurologistas</a>
+                        <a href="#profissionais" data-filtro-profissional="Neuropsicologia">● Neuropsicólogos</a>
+                        <a href="#profissionais" data-filtro-profissional="Psicologia">● Psicólogos</a>
+                        <a href="#profissionais" data-filtro-profissional="Psiquiatria">● Psiquiatras</a>
+                        <a href="#profissionais" data-filtro-profissional="Neurologia">● Neurologistas</a>
                     </div>
                 </div>
 
@@ -360,7 +366,7 @@
                         <p>Mapeamento detalhado das funções cognitivas (atenção, memória, linguagem, funções executivas) para suporte diagnóstico diferencial.</p>
                     </div>
                     <img src="imagens/cerebroflashcard.png" alt="Cérebro">
-                    <a href="#">→</a>
+                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
                 </div>
 
                 <div class="servico">
@@ -370,7 +376,7 @@
                         <p>Acompanhamento clínico individualizado para manejo de transtornos emocionais, comportamentais e desenvolvimento de estratégias de enfrentamento.</p>
                     </div>
                     <img src="imagens/pessoasflashcard.png" alt="Pessoas">
-                    <a href="#">→</a>
+                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
                 </div>
 
                 <div class="servico">
@@ -380,7 +386,7 @@
                         <p>Investigação analítica de habilidades mentais específicas para fins de monitoramento evolutivo ou orientação escolar/profissional.</p>
                     </div>
                     <img src="imagens/graficoflashcard.png" alt="Gráfico">
-                    <a href="#">→</a>
+                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
                 </div>
 
                 <div class="servico">
@@ -390,7 +396,7 @@
                         <p>Elaboração de documentação formal de alta precisão destinada a equipes médicas, instituições educacionais ou instâncias jurídicas.</p>
                     </div>
                     <img src="imagens/docflashcard.png" alt="Documento">
-                    <a href="#">→</a>
+                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
                 </div>
             </div>
         </section>
@@ -403,47 +409,21 @@
                 <p>Equipe multidisciplinar dedicada à investigação neuropsicológica e ao cuidado integral.</p>
             </div>
 
-            <div class="lista-profissionais">
-                <div class="profissional">
-                    <div class="foto-profissional">MS</div>
-                    <div class="dados-profissional">
-                        <h2>Dra. Mariana Silva</h2>
-                        <p>Neuropsicóloga Clínica</p>
-                        <span>CRP 00/00000</span>
-                    </div>
-                    <a href="#">Ver perfil →</a>
-                </div>
-
-                <div class="profissional">
-                    <div class="foto-profissional">JO</div>
-                    <div class="dados-profissional">
-                        <h2>Dr. João Oliveira</h2>
-                        <p>Psicólogo Clínico</p>
-                        <span>CRP 00/00000</span>
-                    </div>
-                    <a href="#">Ver perfil →</a>
-                </div>
-
-                <div class="profissional">
-                    <div class="foto-profissional">AS</div>
-                    <div class="dados-profissional">
-                        <h2>Dra. Ana Souza</h2>
-                        <p>Psiquiatra</p>
-                        <span>CRM 00/00000</span>
-                    </div>
-                    <a href="#">Ver perfil →</a>
-                </div>
-
-                <div class="profissional">
-                    <div class="foto-profissional">RC</div>
-                    <div class="dados-profissional">
-                        <h2>Dr. Rafael Costa</h2>
-                        <p>Neurologista</p>
-                        <span>CRM 00/00000</span>
-                    </div>
-                    <a href="#">Ver perfil →</a>
-                </div>
+            <!-- Filtros: o JavaScript atualiza a lista conforme a especialidade escolhida. -->
+            <div class="filtros-profissionais" aria-label="Filtrar profissionais por especialidade">
+                <button type="button" class="filtro-profissional ativo" data-filtro="Todos">Todos</button>
+                <button type="button" class="filtro-profissional" data-filtro="Neuropsicologia">Neuropsicólogos</button>
+                <button type="button" class="filtro-profissional" data-filtro="Psicologia">Psicólogos</button>
+                <button type="button" class="filtro-profissional" data-filtro="Psiquiatria">Psiquiatras</button>
+                <button type="button" class="filtro-profissional" data-filtro="Neurologia">Neurologistas</button>
             </div>
+
+            <div class="lista-profissionais" id="lista-profissionais" aria-live="polite">
+                <!-- Os profissionais são inseridos aqui pelo JavaScript. -->
+            </div>
+            <p class="mensagem-sem-profissionais" id="mensagem-sem-profissionais" hidden>
+                Nenhum profissional encontrado nesta especialidade.
+            </p>
         </section>
 
         <!-- FUNCIONAMENTO -->
@@ -553,104 +533,192 @@
     <!-- SCRIPT DE INTERAÇÃO -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const btnAbrirLogin = document.getElementById("btn-abrir-login");
-            const loginDropdown = document.getElementById("loginDropdown");
-            const authBox = document.getElementById("authBox");
-            const goToRegister = document.getElementById("goToRegister");
-            const goToLogin = document.getElementById("goToLogin");
-            const formLogin = document.getElementById("formLogin");
-            const formRegister = document.getElementById("formRegister");
+            const $ = (seletor) => document.querySelector(seletor);
+            const $$ = (seletor) => document.querySelectorAll(seletor);
 
-            // Abrir/Fechar Modal
-            btnAbrirLogin.addEventListener("click", function (e) {
-                e.preventDefault();
-                loginDropdown.classList.toggle("ativo");
+            // ==========================================
+            // PROFISSIONAIS: FILTRO POR ESPECIALIDADE
+            // Os exemplos abaixo são fictícios e ficam no próprio navegador.
+            // ==========================================
+            const profissionais = [
+                { nome: "Dra. Mariana Silva", especialidade: "Neuropsicologia", titulo: "Neuropsicóloga Clínica", registro: "CRP 00/00000", iniciais: "MS" },
+                { nome: "Dr. João Oliveira", especialidade: "Psicologia", titulo: "Psicólogo Clínico", registro: "CRP 00/00000", iniciais: "JO" },
+                { nome: "Dra. Ana Souza", especialidade: "Psiquiatria", titulo: "Psiquiatra", registro: "CRM 00/00000", iniciais: "AS" },
+                { nome: "Dr. Rafael Costa", especialidade: "Neurologia", titulo: "Neurologista", registro: "CRM 00/00000", iniciais: "RC" }
+            ];
+            const lista = $("#lista-profissionais");
+            const semResultados = $("#mensagem-sem-profissionais");
+            const filtros = $$(".filtro-profissional");
+
+            function filtrarProfissionais(especialidade = "Todos") {
+                const encontrados = profissionais.filter(p => especialidade === "Todos" || p.especialidade === especialidade);
+                lista.innerHTML = "";
+                encontrados.forEach(p => {
+                    const item = document.createElement("article");
+                    item.className = "profissional";
+                    const foto = document.createElement("div");
+                    foto.className = "foto-profissional";
+                    foto.textContent = p.iniciais;
+                    const dados = document.createElement("div");
+                    dados.className = "dados-profissional";
+                    const nome = document.createElement("h2"); nome.textContent = p.nome;
+                    const titulo = document.createElement("p"); titulo.textContent = p.titulo;
+                    const registro = document.createElement("span"); registro.textContent = p.registro;
+                    dados.append(nome, titulo, registro);
+                    const perfil = document.createElement("span");
+                    perfil.className = "perfil-indisponivel";
+                    perfil.textContent = "Perfil institucional";
+                    item.append(foto, dados, perfil);
+                    lista.appendChild(item);
+                });
+                semResultados.hidden = encontrados.length !== 0;
+                filtros.forEach(btn => btn.classList.toggle("ativo", btn.dataset.filtro === especialidade));
+            }
+            filtros.forEach(btn => btn.addEventListener("click", () => filtrarProfissionais(btn.dataset.filtro)));
+            $$('[data-filtro-profissional]').forEach(link => link.addEventListener("click", () => {
+                filtrarProfissionais(link.dataset.filtroProfissional);
+                fecharMenuMobile();
+            }));
+            filtrarProfissionais();
+
+            // ==========================================
+            // MENU RESPONSIVO E SUBMENUS
+            // ==========================================
+            const btnMenu = $("#btn-menu-mobile");
+            const nav = $(".menu_de_navegacao");
+            function fecharMenuMobile() {
+                nav.classList.remove("menu-aberto");
+                btnMenu.setAttribute("aria-expanded", "false");
+                btnMenu.setAttribute("aria-label", "Abrir menu");
+            }
+            btnMenu.addEventListener("click", () => {
+                const aberto = nav.classList.toggle("menu-aberto");
+                btnMenu.setAttribute("aria-expanded", String(aberto));
+                btnMenu.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
             });
+            $$(".dropdown-toggle").forEach(toggle => toggle.addEventListener("click", () => {
+                const pai = toggle.closest(".nav-dropdown");
+                pai.classList.toggle("dropdown-aberto");
+            }));
+            $$(".menu-container > a, .dropdown-menu a").forEach(link => link.addEventListener("click", fecharMenuMobile));
 
-            // Fechar ao Clicar Fora
-            loginDropdown.addEventListener("click", function (e) {
-                if (e.target === loginDropdown) {
-                    loginDropdown.classList.remove("ativo");
-                }
-            });
-
-            // Alternar para Registo
-            goToRegister.addEventListener("click", function () {
+            // ==========================================
+            // MODAL DE LOGIN / CADASTRO
+            // ==========================================
+            const modal = $("#loginDropdown");
+            const authBox = $("#authBox");
+            const formLogin = $("#formLogin");
+            const formRegister = $("#formRegister");
+            const abrirLogin = () => {
+                modal.classList.add("ativo");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.classList.add("modal-aberto");
+            };
+            const fecharLogin = () => {
+                modal.classList.remove("ativo");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("modal-aberto");
+            };
+            $("#btn-abrir-login").addEventListener("click", e => { e.preventDefault(); abrirLogin(); });
+            $("#fechar-modal").addEventListener("click", fecharLogin);
+            modal.addEventListener("click", e => { if (e.target === modal) fecharLogin(); });
+            document.addEventListener("keydown", e => { if (e.key === "Escape") { fecharLogin(); fecharMenuMobile(); } });
+            $$(".js-abrir-login").forEach(link => link.addEventListener("click", e => { e.preventDefault(); abrirLogin(); }));
+            $("#goToRegister").addEventListener("click", () => {
                 authBox.classList.add("modo-registro");
                 formLogin.classList.remove("active-form");
                 formRegister.classList.add("active-form");
             });
-
-            // Voltar para Login
-            goToLogin.addEventListener("click", function () {
+            $("#goToLogin").addEventListener("click", () => {
                 authBox.classList.remove("modo-registro");
                 formRegister.classList.remove("active-form");
                 formLogin.classList.add("active-form");
             });
 
-            // Lógica de Cadastro e Menor de Idade
-            let currentStep = 1;
-            const btnAvancar = document.getElementById("btnStepAvancar");
-            const btnVoltar = document.getElementById("btnStepVoltar");
-            const regDataNasc = document.getElementById("regDataNasc");
-            const blocoResponsavel = document.getElementById("blocoResponsavel");
-
-            regDataNasc.addEventListener("change", function () {
-                if (!this.value) return;
-                const nascimento = new Date(this.value);
-                const hoje = new Date();
-                let idade = hoje.getFullYear() - nascimento.getFullYear();
-                const m = hoje.getMonth() - nascimento.getMonth();
-                if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
-                    idade--;
-                }
-
-                if (idade < 18) {
-                    blocoResponsavel.style.display = "block";
-                } else {
-                    blocoResponsavel.style.display = "none";
-                }
+            // Não simula autenticação real: o GitHub Pages não possui servidor de login.
+            formLogin.addEventListener("submit", e => {
+                e.preventDefault();
+                if (!formLogin.reportValidity()) return;
+                alert("A interface de login está funcionando, mas a autenticação ainda precisa ser conectada a um servidor e banco de dados. Nenhuma conta foi acessada.");
             });
 
-            btnAvancar.addEventListener("click", function () {
-                if (currentStep < 3) {
-                    currentStep++;
-                    atualizarPassos();
-                } else {
-                    alert("Cadastro realizado com sucesso!");
-                    loginDropdown.classList.remove("ativo");
-                }
-            });
+            // ==========================================
+            // CADASTRO DEMONSTRATIVO EM 3 ETAPAS
+            // ==========================================
+            let etapaAtual = 1;
+            const paginas = $$(".form-step-page");
+            const btnAvancar = $("#btnStepAvancar");
+            const btnVoltar = $("#btnStepVoltar");
+            const dataNascimento = $("#regDataNasc");
+            const blocoResponsavel = $("#blocoResponsavel");
 
-            btnVoltar.addEventListener("click", function () {
-                if (currentStep > 1) {
-                    currentStep--;
-                    atualizarPassos();
-                }
-            });
-
-            function atualizarPassos() {
-                document.querySelectorAll(".form-step-page").forEach((el, index) => {
-                    el.classList.toggle("active", index + 1 === currentStep);
-                });
-
-                document.getElementById("dot1").classList.toggle("active", currentStep >= 1);
-                document.getElementById("dot2").classList.toggle("active", currentStep >= 2);
-                document.getElementById("dot3").classList.toggle("active", currentStep >= 3);
-                
-                document.getElementById("line1").classList.toggle("active", currentStep >= 2);
-                document.getElementById("line2").classList.toggle("active", currentStep >= 3);
-
+            function atualizarEtapas() {
+                paginas.forEach((pagina, i) => pagina.classList.toggle("active", i + 1 === etapaAtual));
+                [1, 2, 3].forEach(n => $("#dot" + n).classList.toggle("active", n <= etapaAtual));
+                [1, 2].forEach(n => $("#line" + n).classList.toggle("active", n < etapaAtual));
                 const titulos = ["Informações Pessoais", "Contato e Endereço", "Finalizar Cadastro"];
                 const subtitulos = ["Preencha os dados do paciente.", "Informe os dados de localização.", "Convênio, responsável e acesso."];
-                
-                document.getElementById("registroEtiquetaStep").innerText = `ETAPA ${currentStep} DE 3`;
-                document.getElementById("registroTituloStep").innerText = titulos[currentStep - 1];
-                document.getElementById("registroSubtituloStep").innerText = subtitulos[currentStep - 1];
-
-                btnVoltar.style.display = currentStep > 1 ? "block" : "none";
-                btnAvancar.innerText = currentStep === 3 ? "Finalizar Cadastro ✓" : "Continuar →";
+                $("#registroEtiquetaStep").textContent = `ETAPA ${etapaAtual} DE 3`;
+                $("#registroTituloStep").textContent = titulos[etapaAtual - 1];
+                $("#registroSubtituloStep").textContent = subtitulos[etapaAtual - 1];
+                btnVoltar.style.display = etapaAtual > 1 ? "block" : "none";
+                btnAvancar.textContent = etapaAtual === 3 ? "Finalizar cadastro" : "Continuar →";
             }
+            function validarEtapa() {
+                const campos = [...paginas[etapaAtual - 1].querySelectorAll("input[required], select[required]")];
+                for (const campo of campos) {
+                    if (!campo.checkValidity()) { campo.reportValidity(); campo.focus(); return false; }
+                }
+                if (etapaAtual === 3 && $("#regSenha").value.length < 6) {
+                    $("#regSenha").setCustomValidity("A senha demonstrativa precisa ter pelo menos 6 caracteres.");
+                    $("#regSenha").reportValidity();
+                    $("#regSenha").setCustomValidity("");
+                    return false;
+                }
+                return true;
+            }
+            dataNascimento.addEventListener("change", () => {
+                if (!dataNascimento.value) return;
+                const nascimento = new Date(dataNascimento.value + "T00:00:00");
+                const hoje = new Date();
+                let idade = hoje.getFullYear() - nascimento.getFullYear();
+                if (hoje.getMonth() < nascimento.getMonth() || (hoje.getMonth() === nascimento.getMonth() && hoje.getDate() < nascimento.getDate())) idade--;
+                blocoResponsavel.style.display = idade < 18 ? "block" : "none";
+            });
+            btnAvancar.addEventListener("click", () => {
+                if (!validarEtapa()) return;
+                if (etapaAtual < 3) { etapaAtual++; atualizarEtapas(); }
+                else {
+                    alert("Formulário demonstrativo concluído. Os dados não foram enviados nem salvos. Para cadastrar pacientes de verdade, será necessário um backend seguro.");
+                    formRegister.reset(); etapaAtual = 1; atualizarEtapas(); fecharLogin();
+                    authBox.classList.remove("modo-registro");
+                    formRegister.classList.remove("active-form"); formLogin.classList.add("active-form");
+                }
+            });
+            btnVoltar.addEventListener("click", () => { if (etapaAtual > 1) { etapaAtual--; atualizarEtapas(); } });
+            atualizarEtapas();
+
+            // ==========================================
+            // FAQ EXPANSÍVEL
+            // ==========================================
+            $$(".pergunta").forEach((item, index) => {
+                const titulo = item.querySelector("h2");
+                const resposta = item.querySelector("p");
+                resposta.hidden = true;
+                titulo.tabIndex = 0;
+                titulo.setAttribute("role", "button");
+                titulo.setAttribute("aria-expanded", "false");
+                titulo.setAttribute("aria-controls", `resposta-faq-${index + 1}`);
+                resposta.id = `resposta-faq-${index + 1}`;
+                const alternar = () => {
+                    const abrir = resposta.hidden;
+                    resposta.hidden = !abrir;
+                    titulo.setAttribute("aria-expanded", String(abrir));
+                    item.classList.toggle("pergunta-aberta", abrir);
+                };
+                titulo.addEventListener("click", alternar);
+                titulo.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); alternar(); } });
+            });
         });
     </script>
 </body>
