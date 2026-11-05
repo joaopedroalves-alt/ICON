@@ -812,3 +812,10 @@ body.modal-aberto { overflow: hidden; }
     .auth-box-wrapper { width: 94%; max-height: 92vh; overflow-y: auto; }
     .fechar-modal { position: sticky; float: right; top: 5px; margin: 5px 5px -40px 0; }
 }
+.header {
+    scroll-margin-top: 0;
+}
+
+section[id] {
+    scroll-margin-top: 78px;
+}
