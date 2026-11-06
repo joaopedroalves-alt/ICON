@@ -540,12 +540,16 @@
             // PROFISSIONAIS: FILTRO POR ESPECIALIDADE
             // Os exemplos abaixo são fictícios e ficam no próprio navegador.
             // ==========================================
-            const profissionais = [
-                { nome: "Dra. Mariana Silva", especialidade: "Neuropsicologia", titulo: "Neuropsicóloga Clínica", registro: "CRP 00/00000", iniciais: "MS" },
-                { nome: "Dr. João Oliveira", especialidade: "Psicologia", titulo: "Psicólogo Clínico", registro: "CRP 00/00000", iniciais: "JO" },
-                { nome: "Dra. Ana Souza", especialidade: "Psiquiatria", titulo: "Psiquiatra", registro: "CRM 00/00000", iniciais: "AS" },
-                { nome: "Dr. Rafael Costa", especialidade: "Neurologia", titulo: "Neurologista", registro: "CRM 00/00000", iniciais: "RC" }
-            ];
+                const profissionais = [
+                  {
+                      nome: "Dr. João Silva",
+                      iniciais: "JS",
+                      titulo: "Neurologista",
+                      registro: "CRM 12345",
+                      especialidade: "Neurologia",
+                      perfil: "Graduado em Medicina pela Universidade X, especialista em Neurologia. Atua na avaliação e tratamento de doenças neurológicas."
+                  }
+              ];
             const lista = $("#lista-profissionais");
             const semResultados = $("#mensagem-sem-profissionais");
             const filtros = $$(".filtro-profissional");
@@ -568,6 +572,30 @@
                     const perfil = document.createElement("span");
                     perfil.className = "perfil-indisponivel";
                     perfil.textContent = "Perfil institucional";
+                    perfil.style.cursor = "pointer";
+                    const descricao = document.createElement("div");
+                    descricao.className = "descricao-profissional";
+
+                    const conteudo = document.createElement("div");
+                    conteudo.textContent = p.perfil;
+
+                    descricao.appendChild(conteudo);
+
+                    perfil.addEventListener("click", () => {
+                        descricao.classList.toggle("aberto");
+                    });
+
+                    item.append(foto, dados, perfil, descricao);
+                    perfil.style.cursor = "pointer";
+
+                    
+
+                    perfil.addEventListener("click", () => {
+                        descricao.style.display =
+                            descricao.style.display === "none" ? "block" : "none";
+                    });
+
+                    item.append(foto, dados, perfil, descricao);
                     item.append(foto, dados, perfil);
                     lista.appendChild(item);
                 });
@@ -633,13 +661,6 @@
                 authBox.classList.remove("modo-registro");
                 formRegister.classList.remove("active-form");
                 formLogin.classList.add("active-form");
-            });
-
-            // Não simula autenticação real: o GitHub Pages não possui servidor de login.
-            formLogin.addEventListener("submit", e => {
-                e.preventDefault();
-                if (!formLogin.reportValidity()) return;
-                alert("A interface de login está funcionando, mas a autenticação ainda precisa ser conectada a um servidor e banco de dados. Nenhuma conta foi acessada.");
             });
 
             // ==========================================
@@ -720,6 +741,44 @@
                 titulo.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); alternar(); } });
             });
         });
+                  const usuarios = {
+              "admin@icon.com": {
+                  senha: "1234",
+                  nivel: "administrador"
+              },
+              "medico@icon.com": {
+                  senha: "1234",
+                  nivel: "medico"
+              },
+              "cliente@icon.com": {
+                  senha: "1234",
+                  nivel: "cliente"
+              }
+          };
+
+          formLogin.addEventListener("submit", e => {
+              e.preventDefault();
+
+              if (!formLogin.reportValidity()) return;
+
+              const email = document.querySelector("#loginEmail").value.trim().toLowerCase();
+              const senha = document.querySelector("#loginSenha").value;
+
+              const usuario = usuarios[email];
+
+              if (!usuario || usuario.senha !== senha) {
+                  alert("E-mail ou senha incorretos!");
+                  return;
+              }
+
+              const destinos = {
+                  administrador: "dashboard_administrador.html",
+                  medico: "dashboard_medico.html",
+                  cliente: "dashboard_cliente.html"
+              };
+
+              window.location.href = destinos[usuario.nivel];
+          });
     </script>
 </body>
 
