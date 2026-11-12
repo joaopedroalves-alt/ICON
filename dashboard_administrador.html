@@ -1,46 +1,607 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <title>ICON - Área do Administrador</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17465B">
+  <meta name="description" content="ICON — painel administrativo demonstrativo de gestão institucional.">
+  <title>Gestão institucional | ICON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard-admin.css">
 </head>
-
 <body>
-
-    <div class="header-intranet">
-
-        <div class="subheader-intranet admin">
-
-            <img src="imagens/logotexto.png" class="logotexto-intranet" alt="ICON">
-
-            <div class="perfil-intranet">
-                <span>Administrador</span>
-                <img src="imagens/fotodeperfil.png" alt="Foto de perfil">
-            </div>
-
-        </div>
-
-        <div class="menu-intranet admin">
-
-            <a href="#">Início</a>
-            <a href="#">Usuários</a>
-            <a href="#">Serviços</a>
-            <a href="#">Agenda</a>
-            <a href="#">Salas</a>
-            <a href="#">Relatórios</a>
-            <a href="#">Configurações</a>
-
-        </div>
-
+  <!-- Ícones próprios em SVG: não há dependência de framework de interface. -->
+  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3Zm13-14a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="9" r="3"/><path d="M7 18c0-3 10-3 10 0"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2H4Z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 13h18m-11 0v2h4v-2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17H5Zm-2 0h18M14 12h.1"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 17v-5m5 5V7m5 10V4"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9.4 3 .7 2.1 2 1 2.2-.9 2 3.3-1.5 1.8.2 2.2 1.9 1.4-1.8 3.4-2.3-.6-1.8 1.3-.5 2.2H7l-.7-2.1-2-1-2.2.9-2-3.3 1.5-1.8-.2-2.2L-.5 9.3 1.3 6l2.3.6 1.8-1.3.5-2.2Z" transform="translate(3 1) scale(.85)"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 3h.01"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 16-1 5 5-1L20 8a3 3 0 0 0-4-4L4 16Zm10-10 4 4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m-9 0 1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18M7 12h10m-7 7h4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h4l3-8 5 16 3-8h5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 6-4 9-9 11-5-2-9-5-9-11V6l9-4Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1L12 2Z"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M9 10h12"/></symbol>
+  </svg>
+  <div class="shell" id="shell">
+    <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Navegação administrativa">
+      <a class="brand" href="index.html" aria-label="Voltar ao site institucional ICON"><span class="brand-symbol"><span></span><span></span><span></span></span><span class="brand-word"><strong>ICON<span>.</span></strong><small>COGNIÇÃO E NEUROPSICOLOGIA</small></span></a>
+      <div class="side-unit"><i></i> PLATAFORMA DE GESTÃO <i></i></div>
+      <nav class="side-menu" id="side-menu" aria-label="Seções do painel">
+        <div class="nav-label">CENTRAL DE CONTROLE</div>
+        <button type="button" class="nav-link active" data-view="overview" aria-current="page"><svg><use href="#i-grid"/></svg><span>Visão geral</span></button>
+        <button type="button" class="nav-link" data-view="users"><svg><use href="#i-users"/></svg><span>Usuários</span></button>
+        <button type="button" class="nav-link" data-view="professionals"><svg><use href="#i-badge"/></svg><span>Profissionais</span></button>
+        <button type="button" class="nav-link" data-view="patients"><svg><use href="#i-user"/></svg><span>Pacientes</span></button>
+        <button type="button" class="nav-link" data-view="secretaries"><svg><use href="#i-briefcase"/></svg><span>Secretários</span></button>
+        <div class="nav-label second">OPERAÇÃO</div>
+        <button type="button" class="nav-link" data-view="services"><svg><use href="#i-layers"/></svg><span>Serviços</span></button>
+        <button type="button" class="nav-link" data-view="appointments"><svg><use href="#i-calendar"/></svg><span>Agendamentos</span></button>
+        <button type="button" class="nav-link" data-view="rooms"><svg><use href="#i-door"/></svg><span>Salas</span></button>
+        <div class="nav-label second">INTELIGÊNCIA</div>
+        <button type="button" class="nav-link" data-view="reports"><svg><use href="#i-chart"/></svg><span>Relatórios</span></button>
+        <button type="button" class="nav-link" data-view="settings"><svg><use href="#i-settings"/></svg><span>Configurações</span></button>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-insight"><span class="insight-small">ICON / OPERATIONS</span><svg><use href="#i-activity"/></svg><strong>Gestão que conecta cuidado e eficiência.</strong><span class="insight-orbit"></span></div>
+        <div class="side-foot"><span class="live-dot"></span> Ambiente acadêmico <small>v1.0</small></div>
+      </div>
+    </aside>
+    <div class="page-column">
+      <header class="topbar">
+        <div class="top-start"><button class="icon-btn mobile-toggle" type="button" id="mobile-toggle" aria-label="Abrir menu" aria-expanded="false"><svg><use href="#i-menu"/></svg></button><button class="icon-btn desktop-toggle" type="button" id="desktop-toggle" aria-label="Recolher menu lateral" aria-pressed="false"><svg><use href="#i-layout"/></svg></button><div class="breadcrumbs"><span>ICON / Gestão</span><svg><use href="#i-chevron"/></svg><strong id="current-section">Visão geral</strong></div></div>
+        <div class="top-end"><form class="global-search" id="global-search-form" role="search"><svg><use href="#i-search"/></svg><label for="global-search-input" class="sr-only">Pesquisar registros do sistema</label><input type="search" id="global-search-input" placeholder="Buscar pessoas..." autocomplete="off"><kbd>↵</kbd></form><span class="top-sep"></span><div class="notification-wrap"><button type="button" class="icon-btn" id="notification-toggle" aria-expanded="false" aria-label="Abrir notificações"><svg><use href="#i-bell"/></svg><span id="notification-dot" class="notification-dot" hidden></span></button><div id="notification-popover" class="notification-popover" hidden></div></div><button type="button" class="account" id="account-button" aria-label="Abrir configurações do administrador"><span class="avatar">HC</span><span class="account-copy"><strong>Helena Costa</strong><small>Administradora geral</small></span><svg><use href="#i-chevron"/></svg></button></div>
+      </header>
+      <main class="main-content" id="main-content" tabindex="-1" aria-label="Área central do dashboard"></main>
+      <footer class="app-footer"><span>© 2026 ICON · Administração institucional</span><span><svg><use href="#i-shield"/></svg> Demonstração acadêmica. Não inserir dados pessoais ou clínicos reais.</span></footer>
     </div>
+  </div>
+  <dialog id="app-dialog" class="app-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><div><span class="eyebrow" id="dialog-eyebrow">ICON · GESTÃO</span><h2 id="dialog-title">Detalhes</h2></div><button type="button" class="icon-btn" id="dialog-close" aria-label="Fechar janela"><svg><use href="#i-x"/></svg></button></div><div id="dialog-content" class="dialog-content"></div></dialog>
+  <div id="toast-zone" class="toast-zone" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">Ative o JavaScript para utilizar o painel demonstrativo.</div></noscript>
+  <!-- Todo o JavaScript permanece aqui para facilitar publicação de apenas dois arquivos. -->
+  <script>
+/* ============================================================================
+ ICON / Dashboard administrativo · Demonstração acadêmica
+ Sem login, backend ou controle real de permissões.
+ localStorage é apenas conveniência para dados TOTALMENTE FICTÍCIOS.
+ Nunca use este painel para dados pessoais, prontuários ou dados clínicos reais.
+ ============================================================================ */
+(() => {
+  'use strict';
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const esc = (v = '') => String(v ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const I = n => `<svg aria-hidden="true"><use href="#i-${n}"></use></svg>`;
+  const key = 'icon.admin.academic.v1';
+  const pad = n => String(n).padStart(2, '0');
+  const toISO = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const today = () => toISO(new Date());
+  const atLocal = s => { const [y,m,d] = String(s || today()).split('-').map(Number); return new Date(y,m-1,d); };
+  const moveDay = (s, offset) => { const d = atLocal(s); d.setDate(d.getDate()+offset); return toISO(d); };
+  const mon = s => { const d=atLocal(s); d.setDate(d.getDate()-((d.getDay()+6)%7)); return toISO(d); };
+  const dateBR = s => s ? new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'short',year:'numeric'}).format(atLocal(s)) : '—';
+  const shortDate = s => s ? new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'short'}).format(atLocal(s)) : '—';
+  const weekday = s => new Intl.DateTimeFormat('pt-BR',{weekday:'short'}).format(atLocal(s)).replace('.','');
+  const minute = s => { const [h,m]=String(s || '00:00').split(':').map(Number);return h*60+m; };
+  const uid = prefix => `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
+  const initial = text => String(text).trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+  const VIEWS = {overview:'Visão geral',users:'Usuários',professionals:'Profissionais',patients:'Pacientes',secretaries:'Secretários',services:'Serviços',appointments:'Agendamentos',rooms:'Salas',reports:'Relatórios',settings:'Configurações'};
+  const ROLE = {admin:'Administrador',professional:'Profissional',secretary:'Secretário',patient:'Paciente'};
+  const COLLECTION_TITLE = {users:'usuário',professionals:'profissional',patients:'paciente',secretaries:'secretário',services:'serviço',appointments:'agendamento',rooms:'sala'};
+  const SPECIALTIES = ['Neuropsicologia','Psicologia Clínica','Psiquiatria','Neurologia','Psicopedagogia','Neurodesenvolvimento','Reabilitação Cognitiva','Avaliação Cognitiva'];
+  const APPOINTMENT_STATUS = ['Agendado','Confirmado','Concluído','Cancelado'];
+  const ACCOUNT_STATUS = ['Ativo','Inativo'];
+  const MODALITY = ['Presencial','Online'];
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  function seed() {
+    const profNames = ['Mariana Silva','João Oliveira','Ana Souza','Rafael Costa','Camila Mendes','Lucas Ferreira','Beatriz Almeida','Isabela Rocha','Gabriel Martins','Laura Ribeiro','Pedro Henrique','Sofia Carvalho'];
+    const professionals = profNames.map((name,i)=>({id:`PRO-${pad(i+1)}`,name,specialty:SPECIALTIES[i % SPECIALTIES.length],registration:`${i % 4 === 2 || i % 4 === 3 ? 'CRM' : 'CRP'} 00/${pad(101+i)}XX`,email:`profissional${pad(i+1)}@icon.exemplo.com`,phone:`(34) 99990-${String(1100+i).padStart(4,'0')}`,hours:i%3===0?'Seg–Sex, 08h–14h':'Seg–Sex, 09h–18h',status:'Ativo'}));
+    const secretaryNames=['Fernanda Lima','Thiago Alves','Juliana Prado','Carolina Dias'];
+    const secretaries=secretaryNames.map((name,i)=>({id:`SEC-${pad(i+1)}`,name,email:`secretaria${i+1}@icon.exemplo.com`,joined:moveDay(today(),-(200-i*38)),status:'Ativo'}));
+    const first=['Lucas','Beatriz','Gabriel','Ana','Pedro','Clara','Sofia','Rafael','Alice','Matheus','Luiza','Henrique','Marina','Daniel','Isabela','Arthur','Julia','Eduardo','Letícia','Davi','Lara','Bruno','Valentina','Felipe'];
+    const last=['Mendes','Costa','Santos','Martins','Oliveira','Rodrigues','Almeida','Nunes','Carvalho','Ribeiro','Ferreira','Barbosa','Lima','Gomes','Pereira','Moreira','Melo','Teixeira'];
+    const patients=Array.from({length:186},(_,i)=>({id:`PAC-${String(i+1).padStart(4,'0')}`,name:`${first[i%first.length]} ${last[Math.floor(i/first.length)%last.length]}`,email:`paciente${String(i+1).padStart(3,'0')}@exemplo.com`,phone:`(34) 98880-${String(1000+i).padStart(4,'0')}`,joined:moveDay(today(),-((i*13)%500+4)),status:'Ativo'}));
+    const services=[
+      ['Avaliação Neuropsicológica','Neuropsicologia',90,'Investigação estruturada das funções cognitivas para orientação do acompanhamento.'],
+      ['Psicoterapia','Psicologia Clínica',50,'Acompanhamento psicológico individual demonstrativo.'],
+      ['Avaliação Cognitiva','Avaliação Cognitiva',60,'Análise de habilidades cognitivas para acompanhamento.'],
+      ['Reabilitação Cognitiva','Reabilitação Cognitiva',50,'Acompanhamento de estratégias de estimulação cognitiva.'],
+      ['Avaliação do Neurodesenvolvimento','Neurodesenvolvimento',70,'Processo avaliativo do desenvolvimento em diferentes etapas.'],
+      ['Laudos e Relatórios','Neuropsicologia',40,'Organização de documentação técnica demonstrativa.']
+    ].map(([name,specialty,duration,description],i)=>({id:`SER-${pad(i+1)}`,name,specialty,duration,description,status:'Ativo'}));
+    const rooms=[
+      ['Sala 01','Consultório',2],['Sala 02','Consultório',2],['Sala 03','Avaliação',3],['Sala 04','Atendimento multiprofissional',4],['Sala 05','Reunião',8]
+    ].map(([name,kind,capacity],i)=>({id:`SAL-${pad(i+1)}`,name,kind,capacity,status:'Ativo'}));
+    const thisWeek=mon(today());
+    const appointments=[]; let number=0;
+    // Histórico fictício e 32 agendamentos na semana corrente.
+    for (let offset=-5;offset<=0;offset++) {
+      const base=moveDay(thisWeek,offset*7);
+      const count=offset===0?32:24+((offset+5)*2);
+      const slots=['08:00','09:30','11:00','12:30','14:00','15:30','17:00'];
+      for(let i=0;i<count;i++) {
+        const d=Math.floor(i/7),slot=i%7;
+        const sid=(number*5+3)%services.length;
+        const status=offset===0 ? ['Confirmado','Agendado','Agendado','Confirmado','Concluído'][i%5] : ['Concluído','Concluído','Concluído','Cancelado'][i%4];
+        appointments.push({id:`AGE-${String(++number).padStart(4,'0')}`,patientId:patients[(i*7+Math.abs(offset)*13)%patients.length].id,professionalId:professionals[(i*5+Math.abs(offset))%professionals.length].id,serviceId:services[sid].id,date:moveDay(base,d),time:slots[slot],roomId:rooms[i%rooms.length].id,modality:'Presencial',status});
+      }
+    }
+    // Uma conta por cadastro, com vínculo operacional apenas demonstrativo.
+    const users=[{id:'USR-0001',name:'Helena Costa',email:'admin@icon.exemplo.com',role:'admin',status:'Ativo',refId:'ADMIN-001'}];
+    for (const [collection,role] of [[professionals,'professional'],[secretaries,'secretary'],[patients,'patient']]) for(const item of collection) users.push({id:`USR-${String(users.length+1).padStart(4,'0')}`,name:item.name,email:item.email,role,status:item.status,refId:item.id});
+    return {users,professionals,patients,secretaries,services,rooms,appointments,
+      assessments:[{id:'AVA-01',status:'Pendente'},{id:'AVA-02',status:'Pendente'},{id:'AVA-03',status:'Pendente'},{id:'AVA-04',status:'Pendente'},{id:'AVA-05',status:'Pendente'},{id:'AVA-06',status:'Pendente'}],
+      notifications:[
+        {id:'NOT-1',title:'Avaliações aguardando revisão',message:'Existem 6 avaliações pendentes na demonstração.',date:today(),read:false},
+        {id:'NOT-2',title:'Agenda semanal atualizada',message:'32 atendimentos estão registrados nesta semana.',date:today(),read:false},
+        {id:'NOT-3',title:'Conferência de salas',message:'Verifique os agendamentos presenciais e a disponibilidade das salas.',date:today(),read:false}
+      ],
+      activity:[{id:'LOG-1',date:new Date().toISOString(),text:'Base acadêmica inicializada com registros fictícios.'}],
+      settings:{institution:'ICON — Instituto de Cognição e Neuropsicologia',email:'contato@icon.exemplo.com.br',phone:'(34) 3333-0000',address:'Avenida das Acácias, 450 — Centro, Uberlândia/MG',start:'08:00',end:'18:00',compact:false,notifications:true,permissionMode:'Demonstração por perfil'}
+    };
+  }
+  function load() {
+    try {
+      const raw=localStorage.getItem(key);
+      if(raw) {
+        const obj=JSON.parse(raw);
+        if(obj && Array.isArray(obj.patients) && Array.isArray(obj.professionals) && Array.isArray(obj.appointments) && obj.settings && Array.isArray(obj.notifications) && Array.isArray(obj.users)) return obj;
+      }
+    } catch (e) { console.warn('Armazenamento local indisponível.',e); }
+    return seed();
+  }
+  let db=load();
+  const ui={view:'overview',query:'',filter:'Todos',sort:'name',direction:1,chart:'7d',report:'30d',appointmentMode:'list',week:mon(today()),modalSubmit:null,compact:false};
+  ui.compact=!!db.settings.compact;
+  const root=$('#main-content');
+  const dialog=$('#app-dialog');
+  const dlgTitle=$('#dialog-title');
+  const dlgContent=$('#dialog-content');
+  const overlay=$('#sidebar-overlay');
+  const sidebar=$('#sidebar');
+  const shell=$('#shell');
+  function persist() {try{localStorage.setItem(key,JSON.stringify(db));}catch(e){toast('Não foi possível salvar localmente. Evite armazenar dados reais.','warn');}}
+  function find(collection,id) { return db[collection].find(x=>x.id===id); }
+  const nameOf=(collection,id)=>find(collection,id)?.name||'Registro removido';
+  const statusPill=(s)=>`<span class="pill ${/Ativo|Confirmado|Concluído|Disponível/.test(s)?'ok':/Cancelado|Inativo/.test(s)?'muted':/Pendente|Agendado/.test(s)?'warning':'info'}"><i></i>${esc(s)}</span>`;
+  const year=new Date().getFullYear();
+  function toast(message,kind='success') {
+    const el=document.createElement('div'); el.className=`toast ${kind}`; el.innerHTML=`${I(kind==='warn'?'alert':'check')}<span>${esc(message)}</span>`;
+    $('#toast-zone').append(el);setTimeout(()=>el.remove(),3800);
+  }
+  function log(text,notification=false){db.activity.unshift({id:uid('LOG'),date:new Date().toISOString(),text}); db.activity=db.activity.slice(0,45);if(notification && db.settings.notifications) db.notifications.unshift({id:uid('NOT'),title:'Atualização operacional',message:text,date:today(),read:false}); persist(); refreshNotif();}
+  const weekNumber=(s)=>{const d=atLocal(s); return Math.max(1,Math.ceil((d - new Date(d.getFullYear(),0,1))/86400000/7)+1);};
+  const allForPeriod=(n=7)=>db.appointments.filter(a=>{const d=atLocal(a.date),now=atLocal(today());return d>=new Date(now.getFullYear(),now.getMonth(),now.getDate()-n+1) && d<=now;});
+  const weekItems=(week=mon(today()))=>db.appointments.filter(a=>a.date>=week && a.date<=moveDay(week,6));
+  const actives=collection=>db[collection].filter(x=>x.status==='Ativo');
+  const todayAppointments=()=>db.appointments.filter(a=>a.date===today()&&a.status!=='Cancelado').sort((a,b)=>a.time.localeCompare(b.time));
+  function entityCount(collection){return actives(collection).length;}
+  function stats(){return {professional:entityCount('professionals'),patients:entityCount('patients'),secretaries:entityCount('secretaries'),specialties:new Set(actives('professionals').map(x=>x.specialty)).size,week:weekItems().filter(x=>x.status!=='Cancelado').length,pending:db.assessments.filter(x=>x.status==='Pendente').length};}
+  function briefHeading(kicker,title,subtitle,right=''){return `<div class="page-heading"><div><span class="eyebrow">${kicker}</span><h1>${title}</h1>${subtitle?`<p>${subtitle}</p>`:''}</div>${right?`<div class="heading-actions">${right}</div>`:''}</div>`;}
+  function btn(label,action,extra='',style='primary',icon='plus') {return `<button type="button" class="btn btn-${style}" data-action="${action}" ${extra}>${I(icon)}<span>${label}</span></button>`;}
+  function actionButton(label,action,id,style='ghost',icon='edit') {return `<button type="button" class="btn btn-${style} btn-sm" data-action="${action}" data-id="${esc(id)}">${I(icon)}<span>${label}</span></button>`;}
+  const sectionAction={users:'Novo usuário',professionals:'Novo profissional',patients:'Novo paciente',secretaries:'Novo secretário',services:'Novo serviço',appointments:'Novo agendamento',rooms:'Nova sala'};
+  function switchView(view,focus=false){
+    if(!VIEWS[view]) return;
+    ui.view=view;ui.query='';ui.filter='Todos';ui.sort='name';ui.direction=1;
+    $$('.nav-link').forEach(b=>{const on=b.dataset.view===view;b.classList.toggle('active',on); if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+    $('#current-section').textContent=VIEWS[view];closeMenu();closeNotifications();render();
+    window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    if(focus)root.focus({preventScroll:true});
+  }
+  function render(){
+    shell.classList.toggle('collapsed',ui.compact);
+    root.innerHTML=ui.view==='overview'?renderOverview():ui.view==='reports'?renderReports():ui.view==='settings'?renderSettings():ui.view==='appointments'?renderAppointments():renderCollection(ui.view);
+    refreshNotif();
+  }
+  function metric(title,value,note,iconName,trend,theme=''){return `<div class="metric-card ${theme}"><div class="metric-top"><span>${esc(title)}</span><span class="metric-icon">${I(iconName)}</span></div><div class="metric-number">${esc(value)}</div><div class="metric-foot">${trend?`<strong>${I('arrow')}${esc(trend)}</strong>`:''}<span>${esc(note)}</span></div></div>`;}
+  function barChart(period='7d'){
+    const points=[];
+    if(period==='7d'){
+      const start=mon(today());for(let i=0;i<7;i++){const d=moveDay(start,i);points.push({label:weekday(d).slice(0,3),value:db.appointments.filter(a=>a.date===d&&a.status!=='Cancelado').length});}
+    } else if(period==='30d'){
+      const now=atLocal(today());for(let i=4;i>=0;i--){const e=new Date(now);e.setDate(e.getDate()-i*6); const s=new Date(e);s.setDate(s.getDate()-5);points.push({label:`S${5-i}`,value:db.appointments.filter(a=>a.date>=toISO(s)&&a.date<=toISO(e)&&a.status!=='Cancelado').length});}
+    }else{
+      const now=today();for(let i=5;i>=0;i--){const week=moveDay(mon(now),-7*i);points.push({label:`S${6-i}`,value:weekItems(week).filter(a=>a.status!=='Cancelado').length});}
+    }
+    const maximum=Math.max(...points.map(x=>x.value),1);
+    const sw=610,sh=200,left=23,right=12,top=18,bottom=30;
+    const plot=sw-left-right;const cell=plot/points.length; const bw=Math.min(42,cell*.53);
+    const bars=points.map((p,i)=>{const h=(p.value/maximum)*(sh-top-bottom);const x=left+cell*i+(cell-bw)/2;const y=sh-bottom-h;return `<g><rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="7" fill="${i===points.length-1?'#17465B':'#8fd1c5'}"/><text x="${x+bw/2}" y="${Math.max(y-8,11)}" text-anchor="middle" class="chart-num">${p.value}</text><text x="${x+bw/2}" y="${sh-7}" text-anchor="middle" class="chart-label">${esc(p.label)}</text></g>`;}).join('');
+    return `<svg class="bar-chart" viewBox="0 0 ${sw} ${sh}" role="img" aria-label="Atendimentos por período">${[0,.25,.5,.75,1].map(t=>`<line x1="${left}" x2="${sw-right}" y1="${top+(sh-top-bottom)*t}" y2="${top+(sh-top-bottom)*t}" stroke="#e7efec" stroke-dasharray="4 6"/>`).join('')}${bars}</svg>`;
+  }
+  function distribution(source=weekItems()){
+    const grouped=new Map();for(const a of source.filter(x=>x.status!=='Cancelado')){const name=nameOf('services',a.serviceId);grouped.set(name,(grouped.get(name)||0)+1);}
+    const colors=['#17465B','#83C8B7','#78BBD2','#b3dada','#d9e9df','#9ab0bb','#bdb4b4'];
+    const entries=[...grouped.entries()].sort((a,b)=>b[1]-a[1]);const sum=entries.reduce((a,b)=>a+b[1],0);
+    let acc=0;const stops=entries.map(([n,v],i)=>{const from=acc;acc+=v/sum*100;return `${colors[i%colors.length]} ${from.toFixed(2)}% ${acc.toFixed(2)}%`;});
+    const donut=`<div class="donut" style="background:${stops.length?`conic-gradient(${stops.join(',')})`:'#e7efec'}"><div class="donut-hole"><strong>${sum}</strong><span>atendimentos</span></div></div>`;
+    return `<div class="distribution">${donut}<div class="donut-legend">${entries.length?entries.map(([n,v],i)=>`<div><i style="background:${colors[i%colors.length]}"></i><span title="${esc(n)}">${esc(n)}</span><b>${Math.round(v/Math.max(1,sum)*100)}%</b></div>`).join(''):'<p class="muted">Sem serviços no período.</p>'}</div></div>`;
+  }
+  function appointmentRow(a,small=false){return `<div class="next-appointment"><span class="time-tag">${esc(a.time)}</span><span class="appointment-main"><strong>${esc(nameOf('patients',a.patientId))}</strong><small>${esc(nameOf('services',a.serviceId))} · ${esc(nameOf('professionals',a.professionalId))}</small></span>${statusPill(a.status)}<button type="button" class="row-arrow" data-action="detailAppointment" data-id="${esc(a.id)}" aria-label="Ver agendamento de ${esc(nameOf('patients',a.patientId))}">${I('arrow')}</button></div>`;}
+  function renderOverview(){
+    const s=stats();const upcoming=db.appointments.filter(a=>a.status!=='Cancelado'&&a.date>=today()).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)).slice(0,4);
+    const pending=[{n:s.pending,text:'avaliações aguardando conclusão',action:'reports',view:'reports'},{n:db.appointments.filter(a=>a.status==='Agendado'&&a.date>=today()).length,text:'agendamentos aguardando confirmação',view:'appointments'},{n:db.rooms.filter(x=>x.status==='Inativo').length,text:'salas indisponíveis',view:'rooms'}];
+    return `
+      <div class="hero-dashboard"><div class="hero-orbits"></div><div class="hero-copy"><div class="hero-overline"><span class="live-dot"></span> CENTRAL OPERACIONAL <span class="hero-sep"></span> ${esc(dateBR(today()))}</div><h1>Bom dia, Helena<span class="mint-text">.</span></h1><p>A operação do ICON, em uma visão clara. Acompanhe pessoas, agendamentos e indicadores com precisão.</p><div class="hero-buttons">${btn('Novo agendamento','newAppointment','','light','plus')}<button class="text-button" data-action="goReports">Explorar relatórios ${I('arrow')}</button></div></div><div class="hero-visual" aria-hidden="true"><span class="hero-ring one"></span><span class="hero-ring two"></span><span class="hero-ring three"></span><div class="pulse-core"><svg viewBox="0 0 220 80"><path d="M0 40h45l14-25 19 53 25-45 21 20h24l15-12 12 9h45" fill="none" stroke="#A8DDD1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ICON / CLINICAL OPS</span></div></div></div>
+      <div class="section-mini"><div><span class="eyebrow">01 / INDICADORES</span><h2>Panorama institucional</h2></div><span>Registros demonstrativos · Atualização local</span></div>
+      <div class="metrics-grid">${metric('Profissionais',s.professional,'cadastros ativos','badge','Equipe técnica')}${metric('Pacientes',s.patients,'cadastros ativos','users','Base institucional')}${metric('Secretários',s.secretaries,'administrativo','briefcase','Apoio operacional')}${metric('Especialidades',s.specialties,'áreas de atuação','layers','Corpo clínico')}${metric('Atendimentos / semana',s.week,'semana corrente','calendar','Agenda ativa','featured')}${metric('Avaliações pendentes',s.pending,'indicador simulado','activity','Acompanhar pendências')}
+      </div>
+      <div class="overview-grid"><section class="panel panel-chart"><div class="panel-head"><div><span class="eyebrow">DESEMPENHO</span><h2>Fluxo de atendimentos</h2></div><div class="segment" role="group" aria-label="Período do gráfico">${[['7d','7 dias'],['30d','30 dias'],['6w','6 sem.']].map(([v,l])=>`<button type="button" class="${ui.chart===v?'selected':''}" data-chart="${v}">${l}</button>`).join('')}</div></div><p class="panel-sub">Agendamentos não cancelados no intervalo selecionado.</p>${barChart(ui.chart)}</section><section class="panel panel-distribution"><div class="panel-head"><div><span class="eyebrow">PORTFÓLIO</span><h2>Serviços na agenda</h2></div><span class="caption-tag">SEMANA ATUAL</span></div>${distribution()}</section></div>
+      <div class="overview-grid below"><section class="panel"><div class="panel-head"><div><span class="eyebrow">AGENDA</span><h2>Próximos atendimentos</h2></div><button class="link-button" data-action="goAppointments">Ver agenda ${I('arrow')}</button></div><div class="next-list">${upcoming.length?upcoming.map(a=>`<div class="appointment-date">${esc(shortDate(a.date))}${appointmentRow(a)}</div>`).join(''):'<p class="empty-inline">Não há agendamentos futuros.</p>'}</div></section><section class="panel"><div class="panel-head"><div><span class="eyebrow">ROTINA</span><h2>Atividade e pendências</h2></div><span class="panel-icon">${I('activity')}</span></div><div class="pending-list">${pending.map(p=>`<button class="pending-item" data-viewto="${p.view}"><span class="pending-number">${p.n}</span><span>${esc(p.text)}</span>${I('chevron')}</button>`).join('')}</div><h3 class="inline-subtitle">Movimentações recentes</h3><div class="activity-list">${db.activity.slice(0,3).map(x=>`<div><i></i><span>${esc(x.text)}<small>${new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short'}).format(new Date(x.date))}</small></span></div>`).join('')}</div></section></div>
+      <div class="privacy-strip">${I('shield')}<div><strong>Administração responsável por dados operacionais.</strong><span>Este painel não dá acesso a diagnósticos, prontuários nem anotações clínicas. Dados totalmente fictícios.</span></div></div>`;
+  }
+  const COLUMN_LABELS={
+    users:[['name','Usuário'],['id','ID'],['role','Perfil'],['email','E-mail demonstrativo'],['status','Situação']],
+    professionals:[['name','Profissional'],['specialty','Especialidade'],['registration','Registro fictício'],['email','Contato'],['hours','Atendimento'],['status','Situação']],
+    patients:[['name','Paciente'],['id','Identificador'],['joined','Cadastro'],['email','Contato'],['status','Situação']],
+    secretaries:[['name','Secretário(a)'],['id','ID'],['email','E-mail'],['joined','Cadastro'],['status','Situação']],
+    services:[['name','Serviço'],['specialty','Especialidade'],['duration','Duração'],['description','Descrição'],['status','Situação']],
+    rooms:[['name','Sala'],['kind','Tipo'],['capacity','Capacidade'],['availability','Disponibilidade hoje'],['status','Situação']]
+  };
+  const SECTION_DESCRIPTIONS={users:'Administre os acessos demonstrativos dos diferentes perfis da plataforma.',professionals:'Equipe técnica, especialidades, contatos e horários de atendimento.',patients:'Cadastros administrativos. Dados clínicos permanecem fora deste ambiente.',secretaries:'Gestão do quadro administrativo e dos registros de acesso.',services:'Catálogo institucional, duração, especialidades e disponibilidade.',rooms:'Infraestrutura física, reservas e ocupação operacional.'};
+  const SECTION_LABEL={users:'CONTROLE DE ACESSOS',professionals:'CORPO TÉCNICO',patients:'CADASTROS',secretaries:'EQUIPE ADMINISTRATIVA',services:'CATÁLOGO',rooms:'INFRAESTRUTURA'};
+  const optionsForFilter=(view)=>view==='users'?Object.entries(ROLE).map(([value,label])=>[value,label]):view==='professionals'?SPECIALTIES.map(x=>[x,x]):view==='services'?SPECIALTIES.map(x=>[x,x]):view==='patients'||view==='secretaries'||view==='rooms'?ACCOUNT_STATUS.map(x=>[x,x]):[];
+  function collectionRows(view){
+    const term=ui.query.trim().toLocaleLowerCase('pt-BR');
+    let rows=[...db[view]];
+    if(term)rows=rows.filter(x=>Object.values(x).some(v=>String(v ?? '').toLocaleLowerCase('pt-BR').includes(term)));
+    if(ui.filter!=='Todos')rows=rows.filter(x=>view==='users'?x.role===ui.filter:view==='professionals'||view==='services'?x.specialty===ui.filter:x.status===ui.filter);
+    const key=ui.sort;
+    rows.sort((a,b)=>{
+      let av=key==='availability'?roomCount(a.id):a[key]??'', bv=key==='availability'?roomCount(b.id):b[key]??'';
+      if(typeof av==='number'&&typeof bv==='number')return (av-bv)*ui.direction;
+      return String(av).localeCompare(String(bv),'pt-BR',{numeric:true,sensitivity:'base'})*ui.direction;
+    });
+    return rows;
+  }
+  const roomCount=id=>db.appointments.filter(a=>a.date===today() && a.roomId===id && a.modality==='Presencial' && a.status!=='Cancelado').length;
+  function cell(view,item,k){
+    const v=item[k];
+    if(k==='name')return `<span class="cell-name"><span class="mini-avatar">${esc(initial(item.name))}</span><strong>${esc(item.name)}</strong></span>`;
+    if(k==='role')return `<span class="role-tag">${esc(ROLE[v]||v)}</span>`;
+    if(k==='status')return statusPill(v);
+    if(k==='joined')return esc(dateBR(v));
+    if(k==='duration')return `${esc(v)} min`;
+    if(k==='capacity')return `${esc(v)} pessoas`;
+    if(k==='availability')return `<span class="availability"><i></i>${roomCount(item.id)} reserva(s) hoje</span>`;
+    if(k==='description')return `<span class="two-lines" title="${esc(v)}">${esc(v)}</span>`;
+    if(k==='id'||k==='registration')return `<code class="identifier">${esc(v)}</code>`;
+    if(k==='email')return `<span class="soft-nowrap">${esc(v)}</span>`;
+    return esc(v);
+  }
+  function renderCollection(view){
+    const rows=collectionRows(view);const total=rows.length;const pageSize=12;
+    ui.page=Math.min(ui.page||1,Math.max(1,Math.ceil(total/pageSize)));
+    const showing=rows.slice((ui.page-1)*pageSize,ui.page*pageSize);
+    const options=optionsForFilter(view);
+    const cols=COLUMN_LABELS[view];
+    return `${briefHeading(SECTION_LABEL[view],VIEWS[view],SECTION_DESCRIPTIONS[view],btn(sectionAction[view],'newEntity',`data-collection="${view}"`))}
+    <section class="table-panel panel"><div class="table-toolbar"><div class="filter-search">${I('search')}<input type="search" data-search="1" aria-label="Pesquisar ${esc(VIEWS[view])}" placeholder="Pesquisar por nome ou identificação..." value="${esc(ui.query)}" autocomplete="off"></div><label class="select-filter">${I('filter')}<span class="sr-only">Filtrar registros</span><select data-filter="1"><option value="Todos">Todos os registros</option>${options.map(([v,label])=>`<option value="${esc(v)}" ${ui.filter===v?'selected':''}>${esc(label)}</option>`).join('')}</select></label><div class="result-count"><strong>${total}</strong> registro(s) encontrado(s)</div></div>
+    <div class="table-scroll"><table class="data-table"><thead><tr>${cols.map(([k,label])=>`<th scope="col"><button type="button" class="sort-heading" data-sort="${k}" aria-label="Ordenar por ${esc(label)}">${esc(label)}${ui.sort===k?` <span>${ui.direction>0?'↑':'↓'}</span>`:''}</button></th>`).join('')}<th scope="col" class="align-right">Ações</th></tr></thead><tbody>${showing.length?showing.map(x=>`<tr>${cols.map(([k])=>`<td>${cell(view,x,k)}</td>`).join('')}<td class="actions-cell"><div class="table-actions"><button type="button" class="icon-btn compact" data-action="editEntity" data-collection="${view}" data-id="${esc(x.id)}" aria-label="Editar ${esc(x.name)}">${I('edit')}</button><button type="button" class="icon-btn compact" data-action="toggleEntity" data-collection="${view}" data-id="${esc(x.id)}" aria-label="${x.status==='Ativo'?'Desativar':'Ativar'} ${esc(x.name)}">${I(x.status==='Ativo'?'x':'check')}</button>${view==='users'?`<button type="button" class="icon-btn compact danger" data-action="deleteUser" data-id="${esc(x.id)}" aria-label="Excluir conta de ${esc(x.name)}">${I('trash')}</button>`:''}</div></td></tr>`).join(''):`<tr><td colspan="${cols.length+1}" class="table-empty">${I('search')} Nenhum registro encontrado para os filtros selecionados.</td></tr>`}</tbody></table></div>
+    <div class="table-bottom"><span>Exibindo ${showing.length?((ui.page-1)*pageSize+1):0}–${Math.min(ui.page*pageSize,total)} de ${total}</span><div class="pagination"><button type="button" class="icon-btn compact" data-page="${ui.page-1}" ${ui.page===1?'disabled':''} aria-label="Página anterior">${I('left')}</button><span>Página ${ui.page} / ${Math.max(1,Math.ceil(total/pageSize))}</span><button type="button" class="icon-btn compact" data-page="${ui.page+1}" ${ui.page*pageSize>=total?'disabled':''} aria-label="Próxima página">${I('chevron')}</button></div></div></section>
+    ${view==='patients'?`<div class="privacy-strip">${I('shield')}<div><strong>Somente informações cadastrais.</strong><span>Diagnósticos, evoluções e prontuários clínicos não estão disponíveis na administração geral.</span></div></div>`:''}`;
+  }
+  function appointmentFilter(){
+    let arr=[...db.appointments]; const term=ui.query.toLocaleLowerCase('pt-BR');
+    if(term)arr=arr.filter(a=>[nameOf('patients',a.patientId),nameOf('professionals',a.professionalId),nameOf('services',a.serviceId),nameOf('rooms',a.roomId),a.date,a.status].some(v=>v.toLocaleLowerCase('pt-BR').includes(term)));
+    if(ui.filter!=='Todos')arr=arr.filter(a=>a.professionalId===ui.filter);
+    const period=ui.appointmentPeriod||'week';
+    if(period==='week')arr=arr.filter(a=>a.date>=ui.week && a.date<=moveDay(ui.week,6));
+    else if(period==='day')arr=arr.filter(a=>a.date===(ui.day||today()));
+    else if(period==='month')arr=arr.filter(a=>a.date.slice(0,7)===today().slice(0,7));
+    // "Todos" não limita por período.
+    return arr.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+  }
+  function calendarGrid(){
+    const days=Array.from({length:7},(_,i)=>moveDay(ui.week,i));
+    const source=appointmentFilter().filter(a=>a.date>=ui.week&&a.date<=moveDay(ui.week,6));
+    return `<div class="calendar-grid">${days.map(d=>{const entries=source.filter(a=>a.date===d);return `<div class="calendar-day ${d===today()?'today':''}"><div class="calendar-day-head"><strong>${esc(weekday(d))}</strong><span>${atLocal(d).getDate()}</span></div><div class="calendar-events">${entries.length?entries.map(a=>`<button class="calendar-event ${a.status==='Cancelado'?'is-canceled':''}" type="button" data-action="detailAppointment" data-id="${esc(a.id)}"><b>${esc(a.time)}</b><span>${esc(nameOf('patients',a.patientId))}</span><small>${esc(nameOf('services',a.serviceId))}</small></button>`).join(''):'<span class="no-event">Sem registros</span>'}</div></div>`;}).join('')}</div>`;
+  }
+  function renderAppointments(){
+    const records=appointmentFilter();const week=ui.week;
+    const period=ui.appointmentPeriod||'week';
+    return `${briefHeading('PLANEJAMENTO OPERACIONAL','Agendamentos','Organize a agenda institucional e evite sobreposições de salas e profissionais.',btn('Novo agendamento','newAppointment'))}
+      <section class="panel appointment-panel"><div class="appointment-tools"><div class="filter-search">${I('search')}<input data-search="1" type="search" aria-label="Buscar agendamento" placeholder="Paciente, serviço, sala..." value="${esc(ui.query)}"></div><label class="select-filter"><span class="sr-only">Filtrar por profissional</span><select data-filter="1"><option value="Todos">Todos os profissionais</option>${db.professionals.map(x=>`<option value="${esc(x.id)}" ${ui.filter===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label><label class="select-filter"><span class="sr-only">Filtrar por período</span><select data-appointment-period="1">${[['week','Semana'],['day','Hoje / dia'],['month','Mês atual'],['all','Todo histórico']].map(([v,l])=>`<option value="${v}" ${period===v?'selected':''}>${l}</option>`).join('')}</select></label></div>
+      <div class="agenda-bar"><div class="agenda-period"><button type="button" class="icon-btn compact" data-week="-7" aria-label="Semana anterior">${I('left')}</button><strong>${esc(shortDate(week))} — ${esc(shortDate(moveDay(week,6)))}</strong><button type="button" class="icon-btn compact" data-week="7" aria-label="Próxima semana">${I('chevron')}</button><button type="button" class="btn btn-ghost btn-sm" data-action="thisWeek">Hoje</button></div><div class="segment" role="group" aria-label="Modo de visualização"><button data-appointment-mode="list" class="${ui.appointmentMode==='list'?'selected':''}">Lista</button><button data-appointment-mode="calendar" class="${ui.appointmentMode==='calendar'?'selected':''}">Semana</button></div></div>
+      ${ui.appointmentMode==='calendar'?calendarGrid():`<div class="table-scroll"><table class="data-table"><thead><tr><th>Data / hora</th><th>Paciente</th><th>Profissional</th><th>Serviço</th><th>Sala / modalidade</th><th>Status</th><th class="align-right">Ações</th></tr></thead><tbody>${records.length?records.slice(0,160).map(a=>`<tr><td><strong class="table-primary">${esc(shortDate(a.date))}</strong><small class="table-note">${esc(a.time)}</small></td><td>${esc(nameOf('patients',a.patientId))}</td><td>${esc(nameOf('professionals',a.professionalId))}</td><td>${esc(nameOf('services',a.serviceId))}</td><td>${a.modality==='Online'?'Online':esc(nameOf('rooms',a.roomId))}</td><td>${statusPill(a.status)}</td><td class="actions-cell"><div class="table-actions"><button type="button" class="icon-btn compact" data-action="detailAppointment" data-id="${esc(a.id)}" aria-label="Detalhes">${I('more')}</button><button type="button" class="icon-btn compact" data-action="editAppointment" data-id="${esc(a.id)}" aria-label="Editar">${I('edit')}</button>${a.status==='Cancelado'?'':`<button type="button" class="icon-btn compact danger" data-action="cancelAppointment" data-id="${esc(a.id)}" aria-label="Cancelar">${I('x')}</button>`}</div></td></tr>`).join(''):`<tr><td colspan="7" class="table-empty">Nenhum agendamento neste período. Ajuste o filtro ou crie um registro.</td></tr>`}</tbody></table></div>`}<div class="table-bottom"><span>${records.length} agendamento(s) no filtro ${ui.appointmentMode==='list'&&records.length>160?'· primeiros 160 exibidos':''}</span><span>Os horários são conferidos antes de salvar.</span></div></section>`;
+  }
+  function renderReports(){
+    const days=ui.report==='7d'?7:ui.report==='30d'?30:90;
+    const ref=allForPeriod(days);
+    const valid=ref.filter(a=>a.status!=='Cancelado');
+    const canceled=ref.filter(a=>a.status==='Cancelado');
+    const serviceCounts=[...new Map(db.services.map(s=>[s.id,valid.filter(a=>a.serviceId===s.id).length])).entries()].sort((a,b)=>b[1]-a[1]);
+    const specialCounts=SPECIALTIES.map(s=>({name:s,count:db.professionals.filter(p=>p.specialty===s && p.status==='Ativo').length})).filter(s=>s.count>0);
+    const topRooms=db.rooms.map(r=>({name:r.name,count:valid.filter(a=>a.roomId===r.id&&a.modality==='Presencial').length}));
+    const maxRoom=Math.max(1,...topRooms.map(r=>r.count));
+    return `${briefHeading('DADOS OPERACIONAIS','Relatórios administrativos','Informações agregadas sobre atendimento, equipe e infraestrutura — sem dados clínicos individuais.',btn('Exportar CSV','exportReport','','outline','download'))}
+    <div class="report-filters"><span>${I('filter')} Intervalo analisado</span><div class="segment">${[['7d','7 dias'],['30d','30 dias'],['90d','90 dias']].map(([v,l])=>`<button type="button" class="${ui.report===v?'selected':''}" data-report="${v}">${l}</button>`).join('')}</div></div>
+    <div class="report-metrics">${metric('Atendimentos',valid.length,'no período','calendar','Agendados')}${metric('Cancelamentos',canceled.length,'no período','x','Operação')}${metric('Pacientes cadastrados',db.patients.length,'base total','user','Cadastros')}${metric('Profissionais ativos',actives('professionals').length,'corpo clínico','badge','Equipe')}</div>
+    <div class="reports-grid"><section class="panel"><div class="panel-head"><div><span class="eyebrow">COMPOSIÇÃO DA AGENDA</span><h2>Serviços mais utilizados</h2></div></div>${distribution(ref)}</section><section class="panel"><div class="panel-head"><div><span class="eyebrow">ESTRUTURA</span><h2>Ocupação por sala</h2></div></div><div class="hbar-list">${topRooms.map(r=>`<div class="hbar-row"><div><strong>${esc(r.name)}</strong><span>${r.count} reserva(s)</span></div><div class="hbar-track"><span style="width:${Math.round(r.count/maxRoom*100)}%"></span></div></div>`).join('')}</div></section></div>
+    <div class="reports-grid"><section class="panel"><div class="panel-head"><div><span class="eyebrow">EQUIPE</span><h2>Distribuição por especialidade</h2></div></div><div class="simple-data-list">${specialCounts.map(x=>`<div><span>${esc(x.name)}</span><strong>${x.count}</strong></div>`).join('')}</div></section><section class="panel"><div class="panel-head"><div><span class="eyebrow">INDICADORES</span><h2>Resumo de utilização</h2></div></div><div class="simple-data-list">${serviceCounts.map(([id,count])=>`<div><span>${esc(nameOf('services',id))}</span><strong>${count}</strong></div>`).join('')}</div><p class="disclaimer">Relatórios simulados a partir dos registros fictícios desta instalação.</p></section></div>`;
+  }
+  function renderSettings(){
+    const s=db.settings;
+    return `${briefHeading('PREFERÊNCIAS LOCAIS','Configurações','Ajustes institucionais simulados, interface e apresentação de permissões.')}
+      <form id="settings-form" class="settings-layout"><section class="panel settings-card"><div class="panel-head"><div><span class="eyebrow">IDENTIFICAÇÃO</span><h2>Informações institucionais</h2></div>${I('briefcase')}</div><div class="form-grid"><label class="field span-2">Nome da instituição<input name="institution" value="${esc(s.institution)}" required maxlength="120"></label><label class="field">E-mail demonstrativo<input type="email" name="email" value="${esc(s.email)}" required maxlength="100"></label><label class="field">Telefone<input name="phone" value="${esc(s.phone)}" maxlength="40"></label><label class="field span-2">Endereço fictício<input name="address" value="${esc(s.address)}" maxlength="140"></label><label class="field">Abertura<input type="time" name="start" value="${esc(s.start)}" required></label><label class="field">Fechamento<input type="time" name="end" value="${esc(s.end)}" required></label></div></section>
+      <section class="panel settings-card"><div class="panel-head"><div><span class="eyebrow">EXPERIÊNCIA</span><h2>Interface e notificações</h2></div>${I('settings')}</div><label class="toggle-row"><div><strong>Recolher menu no desktop</strong><span>Mais espaço para tabelas e indicadores.</span></div><input type="checkbox" name="compact" ${s.compact?'checked':''}><i></i></label><label class="toggle-row"><div><strong>Notificações demonstrativas</strong><span>Registrar avisos de alterações operacionais.</span></div><input type="checkbox" name="notifications" ${s.notifications?'checked':''}><i></i></label><div class="permission-box"><div class="permission-title">${I('shield')} Gerenciamento de permissões</div><p>Os perfis a seguir são apenas uma representação de regras futuras. Não restringem acesso neste protótipo sem autenticação.</p><div class="permission-row"><span>Administrador</span><strong>Gestão operacional e cadastros</strong></div><div class="permission-row"><span>Profissional</span><strong>Área clínica própria (em sistema seguro futuro)</strong></div><div class="permission-row"><span>Secretário</span><strong>Agendamento e atendimento administrativo</strong></div><div class="permission-row"><span>Paciente</span><strong>Dados próprios (em sistema seguro futuro)</strong></div></div></section>
+      <div class="settings-actions"><button class="btn btn-primary" type="submit">${I('check')} Salvar preferências</button><button class="btn btn-outline" type="button" data-action="resetData">${I('trash')} Restaurar dados fictícios</button></div></form>
+      <div class="privacy-strip">${I('alert')}<div><strong>Sem segurança de produção.</strong><span>O localStorage não protege dados nem aplica permissões. Este ambiente é exclusivamente demonstrativo.</span></div></div>`;
+  }
+  const field=(name,label,type='text',required=true,other={})=>({name,label,type,required,...other});
+  function formFields(collection,item={}){
+    if(collection==='users')return [field('name','Nome completo'),field('email','E-mail demonstrativo','email'),field('role','Tipo de usuário','select',true,{options:Object.entries(ROLE).map(([v,l])=>[v,l]),disabled:!!item.id}),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])})];
+    if(collection==='professionals')return [field('name','Nome completo'),field('specialty','Especialidade','select',true,{options:SPECIALTIES.map(s=>[s,s])}),field('registration','Registro fictício'),field('email','E-mail demonstrativo','email'),field('phone','Telefone','text',false),field('hours','Horários de atendimento','text',true,{span:true,placeholder:'Seg–Sex, 09h–18h'}),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])})];
+    if(collection==='patients')return [field('name','Nome completo'),field('email','E-mail demonstrativo','email'),field('phone','Telefone','text',false),field('joined','Data de cadastro','date'),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])})];
+    if(collection==='secretaries')return [field('name','Nome completo'),field('email','E-mail demonstrativo','email'),field('joined','Data de cadastro','date'),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])})];
+    if(collection==='services')return [field('name','Nome do serviço'),field('specialty','Especialidade vinculada','select',true,{options:SPECIALTIES.map(s=>[s,s])}),field('duration','Duração (minutos)','number',true,{min:15,max:240}),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])}),field('description','Descrição demonstrativa','textarea',true,{span:true})];
+    if(collection==='rooms')return [field('name','Nome ou número da sala'),field('capacity','Capacidade (pessoas)','number',true,{min:1,max:60}),field('kind','Tipo de ambiente','select',true,{options:['Consultório','Avaliação','Atendimento multiprofissional','Reunião','Outros'].map(x=>[x,x])}),field('status','Situação','select',true,{options:ACCOUNT_STATUS.map(x=>[x,x])})];
+    if(collection==='appointments')return [
+      field('patientId','Paciente','select',true,{options:db.patients.filter(p=>p.status==='Ativo'||p.id===item.patientId).map(p=>[p.id,p.name])}),
+      field('professionalId','Profissional responsável','select',true,{options:db.professionals.filter(p=>p.status==='Ativo'||p.id===item.professionalId).map(p=>[p.id,`${p.name} · ${p.specialty}`])}),
+      field('serviceId','Serviço','select',true,{options:db.services.filter(p=>p.status==='Ativo'||p.id===item.serviceId).map(s=>[s.id,`${s.name} (${s.duration} min)`])}),
+      field('modality','Modalidade','select',true,{options:MODALITY.map(x=>[x,x])}),
+      field('date','Data do atendimento','date'),field('time','Horário de início','time'),
+      field('roomId','Sala presencial','select',false,{options:[['','Sem sala / Online'],...db.rooms.filter(r=>r.status==='Ativo'||r.id===item.roomId).map(r=>[r.id,r.name])]}),
+      field('status','Status','select',true,{options:APPOINTMENT_STATUS.map(x=>[x,x])})
+    ];
+    return [];
+  }
+  function fieldMarkup(config,item){
+    const value=item[config.name]??(config.name==='status'?(config.name==='status'?'Ativo':''):'');
+    const required=config.required?'required':'';
+    const disabled=config.disabled?'disabled':'';
+    const label=`<span>${esc(config.label)}${config.required?' <em>*</em>':''}</span>`;
+    const attrs=`name="${esc(config.name)}" ${required} ${disabled} ${config.type==='number'?`min="${config.min??1}" max="${config.max??9999}"`:''}`;
+    let control;
+    if(config.type==='select')control=`<select ${attrs}>${config.options.map(([v,t])=>`<option value="${esc(v)}" ${String(value)===String(v)?'selected':''}>${esc(t)}</option>`).join('')}</select>`;
+    else if(config.type==='textarea')control=`<textarea ${attrs} rows="3" maxlength="500">${esc(value)}</textarea>`;
+    else control=`<input type="${config.type}" ${attrs} value="${esc(value || (config.type==='date'?(item.id?'':today()):''))}" maxlength="${config.type==='email'?120:config.type==='text'?140:100}" placeholder="${esc(config.placeholder||'')}" autocomplete="off">`;
+    return `<label class="field ${config.span?'span-2':''}">${label}${control}</label>`;
+  }
+  function openDialog(title,kicker,body){dlgTitle.textContent=title;$('#dialog-eyebrow').textContent=kicker;dlgContent.innerHTML=body;dialog.showModal();}
+  function closeDialog(){if(dialog.open)dialog.close();ui.modalSubmit=null;}
+  function openForm(collection,id){
+    const current=id?find(collection,id):null;
+    if(id&&!current)return toast('Registro não encontrado.','warn');
+    const item=current||{};
+    if(collection==='appointments' && !current){item.date=today();item.time='09:00';item.status='Agendado';item.modality='Presencial';item.roomId=db.rooms.find(r=>r.status==='Ativo')?.id||'';}
+    const title=(current?'Editar ':'Cadastrar ')+COLLECTION_TITLE[collection];
+    const fields=formFields(collection,item);
+    const form=`<form id="entity-form" data-collection="${collection}" data-id="${esc(id||'')}"><p class="modal-explainer">Dados acadêmicos fictícios. Nenhuma informação é enviada a um servidor.</p><div class="form-grid">${fields.map(c=>fieldMarkup(c,item)).join('')}</div><div class="dialog-error" id="dialog-error" role="alert" hidden></div><div class="dialog-actions"><button type="button" class="btn btn-outline" data-action="closeDialog">Cancelar</button><button type="submit" class="btn btn-primary">${I('check')} Salvar registro</button></div></form>`;
+    openDialog(title,'ICON / GESTÃO DE '+VIEWS[collection].toLocaleUpperCase('pt-BR'),form);
+    if(collection==='appointments')syncRoomVisibility();
+    $('#entity-form input:not([disabled]),#entity-form select:not([disabled])')?.focus();
+  }
+  function formError(message){const err=$('#dialog-error');if(err){err.hidden=false;err.textContent=message;}else toast(message,'warn');}
+  function syncRoomVisibility(){const modal=$('#entity-form');if(!modal||modal.dataset.collection!=='appointments')return;const select=modal.elements.roomId;const online=modal.elements.modality.value==='Online';select.required=!online;select.closest('.field').classList.toggle('is-hidden',online);if(online)select.value='';}
+  function emailConflict(email,accountId,recordType,recordId){
+    const normalized=String(email).toLowerCase();
+    return db.users.some(u=>u.email.toLowerCase()===normalized&&u.id!==accountId&&!(recordId&&u.refId===recordId));
+  }
+  function checkAppointment(candidate,oldId){
+    if(candidate.status==='Cancelado')return '';
+    const service=find('services',candidate.serviceId);
+    const professional=find('professionals',candidate.professionalId);
+    const patient=find('patients',candidate.patientId);
+    if(!service||!professional||!patient)return 'Escolha paciente, profissional e serviço válidos.';
+    if(service.status!=='Ativo'||professional.status!=='Ativo'||patient.status!=='Ativo')return 'Paciente, profissional e serviço precisam estar ativos.';
+    if(candidate.modality==='Presencial'&&(!candidate.roomId||find('rooms',candidate.roomId)?.status!=='Ativo'))return 'Selecione uma sala ativa para atendimento presencial.';
+    const start=minute(candidate.time),end=start+Number(service.duration);
+    if(end>24*60||start<0)return 'O horário informado é inválido.';
+    for(const appointment of db.appointments){
+      if(appointment.id===oldId||appointment.status==='Cancelado'||appointment.date!==candidate.date)continue;
+      const otherService=find('services',appointment.serviceId);const os=minute(appointment.time),oe=os+Number(otherService?.duration||50);
+      if(start>=oe||end<=os)continue;
+      if(appointment.professionalId===candidate.professionalId)return `Conflito: ${professional.name} já possui um atendimento das ${appointment.time} às ${pad(Math.floor(oe/60))}:${pad(oe%60)}.`;
+      if(candidate.modality==='Presencial'&&appointment.modality==='Presencial'&&appointment.roomId===candidate.roomId)return `Conflito: ${nameOf('rooms',candidate.roomId)} já está reservada às ${appointment.time}.`;
+    }
+    return '';
+  }
+  function syncUserFromEntity(collection,entity){
+    const role={professionals:'professional',patients:'patient',secretaries:'secretary'}[collection];
+    if(!role)return;
+    const account=db.users.find(u=>u.refId===entity.id);
+    if(account)Object.assign(account,{name:entity.name,email:entity.email,status:entity.status});
+    else db.users.push({id:uid('USR'),name:entity.name,email:entity.email,status:entity.status,role,refId:entity.id});
+  }
+  function syncEntityFromUser(user){
+    const collection={professional:'professionals',patient:'patients',secretary:'secretaries'}[user.role];
+    if(!collection)return;
+    const entity=find(collection,user.refId);
+    if(entity)Object.assign(entity,{name:user.name,email:user.email,status:user.status});
+  }
+  function createFromUser(user){
+    const collection={professional:'professionals',patient:'patients',secretary:'secretaries'}[user.role];
+    if(!collection)return;
+    const id=uid(collection==='professionals'?'PRO':collection==='patients'?'PAC':'SEC');
+    const entity={id,name:user.name,email:user.email,status:user.status,...(collection==='professionals'?{specialty:'Neuropsicologia',registration:'CRP 00/DEMO',hours:'Seg–Sex, 09h–18h',phone:''}:collection==='patients'?{joined:today(),phone:''}:{joined:today()})};
+    db[collection].unshift(entity);user.refId=id;
+  }
+  function saveEntity(ev){
+    ev.preventDefault();const form=ev.target;const collection=form.dataset.collection;
+    const existing=form.dataset.id?find(collection,form.dataset.id):null;
+    const data=Object.fromEntries(new FormData(form).entries());
+    for(const k of Object.keys(data))data[k]=typeof data[k]==='string'?data[k].trim():data[k];
+    if(!existing && collection==='users' && !data.role)return formError('Selecione o tipo de usuário.');
+    if(existing && collection==='users')data.role=existing.role;
+    if(collection==='users' && existing?.id==='USR-0001' && data.status==='Inativo')return formError('A conta administrativa principal deve permanecer ativa nesta demonstração.');
+    if(['users','patients','professionals','secretaries'].includes(collection)){
+      if(!data.name||!EMAIL_RE.test(data.email))return formError('Informe nome e e-mail demonstrativo válido.');
+      const linked=existing?.refId||existing?.id;
+      const accountId=collection==='users'?existing?.id:db.users.find(u=>u.refId===linked)?.id;
+      if(emailConflict(data.email,accountId,collection,collection==='users'?existing?.refId:existing?.id))return formError('Este e-mail já está associado a outro usuário fictício.');
+    }
+    if(collection==='services'){data.duration=Number(data.duration);if(!Number.isInteger(data.duration)||data.duration<15||data.duration>240)return formError('Informe duração entre 15 e 240 minutos.');}
+    if(collection==='rooms'){data.capacity=Number(data.capacity);if(!Number.isInteger(data.capacity)||data.capacity<1||data.capacity>60)return formError('Informe capacidade entre 1 e 60 pessoas.');}
+    if(collection==='appointments'){
+      if(!/^\d{4}-\d\d-\d\d$/.test(data.date)||!/^\d\d:\d\d$/.test(data.time))return formError('Informe uma data e um horário válidos.');
+      if(data.modality==='Online')data.roomId='';
+      const conflict=checkAppointment(data,existing?.id);
+      if(conflict)return formError(conflict);
+    }
+    if(existing){Object.assign(existing,data);}
+    else{
+      data.id=uid({users:'USR',professionals:'PRO',patients:'PAC',secretaries:'SEC',services:'SER',appointments:'AGE',rooms:'SAL'}[collection]);
+      if(collection==='users'){data.refId=data.role==='admin'?uid('ADMIN'):'';createFromUser(data);}
+      db[collection].unshift(data);
+    }
+    if(collection==='users')syncEntityFromUser(existing||data);
+    else syncUserFromEntity(collection,existing||data);
+    const label=collection==='appointments'?`Agendamento de ${nameOf('patients',data.patientId)}`:data.name;
+    log(`${label} ${existing?'atualizado(a)':'cadastrado(a)'} na área ${VIEWS[collection].toLowerCase()}.`,collection==='appointments');
+    closeDialog();render();toast(`Registro ${existing?'atualizado':'cadastrado'} com sucesso.`);
+  }
+  function openConfirm(title,description,callback,confirmLabel='Confirmar'){
+    openDialog(title,'ICON / CONFIRMAÇÃO',`<div class="confirm-message"><span class="confirm-icon">${I('alert')}</span><p>${esc(description)}</p></div><div class="dialog-actions"><button type="button" class="btn btn-outline" data-action="closeDialog">Voltar</button><button type="button" class="btn btn-danger" data-action="confirmDialog">${esc(confirmLabel)}</button></div>`);
+    ui.modalSubmit=callback;
+  }
+  function toggleEntity(collection,id){
+    const entity=find(collection,id);if(!entity)return;
+    if(collection==='users'&&entity.id==='USR-0001')return toast('A conta administrativa principal não pode ser desativada nesta demonstração.','warn');
+    const next=entity.status==='Ativo'?'Inativo':'Ativo';
+    openConfirm(`${next==='Ativo'?'Ativar':'Desativar'} ${COLLECTION_TITLE[collection]}`,`Deseja definir ${entity.name} como ${next.toLowerCase()}? A alteração é apenas demonstrativa.`,()=>{
+      entity.status=next;
+      if(collection==='users')syncEntityFromUser(entity);else syncUserFromEntity(collection,entity);
+      log(`${entity.name}: situação alterada para ${next}.`);
+      render();toast('Situação atualizada.');
+    },next==='Ativo'?'Ativar':'Desativar');
+  }
+  function deleteUser(id){
+    const user=find('users',id);if(!user)return;
+    if(user.id==='USR-0001')return toast('A conta administrativa principal não pode ser excluída.','warn');
+    openConfirm('Excluir conta demonstrativa',`Excluir o acesso de ${user.name}? O eventual cadastro operacional vinculado será preservado; a exclusão não afeta atendimentos.`,()=>{
+      db.users=db.users.filter(u=>u.id!==id);
+      log(`Conta de acesso demonstrativa de ${user.name} excluída.`);render();toast('Conta demonstrativa excluída.');
+    },'Excluir conta');
+  }
+  function showAppointment(id){
+    const a=find('appointments',id);if(!a)return toast('Agendamento não encontrado.','warn');
+    openDialog('Detalhes do atendimento','ICON / AGENDA OPERACIONAL',`<div class="detail-appointment"><div class="detail-feature"><div><span class="eyebrow">${esc(a.id)}</span><h3>${esc(nameOf('patients',a.patientId))}</h3><p>${esc(nameOf('services',a.serviceId))}</p></div>${statusPill(a.status)}</div><div class="detail-grid"><div><small>Profissional responsável</small><strong>${esc(nameOf('professionals',a.professionalId))}</strong></div><div><small>Especialidade</small><strong>${esc(find('professionals',a.professionalId)?.specialty||'—')}</strong></div><div><small>Data</small><strong>${esc(dateBR(a.date))}</strong></div><div><small>Horário</small><strong>${esc(a.time)} · ${find('services',a.serviceId)?.duration||'—'} min</strong></div><div><small>Local</small><strong>${a.modality==='Online'?'Online':esc(nameOf('rooms',a.roomId))}</strong></div><div><small>Modalidade</small><strong>${esc(a.modality)}</strong></div></div></div><div class="dialog-actions"><button type="button" class="btn btn-outline" data-action="closeDialog">Fechar</button><button type="button" class="btn btn-primary" data-action="editAppointment" data-id="${esc(a.id)}">${I('edit')} Editar atendimento</button></div>`);
+  }
+  function cancelAppointment(id){const a=find('appointments',id);if(!a||a.status==='Cancelado')return;
+    openConfirm('Cancelar agendamento',`Cancelar o atendimento de ${nameOf('patients',a.patientId)} em ${dateBR(a.date)}, às ${a.time}? A ação pode ser revertida editando o registro.`,()=>{a.status='Cancelado';log(`Agendamento de ${nameOf('patients',a.patientId)} cancelado.`,true);render();toast('Agendamento cancelado.');},'Cancelar agendamento');
+  }
+  function downloadReport(){
+    const days=ui.report==='7d'?7:ui.report==='30d'?30:90;
+    const rows=allForPeriod(days);
+    const services=db.services.map(s=>({type:'Serviço',name:s.name,value:rows.filter(a=>a.serviceId===s.id&&a.status!=='Cancelado').length}));
+    const rooms=db.rooms.map(s=>({type:'Sala',name:s.name,value:rows.filter(a=>a.roomId===s.id&&a.status!=='Cancelado'&&a.modality==='Presencial').length}));
+    const aggregates=[{type:'Resumo',name:'Atendimentos',value:rows.filter(a=>a.status!=='Cancelado').length},{type:'Resumo',name:'Cancelamentos',value:rows.filter(a=>a.status==='Cancelado').length},{type:'Resumo',name:'Pacientes cadastrados',value:db.patients.length},...services,...rooms];
+    // Impede fórmulas CSV caso algum texto demonstrativo seja alterado.
+    const csvCell=v=>`"${String(v).replace(/^[=+\-@\t\r]/,m=>`'${m}`).replace(/"/g,'""')}"`;
+    const csv='\uFEFF'+[['Tipo','Indicador','Quantidade'],...aggregates.map(x=>[x.type,x.name,x.value])].map(row=>row.map(csvCell).join(';')).join('\r\n');
+    const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`ICON-relatorio-operacional-${today()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('CSV agregado preparado.');
+  }
+  function refreshNotif(){
+    const unread=db.notifications.filter(n=>!n.read).length;
+    $('#notification-dot').hidden=!unread;
+    $('#notification-toggle').setAttribute('aria-label',`Notificações: ${unread} não lidas`);
+    if(!$('#notification-popover').hidden)renderNotifications();
+  }
+  function renderNotifications(){
+    const pop=$('#notification-popover');const unread=db.notifications.filter(x=>!x.read).length;
+    pop.innerHTML=`<div class="notification-head"><strong>Notificações</strong><span>${unread} não lida(s)</span></div><div class="notification-list">${db.notifications.slice(0,7).map(n=>`<button type="button" class="notification-row ${n.read?'is-read':''}" data-notification="${esc(n.id)}"><i></i><span><strong>${esc(n.title)}</strong><small>${esc(n.message)}</small><em>${esc(shortDate(n.date))}</em></span></button>`).join('')||'<p class="empty-inline">Nenhuma notificação.</p>'}</div><button class="notification-all" type="button" data-action="markNotifications">Marcar todas como lidas ${I('check')}</button>`;
+  }
+  function closeNotifications(){$('#notification-popover').hidden=true;$('#notification-toggle').setAttribute('aria-expanded','false');}
+  function openNotifications(){const p=$('#notification-popover');p.hidden=!p.hidden;$('#notification-toggle').setAttribute('aria-expanded',String(!p.hidden));if(!p.hidden)renderNotifications();}
+  function closeMenu(){shell.classList.remove('mobile-open');overlay.hidden=true;$('#mobile-toggle').setAttribute('aria-expanded','false');}
+  function openMenu(){shell.classList.add('mobile-open');overlay.hidden=false;$('#mobile-toggle').setAttribute('aria-expanded','true');}
+  function resetUI(){ui.week=mon(today());ui.day=today();ui.query='';ui.filter='Todos';ui.page=1;ui.appointmentPeriod='week';}
+  function handleAction(button){
+    const {action,id,collection,viewto}=button.dataset;
+    if(viewto){switchView(viewto,true);return;}
+    switch(action){
+      case 'newEntity':openForm(collection);break;
+      case 'editEntity':openForm(collection,id);break;
+      case 'toggleEntity':toggleEntity(collection,id);break;
+      case 'deleteUser':deleteUser(id);break;
+      case 'newAppointment':openForm('appointments');break;
+      case 'detailAppointment':showAppointment(id);break;
+      case 'editAppointment':closeDialog();openForm('appointments',id);break;
+      case 'cancelAppointment':cancelAppointment(id);break;
+      case 'goAppointments':resetUI();switchView('appointments',true);break;
+      case 'goReports':switchView('reports',true);break;
+      case 'exportReport':downloadReport();break;
+      case 'thisWeek':ui.week=mon(today());ui.day=today();render();break;
+      case 'markNotifications':db.notifications.forEach(x=>x.read=true);persist();refreshNotif();renderNotifications();toast('Notificações marcadas como lidas.');break;
+      case 'closeDialog':closeDialog();break;
+      case 'confirmDialog':{const callback=ui.modalSubmit;closeDialog();if(callback)callback();break;}
+      case 'resetData':openConfirm('Restaurar base acadêmica','Todas as alterações locais serão apagadas e os registros fictícios originais serão restaurados. Nenhum dado é enviado a servidor.',()=>{db=seed();resetUI();ui.compact=false;persist();render();toast('Dados demonstrativos restaurados.');},'Restaurar dados');break;
+    }
+  }
+  function saveSettings(event){event.preventDefault();const f=event.target;const d=Object.fromEntries(new FormData(f).entries());if(!EMAIL_RE.test(d.email)||!d.institution)return toast('Verifique o nome e o e-mail institucional.','warn');if(minute(d.start)>=minute(d.end))return toast('O horário de fechamento deve ser posterior ao de abertura.','warn');Object.assign(db.settings,{institution:d.institution.trim(),email:d.email.trim(),phone:(d.phone||'').trim(),address:(d.address||'').trim(),start:d.start,end:d.end,compact:f.elements.compact.checked,notifications:f.elements.notifications.checked});ui.compact=db.settings.compact;log('Preferências locais atualizadas.');render();toast('Preferências demonstrativas salvas.');}
+  // Navegação SPA sem atualizar o navegador.
+  $('#side-menu').addEventListener('click',event=>{const b=event.target.closest('[data-view]');if(b){ui.page=1;resetUI();switchView(b.dataset.view,true);}});
+  root.addEventListener('click',event=>{
+    const button=event.target.closest('button');if(!button)return;
+    if(button.dataset.action||button.dataset.viewto)return handleAction(button);
+    if(button.dataset.page){ui.page=Number(button.dataset.page);render();return;}
+    if(button.dataset.sort){const f=button.dataset.sort;ui.direction=ui.sort===f?-ui.direction:1;ui.sort=f;ui.page=1;render();return;}
+    if(button.dataset.chart){ui.chart=button.dataset.chart;render();return;}
+    if(button.dataset.report){ui.report=button.dataset.report;render();return;}
+    if(button.dataset.week){ui.week=moveDay(ui.week,Number(button.dataset.week));render();return;}
+    if(button.dataset.appointmentMode){ui.appointmentMode=button.dataset.appointmentMode;render();return;}
+  });
+  root.addEventListener('input',event=>{
+    const input=event.target.closest('[data-search]');if(!input)return;
+    ui.query=input.value;ui.page=1;
+    const pos=input.selectionStart;
+    render();
+    const replacement=$('[data-search]',root);if(replacement){replacement.focus();if(pos!==null)replacement.setSelectionRange(pos,pos);}
+  });
+  root.addEventListener('change',event=>{
+    if(event.target.matches('[data-filter]')){ui.filter=event.target.value;ui.page=1;render();}
+    if(event.target.matches('[data-appointment-period]')){ui.appointmentPeriod=event.target.value;ui.page=1;if(ui.appointmentPeriod==='day')ui.day=today();render();}
+  });
+  root.addEventListener('submit',event=>{if(event.target.id==='settings-form')saveSettings(event);});
+  dlgContent.addEventListener('click',event=>{const btn=event.target.closest('[data-action]');if(btn)handleAction(btn);});
+  dlgContent.addEventListener('change',event=>{if(event.target.name==='modality')syncRoomVisibility();});
+  dlgContent.addEventListener('submit',event=>{if(event.target.id==='entity-form')saveEntity(event);});
+  $('#dialog-close').addEventListener('click',closeDialog);
+  dialog.addEventListener('close',()=>{ui.modalSubmit=null;});
+  $('#notification-toggle').addEventListener('click',openNotifications);
+  $('#notification-popover').addEventListener('click',event=>{const n=event.target.closest('[data-notification]');if(n){const item=db.notifications.find(x=>x.id===n.dataset.notification);if(item){item.read=true;persist();refreshNotif();renderNotifications();}return;}const button=event.target.closest('[data-action]');if(button)handleAction(button);});
+  document.addEventListener('click',event=>{if(!event.target.closest('.notification-wrap'))closeNotifications();});
+  $('#account-button').addEventListener('click',()=>switchView('settings',true));
+  $('#desktop-toggle').addEventListener('click',()=>{ui.compact=!ui.compact;db.settings.compact=ui.compact;persist();shell.classList.toggle('collapsed',ui.compact);$('#desktop-toggle').setAttribute('aria-pressed',String(ui.compact));});
+  $('#mobile-toggle').addEventListener('click',()=>shell.classList.contains('mobile-open')?closeMenu():openMenu());
+  overlay.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeMenu();closeNotifications();}});
+  // No celular, tocar no ícone de lupa expande o campo antes de pesquisar.
+  $('#global-search-form').addEventListener('click',event=>{if(window.innerWidth<=680 && event.target!==$('#global-search-input'))$('#global-search-input').focus();});
+  $('#global-search-form').addEventListener('submit',event=>{event.preventDefault();const q=$('#global-search-input').value.trim();if(!q)return;ui.page=1;switchView('users',true);ui.query=q;render();$('#global-search-input').value='';});
+  resetUI();
+  render();
+})();
+
+  </script>
 </body>
-
 </html>
