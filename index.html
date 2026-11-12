@@ -203,6 +203,62 @@
   <!-- Dialog acessível com Escape, foco e fechamento no backdrop. -->
   <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="Fechar janela">×</button><span class="eyebrow eyebrow-dark">ICON / INSTITUCIONAL</span><h2 id="dialog-title"></h2><div id="dialog-content"></div><button type="button" class="btn btn-dark dialog-ok">Entendi <span aria-hidden="true">↗</span></button></dialog>
 
+
+  <!-- ICON / Portal acadêmico: demonstração sem backend ou autenticação real. -->
+  <dialog class="portal-auth-dialog" id="portal-auth-dialog" aria-labelledby="portal-auth-heading">
+    <div class="portal-auth" id="portal-auth">
+      <button class="portal-auth-close" type="button" id="portal-auth-close" aria-label="Fechar acesso ao portal">×</button>
+      <section class="portal-auth-intro" aria-label="Apresentação do portal">
+        <div class="portal-auth-logo"><span class="portal-auth-glyph" aria-hidden="true">✧</span><span>ICON <small>INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</small></span></div>
+        <div class="portal-auth-intro-body">
+          <span class="portal-auth-kicker">PORTAL INSTITUCIONAL / DEMONSTRAÇÃO</span>
+          <h2>Bem-vindo <em>de volta.</em></h2>
+          <p>Um espaço para acompanhar atendimentos, organizar rotinas e conhecer os recursos do ICON.</p>
+          <div class="portal-auth-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="portal-auth-switch">
+          <p id="portal-switch-description">Ainda não possui acesso?</p>
+          <button type="button" id="portal-switch-mode" class="portal-switch-button" aria-controls="portal-auth">Realizar cadastro <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+      <section class="portal-auth-panel" aria-label="Acesso demonstrativo">
+        <div class="portal-login-panel" id="portal-login-panel">
+          <span class="portal-auth-kicker portal-dark-kicker">ACESSO À PLATAFORMA</span>
+          <h2 id="portal-auth-heading">Entrar na sua conta</h2>
+          <p class="portal-auth-subtitle">Escolha um perfil demonstrativo para abrir o respectivo painel.</p>
+          <form id="portal-login-form" class="portal-auth-form" novalidate>
+            <label for="portal-username">Usuário</label>
+            <input id="portal-username" name="username" type="text" autocomplete="username" placeholder="admin, medico, paciente ou secretario" required>
+            <label for="portal-password">Senha</label>
+            <div class="portal-password-field"><input id="portal-password" name="password" type="password" autocomplete="current-password" placeholder="Digite a senha de demonstração" required><button type="button" class="portal-show-password" aria-label="Mostrar senha" aria-pressed="false" data-toggle-password="portal-password">Mostrar</button></div>
+            <p class="portal-form-feedback" id="portal-login-feedback" role="alert" aria-live="polite"></p>
+            <button type="submit" class="portal-auth-submit">Acessar meu painel <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="portal-demo-credentials"><strong>Acessos para teste</strong><span>admin · medico · paciente · secretario</span><span>Senha para todos: <b>1234</b></span></div>
+          <p class="portal-auth-disclaimer">Ambiente acadêmico fictício. Este acesso não protege informações nem representa autenticação real.</p>
+          <button type="button" class="portal-mobile-switch" data-portal-mode="register">Ainda não tenho acesso · Realizar cadastro →</button>
+        </div>
+        <div class="portal-register-panel" id="portal-register-panel" hidden>
+          <span class="portal-auth-kicker portal-dark-kicker">NOVA SOLICITAÇÃO</span>
+          <h2 id="portal-register-heading">Realizar cadastro</h2>
+          <p class="portal-auth-subtitle">Conheça a experiência de registro. Nenhuma conta real será criada.</p>
+          <form id="portal-register-form" class="portal-auth-form" novalidate>
+            <label for="portal-register-name">Nome completo</label>
+            <input id="portal-register-name" name="name" type="text" autocomplete="off" placeholder="Nome fictício" maxlength="90" required>
+            <label for="portal-register-email">E-mail demonstrativo</label>
+            <input id="portal-register-email" name="email" type="email" autocomplete="off" placeholder="exemplo@icon.test" maxlength="100" required>
+            <label for="portal-register-profile">Perfil demonstrativo</label>
+            <select id="portal-register-profile" name="profile" required><option value="paciente">Paciente</option><option value="medico">Profissional</option><option value="secretario">Secretário</option><option value="admin">Administrador</option></select>
+            <p class="portal-form-feedback" id="portal-register-feedback" role="status" aria-live="polite"></p>
+            <button type="submit" class="portal-auth-submit">Concluir demonstração <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="portal-auth-disclaimer">Cadastro ilustrativo: os dados não são enviados nem armazenados. Para entrar, utilize um dos quatro usuários de teste.</p>
+          <button type="button" class="portal-mobile-switch" data-portal-mode="login">Já tenho acesso · Fazer login →</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
   <script>
   (() => {
     'use strict';
@@ -301,7 +357,79 @@
       $('.dialog-close').focus();
     }
     $$('[data-service]').forEach(btn => btn.addEventListener('click', () => { const info = serviceInfo[Number(btn.dataset.service)]; if (info) openDialog(...info); }));
-    $$('[data-modal="portal"]').forEach(btn => btn.addEventListener('click', () => { closeMenu(); openDialog('Portal institucional', 'Esta página é parte de um projeto acadêmico fictício. A autenticação e o agendamento real não estão disponíveis nesta demonstração.'); }));
+    // Janela central de login/cadastro: transição deslizante e retorno de foco.
+    const portalDialog = $('#portal-auth-dialog');
+    const portalContainer = $('#portal-auth');
+    const loginPanel = $('#portal-login-panel');
+    const registerPanel = $('#portal-register-panel');
+    const portalSwitch = $('#portal-switch-mode');
+    const switchDescription = $('#portal-switch-description');
+    let focusBeforePortal = null;
+    let portalMode = 'login';
+    function setPortalMode(mode, focus = true) {
+      portalMode = mode === 'register' ? 'register' : 'login';
+      const register = portalMode === 'register';
+      portalContainer.classList.toggle('is-register', register);
+      loginPanel.hidden = register;
+      registerPanel.hidden = !register;
+      portalSwitch.innerHTML = register ? 'Fazer login <span aria-hidden="true">↗</span>' : 'Realizar cadastro <span aria-hidden="true">↗</span>';
+      switchDescription.textContent = register ? 'Já possui uma conta?' : 'Ainda não possui acesso?';
+      portalDialog.setAttribute('aria-labelledby', register ? 'portal-register-heading' : 'portal-auth-heading');
+      $('#portal-login-feedback').textContent = '';
+      $('#portal-register-feedback').textContent = '';
+      if (focus) (register ? $('#portal-register-name') : $('#portal-username')).focus();
+    }
+    function openPortal() {
+      closeMenu();
+      focusBeforePortal = document.activeElement;
+      setPortalMode('login', false);
+      portalDialog.showModal();
+      $('#portal-username').focus();
+    }
+    $('[data-modal="portal"]').forEach(btn => btn.addEventListener('click', openPortal));
+    portalSwitch.addEventListener('click', () => setPortalMode(portalMode === 'login' ? 'register' : 'login'));
+    $('[data-portal-mode]').forEach(btn => btn.addEventListener('click', () => setPortalMode(btn.dataset.portalMode)));
+    $('#portal-auth-close').addEventListener('click', () => portalDialog.close());
+    portalDialog.addEventListener('click', e => { if (e.target === portalDialog) portalDialog.close(); });
+    portalDialog.addEventListener('close', () => { if (focusBeforePortal && focusBeforePortal.isConnected) focusBeforePortal.focus(); });
+    $('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => {
+      const field = document.getElementById(btn.dataset.togglePassword);
+      const visible = field.type === 'password';
+      field.type = visible ? 'text' : 'password';
+      btn.textContent = visible ? 'Ocultar' : 'Mostrar';
+      btn.setAttribute('aria-pressed', String(visible));
+    }));
+    // APENAS DEMONSTRAÇÃO: credenciais públicas no navegador, sem sessão nem controle de acesso.
+    // Não insira dados reais nos dashboards: qualquer visitante pode abrir estas páginas.
+    const demoRoutes = Object.freeze({
+      admin: 'dashboard_administrador.html',
+      medico: 'dashboard_medico.html',
+      paciente: 'dashboard-cliente.html',
+      secretario: 'dashboard-secretario.html'
+    });
+    $('#portal-login-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const user = $('#portal-username').value.trim().toLowerCase();
+      const password = $('#portal-password').value.trim();
+      const feedback = $('#portal-login-feedback');
+      if (!user || !password) { feedback.textContent = 'Informe o usuário e a senha de demonstração.'; return; }
+      if (Object.prototype.hasOwnProperty.call(demoRoutes, user) && password === '1234') {
+        feedback.textContent = 'Acesso demonstrativo reconhecido. Abrindo o painel…';
+        window.location.assign(new URL(demoRoutes[user], document.baseURI).href);
+      } else {
+        feedback.textContent = 'Usuário ou senha de teste incorretos. Utilize um dos quatro perfis e a senha 1234.';
+        $('#portal-password').value = '';
+        $('#portal-password').focus();
+      }
+    });
+    $('#portal-register-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const feedback = $('#portal-register-feedback');
+      feedback.textContent = 'Cadastro demonstrativo concluído. Nenhuma conta foi criada ou armazenada. Utilize os usuários de teste para entrar.';
+      form.reset();
+    });
     function closeDialog() { if (dialog.open) dialog.close(); }
     $('.dialog-close').addEventListener('click', closeDialog);
     $('.dialog-ok').addEventListener('click', closeDialog);
