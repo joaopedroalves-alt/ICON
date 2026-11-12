@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard-medico.css">
 
+  <link rel="stylesheet" href="icon-integracao.css">
+  <script src="icon-integracao.js"></script>
 </head>
 <body>
   <!-- Sprites SVG locais: a navegação funciona sem biblioteca de ícones. -->
@@ -206,6 +208,9 @@
   let activePatientId=null,patientTab='cadastro';
   const main=$('#main-content'),modal=$('#app-modal'),modalContent=$('#modal-content');
   function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){toast('O navegador não permitiu salvar alterações. Elas durarão apenas nesta sessão.',true);}}
+  /* Integração acadêmica: importa compromissos fictícios do fluxo compartilhado. */
+  if (window.ICONFluxo?.sync('medico',state)) persist();
+  window.addEventListener('icon-fluxo-update',()=>{if(window.ICONFluxo?.sync('medico',state)){persist();redraw();}});
   function patient(id){return state.patients.find(p=>p.id===id);}
   function patientName(id){return patient(id)?.name ?? 'Paciente removido';}
   function nextPatientId(){return `P-${String(Math.max(0,...state.patients.map(x=>Number(x.id.slice(2))||0))+1).padStart(3,'0')}`;}
