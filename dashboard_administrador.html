@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard-admin.css">
+  <link rel="stylesheet" href="icon-integracao.css">
+  <script src="icon-integracao.js"></script>
 </head>
 <body>
   <!-- Ícones próprios em SVG: não há dependência de framework de interface. -->
@@ -187,6 +189,9 @@
   const sidebar=$('#sidebar');
   const shell=$('#shell');
   function persist() {try{localStorage.setItem(key,JSON.stringify(db));}catch(e){toast('Não foi possível salvar localmente. Evite armazenar dados reais.','warn');}}
+  /* Integração acadêmica: importa compromissos fictícios do fluxo compartilhado. */
+  if (window.ICONFluxo?.sync('admin',db)) persist();
+  window.addEventListener('icon-fluxo-update',()=>{if(window.ICONFluxo?.sync('admin',db)){persist();render();}});
   function find(collection,id) { return db[collection].find(x=>x.id===id); }
   const nameOf=(collection,id)=>find(collection,id)?.name||'Registro removido';
   const statusPill=(s)=>`<span class="pill ${/Ativo|Confirmado|Concluído|Disponível/.test(s)?'ok':/Cancelado|Inativo/.test(s)?'muted':/Pendente|Agendado/.test(s)?'warning':'info'}"><i></i>${esc(s)}</span>`;
