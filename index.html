@@ -386,13 +386,13 @@
       portalDialog.showModal();
       $('#portal-username').focus();
     }
-    $('[data-modal="portal"]').forEach(btn => btn.addEventListener('click', openPortal));
+    $$('[data-modal="portal"]').forEach(btn => btn.addEventListener('click', openPortal));
     portalSwitch.addEventListener('click', () => setPortalMode(portalMode === 'login' ? 'register' : 'login'));
-    $('[data-portal-mode]').forEach(btn => btn.addEventListener('click', () => setPortalMode(btn.dataset.portalMode)));
+    $$('[data-portal-mode]').forEach(btn => btn.addEventListener('click', () => setPortalMode(btn.dataset.portalMode)));
     $('#portal-auth-close').addEventListener('click', () => portalDialog.close());
     portalDialog.addEventListener('click', e => { if (e.target === portalDialog) portalDialog.close(); });
     portalDialog.addEventListener('close', () => { if (focusBeforePortal && focusBeforePortal.isConnected) focusBeforePortal.focus(); });
-    $('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => {
+    $$('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => {
       const field = document.getElementById(btn.dataset.togglePassword);
       const visible = field.type === 'password';
       field.type = visible ? 'text' : 'password';
