@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard-cliente.css">
+  <link rel="stylesheet" href="icon-integracao.css">
+  <script src="icon-integracao.js"></script>
 </head>
 <body>
 <a href="#principal" class="skip">Ir para o conteúdo principal</a>
@@ -140,6 +142,9 @@ function load(){try{const v=JSON.parse(localStorage.getItem(key));if(v&&v.profil
 let state=load(),page='inicio',tabAppointments='proximos',searchAppointment='',docCategory='Todas',searchDoc='',requestStatus='Todas',activeModal=false,lastFocus=null,toastTimeouts=[];
 const modalLayer=$('#modal-layer'),modal=$('#modal'),popover=$('#notification-pop');
 function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch(e){toast('Não foi possível salvar nesta sessão. Os dados são apenas demonstrativos.',true);}}
+  /* Integração acadêmica: importa compromissos fictícios do fluxo compartilhado. */
+  if (window.ICONFluxo?.sync('paciente',state)) save();
+  window.addEventListener('icon-fluxo-update',()=>{if(window.ICONFluxo?.sync('paciente',state)){save();draw();}});
 function nameOf(id){return professionals.find(x=>x.id===id)?.name||'Profissional fictício';}
 const formatted=date=>{if(!date)return '—';const [y,m,d]=date.split('-');return `${d}/${m}/${y}`;};
 const longDate=date=>new Date(date+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
