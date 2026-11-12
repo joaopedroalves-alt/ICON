@@ -1,46 +1,574 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17465B">
+  <meta name="description" content="Ambiente demonstrativo do profissional — ICON Instituto de Cognição e Neuropsicologia.">
+  <title>Área do profissional | ICON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard-medico.css">
 
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <title>ICON - Área do Profissional</title>
 </head>
-
 <body>
+  <!-- Sprites SVG locais: a navegação funciona sem biblioteca de ícones. -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.3"/><rect x="14" y="3" width="7" height="7" rx="1.3"/><rect x="3" y="14" width="7" height="7" rx="1.3"/><rect x="14" y="14" width="7" height="7" rx="1.3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3Zm13-14a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3.5 3.5 0 0 0-6.5-1.5 3.5 3.5 0 0 0-2 6A4 4 0 0 0 5 16.8a3.5 3.5 0 0 0 7 .2V5Zm0 0a3.5 3.5 0 0 1 6.5-1.5 3.5 3.5 0 0 1 2 6A4 4 0 0 1 19 16.8a3.5 3.5 0 0 1-7 .2V5ZM8 8c-3 0-3 4-1 5m9-5c3 0 3 4 1 5M12 5v14"/></symbol>
+    <symbol id="i-file-heart" viewBox="0 0 24 24"><path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10L13 3Zm0 0v7h7"/><path d="m12 17-3-2.6a1.8 1.8 0 0 1 2.8-2.2l.2.3.2-.3a1.8 1.8 0 0 1 2.8 2.2Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10l-7-7Zm0 0v7h7M8 15h8M8 18h6"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2H4Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 3h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 16-1 5 5-1L20 8a3 3 0 0 0-4-4L4 16Zm10-10 4 4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m-9 0 1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18M7 12h10m-7 7h4"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="M8 4v16m-4-4 4 4 4-4m4 4V4m-4 4 4-4 4 4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h4l3-8 5 16 3-8h5"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m10 2-.6 2.4-2 1-2.3-1.1-2 3.5 1.8 1.7v2.3L3.1 13.5l2 3.5 2.3-1.1 2 1L10 19.5h4l.6-2.5 2-1 2.3 1.1 2-3.5-1.8-1.7V9.6L21 7.9l-2-3.5-2.3 1.1-2-1L14 2h-4Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 6-4 9-9 11-5-2-9-5-9-11V6l9-4Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  </svg>
 
-    <div class="header-intranet">
+  <div class="app-shell" id="app-shell">
+    <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Menu da área do profissional">
+      <a class="brand" href="index.html" aria-label="ICON — voltar à página institucional">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>ICON<span class="brand-dot">.</span></strong><small>NEUROPSICOLOGIA</small></span>
+      </a>
+      <div class="workspace-label"><span class="workspace-line"></span> ESPAÇO CLÍNICO <span class="workspace-line"></span></div>
+      <nav class="side-navigation" id="side-navigation" aria-label="Navegação principal">
+        <div class="nav-caption">ÁREA DE TRABALHO</div>
+        <button type="button" class="nav-item active" data-view="overview" aria-current="page"><svg><use href="#i-grid"/></svg><span>Visão geral</span></button>
+        <button type="button" class="nav-item" data-view="agenda"><svg><use href="#i-calendar"/></svg><span>Agenda</span></button>
+        <button type="button" class="nav-item" data-view="patients"><svg><use href="#i-users"/></svg><span>Pacientes</span></button>
+        <button type="button" class="nav-item" data-view="evaluations"><svg><use href="#i-brain"/></svg><span>Avaliações</span></button>
+        <button type="button" class="nav-item" data-view="records"><svg><use href="#i-file-heart"/></svg><span>Prontuários</span></button>
+        <div class="nav-caption nav-caption-secondary">DOCUMENTAÇÃO</div>
+        <button type="button" class="nav-item" data-view="reports"><svg><use href="#i-file"/></svg><span>Laudos e relatórios</span></button>
+        <button type="button" class="nav-item" data-view="documents"><svg><use href="#i-folder"/></svg><span>Documentos</span></button>
+        <div class="nav-caption nav-caption-secondary">MINHA CONTA</div>
+        <button type="button" class="nav-item" data-view="notifications"><svg><use href="#i-bell"/></svg><span>Notificações</span><span class="nav-count" id="sidebar-notification-count">0</span></button>
+        <button type="button" class="nav-item" data-view="profile"><svg><use href="#i-user"/></svg><span>Meu perfil</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-insight"><span class="mini-insight-icon"><svg><use href="#i-activity"/></svg></span><strong>Um cuidado mais inteligente.</strong><p>Ciência, atenção e precisão em cada etapa.</p><div class="mini-orbit"></div></div>
+        <div class="sidebar-footer"><span class="status-dot"></span> Ambiente demonstrativo <span>v1.0</span></div>
+      </div>
+    </aside>
 
-        <div class="subheader-intranet profissional">
-
-            <img src="imagens/logotexto.png" class="logotexto-intranet" alt="ICON">
-
-            <div class="perfil-intranet">
-                <span>Profissional</span>
-                <img src="imagens/fotodeperfil.png" alt="Foto de perfil">
-            </div>
-
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="icon-button menu-toggle" id="menu-toggle" aria-label="Abrir menu lateral" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+          <div class="breadcrumb"><span>Área profissional</span><svg><use href="#i-chevron"/></svg><strong id="topbar-current-view">Visão geral</strong></div>
         </div>
-
-        <div class="menu-intranet profissional">
-
-            <a href="#">Início</a>
-            <a href="#">Agenda</a>
-            <a href="#">Pacientes</a>
-            <a href="#">Avaliações</a>
-            <a href="#">Laudos</a>
-            <a href="#">Documentos</a>
-            <a href="#">Meu perfil</a>
-
+        <div class="topbar-right">
+          <form id="global-search-form" class="global-search" role="search"><svg><use href="#i-search"/></svg><label for="global-search" class="sr-only">Buscar paciente</label><input id="global-search" type="search" placeholder="Buscar paciente..." autocomplete="off"><kbd>↵</kbd></form>
+          <span class="topbar-divider"></span>
+          <button type="button" id="notification-shortcut" class="icon-button notification-button" aria-label="Abrir notificações"><svg><use href="#i-bell"/></svg><span id="topbar-notification-count" class="notification-indicator" hidden></span></button>
+          <button type="button" class="user-shortcut" id="profile-shortcut" aria-label="Abrir meu perfil"><span class="avatar avatar-header" id="header-avatar">MS</span><span class="user-shortcut-copy"><strong id="header-name">Dra. Mariana Silva</strong><small id="header-role">Neuropsicóloga</small></span><svg><use href="#i-chevron"/></svg></button>
         </div>
+      </header>
 
+      <main id="main-content" class="main-content" tabindex="-1" aria-live="off">
+        <!-- Conteúdo de cada seção inserido via dashboard-medico.js, sem recarga. -->
+      </main>
+      <footer class="app-footer"><span>ICON © 2026 · Painel do profissional</span><span><svg><use href="#i-info"/></svg> Projeto acadêmico · Dados inteiramente fictícios · Não inserir dados reais</span></footer>
     </div>
+  </div>
 
+  <!-- <dialog> nativo: modal acessível por teclado, Escape e retenção de foco. -->
+  <dialog id="app-modal" class="app-modal" aria-labelledby="modal-title">
+    <div class="modal-heading"><div><span class="eyebrow" id="modal-eyebrow">ICON / ÁREA CLÍNICA</span><h2 id="modal-title">Detalhes</h2></div><button type="button" class="icon-button" id="modal-close" aria-label="Fechar janela"><svg><use href="#i-close"/></svg></button></div>
+    <div class="modal-content" id="modal-content"></div>
+  </dialog>
+  <div class="toast-stack" id="toast-stack" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">O painel demonstrativo do ICON precisa de JavaScript ativado para funcionar.</div></noscript>
+  <!-- Script da demonstração integrado: basta publicar HTML + CSS. -->
+  <script>
+/* ========================================================================
+  ICON · Dashboard do Profissional — demonstração acadêmica
+  HTML/CSS/JS puros; localStorage NÃO é armazenamento clínico seguro.
+  NÃO inserir dados reais de pacientes, documentos ou prontuários.
+  Toda informação inicial é fictícia. Sem autenticação ou backend.
+  ======================================================================== */
+(() => {
+  'use strict';
+
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+  const icon = (name) => `<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+  const esc = (v = '') => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const STORAGE_KEY = 'icon.profissional.demo.v2';
+  const inputDate = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const dayOffset = (amount, initial = new Date()) => { const d = new Date(initial.getFullYear(),initial.getMonth(),initial.getDate()); d.setDate(d.getDate()+amount); return inputDate(d); };
+  const fromDate = (s) => { const [y,m,d] = String(s).split('-').map(Number); return new Date(y,m-1,d); };
+  const dateFmt = (s, o = {day:'2-digit',month:'short'}) => s ? new Intl.DateTimeFormat('pt-BR',o).format(fromDate(s)) : 'Não definido';
+  const longDate = (s) => dateFmt(s,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const fullDate = (s) => dateFmt(s,{day:'2-digit',month:'2-digit',year:'numeric'});
+  const weekStart = (s) => { const d=fromDate(s); d.setDate(d.getDate() - ((d.getDay()+6)%7)); return d; };
+  const startMinute = (s) => {const [h,m]=String(s).split(':').map(Number);return h*60+m;};
+  const initials = (name) => String(name).split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  const uid = (prefix) => `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
+  const clean = (value) => String(value ?? '').trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const VIEWS = {
+    overview:'Visão geral',agenda:'Agenda',patients:'Pacientes',evaluations:'Avaliações',
+    records:'Prontuários',reports:'Laudos e relatórios',documents:'Documentos',
+    notifications:'Notificações',profile:'Meu perfil'
+  };
+  const PATIENT_STATUS = ['Em acompanhamento','Em observação','Alta'];
+  const APPOINTMENT_STATUS = ['Agendado','Confirmado','Concluído','Cancelado'];
+  const EVAL_STATUS = ['Pendente','Em andamento','Concluída'];
+  const REPORT_STATUS = ['Pendente','Em elaboração','Concluído'];
+  const DOC_CATEGORIES = ['Relatórios','Laudos','Administrativo','Termos','Outros'];
+  const TYPES = ['Avaliação neuropsicológica','Psicoterapia','Avaliação cognitiva','Reabilitação cognitiva','Retorno clínico','Entrevista inicial'];
+
+  function seed() {
+    const today = dayOffset(0);
+    const ids = ['P-001','P-002','P-003','P-004','P-005','P-006','P-007','P-008'];
+    const names = ['Lucas Mendes','Beatriz Costa','Gabriel Santos','Ana Martins','Pedro Oliveira','Clara Rodrigues','Sofia Almeida','Rafael Nunes'];
+    const statuses = ['Em acompanhamento','Em acompanhamento','Em acompanhamento','Em acompanhamento','Em acompanhamento','Em observação','Alta','Alta'];
+    const patients = names.map((name,i)=>({id:ids[i],name,identifier:`ICON-${String(i+101).padStart(4,'0')}`,birth:`${1985+i*2}-0${i%9+1}-12`,phone:`(34) 99999-${String(1001+i).padStart(4,'0')}`,email:`paciente${i+1}@exemplo.com`,last:dayOffset(-2-i*3),next:i<5?today:'',status:statuses[i],adminNotes:'Cadastro fictício para demonstração acadêmica.'}));
+    const slots = [
+      ['08:00',0,'Avaliação neuropsicológica','Confirmado'],
+      ['09:00',1,'Psicoterapia','Confirmado'],
+      ['10:00',2,'Avaliação cognitiva','Agendado'],
+      ['11:00',3,'Retorno clínico','Agendado'],
+      ['13:00',4,'Entrevista inicial','Confirmado'],
+      ['14:00',0,'Reabilitação cognitiva','Agendado'],
+      ['15:00',1,'Psicoterapia','Agendado'],
+      ['16:00',2,'Avaliação neuropsicológica','Confirmado']
+    ];
+    const appointments=slots.map(([time,pidx,type,status],i)=>({id:`A-${101+i}`,patientId:ids[pidx],date:today,time,duration:50,type,status,notes:'Agendamento fictício para fins de demonstração.'}));
+    const evaluations = [
+      {id:'E-101',patientId:'P-001',name:'Avaliação neuropsicológica',start:dayOffset(-8),status:'Pendente',professional:'Dra. Mariana Silva',notes:'Aguardando organização das etapas de avaliação.'},
+      {id:'E-102',patientId:'P-003',name:'Avaliação cognitiva',start:dayOffset(-5),status:'Pendente',professional:'Dra. Mariana Silva',notes:'Agendamento inicial registrado.'},
+      {id:'E-103',patientId:'P-004',name:'Avaliação neuropsicológica',start:dayOffset(-2),status:'Pendente',professional:'Dra. Mariana Silva',notes:'Revisão administrativa pendente.'},
+      {id:'E-104',patientId:'P-002',name:'Avaliação de acompanhamento',start:dayOffset(-20),status:'Em andamento',professional:'Dra. Mariana Silva',notes:'Procedimento demonstrativo em andamento.'},
+      {id:'E-105',patientId:'P-005',name:'Avaliação cognitiva',start:dayOffset(-45),status:'Concluída',professional:'Dra. Mariana Silva',notes:'Exemplo concluído, sem informações de instrumentos.'}
+    ];
+    const reports = [
+      {id:'R-101',patientId:'P-001',name:'Relatório de acompanhamento',kind:'Relatório',created:dayOffset(-3),status:'Pendente',body:'Documento demonstrativo. Registrar aqui somente texto fictício.'},
+      {id:'R-102',patientId:'P-004',name:'Laudo técnico demonstrativo',kind:'Laudo',created:dayOffset(-1),status:'Pendente',body:'Exemplo acadêmico. Não representa uma avaliação clínica real.'},
+      {id:'R-103',patientId:'P-002',name:'Relatório evolutivo',kind:'Relatório',created:dayOffset(-10),status:'Em elaboração',body:'Síntese fictícia de acompanhamento, sem diagnóstico.'},
+      {id:'R-104',patientId:'P-005',name:'Declaração demonstrativa',kind:'Relatório',created:dayOffset(-19),status:'Concluído',body:'Exemplo de documento concluído. Sem valor clínico ou legal.'}
+    ];
+    const documents = [
+      ['D-101','Ficha de acolhimento fictícia','Administrativo','P-001',-8],
+      ['D-102','Termo de ciência demonstrativo','Termos','P-002',-7],
+      ['D-103','Relatório de acompanhamento fictício','Relatórios','P-005',-14],
+      ['D-104','Laudo ilustrativo — sem validade','Laudos','P-005',-20],
+      ['D-105','Registro administrativo de atendimento','Administrativo','P-003',-3],
+      ['D-106','Material de orientação fictício','Outros','P-004',-2],
+      ['D-107','Termo de atendimento demonstrativo','Termos','P-001',-1]
+    ].map(([id,name,category,patientId,offset])=>({id,name,category,patientId,date:dayOffset(offset),description:'Metadado fictício. Nenhum arquivo real está anexado.'}));
+    const notifications = [
+      ['N-101','Novo agendamento','Uma consulta de avaliação foi incluída na agenda de hoje.',today,'calendar'],
+      ['N-102','Atendimento próximo','Revise os próximos horários da agenda demonstrativa.',today,'clock'],
+      ['N-103','Avaliações pendentes','Existem três avaliações aguardando atualização.',dayOffset(-1),'brain'],
+      ['N-104','Relatórios para concluir','Dois documentos estão pendentes de elaboração.',dayOffset(-2),'file']
+    ].map(([id,title,message,date,iconName])=>({id,title,message,date,iconName,read:false}));
+    const records = ids.map((patientId,i)=>({id:`H-${101+i}`,patientId,entries:[{date:dayOffset(-2-i*3),title:'Registro evolutivo demonstrativo',note:'Acompanhamento simulado em ambiente acadêmico. Exemplo sem dados clínicos, diagnósticos ou informações pessoais reais.'}]}));
+    return {version:2,patients,appointments,evaluations,reports,documents,notifications,records,activity:[
+      {id:'ACT-1',text:'Agenda demonstrativa preparada para hoje.',date:today,icon:'calendar'},
+      {id:'ACT-2',text:'Relatório fictício atualizado.',date:dayOffset(-1),icon:'file'},
+      {id:'ACT-3',text:'Paciente demonstrativo em acompanhamento.',date:dayOffset(-2),icon:'users'}
+    ],profile:{name:'Dra. Mariana Silva',role:'Neuropsicóloga',registration:'CRP 00/000XX — fictício',email:'mariana.silva@icon.exemplo.com.br',phone:'(34) 3333-0000',schedule:'Segunda a sexta, 08h às 17h',bio:'Atuação ilustrativa em avaliação e acompanhamento cognitivo.'}};
+  }
+  function load() {
+    try {const parsed=JSON.parse(localStorage.getItem(STORAGE_KEY));if(parsed && parsed.version===2 && Array.isArray(parsed.patients) && Array.isArray(parsed.appointments) && Array.isArray(parsed.notifications))return parsed;}catch(e){console.warn('[ICON demo] Armazenamento local indisponível:',e);}
+    return seed();
+  }
+  let state=load();
+  let activeView='overview';
+  let agendaMode='day',agendaDate=dayOffset(0),patientSearch='',patientFilter='Todos',patientSort='name',evaluationFilter='Todas',reportFilter='Todos',docFilter='Todos',recordSearch='',notificationFilter='Todas';
+  let activePatientId=null,patientTab='cadastro';
+  const main=$('#main-content'),modal=$('#app-modal'),modalContent=$('#modal-content');
+  function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){toast('O navegador não permitiu salvar alterações. Elas durarão apenas nesta sessão.',true);}}
+  function patient(id){return state.patients.find(p=>p.id===id);}
+  function patientName(id){return patient(id)?.name ?? 'Paciente removido';}
+  function nextPatientId(){return `P-${String(Math.max(0,...state.patients.map(x=>Number(x.id.slice(2))||0))+1).padStart(3,'0')}`;}
+  function statusChip(status){let type='neutral';if(['Confirmado','Concluído','Concluída','Em acompanhamento','Lida'].includes(status))type='success';if(['Agendado','Em andamento','Em elaboração'].includes(status))type='info';if(['Pendente','Em observação'].includes(status))type='warning';if(['Cancelado'].includes(status))type='danger';return `<span class="chip ${type}">${esc(status)}</span>`;}
+  const option = (items,selected)=>items.map(x=>`<option value="${esc(x)}" ${x===selected?'selected':''}>${esc(x)}</option>`).join('');
+  const button = (name,label,cls='btn')=>`<button type="button" data-action="${name}" class="${cls}">${label}</button>`;
+  const personHTML = (p,subtitle='')=>`<span class="table-person"><span class="person-avatar c${(Number(p?.id?.slice(-1))%4)+1}">${esc(initials(p?.name || '--'))}</span><span><strong>${esc(p?.name || 'Paciente removido')}</strong><small>${esc(subtitle || p?.identifier || '')}</small></span></span>`;
+  const table = (heads,rows,empty='Nenhum registro encontrado.') => `<div class="data-table-wrap"><table class="data-table"><thead><tr>${heads.map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.join(''):`<tr><td colspan="${heads.length}"><div class="table-empty">${esc(empty)}</div></td></tr>`}</tbody></table></div>`;
+  const header=(eyebrow,title,desc,actions='')=>`<div class="page-header"><div><span class="eyebrow">${esc(eyebrow)}</span><h1>${esc(title)}</h1><p>${esc(desc)}</p></div>${actions?`<div class="page-actions">${actions}</div>`:''}</div>`;
+  const infoStrip=(text,warning=false)=>`<div class="note-strip ${warning?'warning':''}">${icon('info')}<span>${text}</span></div>`;
+  const empty=(title,message)=>`<div class="empty-state">${icon('folder')}<strong>${esc(title)}</strong><p>${esc(message)}</p></div>`;
+  function toast(message,error=false){const stack=$('#toast-stack');const item=document.createElement('div');item.className=`toast${error?' error':''}`;item.innerHTML=`${icon(error?'alert':'check')}<span>${esc(message)}</span>`;stack.appendChild(item);setTimeout(()=>item.remove(),4400);}
+  function recordActivity(text,ic='activity'){state.activity.unshift({id:uid('ACT'),text,date:dayOffset(0),icon:ic});state.activity=state.activity.slice(0,14);}
+  function badgeCount(){const n=state.notifications.filter(a=>!a.read).length;$('#sidebar-notification-count').textContent=n;$('#topbar-notification-count').hidden=n===0;$('#notification-shortcut').setAttribute('aria-label',`Abrir notificações (${n} não lidas)`);}
+  function redraw(){
+    const views={overview:overviewHTML,agenda:agendaHTML,patients:patientsHTML,evaluations:evaluationsHTML,records:recordsHTML,reports:reportsHTML,documents:documentsHTML,notifications:notificationsHTML,profile:profileHTML};
+    main.innerHTML=views[activeView]();
+    $$('.nav-item').forEach(b=>{const is=b.dataset.view===activeView;b.classList.toggle('active',is);if(is)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+    $('#topbar-current-view').textContent=VIEWS[activeView];
+    $('#header-name').textContent=state.profile.name;
+    $('#header-role').textContent=state.profile.role;
+    $('#header-avatar').textContent=initials(state.profile.name);
+    badgeCount();
+  }
+  function navigate(to){if(!VIEWS[to])return;activeView=to;redraw();main.focus({preventScroll:true});window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});closeSidebar();}
+  function refreshPreserving(fieldSelector){const el=$(fieldSelector,main),selection=el?.selectionStart;redraw();const next=$(fieldSelector,main);if(next){next.focus();if(selection!==null && (next.type==='text'||next.type==='search'))next.setSelectionRange(selection,selection);}}
+  function openModal(title,markup,eyebrow='ICON / DEMONSTRAÇÃO'){modal.querySelector('#modal-title').textContent=title;modal.querySelector('#modal-eyebrow').textContent=eyebrow;modalContent.innerHTML=markup;if(!modal.open)modal.showModal();}
+  function closeModal(){if(modal.open)modal.close();}
+  function closeSidebar(){$('#sidebar').classList.remove('open');$('#sidebar-scrim').hidden=true;$('#menu-toggle').setAttribute('aria-expanded','false');}
+  function datesThisWeek(reference=agendaDate){const start=weekStart(reference);return Array.from({length:7},(_,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);return inputDate(d);});}
+  function appointmentOn(d){return state.appointments.filter(a=>a.date===d && a.status!=='Cancelado').sort((a,b)=>a.time.localeCompare(b.time));}
+
+  function metricCard(label,count,ic,type,extra){return `<div class="surface stat-card"><div class="stat-head"><span class="stat-icon ${type}">${icon(ic)}</span><span class="stat-trend">${esc(extra)}</span></div><div class="stat-value">${count}</div><div class="stat-label">${esc(label)}</div><div class="stat-decoration"></div></div>`;}
+  function brainArt(){return `<div class="hero-brain-art" aria-hidden="true"><span class="ring"></span><svg viewBox="0 0 240 240"><path d="M116 44C94 19 59 41 61 67c-25 0-42 34-19 49-21 18-7 55 20 52-4 29 40 47 54 16V44ZM124 44c22-25 57-3 55 23 25 0 42 34 19 49 21 18 7 55-20 52 4 29-40 47-54 16V44Z"/><path d="M113 56c-23-10-29 22-42 25m42 23c-21-17-45-7-49 9m52 27c-22 3-39 11-37 33m47-107c17-16 36 4 41 15m-41 29c27-13 40 2 46 20m-43 16c22 3 35 15 34 27M120 37v145"/><g fill="#9fe5d7" stroke="none"><circle cx="70" cy="81" r="3"/><circle cx="64" cy="113" r="3"/><circle cx="81" cy="171" r="3"/><circle cx="168" cy="83" r="3"/><circle cx="175" cy="130" r="3"/><circle cx="164" cy="175" r="3"/></g><g stroke-dasharray="2 5" opacity=".6"><circle cx="120" cy="120" r="111"/><path d="M6 120h228M120 6v228"/></g></svg></div>`;}
+  function overviewHTML(){
+    const today=dayOffset(0);const todays=appointmentOn(today),following=todays.slice(0,4);
+    const active=state.patients.filter(p=>p.status==='Em acompanhamento').length;
+    const evPending=state.evaluations.filter(e=>e.status==='Pendente').length;
+    const reportPending=state.reports.filter(r=>r.status==='Pendente').length;
+    const weekday=new Intl.DateTimeFormat('pt-BR',{weekday:'long'}).format(new Date());
+    const days=datesThisWeek(dayOffset(0));
+    const chart=days.map(d=>{const isToday=d===today;const n=appointmentOn(d).length;const label=dateFmt(d,{weekday:'short'}).replace('.','');return `<div class="week-column ${isToday?'today':''}"><div class="week-bar" data-value="${n}" style="--bar-h:${Math.max(8,Math.round(n/Math.max(8,...days.map(x=>appointmentOn(x).length))*107))}px" title="${n} atendimentos em ${fullDate(d)}"></div><strong>${esc(label)}</strong></div>`;}).join('');
+    return `<section class="welcome-banner"><div class="welcome-copy"><span class="eyebrow">CENTRO DE TRABALHO • ${esc(weekday)}</span><h1>Bom dia, <em>${esc(state.profile.name.replace(/^(Dr\.?a?\.?\s*)/i,'').split(' ')[0])}.</em></h1><p>Seu espaço para cuidar de cada etapa, com ciência, organização e atenção aos detalhes.</p><div class="welcome-actions"><button class="btn" data-action="new-appointment">${icon('plus')} Novo agendamento</button><button class="text-button" data-view="agenda">Ver agenda ${icon('arrow-right')}</button></div></div>${brainArt()}</section>
+    <section class="grid-4" aria-label="Indicadores de trabalho">
+     ${metricCard('Atendimentos agendados',todays.length,'calendar','','Hoje')}
+     ${metricCard('Pacientes acompanhados',active,'users','mint','Ativos')}
+     ${metricCard('Avaliações pendentes',evPending,'brain','blue','A revisar')}
+     ${metricCard('Relatórios pendentes',reportPending,'file','gold','Em aberto')}
+    </section>
+    <div class="grid-2" style="margin-top:22px"><section class="surface surface-pad"><div class="surface-header"><div><h2>Agenda de hoje</h2><p>${esc(longDate(today))} · ${todays.length} atendimentos previstos</p></div><button class="text-button" data-view="agenda">Agenda completa ${icon('arrow-right')}</button></div>
+      ${following.length?following.map((a,i)=>`<div class="schedule-item"><span class="schedule-hour">${esc(a.time)}</span><span class="schedule-rail ${i%3===1?'alt':i%3===2?'faint':''}"></span><span class="schedule-details"><strong>${esc(patientName(a.patientId))}</strong><span>${esc(a.type)}</span></span><button class="text-button" data-action="appointment-detail" data-id="${esc(a.id)}">Detalhes ${icon('chevron')}</button></div>`).join(''):empty('Agenda livre','Nenhum atendimento ativo marcado para hoje.')}
+      <button class="btn btn-quiet" data-view="agenda" style="margin-top:12px">Visualizar todos os horários ${icon('arrow-right')}</button>
+    </section>
+    <section class="surface surface-pad"><div class="surface-header"><div><h2>Atividade da semana</h2><p>Distribuição de atendimentos agendados</p></div><span class="chip info">Semana atual</span></div><div class="week-bars">${chart}</div><p class="chart-caption">Quantidade por dia · dados demonstrativos</p><div class="divider"></div><div class="progress-row"><span>Documentos concluídos</span><strong>${state.reports.filter(r=>r.status==='Concluído').length} de ${state.reports.length}</strong></div><div class="progress-line"><span style="width:${state.reports.length?100*state.reports.filter(r=>r.status==='Concluído').length/state.reports.length:0}%"></span></div></section></div>
+    <div class="grid-2 equal" style="margin-top:22px"><section class="surface surface-pad"><div class="surface-header"><div><h2>Prioridades e pendências</h2><p>O que merece atenção neste momento</p></div></div>
+      ${[[`${evPending} avaliações pendentes`,'Revisar etapas de acompanhamento','evaluations','brain'],[`${reportPending} relatórios aguardando`,'Retomar documentos em aberto','reports','file'],['Consultar prontuários','Acesse registros exclusivamente fictícios','records','file-heart']].map(([t,d,v,ic])=>`<div class="task-row"><span class="task-check">${icon(ic)}</span><div><strong>${esc(t)}</strong><p>${esc(d)}</p></div><button class="text-button" data-view="${v}">Abrir ${icon('chevron')}</button></div>`).join('')}
+    </section><section class="surface surface-pad"><div class="surface-header"><div><h2>Atividades recentes</h2><p>Últimas ações no ambiente de demonstração</p></div></div>${state.activity.slice(0,3).map(a=>`<div class="activity-row"><span class="activity-icon">${icon(a.icon||'activity')}</span><div><strong>${esc(a.text)}</strong><p>Ambiente acadêmico</p></div><time>${esc(dateFmt(a.date))}</time></div>`).join('')}${!state.activity.length?empty('Sem atividades','Nenhuma ação registrada.'):''}</section></div>
+    <section class="surface surface-pad" style="margin-top:22px"><div class="surface-header"><div><h2>Notificações importantes</h2><p>Avisos recentes que pedem acompanhamento</p></div><button class="text-button" data-view="notifications">Ver notificações ${icon('arrow-right')}</button></div>
+    ${(state.notifications.filter(n=>!n.read).slice(0,2).length?state.notifications.filter(n=>!n.read).slice(0,2):state.notifications.slice(0,2)).map(n=>`<div class="notice-row"><span class="activity-icon">${icon(n.iconName||'bell')}</span><div><strong>${esc(n.title)}</strong><p>${esc(n.message)}</p></div>${n.read?statusChip('Lida'):'<span class="chip info">Nova</span>'}</div>`).join('')||empty('Tudo em dia','Nenhuma notificação registrada.')}
+    </section>
+    <div class="note-strip" style="margin-top:22px">${icon('shield')}<span>Esta plataforma é uma simulação acadêmica. Os registros são fictícios, armazenados somente no navegador e <strong>não são adequados a dados de saúde reais</strong>.</span></div>`;
+  }
+
+  function agendaHTML(){
+    const days=datesThisWeek(),selected=appointmentOn(agendaDate);
+    const dateLabel=agendaMode==='week'?`${dateFmt(days[0])} — ${dateFmt(days[6],{day:'2-digit',month:'short',year:'numeric'})}`:longDate(agendaDate);
+    let body='';
+    if(agendaMode==='day'){
+      const hours=['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'];
+      const block=hours.map(time=>{
+        const list=selected.filter(a=>a.time.slice(0,2)===time.slice(0,2));
+        return `<span class="day-hour">${time}</span><div class="day-slot ${list.length?'':'empty'}">${list.length?list.map(a=>`<div class="appointment-tile"><div><strong>${esc(a.time)} · ${esc(patientName(a.patientId))}</strong><p>${esc(a.type)} · ${esc(a.status)}</p></div><button data-action="appointment-detail" data-id="${esc(a.id)}" aria-label="Detalhes do atendimento de ${esc(patientName(a.patientId))}">${icon('arrow-right')}</button></div>`).join(''):`<button data-action="new-appointment" data-date="${agendaDate}" data-time="${time}">+ Adicionar neste horário</button>`}</div>`;
+      }).join('');
+      body=`<div class="appointments-day">${block}</div>`;
+    }else if(agendaMode==='week'){
+      body=`<div class="week-scroll"><div class="week-grid">${days.map(d=>{const acts=appointmentOn(d);return `<div class="week-day ${d===dayOffset(0)?'today':''}"><div class="weekday">${esc(dateFmt(d,{weekday:'short'}))}</div><div class="daynum">${fromDate(d).getDate()}</div>${acts.length?acts.map(a=>`<button class="week-entry" data-action="appointment-detail" data-id="${esc(a.id)}"><b>${esc(a.time)}</b>${esc(patientName(a.patientId))}</button>`).join(''):`<div class="week-placeholder">Sem consultas</div>`}</div>`;}).join('')}</div></div>`;
+    }else{
+      body=table(['Horário','Paciente','Tipo de atendimento','Situação','Ações'],state.appointments.filter(a=>a.date===agendaDate).sort((a,b)=>a.time.localeCompare(b.time)).map(a=>`<tr><td><strong>${esc(a.time)}</strong></td><td>${personHTML(patient(a.patientId))}</td><td>${esc(a.type)}</td><td>${statusChip(a.status)}</td><td><div class="table-actions"><button class="table-link" data-action="appointment-detail" data-id="${esc(a.id)}">Ver detalhes</button></div></td></tr>`),'Não há atendimentos ativos nesta data.');
+    }
+    return `${header('ORGANIZAÇÃO CLÍNICA','Agenda de atendimentos','Visualize horários, altere compromissos e acompanhe a rotina.',`<button class="btn btn-primary" data-action="new-appointment">${icon('plus')} Novo agendamento</button>`)}
+      <section class="surface surface-pad"><div class="toolbar"><div class="segmented" role="group" aria-label="Visualização da agenda">${[['day','Dia'],['week','Semana'],['list','Lista']].map(([m,l])=>`<button type="button" data-action="agenda-mode" data-value="${m}" class="${agendaMode===m?'active':''}" aria-pressed="${agendaMode===m}">${l}</button>`).join('')}</div><span class="toolbar-grow"></span><button class="icon-action" data-action="agenda-prev" aria-label="Período anterior">${icon('left')}</button><button class="btn btn-small" data-action="agenda-today">Hoje</button><button class="icon-action" data-action="agenda-next" aria-label="Próximo período">${icon('chevron')}</button><input aria-label="Escolher data" class="control" style="width:145px;height:35px" type="date" id="agenda-date" value="${agendaDate}"></div><div class="surface-header"><div><h2>${esc(dateLabel)}</h2><p>${selected.length} atendimentos ativos no dia selecionado</p></div>${statusChip(`${selected.length} agendamentos`)}</div>${body}</section>
+      <div class="note-strip" style="margin-top:17px">${icon('info')}<span>Conflitos de horário são bloqueados na demonstração. Atendimentos cancelados permanecem no histórico, mas liberam o horário.</span></div>`;
+  }
+
+  function filteredPatients(){let list=state.patients.filter(p=>p.name.toLocaleLowerCase('pt-BR').includes(patientSearch.toLocaleLowerCase('pt-BR'))&& (patientFilter==='Todos'||p.status===patientFilter));list.sort((a,b)=>patientSort==='last'?((b.last||'').localeCompare(a.last||'')):patientSort==='next'?((a.next||'9999').localeCompare(b.next||'9999')):a.name.localeCompare(b.name,'pt-BR'));return list;}
+  function patientsHTML(){const result=filteredPatients();return `${header('GESTÃO DE PACIENTES','Meus pacientes','Cadastros ilustrativos e acompanhamento individual organizado.',`<button class="btn btn-primary" data-action="new-patient">${icon('plus')} Novo paciente</button>`)}
+  ${infoStrip('Todos os nomes, identificadores, contatos e históricos desta área são <strong>fictícios</strong>. Não cadastre pacientes reais.',true)}
+  <section class="surface surface-pad"><div class="toolbar"><label class="search-field">${icon('search')}<span class="sr-only">Pesquisar pacientes por nome</span><input id="patients-search" type="search" placeholder="Pesquisar pelo nome do paciente..." value="${esc(patientSearch)}"></label><select aria-label="Filtrar situação" id="patients-filter" class="control" style="width:auto">${option(['Todos',...PATIENT_STATUS],patientFilter)}</select><select aria-label="Ordenar pacientes" id="patients-sort" class="control" style="width:auto">${option([['name','Nome (A–Z)'],['last','Último atendimento'],['next','Próximo atendimento']].map(x=>x[0]),patientSort).replace('>name<','>Nome (A–Z)<').replace('>last<','>Último atendimento<').replace('>next<','>Próximo atendimento<')}</select></div>
+  <div class="surface-header"><div><h2>Lista de pacientes</h2><p>${result.length} de ${state.patients.length} registros demonstrativos</p></div></div>
+  ${table(['Paciente','Último atendimento','Próximo atendimento','Acompanhamento','Ações'],result.map(p=>`<tr><td>${personHTML(p)}</td><td>${esc(fullDate(p.last))}</td><td>${p.next?esc(fullDate(p.next)):'—'}</td><td>${statusChip(p.status)}</td><td><div class="table-actions"><button class="table-link" data-action="patient-detail" data-id="${esc(p.id)}">Abrir</button><button class="icon-action" data-action="edit-patient" data-id="${esc(p.id)}" aria-label="Editar ${esc(p.name)}">${icon('edit')}</button><button class="icon-action" data-action="delete-patient" data-id="${esc(p.id)}" aria-label="Excluir ${esc(p.name)}">${icon('trash')}</button></div></td></tr>`),'Nenhum paciente corresponde à pesquisa ou aos filtros.')}</section>`;}
+
+  function evaluationsHTML(){
+    const shown=state.evaluations.filter(e=>evaluationFilter==='Todas'||e.status===evaluationFilter);
+    const stats=EVAL_STATUS.map(s=>({status:s,count:state.evaluations.filter(e=>e.status===s).length}));
+    return `${header('ACOMPANHAMENTO COGNITIVO','Avaliações','Monitore a evolução administrativa das avaliações fictícias.')}
+    ${infoStrip('Não contém instrumentos psicológicos, testes proprietários, protocolos restritos ou resultados clínicos reais.',true)}
+    <div class="grid-3" style="margin-bottom:20px">${stats.map((s,i)=>`<div class="surface surface-pad"><div class="kpi-inline"><span class="eyebrow">${['AGUARDANDO','EM EXECUÇÃO','FINALIZADAS'][i]}</span>${statusChip(s.status)}</div><div class="stat-value">${s.count}</div><div class="stat-label">${esc(s.status)}</div></div>`).join('')}</div>
+    <section class="surface surface-pad"><div class="toolbar"><div class="segmented" role="group" aria-label="Filtrar avaliações">${['Todas',...EVAL_STATUS].map(s=>`<button class="${evaluationFilter===s?'active':''}" data-action="evaluation-filter" data-value="${esc(s)}" aria-pressed="${evaluationFilter===s}">${esc(s)}</button>`).join('')}</div></div>
+    ${table(['Avaliação','Paciente','Início','Responsável','Status','Ações'],shown.map(e=>`<tr><td><strong>${esc(e.name)}</strong><br><span style="font-size:10px;color:#9aa9ae">${esc(e.id)}</span></td><td>${personHTML(patient(e.patientId))}</td><td>${esc(fullDate(e.start))}</td><td>${esc(e.professional)}</td><td>${statusChip(e.status)}</td><td><button class="table-link" data-action="evaluation-detail" data-id="${esc(e.id)}">Detalhes</button></td></tr>`),'Nenhuma avaliação nesta situação.')}</section>`;
+  }
+
+  function recordsHTML(){const found=state.patients.filter(p=>p.name.toLocaleLowerCase('pt-BR').includes(recordSearch.toLocaleLowerCase('pt-BR')));
+    return `${header('REGISTRO CLÍNICO','Prontuários','Histórico e registros de evolução exclusivamente demonstrativos.')}
+    ${infoStrip('<strong>Área clínica simulada.</strong> O uso de localStorage não fornece sigilo, controle de acesso, criptografia ou trilha de auditoria. Não registrar dados reais.',true)}
+    <section class="surface surface-pad"><div class="surface-header"><div><h2>Prontuários demonstrativos</h2><p>Separe informações administrativas das anotações clínicas fictícias</p></div></div><div class="toolbar"><label class="search-field">${icon('search')}<span class="sr-only">Buscar prontuário por nome</span><input type="search" id="records-search" placeholder="Buscar pelo nome do paciente..." value="${esc(recordSearch)}"></label></div>
+    ${table(['Paciente','Identificador','Registros de evolução','Última atualização','Ações'],found.map(p=>{const rec=state.records.find(r=>r.patientId===p.id);return `<tr><td>${personHTML(p)}</td><td>${esc(p.identifier)}</td><td>${rec?.entries?.length||0} entradas fictícias</td><td>${esc(fullDate(rec?.entries?.[0]?.date||p.last))}</td><td><button class="table-link" data-action="patient-detail" data-tab="anotacoes" data-id="${esc(p.id)}">Abrir prontuário</button></td></tr>`;}),'Nenhum prontuário corresponde à pesquisa.')}</section>`;
+  }
+
+  function reportsHTML(){
+    const shown=state.reports.filter(r=>reportFilter==='Todos'||r.status===reportFilter);
+    return `${header('PRODUÇÃO TÉCNICA','Laudos e relatórios','Gerencie rascunhos, pendências e conclusões fictícias.',`<button class="btn btn-primary" data-action="new-report">${icon('plus')} Novo documento</button>`)}
+    ${infoStrip('Editor para demonstração visual. Documentos não possuem assinatura, validade clínica ou jurídica, nem são exportados como laudos reais.',true)}
+    <section class="surface surface-pad"><div class="toolbar"><div class="segmented" role="group" aria-label="Filtrar relatórios">${['Todos',...REPORT_STATUS].map(s=>`<button class="${reportFilter===s?'active':''}" data-action="report-filter" data-value="${esc(s)}" aria-pressed="${reportFilter===s}">${esc(s)}</button>`).join('')}</div></div>
+    ${table(['Documento','Paciente','Criado em','Situação','Ações'],shown.map(r=>`<tr><td><strong>${esc(r.name)}</strong><br><span style="font-size:10px;color:#9eabb0">${esc(r.id)} · ${esc(r.kind)}</span></td><td>${personHTML(patient(r.patientId))}</td><td>${esc(fullDate(r.created))}</td><td>${statusChip(r.status)}</td><td><div class="table-actions"><button class="table-link" data-action="report-detail" data-id="${esc(r.id)}">Visualizar</button><button class="icon-action" data-action="edit-report" data-id="${esc(r.id)}" aria-label="Editar ${esc(r.name)}">${icon('edit')}</button>${r.status!=='Concluído'?`<button class="icon-action" data-action="complete-report" data-id="${esc(r.id)}" aria-label="Concluir ${esc(r.name)}">${icon('check')}</button>`:''}</div></td></tr>`),'Nenhum documento nesta situação.')}</section>`;
+  }
+
+  function documentsHTML(){const docs=state.documents.filter(d=>docFilter==='Todos'||d.category===docFilter).sort((a,b)=>b.date.localeCompare(a.date));
+    return `${header('ARQUIVO ORGANIZADO','Documentos','Organização de metadados e categorias de arquivos fictícios.',`<button class="btn btn-primary" data-action="new-document">${icon('plus')} Adicionar registro</button>`)}
+    ${infoStrip('Esta seção registra apenas <strong>metadados demonstrativos</strong>; nenhum arquivo clínico é armazenado, enviado ou disponibilizado para download.',true)}
+    <section class="surface surface-pad"><div class="toolbar"><div class="segmented" role="group" aria-label="Filtrar documentos">${['Todos',...DOC_CATEGORIES].map(c=>`<button class="${docFilter===c?'active':''}" data-action="document-filter" data-value="${esc(c)}" aria-pressed="${docFilter===c}">${esc(c)}</button>`).join('')}</div></div><div class="surface-header"><div><h2>Arquivos catalogados</h2><p>${docs.length} registros demonstrativos encontrados</p></div></div>
+    <div class="doc-list">${docs.length?docs.map(d=>`<div class="doc-row"><span class="doc-icon">${icon('file')}</span><div class="doc-copy"><strong>${esc(d.name)}</strong><span>${esc(patientName(d.patientId))} · ${esc(fullDate(d.date))} · ${esc(d.id)}</span></div><span class="chip neutral">${esc(d.category)}</span><button class="text-button" data-action="document-detail" data-id="${esc(d.id)}">Visualizar ${icon('arrow-right')}</button></div>`).join(''):empty('Nenhum documento','Não há documentos nesta categoria.')}</div></section>`;
+  }
+
+  function notificationsHTML(){
+    const list=state.notifications.filter(n=>notificationFilter==='Todas'||(notificationFilter==='Não lidas'?!n.read:n.read));
+    return `${header('CENTRAL DE ALERTAS','Notificações','Acompanhe os avisos gerados no ambiente demonstrativo.',`<button class="btn" data-action="read-all">${icon('check')} Marcar todas como lidas</button>`)}
+      <section class="surface surface-pad"><div class="toolbar"><div class="segmented">${['Todas','Não lidas','Lidas'].map(c=>`<button class="${notificationFilter===c?'active':''}" data-action="notification-filter" data-value="${esc(c)}" aria-pressed="${notificationFilter===c}">${esc(c)}</button>`).join('')}</div></div>
+      <div class="notification-list">${list.length?list.map(n=>`<article class="notification-card ${n.read?'':'unread'}"><span class="activity-icon">${icon(n.iconName||'bell')}</span><div class="notif-copy"><h3>${esc(n.title)} ${n.read?'':`<span class="chip info">Nova</span>`}</h3><p>${esc(n.message)}</p><time>${esc(fullDate(n.date))}</time></div>${n.read?statusChip('Lida'):`<button class="btn btn-small" data-action="read-notification" data-id="${esc(n.id)}">Marcar como lida</button>`}</article>`).join(''):empty('Nenhum aviso','Não há notificações para este filtro.')}</div></section>`;
+  }
+
+  function profileHTML(){const p=state.profile;
+    return `${header('CONFIGURAÇÃO INDIVIDUAL','Meu perfil','Informações de identificação e disponibilidade do profissional.',`<button class="btn btn-primary" data-action="edit-profile">${icon('edit')} Editar perfil</button>`)}
+      <div class="profile-banner"><span class="avatar">${esc(initials(p.name))}</span><div><h2>${esc(p.name)}</h2><p>${esc(p.role)} · ${esc(p.registration)}</p></div><button class="btn" data-action="edit-profile">${icon('edit')} Editar</button></div>
+      <div class="grid-2"><section class="surface surface-pad"><div class="surface-header"><div><h2>Dados profissionais</h2><p>Informações fictícias, modificáveis nesta demonstração</p></div></div><div class="detail-grid">${[['Nome completo',p.name],['Especialidade',p.role],['Registro',p.registration],['E-mail',p.email],['Telefone',p.phone],['Atendimento',p.schedule]].map(([l,v])=>`<div class="detail-item"><span>${esc(l)}</span><strong>${esc(v)}</strong></div>`).join('')}</div></section>
+      <section class="surface surface-pad"><div class="surface-header"><div><h2>Sobre o ambiente</h2><p>Informações para esta etapa acadêmica</p></div>${icon('shield')}</div><p style="font-size:12px;color:#708993;line-height:1.8;margin:0 0 20px">${esc(p.bio)}</p>${infoStrip('Não há autenticação real, banco de dados, auditoria ou criptografia nesta versão.',true)}<button class="btn btn-danger" data-action="reset-demo">${icon('settings')} Restaurar dados fictícios</button></section></div>`;
+  }
+
+  // ================================================================
+  // Modais: dados, agendas e abas. Sem comunicação com servidores.
+  // ================================================================
+  function textField(label,name,value='',type='text',required=false,other='') {return `<div class="field"><label for="field-${esc(name)}">${esc(label)}${required?' *':''}</label><input id="field-${esc(name)}" name="${esc(name)}" type="${type}" value="${esc(value)}" ${required?'required':''} ${other}></div>`;}
+  function selectField(label,name,items,selected='',required=true){return `<div class="field"><label for="field-${esc(name)}">${esc(label)}${required?' *':''}</label><select name="${esc(name)}" id="field-${esc(name)}" ${required?'required':''}>${option(items,selected)}</select></div>`;}
+  function areaField(label,name,val='',height=4){return `<div class="field full"><label for="field-${esc(name)}">${esc(label)}</label><textarea name="${esc(name)}" id="field-${esc(name)}" rows="${height}" placeholder="Somente informações inventadas para demonstração.">${esc(val)}</textarea></div>`;}
+  function patientSelect(selected){return selectField('Paciente','patientId',state.patients.map(p=>p.id),selected).replace(/<option value="([^"]+)"([^>]*)>([^<]*)<\/option>/g,(_,id,attrs)=>`<option value="${id}"${attrs}>${esc(patientName(id))}</option>`);}
+  function appointmentForm(appointment=null,defaults={}){
+    const p=appointment;
+    const body=`${infoStrip('Agendamentos de exemplo; os horários são verificados para impedir sobreposições.',false)}<form data-form="appointment" novalidate><input type="hidden" name="id" value="${esc(p?.id||'')}"><div class="field-grid">${patientSelect(p?.patientId||state.patients[0]?.id||'')}${selectField('Tipo de atendimento','type',TYPES,p?.type||TYPES[0])}${textField('Data','date',p?.date||defaults.date||agendaDate,'date',true)}${textField('Hora de início','time',p?.time||defaults.time||'09:00','time',true,'step="300"')}${selectField('Duração','duration',['30','40','50','60','90'],String(p?.duration||50))}${selectField('Situação','status',APPOINTMENT_STATUS,p?.status||'Agendado')}${areaField('Observações administrativas fictícias','notes',p?.notes||'',3)}</div><div class="form-actions"><button type="button" class="btn" data-action="close-modal">Cancelar</button><button class="btn btn-primary" type="submit">${icon('check')} ${p?'Salvar alterações':'Criar agendamento'}</button></div></form>`;
+    openModal(p?'Editar agendamento':'Novo agendamento',body,'AGENDA / DEMONSTRAÇÃO');
+  }
+  function appointmentDetail(id){const a=state.appointments.find(a=>a.id===id);if(!a)return;
+    openModal('Detalhes do agendamento',`<div class="patient-header"><span class="avatar">${esc(initials(patientName(a.patientId)))}</span><div><h3>${esc(patientName(a.patientId))}</h3><p>${esc(a.id)} · ${esc(a.type)}</p></div>${statusChip(a.status)}</div><div class="detail-grid">${[['Data',fullDate(a.date)],['Horário',a.time],['Duração',`${a.duration} minutos`],['Situação',a.status]].map(([l,v])=>`<div class="detail-item"><span>${esc(l)}</span><strong>${esc(v)}</strong></div>`).join('')}</div><div class="modal-summary" style="margin-top:20px"><h3>Observações administrativas</h3><p>${esc(a.notes||'Sem observações.')}</p></div><div class="form-actions"><button class="btn" data-action="close-modal">Fechar</button>${a.status!=='Cancelado'?`<button class="btn btn-danger" data-action="cancel-appointment" data-id="${esc(a.id)}">Cancelar atendimento</button>`:''}<button class="btn btn-primary" data-action="edit-appointment" data-id="${esc(a.id)}">${icon('edit')} Editar</button></div>`,'AGENDA / DETALHES');
+  }
+  function patientForm(p=null){
+    openModal(p?'Editar paciente':'Cadastrar paciente',`${infoStrip('Cadastre somente nomes e dados inventados; o formulário persiste localmente no seu navegador.',true)}<form data-form="patient"><input type="hidden" name="id" value="${esc(p?.id||'')}"><div class="field-grid">${textField('Nome completo','name',p?.name||'','text',true,'minlength="3"')}${selectField('Situação','status',PATIENT_STATUS,p?.status||PATIENT_STATUS[0])}${textField('Nascimento fictício','birth',p?.birth||'','date')}${textField('Telefone fictício','phone',p?.phone||'','text')}${textField('E-mail demonstrativo','email',p?.email||'','email')}${textField('Último atendimento','last',p?.last||dayOffset(0),'date')}${textField('Próximo atendimento','next',p?.next||'','date')}${areaField('Observações administrativas','adminNotes',p?.adminNotes||'',3)}</div><div class="form-actions"><button type="button" class="btn" data-action="close-modal">Cancelar</button><button type="submit" class="btn btn-primary">${icon('check')} Salvar paciente</button></div></form>`,'PACIENTES / CADASTRO');
+  }
+  function patientDetailHTML(p,tab){
+    const tabs=[['cadastro','Cadastro'],['historico','Histórico'],['avaliacoes','Avaliações'],['documentos','Documentos'],['anotacoes','Anotações clínicas']];
+    const apts=state.appointments.filter(a=>a.patientId===p.id).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
+    const evs=state.evaluations.filter(e=>e.patientId===p.id);
+    const docs=state.documents.filter(d=>d.patientId===p.id);
+    const reports=state.reports.filter(r=>r.patientId===p.id);
+    const rec=state.records.find(r=>r.patientId===p.id);
+    let content='';
+    if(tab==='cadastro')content=`<div class="detail-grid">${[['Identificador',p.identifier],['Nome',p.name],['Data de nascimento',fullDate(p.birth)],['Telefone',p.phone],['E-mail',p.email],['Último atendimento',fullDate(p.last)],['Próximo atendimento',p.next?fullDate(p.next):'Não agendado'],['Situação',p.status]].map(([l,v])=>`<div class="detail-item"><span>${esc(l)}</span><strong>${esc(v)}</strong></div>`).join('')}</div><div class="modal-summary" style="margin-top:20px"><h3>Observações administrativas</h3><p>${esc(p.adminNotes||'Nenhuma observação administrativa.')}</p></div>`;
+    else if(tab==='historico') content=apts.length?`<div class="timeline">${apts.map(a=>`<div class="timeline-entry"><strong>${esc(a.type)}</strong><span>${esc(fullDate(a.date))} às ${esc(a.time)} · ${esc(a.status)}</span><p>${esc(a.notes)}</p></div>`).join('')}</div>`:empty('Sem atendimentos','Nenhum agendamento demonstrativo registrado.');
+    else if(tab==='avaliacoes')content=evs.length?evs.map(e=>`<div class="doc-row"><span class="doc-icon">${icon('brain')}</span><div class="doc-copy"><strong>${esc(e.name)}</strong><span>${esc(fullDate(e.start))} · ${esc(e.professional)}</span></div>${statusChip(e.status)}</div>`).join(''):empty('Sem avaliações','Nenhuma avaliação vinculada.');
+    else if(tab==='documentos')content=(docs.length+reports.length)?[...docs.map(d=>({name:d.name,date:d.date,status:d.category})),...reports.map(r=>({name:r.name,date:r.created,status:r.status}))].map(d=>`<div class="doc-row"><span class="doc-icon">${icon('file')}</span><div class="doc-copy"><strong>${esc(d.name)}</strong><span>${esc(fullDate(d.date))}</span></div><span class="chip neutral">${esc(d.status)}</span></div>`).join(''):empty('Sem documentos','Nenhum documento demonstrativo vinculado.');
+    else content=`${infoStrip('Anotações exclusivamente inventadas. Nunca insira prontuários ou dados de saúde reais neste protótipo.',true)}<div class="record-note"><time>Histórico clínico fictício / ${esc(p.identifier)}</time><p>O conteúdo abaixo é uma simulação de evolução para apresentação acadêmica e não representa um atendimento verdadeiro.</p></div>${rec?.entries?.length?rec.entries.map(e=>`<div class="record-note"><time>${esc(fullDate(e.date))} · ${esc(e.title)}</time><p>${esc(e.note)}</p></div>`).join(''):empty('Sem evoluções','Ainda não há anotações demonstrativas.')}<button class="btn btn-primary btn-small" data-action="new-record-note" data-id="${esc(p.id)}">${icon('plus')} Nova anotação fictícia</button>`;
+    return `<div class="patient-header"><span class="avatar">${esc(initials(p.name))}</span><div><h3>${esc(p.name)}</h3><p>${esc(p.identifier)} · ${esc(p.id)}</p></div>${statusChip(p.status)}</div><div class="tab-bar" role="tablist" aria-label="Seções do paciente">${tabs.map(([t,l])=>`<button role="tab" aria-selected="${tab===t}" class="tab ${tab===t?'active':''}" data-action="patient-tab" data-value="${t}">${l}</button>`).join('')}</div><div role="tabpanel">${content}</div><div class="form-actions"><button class="btn" data-action="close-modal">Fechar</button><button class="btn btn-primary" data-action="edit-patient" data-id="${esc(p.id)}">${icon('edit')} Editar cadastro</button></div>`;
+  }
+  function showPatient(id,tab='cadastro'){const p=patient(id);if(!p){toast('Paciente não encontrado.',true);return;}activePatientId=id;patientTab=tab;openModal('Ficha do paciente',patientDetailHTML(p,tab),'PACIENTE / REGISTRO FICTÍCIO');}
+  function showEvaluation(id){const e=state.evaluations.find(e=>e.id===id);if(!e)return;openModal('Acompanhamento da avaliação',`${infoStrip('Registro descritivo fictício. Não contém resultados de testes ou informações protegidas.',true)}<form data-form="evaluation"><input type="hidden" name="id" value="${esc(e.id)}"><div class="modal-summary"><h3>${esc(e.name)}</h3><div class="detail-grid">${[['Paciente',patientName(e.patientId)],['Início',fullDate(e.start)],['Profissional',e.professional],['Identificador',e.id]].map(([l,v])=>`<div class="detail-item"><span>${esc(l)}</span><strong>${esc(v)}</strong></div>`).join('')}</div></div><div class="field-grid">${selectField('Situação atual','status',EVAL_STATUS,e.status)}${areaField('Nota de andamento ilustrativa','notes',e.notes,4)}</div><div class="form-actions"><button class="btn" data-action="close-modal" type="button">Cancelar</button><button type="submit" class="btn btn-primary">${icon('check')} Salvar avaliação</button></div></form>`,'AVALIAÇÕES / ACOMPANHAMENTO');}
+  function reportForm(r=null){openModal(r?'Editar documento':'Novo documento fictício',`${infoStrip('Editor acadêmico sem geração de documento clínico válido. Não incluir dados verdadeiros.',true)}<form data-form="report"><input name="id" type="hidden" value="${esc(r?.id||'')}"><div class="field-grid">${textField('Título do documento','name',r?.name||'','text',true)}${patientSelect(r?.patientId||state.patients[0]?.id||'')}${selectField('Tipo','kind',['Relatório','Laudo'],r?.kind||'Relatório')}${selectField('Status','status',REPORT_STATUS,r?.status||'Pendente')}${areaField('Conteúdo demonstrativo','body',r?.body||'',7)}</div><div class="form-actions"><button class="btn" type="button" data-action="close-modal">Cancelar</button><button class="btn btn-primary" type="submit">${icon('check')} Salvar documento</button></div></form>`,'LAUDOS E RELATÓRIOS');}
+  function showReport(id){const r=state.reports.find(x=>x.id===id);if(!r)return;openModal('Visualizar documento fictício',`${infoStrip('Prévia para demonstração acadêmica, sem assinatura e sem validade clínica ou legal.',true)}<div class="modal-summary"><h3>${esc(r.name)}</h3><p>${esc(patientName(r.patientId))} · ${esc(fullDate(r.created))} · ${esc(r.kind)}</p><div style="margin-top:12px">${statusChip(r.status)}</div></div><div class="record-note"><time>CONTEÚDO ILUSTRATIVO</time><p>${esc(r.body||'Sem conteúdo.')}</p></div><div class="form-actions"><button class="btn" data-action="close-modal">Fechar</button>${r.status!=='Concluído'?`<button class="btn" data-action="complete-report" data-id="${esc(r.id)}">${icon('check')} Concluir</button>`:''}<button class="btn btn-primary" data-action="edit-report" data-id="${esc(r.id)}">${icon('edit')} Editar</button></div>`,'DOCUMENTO / PRÉVIA');}
+  function docForm(){openModal('Novo registro de documento',`${infoStrip('Este formulário cataloga somente informações fictícias. Não é feito upload de arquivos.',true)}<form data-form="document"><div class="field-grid">${textField('Nome do registro','name','','text',true)}${patientSelect(state.patients[0]?.id||'')}${selectField('Categoria','category',DOC_CATEGORIES,DOC_CATEGORIES[0])}${textField('Data','date',dayOffset(0),'date',true)}${areaField('Descrição fictícia','description','Metadado ilustrativo, sem arquivo anexado.',3)}</div><div class="form-actions"><button class="btn" type="button" data-action="close-modal">Cancelar</button><button class="btn btn-primary" type="submit">${icon('check')} Catalogar</button></div></form>`,'DOCUMENTOS / METADADOS');}
+  function showDocument(id){const d=state.documents.find(x=>x.id===id);if(!d)return;openModal('Registro de documento',`<div class="modal-summary"><h3>${esc(d.name)}</h3>${statusChip(d.category)}<div class="detail-grid">${[['Paciente',patientName(d.patientId)],['Catalogado em',fullDate(d.date)],['Identificador',d.id],['Formato','Registro demonstrativo']].map(([l,v])=>`<div class="detail-item"><span>${esc(l)}</span><strong>${esc(v)}</strong></div>`).join('')}</div></div><p class="modal-description">${esc(d.description)}</p>${infoStrip('Não existe arquivo físico ou digital para baixar nesta demonstração.',true)}<div class="form-actions"><button class="btn" data-action="close-modal">Fechar</button><button class="btn btn-danger" data-action="delete-document" data-id="${esc(d.id)}">${icon('trash')} Remover registro</button></div>`,'ARQUIVO / DETALHES');}
+  function showNoteForm(id){if(!patient(id))return;openModal('Nova anotação fictícia',`${infoStrip('Não utilize conteúdo que identifique pacientes reais ou descreva condições médicas verdadeiras.',true)}<form data-form="record-note"><input type="hidden" name="patientId" value="${esc(id)}"><div class="field-grid">${textField('Data demonstrativa','date',dayOffset(0),'date',true)}${textField('Título','title','Evolução demonstrativa','text',true)}${areaField('Anotação simulada','note','',5)}</div><div class="form-actions"><button class="btn" data-action="close-modal" type="button">Cancelar</button><button class="btn btn-primary" type="submit">${icon('check')} Adicionar registro</button></div></form>`,'PRONTUÁRIO / SIMULAÇÃO');}
+  function profileForm(){const p=state.profile;openModal('Editar perfil demonstrativo',`${infoStrip('Informações exemplificativas, não vinculadas a registro profissional real.',true)}<form data-form="profile"><div class="field-grid">${textField('Nome do profissional','name',p.name,'text',true)}${textField('Especialidade','role',p.role,'text',true)}${textField('Registro fictício','registration',p.registration,'text',true)}${textField('E-mail de exemplo','email',p.email,'email',true)}${textField('Telefone','phone',p.phone)}${textField('Horários de atendimento','schedule',p.schedule)}${areaField('Apresentação profissional ilustrativa','bio',p.bio,3)}</div><div class="form-actions"><button class="btn" type="button" data-action="close-modal">Cancelar</button><button class="btn btn-primary" type="submit">${icon('check')} Salvar perfil</button></div></form>`,'PERFIL / INFORMAÇÕES');}
+  function confirmModal(title,msg,action,id,buttonLabel='Confirmar exclusão'){
+    openModal(title,`<p class="danger-copy">${esc(msg)}</p><div class="form-actions"><button class="btn" data-action="close-modal">Voltar</button><button class="btn btn-danger" data-action="${esc(action)}" data-id="${esc(id||'')}">${icon('trash')} ${esc(buttonLabel)}</button></div>`,'CONFIRMAÇÃO / DEMONSTRAÇÃO');
+  }
+
+  // ================================================================
+  // Ações, formulários e persistência local
+  // ================================================================
+  function samePatientAppointments(patientId){
+    const p=patient(patientId);if(!p)return;
+    const next=state.appointments.filter(a=>a.patientId===patientId && a.status!=='Cancelado' && a.date>=dayOffset(0))
+      .sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time))[0];
+    // A data informada manualmente é preservada se não houver nova consulta.
+    p.next=next?.date||'';
+  }
+  function addNotification(title,message,iconName='bell'){
+    state.notifications.unshift({id:uid('N'),title,message,iconName,date:dayOffset(0),read:false});
+  }
+  function hasConflict(candidate,ignoreId=''){
+    if(candidate.status==='Cancelado')return false;
+    const s=startMinute(candidate.time),e=s+Number(candidate.duration);
+    return state.appointments.some(a=>a.id!==ignoreId && a.date===candidate.date && a.status!=='Cancelado' && s < startMinute(a.time)+Number(a.duration) && startMinute(a.time) < e);
+  }
+  function handleSubmit(form){
+    if(!form.reportValidity()){toast('Confira os campos obrigatórios antes de salvar.',true);return;}
+    const data=Object.fromEntries(new FormData(form).entries());
+    switch(form.dataset.form){
+      case 'appointment': {
+        if(!patient(data.patientId)){toast('Escolha um paciente válido.',true);return;}
+        const duration=Number(data.duration);
+        if(!APPOINTMENT_STATUS.includes(data.status)||!TYPES.includes(data.type)||![30,40,50,60,90].includes(duration))return toast('Informações do agendamento inválidas.',true);
+        const start=startMinute(data.time);
+        if(!Number.isFinite(start)||start<7*60||start+duration>19*60){toast('Os atendimentos demonstrativos devem ocorrer entre 07h e 19h.',true);return;}
+        const item={id:data.id||uid('A'),patientId:data.patientId,date:data.date,time:data.time,duration,type:data.type,status:data.status,notes:clean(data.notes)};
+        if(hasConflict(item,data.id)){toast('Conflito detectado: já existe um atendimento neste intervalo.',true);return;}
+        const old=state.appointments.find(a=>a.id===data.id);
+        if(old)Object.assign(old,item);else {state.appointments.push(item);addNotification('Agendamento adicionado',`${patientName(item.patientId)} · ${fullDate(item.date)} às ${item.time}`,'calendar');}
+        samePatientAppointments(item.patientId);
+        if(old && old.patientId!==item.patientId)samePatientAppointments(old.patientId);
+        recordActivity(old?'Agendamento fictício alterado.':'Novo agendamento fictício cadastrado.','calendar');
+        agendaDate=item.date;
+        persist();closeModal();redraw();toast(old?'Agendamento atualizado.':'Agendamento criado sem conflito de horário.');break;
+      }
+      case 'patient': {
+        const name=clean(data.name);
+        if(name.length<3){toast('O nome deve conter pelo menos 3 caracteres.',true);return;}
+        if(data.email && !emailPattern.test(data.email)){toast('E-mail demonstrativo inválido.',true);return;}
+        if(!PATIENT_STATUS.includes(data.status))return;
+        const old=patient(data.id);
+        const id=old?.id||nextPatientId();
+        const p={id,identifier:old?.identifier||`ICON-${String(Number(id.slice(2))+100).padStart(4,'0')}`,name,status:data.status,birth:data.birth||'',phone:clean(data.phone),email:clean(data.email),last:data.last||'',next:data.next||'',adminNotes:clean(data.adminNotes)};
+        if(old)Object.assign(old,p);else {state.patients.push(p);state.records.push({id:uid('H'),patientId:id,entries:[]});}
+        recordActivity(old?'Cadastro demonstrativo atualizado.':'Novo paciente fictício cadastrado.','users');
+        persist();closeModal();redraw();toast(old?'Cadastro atualizado.':'Paciente fictício cadastrado.');break;
+      }
+      case 'evaluation': {
+        const ev=state.evaluations.find(e=>e.id===data.id);if(!ev||!EVAL_STATUS.includes(data.status))return;
+        ev.status=data.status;ev.notes=clean(data.notes);
+        recordActivity('Status de avaliação fictícia atualizado.','brain');
+        persist();closeModal();redraw();toast('Avaliação atualizada.');break;
+      }
+      case 'report': {
+        if(!patient(data.patientId)||!REPORT_STATUS.includes(data.status))return toast('Confira o paciente e o status.',true);
+        const title=clean(data.name);if(!title)return toast('Informe um título.',true);
+        const old=state.reports.find(r=>r.id===data.id);
+        const r={id:old?.id||uid('R'),patientId:data.patientId,name:title,kind:data.kind==='Laudo'?'Laudo':'Relatório',created:old?.created||dayOffset(0),status:data.status,body:clean(data.body)};
+        if(old)Object.assign(old,r);else state.reports.unshift(r);
+        recordActivity('Documento técnico demonstrativo salvo.','file');
+        persist();closeModal();redraw();toast('Documento demonstrativo salvo.');break;
+      }
+      case 'document': {
+        if(!patient(data.patientId)||!DOC_CATEGORIES.includes(data.category))return toast('Confira os campos.',true);
+        state.documents.unshift({id:uid('D'),patientId:data.patientId,name:clean(data.name),category:data.category,date:data.date,description:clean(data.description)});
+        recordActivity('Registro de documento fictício catalogado.','folder');
+        persist();closeModal();redraw();toast('Registro de documento catalogado.');break;
+      }
+      case 'record-note': {
+        if(!patient(data.patientId))return;
+        let record=state.records.find(r=>r.patientId===data.patientId);
+        if(!record){record={id:uid('H'),patientId:data.patientId,entries:[]};state.records.push(record);}
+        if(!clean(data.note)){toast('Preencha a anotação fictícia.',true);return;}
+        record.entries.unshift({date:data.date,title:clean(data.title),note:clean(data.note)});
+        recordActivity('Evolução demonstrativa adicionada.','file-heart');
+        persist();showPatient(data.patientId,'anotacoes');redraw();toast('Anotação fictícia incluída.');break;
+      }
+      case 'profile': {
+        if(data.email && !emailPattern.test(data.email)){toast('E-mail inválido.',true);return;}
+        Object.assign(state.profile,{name:clean(data.name),role:clean(data.role),registration:clean(data.registration),email:clean(data.email),phone:clean(data.phone),schedule:clean(data.schedule),bio:clean(data.bio)});
+        persist();closeModal();redraw();toast('Perfil demonstrativo atualizado.');break;
+      }
+      default: return;
+    }
+  }
+  function clickAction(action,el){
+    const id=el.dataset.id||'',value=el.dataset.value||'';
+    switch(action){
+      case 'close-modal':closeModal();break;
+      case 'new-appointment':appointmentForm(null,{date:el.dataset.date||agendaDate,time:el.dataset.time||'09:00'});break;
+      case 'appointment-detail':appointmentDetail(id);break;
+      case 'edit-appointment':appointmentForm(state.appointments.find(a=>a.id===id));break;
+      case 'cancel-appointment':confirmModal('Cancelar atendimento','O agendamento será marcado como cancelado. O horário ficará disponível para novos agendamentos fictícios.','confirm-cancel-appointment',id,'Confirmar cancelamento');break;
+      case 'confirm-cancel-appointment': {
+        const a=state.appointments.find(a=>a.id===id);if(!a)return;
+        a.status='Cancelado';samePatientAppointments(a.patientId);recordActivity('Agendamento demonstrativo cancelado.','calendar');persist();closeModal();redraw();toast('Agendamento cancelado.');break;
+      }
+      case 'agenda-mode':agendaMode=value;redraw();break;
+      case 'agenda-prev':agendaDate=dayOffset(agendaMode==='week'?-7:-1,fromDate(agendaDate));redraw();break;
+      case 'agenda-next':agendaDate=dayOffset(agendaMode==='week'?7:1,fromDate(agendaDate));redraw();break;
+      case 'agenda-today':agendaDate=dayOffset(0);redraw();break;
+      case 'new-patient':patientForm();break;
+      case 'edit-patient':patientForm(patient(id));break;
+      case 'patient-detail':showPatient(id,el.dataset.tab||'cadastro');break;
+      case 'patient-tab':patientTab=value;modalContent.innerHTML=patientDetailHTML(patient(activePatientId),value);break;
+      case 'delete-patient':confirmModal('Excluir paciente fictício',`Excluir ${patientName(id)} e todos os seus agendamentos, avaliações, prontuários e documentos demonstrativos vinculados? Esta ação não poderá ser desfeita sem restaurar os dados de exemplo.`,'confirm-delete-patient',id);break;
+      case 'confirm-delete-patient': {
+        state.patients=state.patients.filter(p=>p.id!==id);
+        ['appointments','evaluations','reports','documents','records'].forEach(key=>{state[key]=state[key].filter(item=>item.patientId!==id);});
+        recordActivity('Paciente fictício e dados vinculados excluídos.','users');persist();closeModal();redraw();toast('Cadastro demonstrativo excluído.');break;
+      }
+      case 'evaluation-filter':evaluationFilter=value;redraw();break;
+      case 'evaluation-detail':showEvaluation(id);break;
+      case 'report-filter':reportFilter=value;redraw();break;
+      case 'new-report':reportForm();break;
+      case 'edit-report':reportForm(state.reports.find(r=>r.id===id));break;
+      case 'report-detail':showReport(id);break;
+      case 'complete-report': {
+        const r=state.reports.find(r=>r.id===id);if(!r)return;r.status='Concluído';
+        recordActivity('Documento demonstrativo marcado como concluído.','file');persist();closeModal();redraw();toast('Documento concluído.');break;
+      }
+      case 'document-filter':docFilter=value;redraw();break;
+      case 'new-document':docForm();break;
+      case 'document-detail':showDocument(id);break;
+      case 'delete-document':confirmModal('Excluir registro','Esse metadado fictício será removido do catálogo.','confirm-delete-document',id);break;
+      case 'confirm-delete-document':state.documents=state.documents.filter(d=>d.id!==id);persist();closeModal();redraw();toast('Registro removido.');break;
+      case 'notification-filter':notificationFilter=value;redraw();break;
+      case 'read-notification': {
+        const n=state.notifications.find(n=>n.id===id);if(n)n.read=true;persist();redraw();toast('Notificação marcada como lida.');break;
+      }
+      case 'read-all':state.notifications.forEach(n=>n.read=true);persist();redraw();toast('Todas as notificações foram marcadas como lidas.');break;
+      case 'edit-profile':profileForm();break;
+      case 'reset-demo':confirmModal('Restaurar demonstração','Todos os registros e alterações salvos neste navegador serão substituídos pelos dados fictícios iniciais.','confirm-reset-demo','','Restaurar');break;
+      case 'confirm-reset-demo':state=seed();agendaDate=dayOffset(0);patientSearch='';patientFilter='Todos';evaluationFilter='Todas';reportFilter='Todos';docFilter='Todos';recordSearch='';notificationFilter='Todas';persist();closeModal();redraw();toast('Dados iniciais restaurados.');break;
+      case 'new-record-note':showNoteForm(id);break;
+      default:break;
+    }
+  }
+
+  // Event delegation: listeners continuam válidos após trocar o conteúdo central.
+  document.addEventListener('click',(event)=>{
+    const target=event.target.closest('[data-action],[data-view]');if(!target)return;
+    event.preventDefault();
+    if(target.dataset.view){navigate(target.dataset.view);return;}
+    clickAction(target.dataset.action,target);
+  });
+  document.addEventListener('submit',(event)=>{
+    const form=event.target.closest('[data-form]');if(!form)return;
+    event.preventDefault();handleSubmit(form);
+  });
+  document.addEventListener('input',(event)=>{
+    if(event.target.id==='patients-search'){patientSearch=event.target.value;refreshPreserving('#patients-search');}
+    if(event.target.id==='records-search'){recordSearch=event.target.value;refreshPreserving('#records-search');}
+  });
+  document.addEventListener('change',(event)=>{
+    const el=event.target;
+    if(el.id==='agenda-date' && el.value){agendaDate=el.value;redraw();}
+    if(el.id==='patients-filter'){patientFilter=el.value;redraw();}
+    if(el.id==='patients-sort'){patientSort=el.value;redraw();}
+  });
+  $('#global-search-form').addEventListener('click',()=>$('#global-search').focus());
+  $('#global-search-form').addEventListener('submit',(event)=>{
+    event.preventDefault();patientSearch=clean($('#global-search').value);navigate('patients');
+  });
+  $('#notification-shortcut').addEventListener('click',()=>navigate('notifications'));
+  $('#profile-shortcut').addEventListener('click',()=>navigate('profile'));
+  $('#menu-toggle').addEventListener('click',()=>{
+    const open=!$('#sidebar').classList.contains('open');$('#sidebar').classList.toggle('open',open);$('#sidebar-scrim').hidden=!open;$('#menu-toggle').setAttribute('aria-expanded',String(open));
+  });
+  $('#sidebar-scrim').addEventListener('click',closeSidebar);
+  $('#modal-close').addEventListener('click',closeModal);
+  modal.addEventListener('click',(e)=>{if(e.target===modal)closeModal();});
+  window.addEventListener('keydown',(e)=>{if(e.key==='Escape' && !modal.open)closeSidebar();});
+
+  // Uma falha de armazenamento não impede a navegação visual.
+  redraw();
+})();
+
+  </script>
 </body>
-
 </html>
