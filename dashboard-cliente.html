@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17465B">
+  <meta name="description" content="ICON — portal acadêmico demonstrativo para pacientes. Não utilize dados reais.">
+  <title>Portal do Paciente | ICON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard-cliente.css">
+</head>
+<body>
+<a href="#principal" class="skip">Ir para o conteúdo principal</a>
+<!-- Símbolos SVG internos: sem biblioteca externa de ícones. -->
+<svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3V10Z"/><path d="M9 20v-7h6v7"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3m4-14a3 3 0 0 0 0 6m11-6a3 3 0 0 1 0 6m0 4a5 5 0 0 1 3 4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10l-7-7Zm0 0v7h7M8 15h8m-8 3h6"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 13h5l2 3h4l2-3h5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2H4Z"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.5 2.1-2.5 3.7M12 17.4h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H4m7-7-7 7 7 7"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 18v3h14v-3"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M13 6 18 11M4 20l5-.9L20 8a3 3 0 0 0-4-4L5 15l-1 5Z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5m5 0a8 8 0 1 0-2 5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m3 11 18-8-8 18-2-8-8-2Zm8 2 10-10"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 4v6c0 5-4.5 8-8 10-3.5-2-8-5-8-10V6l8-4Z"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2c0 8.8 7.2 16 16 16a2 2 0 0 0 2-2v-3l-5-2-3 3a14 14 0 0 1-6-6l3-3-2-5Z"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h5l3-7 4 14 3-7h5"/></symbol>
+</svg>
+
+<div class="app">
+  <button id="sidebar-scrim" class="mobile-scrim" type="button" aria-label="Fechar menu" hidden></button>
+  <aside class="sidebar" id="sidebar" aria-label="Menu do paciente">
+    <a class="brand" href="https://joaopedroalves-alt.github.io/ICON/" aria-label="ICON — site institucional">
+      <span class="brand-symbol"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 8c-8-9-19-3-19 7-4 7 0 14 7 15-1 7 5 13 12 10V8Zm0 0c8-9 19-3 19 7 4 7 0 14-7 15 1 7-5 13-12 10V8Z" stroke="currentColor" stroke-width="1.7"/><path d="M12 17c5-1 7 1 8 5m-9 5c5-1 7 2 9 5m16-15c-5-1-7 1-8 5m9 5c-5-1-7 2-9 5" stroke="currentColor" stroke-width="1.3"/><circle cx="24" cy="7" r="2.5" fill="#83C8B7"/></svg></span>
+      <span class="brand-copy"><strong>ICON</strong><small>Cognição &amp; Neuropsicologia</small></span>
+    </a>
+    <div class="side-caption">Minha área</div>
+    <nav class="sidenav" aria-label="Navegação principal">
+      <button class="nav-link active" type="button" data-nav="inicio" aria-current="page"><svg class="ico"><use href="#i-home"/></svg>Início</button>
+      <button class="nav-link" type="button" data-nav="agendamentos"><svg class="ico"><use href="#i-calendar"/></svg>Meus agendamentos</button>
+      <button class="nav-link" type="button" data-nav="profissionais"><svg class="ico"><use href="#i-users"/></svg>Meus profissionais</button>
+      <button class="nav-link" type="button" data-nav="documentos"><svg class="ico"><use href="#i-file"/></svg>Meus documentos</button>
+      <button class="nav-link" type="button" data-nav="solicitacoes"><svg class="ico"><use href="#i-inbox"/></svg>Minhas solicitações <span class="side-badge" id="side-request-count">2</span></button>
+      <button class="nav-link" type="button" data-nav="cadastro"><svg class="ico"><use href="#i-user"/></svg>Meu cadastro</button>
+      <button class="nav-link" type="button" data-nav="ajuda"><svg class="ico"><use href="#i-help"/></svg>Ajuda</button>
+    </nav>
+    <div class="side-bottom">
+      <div class="side-reassure"><svg class="ico"><use href="#i-shield"/></svg><strong>Seu espaço de cuidado</strong><p>Organize sua rotina com tranquilidade. Todos os dados desta versão são fictícios.</p></div>
+      <span class="side-foot">ICON · Projeto acadêmico 2026</span>
+    </div>
+  </aside>
+  <div class="app-main">
+    <header class="topbar">
+      <div class="top-left">
+        <button type="button" class="icon-btn mobile-menu" id="mobile-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+        <div class="top-label"><small>Portal do paciente</small><strong id="breadcrumb">Início</strong></div>
+      </div>
+      <div class="top-right">
+        <span class="mini-badge">Ambiente demonstrativo</span>
+        <div class="notification-wrap">
+          <button class="icon-btn" id="notifications-toggle" type="button" aria-label="Abrir notificações" aria-controls="notification-pop" aria-expanded="false"><svg class="ico"><use href="#i-bell"/></svg><span id="notify-count" class="notify-count">3</span></button>
+          <div class="notify-pop" id="notification-pop" hidden></div>
+        </div>
+        <button type="button" class="top-profile" data-nav="cadastro" aria-label="Ir para meu cadastro"><span class="avatar" id="header-avatar">LM</span><span class="profile-words"><strong id="header-name">Lucas Mendes</strong><small>Paciente · demo</small></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+      </div>
+    </header>
+    <main id="principal" class="content" tabindex="-1">
+      <div id="page-content" aria-live="off"></div>
+      <div class="footer-note">ICON — Instituto de Cognição e Neuropsicologia · Protótipo acadêmico · Não insira dados reais.</div>
+    </main>
+  </div>
+</div>
+
+<div id="modal-layer" class="modal-layer" hidden role="presentation"><div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div></div>
+<div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+<script>
+/* =====================================================================
+   ICON / Portal do Paciente — lógica isolada (sem backend)
+   Todos os registros e documentos são FICTÍCIOS. Nunca insira dados reais.
+   localStorage é apenas uma demonstração local; não protege dados clínicos.
+   ===================================================================== */
+(() => {
+'use strict';
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const icon=(id,cls='ico')=>`<svg class="${cls}" aria-hidden="true"><use href="#i-${id}"></use></svg>`;
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const key='icon.portal.paciente.demo.v1';
+const reference='2026-11-11'; // Fotografia demonstrativa: o compromisso de 12/11 permanece "próximo".
+const labels={inicio:'Início',agendamentos:'Meus agendamentos',profissionais:'Meus profissionais',documentos:'Meus documentos',solicitacoes:'Minhas solicitações',cadastro:'Meu cadastro',ajuda:'Ajuda'};
+const professionals=[
+ {id:'PRO-01',name:'Dra. Mariana Silva',initials:'MS',specialty:'Neuropsicologia',register:'CRP 00/00001 · fictício',bio:'Atendimento voltado à avaliação neuropsicológica, funções cognitivas e acompanhamento interdisciplinar.'},
+ {id:'PRO-02',name:'Dr. Rafael Costa',initials:'RC',specialty:'Psicologia Clínica',register:'CRP 00/00002 · fictício',bio:'Atuação em psicoterapia individual e promoção de estratégias de bem-estar emocional.'}
+];
+const seed=()=>({
+ profile:{name:'Lucas Mendes',birth:'1998-03-14',email:'lucas.mendes@exemplo.com',phone:'(34) 99999-0000',address:'Rua das Acácias, 450 — Centro, Uberlândia/MG (fictício)',patientId:'PAC-2026-014'},
+ appointments:[
+  {id:'AGE-1042',date:'2026-11-12',time:'09:30',professional:'PRO-01',service:'Avaliação Neuropsicológica',modality:'Presencial',status:'Confirmado',location:'Sala 02 · ICON'},
+  {id:'AGE-1059',date:'2026-11-17',time:'14:00',professional:'PRO-02',service:'Psicoterapia',modality:'Online',status:'Agendado',location:'Atendimento por videochamada (demonstrativo)'},
+  {id:'AGE-1073',date:'2026-11-26',time:'10:30',professional:'PRO-01',service:'Devolutiva de Avaliação',modality:'Presencial',status:'Confirmado',location:'Sala 03 · ICON'},
+  {id:'AGE-0962',date:'2026-10-19',time:'10:00',professional:'PRO-01',service:'Entrevista Inicial',modality:'Presencial',status:'Realizado',location:'Sala 02 · ICON'},
+  {id:'AGE-0938',date:'2026-10-02',time:'15:30',professional:'PRO-02',service:'Psicoterapia',modality:'Online',status:'Realizado',location:'Atendimento online'}
+ ],
+ documents:[
+  {id:'DOC-01',name:'Orientações para o primeiro atendimento',category:'Orientações',date:'2026-11-06',status:'Disponível',content:'Este documento ilustrativo reúne orientações administrativas gerais para a chegada ao ICON. Compareça com antecedência e confirme as informações de horário e modalidade pelo canal oficial. NÃO É UM DOCUMENTO CLÍNICO.'},
+  {id:'DOC-02',name:'Comprovante de agendamento — novembro',category:'Documentos administrativos',date:'2026-11-07',status:'Disponível',content:'REGISTRO DEMONSTRATIVO DE AGENDAMENTO\nPaciente fictício: Lucas Mendes\nData ilustrativa: 12/11/2026 às 09h30\nProfissional fictícia: Dra. Mariana Silva\nSem validade como comprovante real.'},
+  {id:'DOC-03',name:'Termo de ciência de atendimento',category:'Outros documentos',date:'2026-10-21',status:'Disponível',content:'MODELO ACADÊMICO\nExemplo de apresentação de informações administrativas. Não representa termo assinado, autorização real ou registro clínico.'},
+  {id:'DOC-04',name:'Relatório disponibilizado (exemplo)',category:'Relatórios disponibilizados',date:'2026-10-24',status:'Disponível',content:'EXEMPLO DE DOCUMENTO DISPONIBILIZADO\nEste arquivo demonstra a interface de acesso a um relatório autorizado. Não contém resultados de testes, diagnósticos ou informações de saúde.'},
+  {id:'DOC-05',name:'Orientações complementares',category:'Orientações',date:'2026-11-10',status:'Em preparação',content:''}
+ ],
+ requests:[
+  {id:'SOL-1201',type:'Atualização cadastral',date:'2026-11-08',status:'Em análise',description:'Conferência demonstrativa de informações de contato.',appointmentId:''},
+  {id:'SOL-1194',type:'Dúvida administrativa',date:'2026-11-03',status:'Respondida',description:'Dúvida ilustrativa sobre horário de funcionamento.',appointmentId:''}
+ ],
+ notifications:[
+  {id:'NOT-01',title:'Atendimento confirmado',message:'Exemplo: avaliação com Dra. Mariana Silva em 12/11 às 09h30.',date:'2026-11-10',read:false,page:'agendamentos'},
+  {id:'NOT-02',title:'Documento disponibilizado',message:'Há uma orientação demonstrativa disponível para consulta.',date:'2026-11-09',read:false,page:'documentos'},
+  {id:'NOT-03',title:'Solicitação em análise',message:'A atualização cadastral fictícia aparece como Em análise.',date:'2026-11-08',read:false,page:'solicitacoes'},
+  {id:'NOT-04',title:'Bem-vindo ao portal',message:'Este ambiente utiliza exclusivamente registros simulados.',date:'2026-10-02',read:true,page:'inicio'}
+ ]
+});
+function load(){try{const v=JSON.parse(localStorage.getItem(key));if(v&&v.profile&&Array.isArray(v.appointments)&&Array.isArray(v.documents)&&Array.isArray(v.requests)&&Array.isArray(v.notifications))return v;}catch(e){console.warn('ICON demo: armazenamento local indisponível',e);}return seed();}
+let state=load(),page='inicio',tabAppointments='proximos',searchAppointment='',docCategory='Todas',searchDoc='',requestStatus='Todas',activeModal=false,lastFocus=null,toastTimeouts=[];
+const modalLayer=$('#modal-layer'),modal=$('#modal'),popover=$('#notification-pop');
+function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch(e){toast('Não foi possível salvar nesta sessão. Os dados são apenas demonstrativos.',true);}}
+function nameOf(id){return professionals.find(x=>x.id===id)?.name||'Profissional fictício';}
+const formatted=date=>{if(!date)return '—';const [y,m,d]=date.split('-');return `${d}/${m}/${y}`;};
+const longDate=date=>new Date(date+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const statusClass=status=>({'Confirmado':'confirmed','Disponível':'available','Concluída':'done','Realizado':'done','Agendado':'pending','Recebida':'pending','Em análise':'review','Em preparação':'review','Cancelado':'cancelled','Respondida':'answered'}[status]||'');
+const pill=status=>`<span class="pill ${statusClass(status)}"><span class="dot"></span>${esc(status)}</span>`;
+const head=(label,title,description,actions='')=>`<header class="page-heading"><div><span class="eyebrow">${esc(label)}</span><h1 id="page-title" tabindex="-1">${esc(title)}</h1><p>${esc(description)}</p></div>${actions?`<div class="page-actions">${actions}</div>`:''}</header>`;
+const btn=(label,act,icoName='',variant='outline',extra='')=>`<button type="button" class="btn ${variant}" data-action="${act}" ${extra}>${icoName?icon(icoName):''}${esc(label)}</button>`;
+function toast(message,warning=false){const t=document.createElement('div');t.className='toast'+(warning?' warn':'');t.textContent=message;$('#toast-region').appendChild(t);const id=setTimeout(()=>t.remove(),4500);toastTimeouts.push(id);}
+function updateChrome(){
+  $('#header-name').textContent=state.profile.name;$('#header-avatar').textContent=state.profile.name.trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()).join('')||'LM';
+  $('#breadcrumb').textContent=labels[page];$$('.nav-link').forEach(b=>{const on=b.dataset.nav===page;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  const pending=state.requests.filter(r=>['Recebida','Em análise'].includes(r.status)).length;$('#side-request-count').textContent=pending;$('#side-request-count').hidden=!pending;
+  const unread=state.notifications.filter(n=>!n.read).length;const badge=$('#notify-count');badge.textContent=unread;badge.hidden=!unread;
+}
+function render(){updateChrome();const views={inicio:renderHome,agendamentos:renderAppointments,profissionais:renderProfessionals,documentos:renderDocuments,solicitacoes:renderRequests,cadastro:renderProfile,ajuda:renderHelp};$('#page-content').innerHTML=(views[page]||renderHome)();}
+function navigate(p){if(!labels[p])return;page=p;closeNotifications();closeSidebar();draw();const el=$('#page-title');if(el)el.focus({preventScroll:true});window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
+function closeSidebar(){document.body.classList.remove('sidebar-open');$('#sidebar-scrim').hidden=true;$('#mobile-menu').setAttribute('aria-expanded','false');}
+function toggleSidebar(){const open=!document.body.classList.contains('sidebar-open');document.body.classList.toggle('sidebar-open',open);$('#sidebar-scrim').hidden=!open;$('#mobile-menu').setAttribute('aria-expanded',String(open));}
+const isUpcoming=a=>a.status!=='Realizado'&&a.status!=='Cancelado'&&a.date>=reference;
+function upcoming(){return state.appointments.filter(isUpcoming).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));}
+const byRecent=(arr)=>[...arr].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+function renderHome(){const next=upcoming()[0],docs=byRecent(state.documents.filter(d=>d.status==='Disponível')).slice(0,2),req=byRecent(state.requests).slice(0,2);const first=esc(state.profile.name.split(' ')[0]);return `
+<section class="welcome"><div class="welcome-copy"><span class="eyebrow">Bem-vindo ao seu espaço ICON</span><h1>Olá, ${first}. <em>Que bom ter você aqui.</em></h1><p>Um lugar tranquilo para acompanhar seus horários, documentos e solicitações, com tudo organizado para você.</p><button class="btn mint" data-nav="agendamentos" type="button">Ver meus agendamentos ${icon('right')}</button></div><div class="welcome-art" aria-hidden="true"><svg viewBox="0 0 220 220" fill="none" stroke="#a3dfd2"><circle cx="110" cy="110" r="78" stroke-opacity=".45"/><circle cx="110" cy="110" r="53" stroke-opacity=".36"/><path d="M33 117c23-39 43-38 76 0s52 35 78-13M33 90c24-34 43-21 76 0s51 25 78-13" stroke-width="2" stroke-opacity=".8"/><circle cx="111" cy="117" r="6" fill="#83c8b7"/><circle cx="65" cy="94" r="4" fill="#b9d9e8"/><circle cx="171" cy="82" r="3" fill="#83c8b7"/></svg></div></section>
+<div class="stats"><div class="card stat"><span class="stat-icon">${icon('calendar')}</span><div><strong>${upcoming().length}</strong><small>Atendimentos previstos</small></div></div><div class="card stat"><span class="stat-icon blue">${icon('file')}</span><div><strong>${state.documents.filter(d=>d.status==='Disponível').length}</strong><small>Documentos disponíveis</small></div></div><div class="card stat"><span class="stat-icon ivory">${icon('inbox')}</span><div><strong>${state.requests.filter(r=>['Recebida','Em análise'].includes(r.status)).length}</strong><small>Solicitações em andamento</small></div></div></div>
+<div class="grid-two"><section class="card card-pad feature-appointment"><div class="card-head"><div><h2 class="card-title">Próximo atendimento</h2><p class="card-sub">Agenda ilustrativa · referência em 11/11/2026</p></div>${next?pill(next.status):''}</div>${next?`<div class="feature-layout"><div class="date-tile"><small>${esc(new Date(next.date+'T12:00:00').toLocaleDateString('pt-BR',{month:'short'}).replace('.','').toUpperCase())}</small><strong>${esc(next.date.slice(8))}</strong><span>${esc(next.time)}h</span></div><div class="appt-content"><h3>${esc(nameOf(next.professional))}</h3><p>${icon('activity')}${esc(professionals.find(p=>p.id===next.professional)?.specialty||next.service)}</p><p>${icon('location')}${esc(next.modality)} · ${esc(next.location)}</p></div></div><div class="appt-actions">${btn('Ver detalhes','appointment','calendar','primary',`data-id="${esc(next.id)}"`)}${btn('Pedir alteração','change','refresh','light',`data-id="${esc(next.id)}"`)}</div>`:'<div class="empty-state"><strong>Nenhum atendimento previsto</strong><p>Quando houver compromissos na demonstração, aparecerão aqui.</p></div>'}<div class="visit-reminder">${icon('info')}<div><strong>Antes do atendimento</strong><p>Confira a modalidade e o horário na sua agenda. As informações aqui são apenas demonstrativas.</p></div></div></section>
+<div class="stack"><section class="card card-pad"><div class="card-head"><div><h2 class="card-title">Documentos recentes</h2><p class="card-sub">Materiais liberados para consulta</p></div><button class="text-action" data-nav="documentos" type="button">Ver todos</button></div>${docs.map(d=>`<div class="compact-row"><span class="compact-icon">${icon('file')}</span><div class="compact-copy"><strong>${esc(d.name)}</strong><small>${esc(d.category)} · ${formatted(d.date)}</small></div><button type="button" class="icon-btn" data-action="document" data-id="${esc(d.id)}" aria-label="Abrir ${esc(d.name)}">${icon('right')}</button></div>`).join('')}</section>
+<section class="card card-pad"><div class="card-head"><div><h2 class="card-title">Suas solicitações</h2><p class="card-sub">Acompanhe o andamento</p></div><button class="text-action" data-nav="solicitacoes" type="button">Ver todas</button></div>${req.map(r=>`<div class="compact-row"><span class="compact-icon">${icon('inbox')}</span><div class="compact-copy"><strong>${esc(r.type)}</strong><small>${esc(r.id)} · ${formatted(r.date)}</small></div>${pill(r.status)}</div>`).join('')}</section></div></div>
+<div style="margin-top:20px" class="notice">${icon('info')}<div><strong>Você está em uma demonstração acadêmica.</strong>Dados, profissionais, horários e documentos são fictícios. Para qualquer atendimento verdadeiro, utilize os canais oficiais da instituição.</div></div>`;}
+function appointmentCard(a){const past=!isUpcoming(a);return `<article class="card list-card"><div class="list-main"><div class="row-between" style="justify-content:flex-start;gap:10px;flex-wrap:wrap">${pill(a.status)}<span class="subtle">${esc(a.id)}</span></div><h3 style="margin-top:12px">${esc(a.service)}</h3><p>${esc(nameOf(a.professional))} · ${esc(a.modality)}</p><div class="list-meta"><span>${icon('calendar')}${formatted(a.date)}</span><span>${icon('clock')}${esc(a.time)}</span><span>${icon('location')}${esc(a.location)}</span></div></div><div class="list-actions">${btn('Detalhes','appointment','right','outline',`data-id="${esc(a.id)}"`)}${!past?btn('Solicitar alteração','change','refresh','light',`data-id="${esc(a.id)}"`):''}</div></article>`;}
+function renderAppointments(){return head('Sua rotina','Meus agendamentos','Consulte horários e faça pedidos administrativos sem alterar diretamente sua agenda.')+`<div class="toolbar"><div class="tabs" role="tablist" aria-label="Tipo de atendimento"><button type="button" role="tab" class="tab ${tabAppointments==='proximos'?'active':''}" aria-selected="${tabAppointments==='proximos'}" data-tab="proximos">Próximos</button><button type="button" role="tab" class="tab ${tabAppointments==='historico'?'active':''}" aria-selected="${tabAppointments==='historico'}" data-tab="historico">Histórico</button></div><label class="search">${icon('search')}<span class="sr-only">Pesquisar atendimento</span><input id="appointment-search" placeholder="Buscar profissional ou serviço" value="${esc(searchAppointment)}"></label></div><div class="notice" style="margin-bottom:18px">${icon('info')}<div>Pedidos de alteração ou cancelamento criam apenas solicitações fictícias. O compromisso original permanece inalterado.</div></div><div class="list" id="appointments-list"></div>`;}
+function renderAppointmentList(){const term=searchAppointment.toLocaleLowerCase('pt-BR');const filtered=state.appointments.filter(a=>(tabAppointments==='proximos'?isUpcoming(a):!isUpcoming(a))&&(`${a.service} ${nameOf(a.professional)} ${a.modality} ${a.id}`).toLocaleLowerCase('pt-BR').includes(term)).sort((a,b)=>tabAppointments==='proximos'?(a.date+a.time).localeCompare(b.date+b.time):(b.date+b.time).localeCompare(a.date+a.time));$('#appointments-list').innerHTML=filtered.length?filtered.map(appointmentCard).join(''):empty('calendar','Nenhum atendimento encontrado','Experimente alterar a pesquisa ou trocar a aba.');}
+function renderProfessionals(){return head('Seu acompanhamento','Meus profissionais','Conheça os profissionais fictícios vinculados a este perfil.')+`<div class="doctor-grid">${professionals.map(p=>{const next=upcoming().find(a=>a.professional===p.id);return `<article class="card doctor"><div class="doctor-top"><div class="doctor-avatar">${esc(p.initials)}</div><div><h3>${esc(p.name)}</h3><span class="doctor-role">${esc(p.specialty)}</span><span class="subtle">${esc(p.register)}</span></div></div><p>${esc(p.bio)}</p><div class="doctor-bottom"><span>${next?'Próximo: '+formatted(next.date)+' às '+next.time:'Sem horário futuro no exemplo'}</span>${next?btn('Ver agenda','appointment','right','light small',`data-id="${esc(next.id)}"`):''}</div></article>`;}).join('')}</div><div class="notice" style="margin-top:20px">${icon('info')}<div>Identidades e números de registro são ilustrativos. Não representam profissionais ou registros oficiais.</div></div>`;}
+function renderDocuments(){return head('Seus materiais','Meus documentos','Visualize conteúdos que foram marcados como disponíveis nesta demonstração.')+`<div class="toolbar"><label class="search">${icon('search')}<span class="sr-only">Pesquisar documentos</span><input id="document-search" placeholder="Buscar documento" value="${esc(searchDoc)}"></label><label class="sr-only" for="document-category">Filtrar categoria</label><select class="select" id="document-category"><option value="Todas">Todas as categorias</option>${['Documentos administrativos','Orientações','Relatórios disponibilizados','Outros documentos'].map(c=>`<option value="${esc(c)}" ${docCategory===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div><div class="list" id="documents-list"></div><p class="subtle" style="margin-top:18px">Os arquivos baixados são exemplos em formato TXT, sem assinatura ou validade clínica.</p>`;}
+function renderDocumentList(){const term=searchDoc.toLocaleLowerCase('pt-BR');const filtered=byRecent(state.documents).filter(d=>(docCategory==='Todas'||docCategory===d.category)&&(`${d.name} ${d.category}`).toLocaleLowerCase('pt-BR').includes(term));$('#documents-list').innerHTML=filtered.length?filtered.map(d=>`<article class="card list-card"><div class="list-main"><div class="row-between" style="justify-content:flex-start;gap:9px">${pill(d.status)}<span class="subtle">${formatted(d.date)}</span></div><h3 style="margin-top:12px">${esc(d.name)}</h3><p>${esc(d.category)}</p></div><div class="list-actions">${d.status==='Disponível'?`${btn('Visualizar','document','file','outline',`data-id="${esc(d.id)}"`)}${btn('Baixar TXT','download','download','light',`data-id="${esc(d.id)}"`)}`:'<span class="subtle">Ainda não disponibilizado</span>'}</div></article>`).join(''):empty('file','Nenhum documento encontrado','Tente outra categoria ou pesquisa.');}
+function requestCard(r){return `<article class="card list-card"><div class="list-main"><div class="row-between" style="justify-content:flex-start;gap:9px;flex-wrap:wrap">${pill(r.status)}<span class="subtle">${esc(r.id)} · ${formatted(r.date)}</span></div><h3 style="margin-top:12px">${esc(r.type)}</h3><p>${esc(r.description)}</p></div><div class="list-actions">${btn('Ver detalhes','request','right','outline',`data-id="${esc(r.id)}"`)}</div></article>`;}
+function renderRequests(){return head('Acompanhamento','Minhas solicitações','Registre pedidos administrativos fictícios e acompanhe seus estados.',btn('Nova solicitação','new-request','send','primary'))+`<div class="toolbar"><label for="request-filter" class="subtle">Filtrar por situação</label><select id="request-filter" class="select">${['Todas','Recebida','Em análise','Respondida','Concluída'].map(x=>`<option value="${x}" ${requestStatus===x?'selected':''}>${x==='Todas'?'Todas as situações':x}</option>`).join('')}</select></div><div class="list" id="requests-list"></div><div class="notice" style="margin-top:18px">${icon('info')}<div>Estas solicitações não são encaminhadas à clínica e seus estados são apenas ilustrativos.</div></div>`;}
+function renderRequestList(){const r=byRecent(state.requests).filter(x=>requestStatus==='Todas'||x.status===requestStatus);$('#requests-list').innerHTML=r.length?r.map(requestCard).join(''):empty('inbox','Nenhuma solicitação encontrada','Crie uma solicitação fictícia ou selecione outro filtro.');}
+function renderProfile(){const p=state.profile;return head('Seus dados','Meu cadastro','Confira ou edite informações fictícias deste perfil de demonstração.')+`<div class="grid-two"><section class="card card-pad"><div class="card-head"><div><h2 class="card-title">Dados cadastrais</h2><p class="card-sub">Identificador: ${esc(p.patientId)} · fictício</p></div>${icon('user')}</div><form id="profile-form"><div class="form-grid"><div class="field full"><label for="profile-name">Nome completo</label><input class="input" id="profile-name" name="name" required maxlength="90" value="${esc(p.name)}"></div><div class="field"><label for="profile-birth">Data de nascimento (fictícia)</label><input class="input" id="profile-birth" name="birth" type="date" required value="${esc(p.birth)}"></div><div class="field"><label for="profile-phone">Telefone demonstrativo</label><input class="input" id="profile-phone" name="phone" required maxlength="25" value="${esc(p.phone)}"></div><div class="field full"><label for="profile-email">E-mail de exemplo</label><input class="input" id="profile-email" name="email" type="email" required maxlength="120" value="${esc(p.email)}"></div><div class="field full"><label for="profile-address">Endereço ilustrativo</label><input class="input" id="profile-address" name="address" maxlength="180" required value="${esc(p.address)}"></div></div><div class="form-actions"><button type="submit" class="btn primary">${icon('check')}Salvar alterações fictícias</button></div></form></section><aside class="stack"><div class="card card-pad"><h2 class="card-title">Privacidade nesta demonstração</h2><p class="subtle" style="margin-top:10px;line-height:1.85">As alterações são armazenadas apenas neste navegador pelo localStorage. Isso não é um sistema de armazenamento seguro para dados pessoais ou de saúde.</p><div class="divider"></div>${btn('Restaurar dados de exemplo','reset','refresh','outline')}</div><div class="notice">${icon('shield')}<div><strong>Seu acesso é ilustrativo</strong>Não há autenticação, consulta a prontuários ou envio de informações para servidores.</div></div></aside></div>`;}
+function renderHelp(){const faqs=[['Como faço para solicitar uma mudança de horário?','Entre em Meus agendamentos, abra os detalhes de um compromisso futuro e use Solicitar alteração. Nesta versão, o pedido fica registrado somente no navegador.'],['Posso cancelar diretamente uma consulta?','Não. O botão Solicitar cancelamento cria um registro fictício. A consulta não é cancelada, nem há comunicação com uma secretaria real.'],['Onde encontro meus documentos?','Na área Meus documentos você pode visualizar e baixar arquivos TXT de exemplo que estejam com status Disponível.'],['Como posso atualizar meus dados?','Abra Meu cadastro e edite apenas as informações fictícias de demonstração. As mudanças permanecem no navegador em que foram feitas.'],['Os dados deste portal são reais?','Não. Este é um protótipo acadêmico do ICON. Pacientes, profissionais, telefones, e-mails, compromissos e documentos apresentados são fictícios.'],['Preciso de ajuda com o acesso?','Neste protótipo não existe login verdadeiro. Para experimentar as áreas, navegue pelos itens do menu. Não utilize senhas ou dados pessoais reais.']];return head('Estamos aqui para orientar','Central de ajuda','Respostas rápidas e canais de contato estritamente demonstrativos.')+`<div class="grid-two"><section class="card card-pad"><div class="card-head"><div><h2 class="card-title">Perguntas frequentes</h2><p class="card-sub">Encontre orientações de uso</p></div>${icon('help')}</div><div class="faq">${faqs.map(([q,a])=>`<details><summary>${esc(q)}${icon('chevron')}</summary><p>${esc(a)}</p></details>`).join('')}</div></section><aside class="stack"><section class="card card-pad"><h2 class="card-title">Contato ilustrativo</h2><p class="card-sub">Informações para a experiência acadêmica</p><div class="compact-row"><span class="compact-icon">${icon('phone')}</span><div class="compact-copy"><strong>(34) 3333-0000</strong><small>Telefone fictício</small></div></div><div class="compact-row"><span class="compact-icon">${icon('mail')}</span><div class="compact-copy"><strong>contato@icon.exemplo.com.br</strong><small>E-mail demonstrativo</small></div></div><div class="compact-row"><span class="compact-icon">${icon('clock')}</span><div class="compact-copy"><strong>Segunda a sexta, 8h às 18h</strong><small>Horário ilustrativo</small></div></div></section><section class="card card-pad"><h2 class="card-title">Precisa registrar uma dúvida?</h2><p class="subtle" style="margin:10px 0 15px;line-height:1.8">Crie uma solicitação demonstrativa de dúvida administrativa para experimentar o fluxo.</p>${btn('Criar solicitação','new-request','send','primary')}</section></aside></div>`;}
+function empty(icoName,title,description){return `<div class="empty-state">${icon(icoName)}<strong>${esc(title)}</strong><p>${esc(description)}</p></div>`;}
+function afterRender(){if(page==='agendamentos')renderAppointmentList();if(page==='documentos')renderDocumentList();if(page==='solicitacoes')renderRequestList();}
+function draw(){render();afterRender();}
+
+/* Modais com foco, Escape e tabulação contida. */
+function openModal(title,subtitle,body,footer=''){
+ lastFocus=document.activeElement;modal.innerHTML=`<div class="modal-head"><div><h2 id="modal-title">${esc(title)}</h2><p>${esc(subtitle)}</p></div><button class="icon-btn" type="button" data-action="close-modal" aria-label="Fechar janela">${icon('close')}</button></div><div class="modal-content">${body}</div>${footer?`<div class="modal-foot">${footer}</div>`:''}`;
+ modalLayer.hidden=false;activeModal=true;document.body.classList.add('locked');modal.querySelector('input,select,textarea,button')?.focus();
+}
+function closeModal(){modalLayer.hidden=true;modal.innerHTML='';document.body.classList.remove('locked');activeModal=false;lastFocus?.focus?.();}
+function appointmentDetails(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;const detail=[['Data',longDate(a.date)],['Horário',a.time],['Profissional',nameOf(a.professional)],['Serviço',a.service],['Modalidade',a.modality],['Local',a.location],['Status',a.status],['Identificador',a.id]];openModal('Detalhes do atendimento','Informações administrativas fictícias',`<div class="detail-grid">${detail.map(([k,v])=>`<div class="detail-item"><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`,`${isUpcoming(a)?btn('Solicitar cancelamento','cancel','close','danger',`data-id="${esc(a.id)}"`)+btn('Solicitar alteração','change','refresh','primary',`data-id="${esc(a.id)}"`):btn('Fechar','close-modal','','outline')}`);}
+function requestDetails(id){const r=state.requests.find(x=>x.id===id);if(!r)return;const detail=[['Identificador',r.id],['Tipo',r.type],['Data',formatted(r.date)],['Status',r.status]];openModal('Detalhes da solicitação','Acompanhamento fictício',`<div class="detail-grid">${detail.map(([k,v])=>`<div class="detail-item"><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div><p style="margin-top:20px;font-size:12px;line-height:1.8;color:#71858e">${esc(r.description)}</p><div class="notice" style="margin-top:16px">${icon('info')}<div>Este registro não representa contato com a secretaria e não modifica agendamentos reais.</div></div>`,btn('Fechar','close-modal','','primary'));}
+function showDoc(id){const d=state.documents.find(x=>x.id===id);if(!d||d.status!=='Disponível'){toast('Este documento ilustrativo ainda não está disponível.',true);return;}openModal(d.name,'Documento demonstrativo · sem validade clínica',`<div class="doc-preview"><strong>ICON — DOCUMENTO DE EXEMPLO</strong>\n\n${esc(d.content)}\n\nEmitido apenas para testes da interface.</div><p class="subtle">Categoria: ${esc(d.category)} · ${formatted(d.date)}</p>`,btn('Fechar','close-modal','','outline')+btn('Baixar TXT','download','download','primary',`data-id="${esc(d.id)}"`));}
+function downloadDoc(id){const d=state.documents.find(x=>x.id===id);if(!d||d.status!=='Disponível')return;const txt=`ICON — DEMONSTRAÇÃO ACADÊMICA\nNÃO É DOCUMENTO CLÍNICO\n\n${d.name}\nData: ${formatted(d.date)}\n\n${d.content}\n\nArquivo fictício, sem validade profissional.`;const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`icon-exemplo-${d.id.toLowerCase()}.txt`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);toast('Arquivo TXT de demonstração preparado para download.');}
+function requestForm(type='Dúvida administrativa',appointmentId=''){const appt=state.appointments.find(a=>a.id===appointmentId);const types=['Alteração de agendamento','Cancelamento','Atualização cadastral','Dúvida administrativa','Solicitação de documento'];if(!types.includes(type))type='Dúvida administrativa';const isChange=type==='Alteração de agendamento';const description=appt?`Referente ao atendimento ${appt.id}, em ${formatted(appt.date)} às ${appt.time}.` : '';closeModalIfOpen();openModal('Nova solicitação','O pedido ficará somente neste navegador.',`<form id="request-form"><div class="form-grid"><div class="field full"><label for="req-type">Tipo de solicitação</label><select class="input" name="type" id="req-type" required>${types.map(x=>`<option value="${esc(x)}" ${x===type?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field full"><label for="req-description">Descrição administrativa fictícia</label><textarea class="textarea" id="req-description" name="description" required minlength="8" maxlength="500" placeholder="Escreva um pedido de exemplo, sem dados reais...">${esc(description)}</textarea><span class="hint">Não informe diagnósticos, senhas ou dados pessoais reais.</span></div><input name="appointmentId" type="hidden" value="${esc(appointmentId)}"></div><div class="form-actions"><button type="button" class="btn outline" data-action="close-modal">Voltar</button><button class="btn primary" type="submit">${icon('send')}Registrar simulação</button></div></form><div class="notice" style="margin-top:16px">${icon('info')}<div>${isChange?'Solicitar uma nova data não altera o horário reservado.':'Criar o pedido não envia nenhuma mensagem à clínica.'}</div></div>`);}
+function closeModalIfOpen(){if(activeModal){modalLayer.hidden=true;modal.innerHTML='';activeModal=false;document.body.classList.remove('locked');}}
+function resetModal(){openModal('Restaurar dados fictícios','Esta ação reinicia apenas a demonstração local.',`<div class="notice">${icon('info')}<div>Isso removerá suas alterações feitas neste navegador e restaurará os dados de exemplo. Nenhuma informação externa será afetada.</div></div>`,btn('Não, voltar','close-modal','','outline')+btn('Restaurar','confirm-reset','refresh','danger'));}
+function closeNotifications(){popover.hidden=true;$('#notifications-toggle').setAttribute('aria-expanded','false');}
+function notifyItem(n){return `<button type="button" class="pop-item ${n.read?'':'unread'}" data-action="read-notification" data-id="${esc(n.id)}">${icon('bell')}<span><strong>${esc(n.title)}</strong><small>${esc(n.message)} · ${formatted(n.date)}</small></span></button>`;}
+function drawNotifications(){const list=byRecent(state.notifications);popover.innerHTML=`<div class="pop-head"><strong>Notificações</strong><button type="button" class="text-action" data-action="mark-all">Marcar todas como lidas</button></div><div class="pop-list">${list.length?list.map(notifyItem).join(''):'<p class="empty-note">Sem notificações no exemplo.</p>'}</div><button class="pop-foot" type="button" data-action="all-notifications">Ver avisos e continuar navegando</button>`;}
+function toggleNotifications(){if(!popover.hidden){closeNotifications();return;}drawNotifications();popover.hidden=false;$('#notifications-toggle').setAttribute('aria-expanded','true');}
+
+/* Delegação de eventos: não duplica listeners quando as áreas mudam. */
+document.addEventListener('click',e=>{
+ const nav=e.target.closest('[data-nav]');if(nav){navigate(nav.dataset.nav);return;}
+ const act=e.target.closest('[data-action]');if(!act)return;const action=act.dataset.action,id=act.dataset.id;
+ if(action==='close-modal')closeModal();
+ if(action==='appointment')appointmentDetails(id);
+ if(action==='change')requestForm('Alteração de agendamento',id);
+ if(action==='cancel')requestForm('Cancelamento',id);
+ if(action==='new-request')requestForm();
+ if(action==='request')requestDetails(id);
+ if(action==='document')showDoc(id);
+ if(action==='download')downloadDoc(id);
+ if(action==='reset')resetModal();
+ if(action==='confirm-reset'){state=seed();save();closeModal();toast('Dados de demonstração restaurados.');draw();}
+ if(action==='read-notification'){const n=state.notifications.find(x=>x.id===id);if(!n)return;n.read=true;save();closeNotifications();updateChrome();if(n.page&&labels[n.page])navigate(n.page);}
+ if(action==='mark-all'){state.notifications.forEach(n=>n.read=true);save();updateChrome();drawNotifications();toast('Notificações marcadas como lidas (simulação).');}
+ if(action==='all-notifications'){closeNotifications();navigate('inicio');}
+});
+document.addEventListener('click',e=>{const tab=e.target.closest('[data-tab]');if(!tab)return;tabAppointments=tab.dataset.tab;draw();const search=$('#appointment-search');if(search)search.focus();});
+document.addEventListener('input',e=>{if(e.target.id==='appointment-search'){searchAppointment=e.target.value;renderAppointmentList();}if(e.target.id==='document-search'){searchDoc=e.target.value;renderDocumentList();}});
+document.addEventListener('change',e=>{if(e.target.id==='document-category'){docCategory=e.target.value;renderDocumentList();}if(e.target.id==='request-filter'){requestStatus=e.target.value;renderRequestList();}});
+document.addEventListener('submit',e=>{
+ if(e.target.id==='profile-form'){
+  e.preventDefault();if(!e.target.reportValidity())return;const f=new FormData(e.target);state.profile={...state.profile,name:String(f.get('name')).trim(),birth:String(f.get('birth')),phone:String(f.get('phone')).trim(),email:String(f.get('email')).trim(),address:String(f.get('address')).trim()};save();draw();toast('Cadastro fictício atualizado neste navegador.');
+ }
+ if(e.target.id==='request-form'){
+  e.preventDefault();if(!e.target.reportValidity())return;const f=new FormData(e.target),type=String(f.get('type')),description=String(f.get('description')).trim();if(description.length<8){toast('Descreva o pedido fictício com pelo menos 8 caracteres.',true);return;}
+  const nextN=Math.max(1201,...state.requests.map(r=>Number(r.id.replace(/\D/g,''))||0))+1;
+  const today=new Date();const day=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  state.requests.unshift({id:`SOL-${nextN}`,type,date:day,status:'Recebida',description,appointmentId:String(f.get('appointmentId')||'')});
+  state.notifications.unshift({id:`NOT-${Date.now()}-${nextN}`,title:'Solicitação registrada (simulação)',message:`${type}: registro local recebido para demonstração.`,date:day,read:false,page:'solicitacoes'});
+  save();closeModal();navigate('solicitacoes');toast('Solicitação fictícia registrada. Nenhuma alteração foi enviada à clínica.');
+ }
+});
+$('#notifications-toggle').addEventListener('click',toggleNotifications);
+$('#mobile-menu').addEventListener('click',toggleSidebar);
+$('#sidebar-scrim').addEventListener('click',closeSidebar);
+modalLayer.addEventListener('mousedown',e=>{if(e.target===modalLayer)closeModal();});
+document.addEventListener('mousedown',e=>{if(!popover.hidden&&!e.target.closest('.notification-wrap'))closeNotifications();});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){if(activeModal)closeModal();else if(!popover.hidden)closeNotifications();else closeSidebar();return;}
+ if(!activeModal||e.key!=='Tab')return;
+ const focusable=$$('button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])').filter(el=>modal.contains(el)&&el.getClientRects().length>0);
+ if(!focusable.length){e.preventDefault();return;}
+ const first=focusable[0],last=focusable[focusable.length-1];
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+});
+// Inicialização: dados fictícios no navegador, nunca enviados a servidores.
+draw();
+})();
+</script>
+</body>
+</html>
