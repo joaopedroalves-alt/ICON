@@ -1,785 +1,323 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>ICON - Instituto de Cognição e Neuropsicologia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071e29">
+  <meta name="description" content="ICON — Instituto de Cognição e Neuropsicologia. Ciência, escuta e cuidado para compreender a mente humana. Projeto acadêmico demonstrativo.">
+  <title>ICON — Instituto de Cognição e Neuropsicologia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="cerebro-hero.js" defer></script>
 </head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<body class="index-body">
+  <!-- CABEÇALHO: totalmente reconstruído, sem dependências do index anterior. -->
+  <header class="site-header" id="cabecalho">
+    <div class="header-inner wrap">
+      <a class="brand" href="#inicio" aria-label="ICON — voltar ao início">
+        <svg class="brand-mark" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+          <path d="M22.8 6.5c-5.5-5.4-15.2-1-15.2 6.4-5.9 5.4-3.4 13.1 1.5 14.9-1.6 7.7 8 13.8 13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M23.2 6.5c5.5-5.4 15.2-1 15.2 6.4 5.9 5.4 3.4 13.1-1.5 14.9 1.6 7.7-8 13.8-13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M11 15c4-.7 6.2 1.1 7.3 4.1M9.9 26.2c4.1-1 7.1.2 8.4 4.2M35 15c-4-.7-6.2 1.1-7.3 4.1m8.4 7.1c-4.1-1-7.1.2-8.4 4.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="23" cy="6.5" r="2" fill="#83C8B7"/>
+        </svg>
+        <span class="brand-copy"><strong>ICON</strong><small>Instituto de Cognição e Neuropsicologia</small></span>
+      </a>
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a href="#sobre">O Instituto</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#profissionais">Equipe</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+      <div class="header-actions">
+        <button class="portal-link" type="button" data-modal="portal">Acessar portal <span aria-hidden="true">↗</span></button>
+        <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Navegação para dispositivos móveis" hidden>
+      <a href="#inicio">Início</a><a href="#sobre">O Instituto</a><a href="#especialidades">Especialidades</a>
+      <a href="#servicos">Serviços</a><a href="#profissionais">Equipe</a><a href="#como-funciona">Como funciona</a>
+      <a href="#faq">Dúvidas frequentes</a><a href="#contato">Contato</a>
+      <button type="button" data-modal="portal">Acessar portal ↗</button>
+    </nav>
+  </header>
 
-    <!-- =========================
-         CABEÇALHO EM DUAS BARRAS
-    ========================== -->
-    <header class="header">
-        <!-- 1ª Barra: Logomarca e Botão de Login -->
-        <div class="subheader">
-            <a href="#inicio" class="logo">
-                <img src="imagens/logobranca.png" alt="Logo ICON">
-                <img src="imagens/textoicon.png" alt="ICON">
-            </a>
-
-            <div class="acoes-cabecalho">
-                <button type="button" class="botao-menu-mobile" id="btn-menu-mobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
-            </div>
-
-            <!-- Botão de Fazer Login com Modal Centralizado -->
-            <div class="login-dropdown-wrapper">
-                <a href="#" class="botao-login" id="btn-abrir-login">
-                    Fazer login
-                </a>
-
-                <!-- Modal de Autenticação / Registo (Centralizado com Backdrop Blur) -->
-                <div class="login-dropdown-container" id="loginDropdown" aria-hidden="true">
-                    <div class="auth-box-wrapper" id="authBox" role="dialog" aria-modal="true" aria-label="Acesso à plataforma">
-                        <button type="button" class="fechar-modal" id="fechar-modal" aria-label="Fechar janela">×</button>
-                        
-                        <!-- Lado Esquerdo: Apresentação / Boas-vindas -->
-                        <div class="auth-panel auth-panel-left">
-                            <div class="auth-panel-content">
-                                <div class="auth-logo">
-                                    <img src="imagens/logobranca.png" alt="Logo">
-                                    <img src="imagens/textoicon.png" alt="ICON">
-                                </div>
-                                <div class="auth-welcome-text">
-                                    <span class="titulo-pequeno">PORTAL INSTITUCIONAL</span>
-                                    <h2>Bem-vindo <br><span>de volta.</span></h2>
-                                    <p>Acesse sua conta para gerenciar atendimentos e acompanhar prontuários com total segurança.</p>
-                                </div>
-                            </div>
-                            <div class="auth-switcher-prompt">
-                                <span>Ainda não possui acesso?</span>
-                                <button type="button" id="goToRegister" class="auth-switch-btn">Registrar-se →</button>
-                            </div>
-                        </div>
-
-                        <!-- Lado Direito: Formulários (Login / Cadastro) -->
-                        <div class="auth-panel auth-panel-right">
-                            
-                            <!-- Formulário de Login -->
-                            <form class="auth-form active-form" id="formLogin">
-                                <div class="auth-form-header">
-                                    <span class="login-etiqueta">AUTENTICAÇÃO</span>
-                                    <h2>Entrar na conta</h2>
-                                    <p>Insira suas credenciais institucionais.</p>
-                                </div>
-                                <div class="campo-login">
-                                    <label>E-mail institucional</label>
-                                    <input id="loginEmail" type="email" placeholder="seu.email@icon.com.br" autocomplete="username" required>
-                                </div>
-                                <div class="campo-login">
-                                    <div class="campo-login-topo">
-                                        <label>Senha</label>
-                                        <span class="texto-ajuda-senha">Acesso demonstrativo</span>
-                                    </div>
-                                    <input id="loginSenha" type="password" placeholder="••••••••" autocomplete="current-password" required>
-                                </div>
-                                <button type="submit" class="botao-login-formulario">Entrar na plataforma</button>
-                            </form>
-
-                            <!-- Formulário de Registro Multietapas -->
-                            <form class="auth-form" id="formRegister">
-                                <p class="aviso-demonstracao">Demonstração acadêmica: os dados não são enviados nem armazenados.</p>
-                                <div class="auth-form-header">
-                                    <span class="login-etiqueta" id="registroEtiquetaStep">ETAPA 1 DE 3</span>
-                                    <h2 id="registroTituloStep">Informações Pessoais</h2>
-                                    <p id="registroSubtituloStep">Preencha os dados do paciente.</p>
-                                </div>
-
-                                <div class="steps-progress-bar">
-                                    <div class="step-dot active" id="dot1">1</div>
-                                    <div class="step-line" id="line1"></div>
-                                    <div class="step-dot" id="dot2">2</div>
-                                    <div class="step-line" id="line2"></div>
-                                    <div class="step-dot" id="dot3">3</div>
-                                </div>
-
-                                <!-- Etapa 1: Dados Pessoais -->
-                                <div class="form-step-page active" id="stepPage1">
-                                    <div class="grid-campos-2col">
-                                        <div class="campo-login col-span-2">
-                                            <label>Nome Completo *</label>
-                                            <input type="text" id="regNome" placeholder="Seu nome completo" required>
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Data de Nascimento *</label>
-                                            <input type="date" id="regDataNasc" required>
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Gênero</label>
-                                            <select id="regGenero">
-                                                <option value="" disabled selected hidden>Selecione</option>
-                                                <option value="masculino">Masculino</option>
-                                                <option value="feminino">Feminino</option>
-                                                <option value="outro">Outro</option>
-                                            </select>
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>CPF</label>
-                                            <input type="text" id="regCPF" placeholder="000.000.000-00">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>RG</label>
-                                            <input type="text" id="regRG" placeholder="00.000.000-0">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Estado Civil</label>
-                                            <input type="text" id="regEstadoCivil" placeholder="Estado civil">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Deficiência</label>
-                                            <select id="regDeficiencia">
-                                                <option value="nenhuma" selected>Nenhuma</option>
-                                                <option value="fisica">Física</option>
-                                                <option value="autismo">Autismo (TEA)</option>
-                                                <option value="tdah">TDAH</option>
-                                                <option value="outra">Outra</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Etapa 2: Contato e Endereço -->
-                                <div class="form-step-page" id="stepPage2">
-                                    <div class="grid-campos-2col">
-                                        <div class="campo-login">
-                                            <label>Telefone *</label>
-                                            <input type="text" id="regTelefone" placeholder="(00) 00000-0000" required>
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>E-mail *</label>
-                                            <input type="email" id="regEmail" placeholder="Email@gmail.com" required>
-                                        </div>
-                                        <div class="campo-login col-span-2">
-                                            <label>Endereço</label>
-                                            <input type="text" id="regEndereco" placeholder="Endereço completo">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Número</label>
-                                            <input type="text" id="regNumero" placeholder="Nº">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Bairro</label>
-                                            <input type="text" id="regBairro" placeholder="Bairro">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Cidade</label>
-                                            <input type="text" id="regCidade" placeholder="Cidade">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>CEP</label>
-                                            <input type="text" id="regCEP" placeholder="00000-000">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Etapa 3: Responsável (se menor), Convênio e Senha -->
-                                <div class="form-step-page" id="stepPage3">
-                                    <!-- Bloco do Responsável Legal (Exibido automaticamente se < 18 anos) -->
-                                    <div class="bloco-responsavel-legal" id="blocoResponsavel" style="display: none;">
-                                        <div class="responsavel-header">
-                                            <span>DADOS DO RESPONSÁVEL LEGAL</span>
-                                        </div>
-                                        <div class="grid-campos-2col">
-                                            <div class="campo-login col-span-2">
-                                                <label>Nome do Responsável *</label>
-                                                <input type="text" id="respNome" placeholder="Nome completo do responsável">
-                                            </div>
-                                            <div class="campo-login">
-                                                <label>Parentesco</label>
-                                                <input type="text" id="respParentesco" placeholder="Ex: Pai / Mãe">
-                                            </div>
-                                            <div class="campo-login">
-                                                <label>Telefone do Responsável</label>
-                                                <input type="text" id="respTelefone" placeholder="(00) 00000-0000">
-                                            </div>
-                                        </div>
-                                        <div class="linha-divisora-suave"></div>
-                                    </div>
-
-                                    <div class="grid-campos-2col">
-                                        <div class="campo-login col-span-2">
-                                            <label>Convênio</label>
-                                            <select id="regConvenio">
-                                                <option value="particular" selected>Particular</option>
-                                                <option value="unimed">Unimed</option>
-                                                <option value="bradesco">Bradesco Saúde</option>
-                                                <option value="sulamerica">SulAmérica</option>
-                                                <option value="outro">Outro</option>
-                                            </select>
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Nº de Carteirinha</label>
-                                            <input type="text" id="regCarteirinha" placeholder="0000000000000">
-                                        </div>
-                                        <div class="campo-login">
-                                            <label>Validade</label>
-                                            <input type="date" id="regValidadeConvenio">
-                                        </div>
-                                        <div class="campo-login col-span-2">
-                                            <label>Senha *</label>
-                                            <input type="password" id="regSenha" placeholder="Cadastre uma senha" required>
-                                            <span class="dica-campo">"Não esqueça, se possível anote"</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Botões de Navegação Entre Passos -->
-                                <div class="botoes-passos-container">
-                                    <button type="button" id="btnStepVoltar" class="btn-step-secundario" style="display: none;">← Voltar</button>
-                                    <button type="button" id="btnStepAvancar" class="botao-login-formulario">Continuar →</button>
-                                </div>
-
-                                <div class="auth-switcher-prompt mobile-switch">
-                                    <button type="button" id="goToLogin" class="auth-switch-btn">← Já possuo conta</button>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+  <main id="conteudo">
+    <!-- HERO: cérebro em WebGL transparente à direita; SVG permanece como fallback. -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-ambient" aria-hidden="true"></div>
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> CIÊNCIA, CONEXÃO E CUIDADO HUMANO</div>
+          <h1 id="hero-title">A mente é um universo. <em>Entendê-la</em> transforma vidas.</h1>
+          <p>Um olhar integrado sobre a cognição, o comportamento e as emoções. Conhecimento científico com a sensibilidade que cada história merece.</p>
+          <div class="hero-cta">
+            <a class="btn btn-mint" href="#especialidades">Conheça nossas especialidades <span aria-hidden="true">↗</span></a>
+            <a class="text-link text-link-light" href="#sobre">Descubra o ICON <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-signature"><span class="signature-symbol" aria-hidden="true">✳</span><span><strong>Neurociência com propósito.</strong><br>Cada mente. Uma história única.</span></div>
         </div>
 
-        <!-- 2ª Barra: Menu de Navegação -->
-        <nav class="menu_de_navegacao">
-            <div class="menu-container">
-                <a href="#inicio">Início</a>
-
-                <div class="nav-dropdown">
-                    <span class="dropdown-toggle">Sobre nós ▾</span>
-                    <div class="dropdown-menu">
-                        <a href="#sobre">● O Instituto</a>
-                        <a href="#sobre">● Nossa Proposta</a>
-                        <a href="#sobre">● Diferenciais</a>
-                    </div>
-                </div>
-
-                <div class="nav-dropdown">
-                    <span class="dropdown-toggle">Serviços ▾</span>
-                    <div class="dropdown-menu">
-                        <a href="#servicos">● Avaliação Neuropsicológica</a>
-                        <a href="#servicos">● Psicoterapia</a>
-                        <a href="#servicos">● Avaliação Cognitiva</a>
-                        <a href="#servicos">● Laudos e Relatórios</a>
-                    </div>
-                </div>
-
-                <div class="nav-dropdown">
-                    <span class="dropdown-toggle">Profissionais ▾</span>
-                    <div class="dropdown-menu">
-                        <a href="#profissionais" data-filtro-profissional="Neuropsicologia">● Neuropsicólogos</a>
-                        <a href="#profissionais" data-filtro-profissional="Psicologia">● Psicólogos</a>
-                        <a href="#profissionais" data-filtro-profissional="Psiquiatria">● Psiquiatras</a>
-                        <a href="#profissionais" data-filtro-profissional="Neurologia">● Neurologistas</a>
-                    </div>
-                </div>
-
-                <a href="#funcionamento">Funcionamento</a>
-                <a href="#faq">Dúvidas</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-
-        <!-- HERO SECTION -->
-        <section class="hero-index" id="inicio">
-            <div class="hero-conteudo">
-                <div class="hero-texto">
-                    <div class="titulo-pequeno">INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</div>
-                    <h1>Ciência e rigor para <span>compreender pessoas.</span></h1>
-                    <p>Avaliação diagnóstica de alta precisão, acompanhamento clínico e reabilitação cognitiva fundamentados em sólidas evidências científicas e acolhimento humanizado.</p>
-                    <div class="hero-botoes">
-                        <a href="#" class="botao-principal" onclick="document.getElementById('btn-abrir-login').click(); return false;">Agendar atendimento</a>
-                        <a href="#sobre" class="botao-link">Conheça o Instituto →</a>
-                    </div>
-                </div>
-                <div class="hero-imagem">
-                    <div class="elemento-geometrico"></div>
-                    <img src="imagens/imagematendimento.png" alt="Atendimento clínico neuropsicológico">
-                </div>
-            </div>
-        </section>
-
-        <!-- INDICADORES -->
-        <section class="indicadores">
-            <div class="indicador">
-                <strong>Avaliação</strong>
-                <span>Neuropsicológica Avançada</span>
-            </div>
-            <div class="indicador">
-                <strong>Atendimento</strong>
-                <span>Multidisciplinar e Clínico</span>
-            </div>
-            <div class="indicador">
-                <strong>Prática Baseada</strong>
-                <span>Estritamente em Evidências</span>
-            </div>
-            <div class="indicador">
-                <strong>Emissão de Laudos</strong>
-                <span>Especializados e Técnicos</span>
-            </div>
-        </section>
-
-        <!-- SOBRE -->
-        <section class="sobre-index" id="sobre">
-            <div class="sobre-texto">
-                <div class="titulo-pequeno">INSTITUCIONAL</div>
-                <h1>Excelência técnica a serviço <span>do desenvolvimento humano.</span></h1>
-                <p>O <strong>ICON — Instituto de Cognição e Neuropsicologia</strong> consolida-se como um centro de referência voltado à investigação rigorosa das funções superiores do cérebro, da cognição e do comportamento humano.</p>
-                <p>Nossa atuação une tecnologia aplicada à saúde e sensibilidade clínica, assegurando diagnósticos minuciosos e planos de intervenção terapêutica estruturados sob medida para cada paciente.</p>
-                <a href="#servicos" class="botao-secundario">Conhecer portfólio de serviços →</a>
-            </div>
-            <div class="sobre-dados">
-                <div class="dado">
-                    <strong>100%</strong>
-                    <span>Compromisso com o rigor científico e ético</span>
-                </div>
-                <div class="linha-dado"></div>
-                <div class="dado">
-                    <strong>Foco</strong>
-                    <span>Na individualidade e potencial de cada indivíduo</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVIÇOS -->
-        <section class="servicos-index" id="servicos">
-            <div class="titulo-secao">
-                <div class="titulo-pequeno">ÁREAS DE ATUAÇÃO</div>
-                <h1>Serviços Especializados</h1>
-                <p>Intervenções clínicas fundamentadas na interface entre a neurociência moderna e a prática psicológica.</p>
-            </div>
-
-            <div class="lista-servicos">
-                <div class="servico">
-                    <div class="servico-numero">01</div>
-                    <div class="servico-conteudo">
-                        <h2>Avaliação Neuropsicológica</h2>
-                        <p>Mapeamento detalhado das funções cognitivas (atenção, memória, linguagem, funções executivas) para suporte diagnóstico diferencial.</p>
-                    </div>
-                    <img src="imagens/cerebroflashcard.png" alt="Cérebro">
-                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
-                </div>
-
-                <div class="servico">
-                    <div class="servico-numero">02</div>
-                    <div class="servico-conteudo">
-                        <h2>Psicoterapia</h2>
-                        <p>Acompanhamento clínico individualizado para manejo de transtornos emocionais, comportamentais e desenvolvimento de estratégias de enfrentamento.</p>
-                    </div>
-                    <img src="imagens/pessoasflashcard.png" alt="Pessoas">
-                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
-                </div>
-
-                <div class="servico">
-                    <div class="servico-numero">03</div>
-                    <div class="servico-conteudo">
-                        <h2>Avaliação Cognitiva</h2>
-                        <p>Investigação analítica de habilidades mentais específicas para fins de monitoramento evolutivo ou orientação escolar/profissional.</p>
-                    </div>
-                    <img src="imagens/graficoflashcard.png" alt="Gráfico">
-                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
-                </div>
-
-                <div class="servico">
-                    <div class="servico-numero">04</div>
-                    <div class="servico-conteudo">
-                        <h2>Laudos e Relatórios Técnicos</h2>
-                        <p>Elaboração de documentação formal de alta precisão destinada a equipes médicas, instituições educacionais ou instâncias jurídicas.</p>
-                    </div>
-                    <img src="imagens/docflashcard.png" alt="Documento">
-                    <a href="#" class="js-abrir-login" aria-label="Solicitar informações sobre este serviço">→</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROFISSIONAIS -->
-        <section class="profissionais-index" id="profissionais">
-            <div class="titulo-secao">
-                <div class="titulo-pequeno">CORPO CLÍNICO</div>
-                <h1>Especialistas Qualificados</h1>
-                <p>Equipe multidisciplinar dedicada à investigação neuropsicológica e ao cuidado integral.</p>
-            </div>
-
-            <!-- Filtros: o JavaScript atualiza a lista conforme a especialidade escolhida. -->
-            <div class="filtros-profissionais" aria-label="Filtrar profissionais por especialidade">
-                <button type="button" class="filtro-profissional ativo" data-filtro="Todos">Todos</button>
-                <button type="button" class="filtro-profissional" data-filtro="Neuropsicologia">Neuropsicólogos</button>
-                <button type="button" class="filtro-profissional" data-filtro="Psicologia">Psicólogos</button>
-                <button type="button" class="filtro-profissional" data-filtro="Psiquiatria">Psiquiatras</button>
-                <button type="button" class="filtro-profissional" data-filtro="Neurologia">Neurologistas</button>
-            </div>
-
-            <div class="lista-profissionais" id="lista-profissionais" aria-live="polite">
-                <!-- Os profissionais são inseridos aqui pelo JavaScript. -->
-            </div>
-            <p class="mensagem-sem-profissionais" id="mensagem-sem-profissionais" hidden>
-                Nenhum profissional encontrado nesta especialidade.
-            </p>
-        </section>
-
-        <!-- FUNCIONAMENTO -->
-        <section class="funcionamento-index" id="funcionamento">
-            <div class="titulo-secao">
-                <div class="titulo-pequeno">FLUXO OPERACIONAL</div>
-                <h1>Etapas do Atendimento</h1>
-            </div>
-
-            <div class="linha-etapas">
-                <div class="etapa">
-                    <div class="numero-etapa">01</div>
-                    <h2>Triagem Inicial</h2>
-                    <p>Compreensão prévia da demanda clínica apresentada pelo paciente ou responsável.</p>
-                </div>
-                <div class="etapa">
-                    <div class="numero-etapa">02</div>
-                    <h2>Agendamento</h2>
-                    <p>Definição do cronograma de sessões e instrumentação adequada.</p>
-                </div>
-                <div class="etapa">
-                    <div class="numero-etapa">03</div>
-                    <h2>Avaliação / Sessões</h2>
-                    <p>Aplicação de testes padronizados e condução do plano terapêutico.</p>
-                </div>
-                <div class="etapa">
-                    <div class="numero-etapa">04</div>
-                    <h2>Devolutiva e Laudo</h2>
-                    <p>Entrega de relatórios técnicos pormenorizados e orientações finais.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section class="faq-index" id="faq">
-            <div class="titulo-secao">
-                <div class="titulo-pequeno">ESCLARECIMENTOS</div>
-                <h1>Dúvidas Frequentes</h1>
-            </div>
-
-            <div class="perguntas">
-                <div class="pergunta">
-                    <h2>Quais profissionais compõem a equipe do ICON?</h2>
-                    <p>O corpo clínico é formado por especialistas em neuropsicologia, psicologia, psiquiatria e neurologia com sólida formação acadêmica.</p>
-                </div>
-                <div class="pergunta">
-                    <h2>Como é estruturada uma avaliação neuropsicológica?</h2>
-                    <p>Consiste em entrevistas clínicas iniciais, aplicação de baterias de testes neuropsicológicos normatizados e análise minuciosa dos dados.</p>
-                </div>
-                <div class="pergunta">
-                    <h2>O instituto emite laudos para fins educacionais ou jurídicos?</h2>
-                    <p>Sim, todos os documentos emitidos possuem rigor técnico e científico aptos para subsidiar escolas, médicos e instâncias legais.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA FINAL -->
-        <section class="cta-index">
-            <div>
-                <div class="titulo-pequeno">ICON INSTITUTO</div>
-                <h1>Pronto para iniciar sua avaliação?</h1>
-                <p>Acesse o sistema institucional e conheça nossa infraestrutura de gestão.</p>
-            </div>
-            <a href="#" class="botao-cta" onclick="document.getElementById('btn-abrir-login').click(); return false;">Acessar plataforma →</a>
-        </section>
-
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer class="rodape">
-        <div class="rodape-principal">
-            <div class="rodape-logo">
-                <img src="imagens/textoicon.png" alt="ICON">
-                <p>Instituto de Cognição e Neuropsicologia. Ciência, precisão e cuidado humano.</p>
-            </div>
-
-            <div class="rodape-coluna">
-                <h2>Explore</h2>
-                <a href="#inicio">Início</a>
-                <a href="#sobre">Sobre nós</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#profissionais">Profissionais</a>
-                <a href="#funcionamento">Funcionamento</a>
-            </div>
-
-            <div class="rodape-coluna">
-                <h2>Serviços</h2>
-                <a href="#servicos">Avaliação Neuropsicológica</a>
-                <a href="#servicos">Psicoterapia</a>
-                <a href="#servicos">Avaliação Cognitiva</a>
-                <a href="#servicos">Laudos e Relatórios</a>
-            </div>
-
-            <div class="rodape-coluna">
-                <h2>Contato</h2>
-                <p>WhatsApp<br>(00) 00000-0000</p>
-                <p>E-mail<br>contato@icon.com.br</p>
-            </div>
+        <div class="hero-visual" aria-label="Visualização de um cérebro formado por neurônios e conexões em três dimensões" role="img">
+          <div class="brain-orbit orbit-one" aria-hidden="true"></div>
+          <div class="brain-orbit orbit-two" aria-hidden="true"></div>
+          <div class="brain-radial" aria-hidden="true"></div>
+          <div class="brain-scan scan-a" aria-hidden="true"></div>
+          <div class="brain-scan scan-b" aria-hidden="true"></div>
+          <div class="brain-model" id="brain-model" aria-hidden="true">
+            <!-- Fallback autoral em SVG; não fica vazio sem WebGL/CDN ou com movimento reduzido. -->
+            <svg class="brain-fallback" viewBox="0 0 560 530" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="brainGradient" x1="86" y1="48" x2="472" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#97D1DF"/><stop offset=".52" stop-color="#83C8B7"/><stop offset="1" stop-color="#3A8498"/></linearGradient>
+                <radialGradient id="brainGlow"><stop stop-color="#78BBD2" stop-opacity=".16"/><stop offset="1" stop-color="#78BBD2" stop-opacity="0"/></radialGradient>
+                <g id="brainHalf"><path d="M279 117C260 91 229 74 198 83c-40-20-77 9-84 33-38-6-61 31-57 64-29 19-33 65-17 89-14 34 7 70 35 80-1 37 34 59 70 53 22 33 66 37 94 17 23-8 41-32 40-66V117Z" stroke="url(#brainGradient)" stroke-width="2.2"/>
+                <g stroke="url(#brainGradient)" stroke-width="1.6" stroke-linecap="round" opacity=".65">
+                  <path d="M248 111c-17 17-10 43 10 54m-48-67c-15 28-6 49 18 56m-64-51c11 18 3 36-14 46m-31-21c-6 28 13 41 31 37m-85 35c29-15 50-8 63 19m20-51c-16 25-11 50 10 65m36-64c-23 20-18 44 3 58m40-52c-17 25-8 44 12 56m-171-8c25-7 43 8 41 30m-53 22c18-10 43-8 58 11m22-37c-9 26 2 46 24 48m36-56c-15 16-12 46 10 57m35-63c-20 22-16 43-1 53m-160-9c20-7 41 2 48 27m-30 24c15-12 36-10 49 5m38-43c-13 24-1 45 18 52m33-46c-11 20-9 43 9 57m-112-21c22 3 36 18 35 36m43-20c10 14 9 27-1 39m-105-6c16 2 25 15 28 28"/>
+                </g><g fill="#A9DBDE"><circle cx="164" cy="103" r="3"/><circle cx="115" cy="201" r="3"/><circle cx="203" cy="274" r="4"/><circle cx="248" cy="182" r="3"/><circle cx="91" cy="317" r="3"/><circle cx="198" cy="378" r="3"/></g>
+                </g>
+              </defs>
+              <circle cx="280" cy="265" r="256" fill="url(#brainGlow)"/>
+              <use href="#brainHalf"/><use href="#brainHalf" transform="translate(560 0) scale(-1 1)"/>
+              <path d="M280 117v237" stroke="#A8DFD9" stroke-opacity=".22" stroke-width="1.2" stroke-dasharray="5 8"/>
+              <path d="M256 416c-6 19-1 43 18 52m28-52c6 19 1 43-18 52" stroke="#83C8B7" stroke-opacity=".48" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="brain-tag brain-tag-top"><span class="tag-pulse"></span> MAPA NEURAL <span class="brain-tag-faint">/ 001</span></div>
+          <div class="brain-tag brain-tag-bottom"><span class="tag-line"></span> CONEXÕES QUE INSPIRAM CONHECIMENTO</div>
+          <span class="brain-cross cross-top" aria-hidden="true">+</span>
+          <span class="brain-cross cross-bottom" aria-hidden="true">+</span>
         </div>
+      </div>
+      <div class="hero-bottom wrap"><span>ICON / INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</span><span>EXPLORAR <span aria-hidden="true">↓</span></span></div>
+    </section>
 
-        <div class="rodape-final">
-            <span>© 2026 ICON — Instituto de Cognição e Neuropsicologia</span>
-            <span>Protótipo Acadêmico Institucional</span>
+    <section class="metrics" aria-label="Indicadores demonstrativos do ICON">
+      <div class="metrics-inner wrap">
+        <div class="metrics-intro"><span class="eyebrow">NOSSA ESTRUTURA</span><p>Uma visão ampla, um cuidado singular.</p></div>
+        <div class="metric"><strong>12<span>+</span></strong><small>Profissionais</small></div>
+        <div class="metric"><strong>08</strong><small>Especialidades</small></div>
+        <div class="metric"><strong>06</strong><small>Serviços</small></div>
+        <div class="metric"><strong>04</strong><small>Etapas de cuidado</small></div>
+      </div>
+      <p class="metrics-disclaimer wrap">Números ilustrativos de um projeto acadêmico; não representam uma clínica em operação.</p>
+    </section>
+
+    <section class="about section-pad" id="sobre" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div class="about-image-col reveal">
+          <div class="about-image-frame"><img src="imagens/imagematendimento.png" alt="Ilustração de uma conversa entre profissional e paciente em um ambiente acolhedor" loading="lazy"><span class="about-image-decoration" aria-hidden="true"></span></div>
+          <div class="about-note"><span class="note-icon" aria-hidden="true">✳</span><p>Por trás de cada diagnóstico, existe uma pessoa inteira.</p></div>
         </div>
-    </footer>
+        <div class="about-text reveal">
+          <span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> O INSTITUTO</span>
+          <h2 class="section-heading" id="about-title">Quando a ciência encontra a <em>escuta.</em></h2>
+          <p class="lead">Acreditamos que compreender a mente vai muito além de observar sintomas. É reconhecer histórias, contextos, potencialidades e caminhos.</p>
+          <p>No ICON, avaliação, acompanhamento e desenvolvimento cognitivo se conectam em uma abordagem interdisciplinar, orientada por evidências e construída ao redor de cada indivíduo.</p>
+          <div class="about-list">
+            <div><span class="tiny-icon">01</span><span>Precisão científica <small>Investigação criteriosa e fundamentada.</small></span></div>
+            <div><span class="tiny-icon">02</span><span>Cuidado humano <small>Uma escuta acolhedora e individualizada.</small></span></div>
+            <div><span class="tiny-icon">03</span><span>Visão integrada <small>Diferentes perspectivas para uma compreensão completa.</small></span></div>
+          </div>
+          <a href="#como-funciona" class="text-link">Conheça nossa abordagem <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
 
-    <!-- SCRIPT DE INTERAÇÃO -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const $ = (seletor) => document.querySelector(seletor);
-            const $$ = (seletor) => document.querySelectorAll(seletor);
+    <section class="specialties section-pad" id="especialidades" aria-labelledby="specialties-title">
+      <div class="wrap">
+        <div class="section-intro reveal"><div><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> NOSSAS ÁREAS</span><h2 class="section-heading" id="specialties-title">Cada mente tem sua <em>complexidade.</em><br>Cada área, um olhar.</h2></div><p>Especialidades complementares que transformam conhecimento em possibilidades de cuidado e desenvolvimento.</p></div>
+        <div class="specialty-grid">
+          <article class="specialty-card specialty-feature reveal"><span class="card-index">01 / 08</span><span class="specialty-symbol" aria-hidden="true">✳</span><div><h3>Neuropsicologia</h3><p>Avaliação das relações entre cérebro, cognição, emoções e comportamento.</p></div><span class="card-arrow" aria-hidden="true">↗</span></article>
+          <article class="specialty-card reveal"><span class="card-index">02 / 08</span><span class="specialty-glyph" aria-hidden="true">◌</span><h3>Psicologia Clínica</h3><p>Escuta e acompanhamento para o bem-estar emocional.</p></article>
+          <article class="specialty-card reveal"><span class="card-index">03 / 08</span><span class="specialty-glyph" aria-hidden="true">⊕</span><h3>Psiquiatria</h3><p>Atenção médica à saúde mental e ao equilíbrio emocional.</p></article>
+          <article class="specialty-card reveal"><span class="card-index">04 / 08</span><span class="specialty-glyph" aria-hidden="true">≈</span><h3>Neurologia</h3><p>Investigação e acompanhamento das condições do sistema nervoso.</p></article>
+          <article class="specialty-card reveal"><span class="card-index">05 / 08</span><span class="specialty-glyph" aria-hidden="true">∴</span><h3>Psicopedagogia</h3><p>Compreensão dos processos de aprendizagem e suas particularidades.</p></article>
+          <article class="specialty-card reveal"><span class="card-index">06 / 08</span><span class="specialty-glyph" aria-hidden="true">⟡</span><h3>Neurodesenvolvimento</h3><p>Olhar atento às diferentes etapas do desenvolvimento humano.</p></article>
+          <article class="specialty-card reveal"><span class="card-index">07 / 08</span><span class="specialty-glyph" aria-hidden="true">⌁</span><h3>Reabilitação Cognitiva</h3><p>Estratégias para fortalecer habilidades e ampliar autonomia.</p></article>
+          <article class="specialty-card specialty-accent reveal"><span class="card-index">08 / 08</span><span class="specialty-glyph" aria-hidden="true">◎</span><h3>Avaliação Cognitiva</h3><p>Investigação de funções mentais para compreender capacidades e desafios.</p></article>
+        </div>
+      </div>
+    </section>
 
-            // ==========================================
-            // PROFISSIONAIS: FILTRO POR ESPECIALIDADE
-            // Os exemplos abaixo são fictícios e ficam no próprio navegador.
-            // ==========================================
-                const profissionais = [
-                  {
-                      nome: "Dr. João Silva",
-                      iniciais: "JS",
-                      titulo: "Neurologista",
-                      registro: "CRM 12345",
-                      especialidade: "Neurologia",
-                      perfil: "Graduado em Medicina pela Universidade X, especialista em Neurologia. Atua na avaliação e tratamento de doenças neurológicas."
-                  }
-              ];
-            const lista = $("#lista-profissionais");
-            const semResultados = $("#mensagem-sem-profissionais");
-            const filtros = $$(".filtro-profissional");
+    <section class="quote-band" aria-label="Princípio institucional"><div class="wrap quote-inner"><div class="quote-decor" aria-hidden="true">“</div><p>Não existem duas mentes iguais.<br><em>O cuidado também não deveria ser igual.</em></p><span>O JEITO ICON DE COMPREENDER</span></div></section>
 
-            function filtrarProfissionais(especialidade = "Todos") {
-                const encontrados = profissionais.filter(p => especialidade === "Todos" || p.especialidade === especialidade);
-                lista.innerHTML = "";
-                encontrados.forEach(p => {
-                    const item = document.createElement("article");
-                    item.className = "profissional";
-                    const foto = document.createElement("div");
-                    foto.className = "foto-profissional";
-                    foto.textContent = p.iniciais;
-                    const dados = document.createElement("div");
-                    dados.className = "dados-profissional";
-                    const nome = document.createElement("h2"); nome.textContent = p.nome;
-                    const titulo = document.createElement("p"); titulo.textContent = p.titulo;
-                    const registro = document.createElement("span"); registro.textContent = p.registro;
-                    dados.append(nome, titulo, registro);
-                    const perfil = document.createElement("span");
-                    perfil.className = "perfil-indisponivel";
-                    perfil.textContent = "Perfil institucional";
-                    perfil.style.cursor = "pointer";
-                    const descricao = document.createElement("div");
-                    descricao.className = "descricao-profissional";
+    <section class="services section-pad" id="servicos" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-intro reveal"><div><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> NOSSO TRABALHO</span><h2 class="section-heading" id="services-title">Cuidado pensado para <em>cada etapa.</em></h2></div><p>Da investigação inicial ao acompanhamento, serviços que colocam a pessoa no centro de cada decisão.</p></div>
+        <div class="service-grid">
+          <article class="service-card reveal"><div class="service-top"><span>01</span><span class="service-ico" aria-hidden="true">◇</span></div><h3>Avaliação Neuropsicológica</h3><p>Investigação aprofundada de memória, atenção, linguagem e funções executivas.</p><button type="button" data-service="0">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+          <article class="service-card reveal"><div class="service-top"><span>02</span><span class="service-ico" aria-hidden="true">◌</span></div><h3>Psicoterapia</h3><p>Um espaço de escuta e construção de estratégias para desafios emocionais.</p><button type="button" data-service="1">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+          <article class="service-card reveal"><div class="service-top"><span>03</span><span class="service-ico" aria-hidden="true">✳</span></div><h3>Avaliação Cognitiva</h3><p>Compreensão de habilidades mentais específicas e seu desenvolvimento.</p><button type="button" data-service="2">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+          <article class="service-card reveal"><div class="service-top"><span>04</span><span class="service-ico" aria-hidden="true">⌁</span></div><h3>Reabilitação Cognitiva</h3><p>Intervenções planejadas para promover funcionalidade e autonomia.</p><button type="button" data-service="3">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+          <article class="service-card reveal"><div class="service-top"><span>05</span><span class="service-ico" aria-hidden="true">⊛</span></div><h3>Avaliação do Neurodesenvolvimento</h3><p>Investigação das características do desenvolvimento na infância e além.</p><button type="button" data-service="4">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+          <article class="service-card reveal"><div class="service-top"><span>06</span><span class="service-ico" aria-hidden="true">▤</span></div><h3>Laudos e Relatórios</h3><p>Documentos técnicos elaborados com clareza e fundamentação científica.</p><button type="button" data-service="5">Explorar serviço <span aria-hidden="true">↗</span></button></article>
+        </div>
+      </div>
+    </section>
 
-                    const conteudo = document.createElement("div");
-                    conteudo.textContent = p.perfil;
+    <section class="method section-pad" id="como-funciona" aria-labelledby="method-title">
+      <div class="wrap method-grid">
+        <div class="method-heading reveal"><span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> SUA JORNADA</span><h2 class="section-heading section-heading-light" id="method-title">Cuidado com método.<br><em>Presença em cada passo.</em></h2><p>Uma experiência organizada para acolher demandas, compreender necessidades e orientar decisões com responsabilidade.</p><a href="#contato" class="btn btn-outline-light">Entre em contato <span aria-hidden="true">↗</span></a></div>
+        <ol class="method-steps reveal">
+          <li><span class="step-number">01</span><div><h3>Primeiro contato</h3><p>Uma conversa inicial para entender sua demanda e orientar os próximos passos.</p></div><span aria-hidden="true">↗</span></li>
+          <li><span class="step-number">02</span><div><h3>Agendamento</h3><p>Definição do formato de atendimento e planejamento da jornada.</p></div><span aria-hidden="true">↗</span></li>
+          <li><span class="step-number">03</span><div><h3>Atendimento e avaliação</h3><p>Entrevistas, instrumentos técnicos e acompanhamento individualizado.</p></div><span aria-hidden="true">↗</span></li>
+          <li><span class="step-number">04</span><div><h3>Devolutiva e acompanhamento</h3><p>Compartilhamento dos resultados, orientações e possíveis caminhos de cuidado.</p></div><span aria-hidden="true">↗</span></li>
+        </ol>
+      </div>
+    </section>
 
-                    descricao.appendChild(conteudo);
+    <section class="team section-pad" id="profissionais" aria-labelledby="team-title">
+      <div class="wrap">
+        <div class="section-intro reveal"><div><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> QUEM CUIDA</span><h2 class="section-heading" id="team-title">Pessoas que estudam pessoas. <em>E as escutam.</em></h2></div><p>Conheça a equipe fictícia multidisciplinar que ilustra o modelo de atuação do instituto.</p></div>
+        <div class="team-toolbar"><div class="filter-bar" role="group" aria-label="Filtrar profissionais"><button class="filter-btn active" type="button" data-filter="Todos" aria-pressed="true">Todos</button><button class="filter-btn" type="button" data-filter="Neuropsicologia" aria-pressed="false">Neuropsicólogos</button><button class="filter-btn" type="button" data-filter="Psicologia" aria-pressed="false">Psicólogos</button><button class="filter-btn" type="button" data-filter="Psiquiatria" aria-pressed="false">Psiquiatras</button><button class="filter-btn" type="button" data-filter="Neurologia" aria-pressed="false">Neurologistas</button></div><span class="team-count" id="team-count" aria-live="polite">12 profissionais</span></div>
+        <div class="team-grid" id="team-grid" aria-live="polite"></div>
+        <p class="team-disclaimer">Profissionais, biografias e registros são fictícios, apresentados exclusivamente para fins acadêmicos.</p>
+      </div>
+    </section>
 
-                    perfil.addEventListener("click", () => {
-                        descricao.classList.toggle("aberto");
-                    });
+    <section class="principles section-pad" aria-labelledby="principles-title"><div class="wrap principles-grid"><div class="principles-art reveal" aria-hidden="true"><div class="principle-ring p-ring-one"></div><div class="principle-ring p-ring-two"></div><div class="principle-ring p-ring-three"></div><div class="principle-center">ICON<span>SCIENCE + CARE</span></div><span class="principle-point p1"></span><span class="principle-point p2"></span><span class="principle-point p3"></span></div><div class="principles-copy reveal"><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> NOSSOS DIFERENCIAIS</span><h2 class="section-heading" id="principles-title">Tecnologia a serviço do que é <em>humano.</em></h2><p>Ciência e acolhimento não são opostos. Quando caminham juntos, ampliam a compreensão e dão mais sentido a cada etapa do cuidado.</p><div class="principle-values"><div><span>01</span><strong>Abordagem interdisciplinar</strong></div><div><span>02</span><strong>Avaliação individualizada</strong></div><div><span>03</span><strong>Compromisso ético e científico</strong></div></div></div></div></section>
 
-                    item.append(foto, dados, perfil, descricao);
-                    perfil.style.cursor = "pointer";
+    <section class="faq section-pad" id="faq" aria-labelledby="faq-title"><div class="wrap faq-grid"><div class="faq-copy reveal"><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> DÚVIDAS FREQUENTES</span><h2 class="section-heading" id="faq-title">Perguntar também faz parte de <em>compreender.</em></h2><p>Reunimos respostas para algumas das questões mais comuns sobre o atendimento neuropsicológico.</p></div><div class="faq-list reveal">
+      <details><summary>O que é uma avaliação neuropsicológica? <span aria-hidden="true">+</span></summary><p>É um processo clínico que investiga funções como atenção, memória, linguagem e raciocínio por meio de entrevistas e instrumentos apropriados, auxiliando a compreensão do funcionamento cognitivo.</p></details>
+      <details><summary>Quando procurar um neuropsicólogo? <span aria-hidden="true">+</span></summary><p>Quando existem dúvidas ou dificuldades relacionadas à memória, aprendizagem, atenção, comportamento ou outras funções cognitivas. A indicação depende de avaliação profissional.</p></details>
+      <details><summary>Como acontece o primeiro atendimento? <span aria-hidden="true">+</span></summary><p>Em geral, começa com uma entrevista para compreender a história, as necessidades e os objetivos da pessoa antes da definição dos próximos passos.</p></details>
+      <details><summary>É necessário encaminhamento médico? <span aria-hidden="true">+</span></summary><p>Isso pode variar conforme o serviço e a necessidade clínica. O profissional responsável poderá orientar a indicação de cada avaliação.</p></details>
+      <details><summary>Qual a diferença entre avaliação cognitiva e neuropsicológica? <span aria-hidden="true">+</span></summary><p>A avaliação cognitiva pode focar habilidades específicas; a neuropsicológica integra um conjunto mais amplo de funções, comportamentos e informações clínicas.</p></details>
+      <details><summary>Como solicitar mais informações? <span aria-hidden="true">+</span></summary><p>Esta é uma demonstração acadêmica. Os canais e o formulário da página são ilustrativos e não realizam agendamentos reais.</p></details>
+    </div></div></section>
 
-                    
+    <section class="contact" id="contato" aria-labelledby="contact-title"><div class="wrap contact-grid"><div class="contact-copy reveal"><span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> VAMOS CONVERSAR?</span><h2 class="section-heading section-heading-light" id="contact-title">Toda jornada começa com uma <em>conversa.</em></h2><p>Conheça a proposta do ICON e descubra como a ciência pode inspirar uma experiência de cuidado mais humana.</p><div class="contact-meta"><span><strong>LOCALIZAÇÃO DEMONSTRATIVA</strong>Avenida das Acácias, 450 — Centro<br>Uberlândia / MG</span><span><strong>HORÁRIO ILUSTRATIVO</strong>Segunda a sexta, 08h às 18h</span></div></div><div class="contact-form-panel reveal"><span class="form-kicker">CONTATO INSTITUCIONAL</span><h3>Conte um pouco sobre o que você procura.</h3><p>Formulário demonstrativo: nenhuma informação é enviada ou armazenada.</p><form id="contact-form" novalidate><label for="contact-name">Seu nome</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required><label for="contact-email">Seu e-mail</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="exemplo@email.com" required><label for="contact-topic">Assunto</label><select id="contact-topic" name="topic" required><option value="">Selecione uma opção</option><option>Conhecer especialidades</option><option>Informações sobre avaliações</option><option>Informações institucionais</option></select><button class="btn btn-mint btn-submit" type="submit">Visualizar demonstração <span aria-hidden="true">↗</span></button><div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div></form></div></div></section>
+  </main>
 
-                    perfil.addEventListener("click", () => {
-                        descricao.style.display =
-                            descricao.style.display === "none" ? "block" : "none";
-                    });
+  <footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><a class="brand" href="#inicio" aria-label="ICON — voltar ao início"><svg class="brand-mark" viewBox="0 0 46 46" fill="none" aria-hidden="true"><path d="M22.8 6.5c-5.5-5.4-15.2-1-15.2 6.4-5.9 5.4-3.4 13.1 1.5 14.9-1.6 7.7 8 13.8 13.7 8.2V6.5Zm.4 0c5.5-5.4 15.2-1 15.2 6.4 5.9 5.4 3.4 13.1-1.5 14.9 1.6 7.7-8 13.8-13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="23" cy="6.5" r="2" fill="#83C8B7"/></svg><span class="brand-copy"><strong>ICON</strong><small>Instituto de Cognição e Neuropsicologia</small></span></a><p>Um olhar científico, humano e integrado sobre o universo da mente.</p></div><div class="footer-col"><h3>Explore</h3><a href="#sobre">Sobre o ICON</a><a href="#especialidades">Especialidades</a><a href="#servicos">Serviços</a><a href="#profissionais">Profissionais</a></div><div class="footer-col"><h3>Institucional</h3><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas frequentes</a><a href="#contato">Contato</a><button type="button" data-modal="portal">Portal institucional</button></div><div class="footer-col"><h3>Contato ilustrativo</h3><span>contato@icon.exemplo.com.br</span><span>(34) 3333-0000</span><span>Uberlândia, Minas Gerais</span></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> ICON — Todos os direitos reservados.</span><span>Projeto acadêmico fictício · Não representa serviço real de saúde</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
 
-                    item.append(foto, dados, perfil, descricao);
-                    item.append(foto, dados, perfil);
-                    lista.appendChild(item);
-                });
-                semResultados.hidden = encontrados.length !== 0;
-                filtros.forEach(btn => btn.classList.toggle("ativo", btn.dataset.filtro === especialidade));
-            }
-            filtros.forEach(btn => btn.addEventListener("click", () => filtrarProfissionais(btn.dataset.filtro)));
-            $$('[data-filtro-profissional]').forEach(link => link.addEventListener("click", () => {
-                filtrarProfissionais(link.dataset.filtroProfissional);
-                fecharMenuMobile();
-            }));
-            filtrarProfissionais();
+  <!-- Dialog acessível com Escape, foco e fechamento no backdrop. -->
+  <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="Fechar janela">×</button><span class="eyebrow eyebrow-dark">ICON / INSTITUCIONAL</span><h2 id="dialog-title"></h2><div id="dialog-content"></div><button type="button" class="btn btn-dark dialog-ok">Entendi <span aria-hidden="true">↗</span></button></dialog>
 
-            // ==========================================
-            // MENU RESPONSIVO E SUBMENUS
-            // ==========================================
-            const btnMenu = $("#btn-menu-mobile");
-            const nav = $(".menu_de_navegacao");
-            function fecharMenuMobile() {
-                nav.classList.remove("menu-aberto");
-                btnMenu.setAttribute("aria-expanded", "false");
-                btnMenu.setAttribute("aria-label", "Abrir menu");
-            }
-            btnMenu.addEventListener("click", () => {
-                const aberto = nav.classList.toggle("menu-aberto");
-                btnMenu.setAttribute("aria-expanded", String(aberto));
-                btnMenu.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
-            });
-            $$(".dropdown-toggle").forEach(toggle => toggle.addEventListener("click", () => {
-                const pai = toggle.closest(".nav-dropdown");
-                pai.classList.toggle("dropdown-aberto");
-            }));
-            $$(".menu-container > a, .dropdown-menu a").forEach(link => link.addEventListener("click", fecharMenuMobile));
+  <script>
+  (() => {
+    'use strict';
+    const $ = (s, root = document) => root.querySelector(s);
+    const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+    const menuButton = $('.menu-toggle');
+    const mobileMenu = $('#mobile-menu');
+    const header = $('#cabecalho');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function closeMenu() { mobileMenu.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Abrir menu'); document.body.classList.remove('menu-is-open'); }
+    menuButton.addEventListener('click', () => { const opening = mobileMenu.hidden; mobileMenu.hidden = !opening; menuButton.setAttribute('aria-expanded', String(opening)); menuButton.setAttribute('aria-label', opening ? 'Fechar menu' : 'Abrir menu'); document.body.classList.toggle('menu-is-open', opening); });
+    $$('a', mobileMenu).forEach(a => a.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => { if (innerWidth > 980 && !mobileMenu.hidden) closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !mobileMenu.hidden) closeMenu(); });
+    document.addEventListener('pointerdown', e => { if (!mobileMenu.hidden && !header.contains(e.target)) closeMenu(); });
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 12), { passive: true });
+    header.classList.toggle('scrolled', scrollY > 12);
+    $('#year').textContent = String(new Date().getFullYear());
 
-            // ==========================================
-            // MODAL DE LOGIN / CADASTRO
-            // ==========================================
-            const modal = $("#loginDropdown");
-            const authBox = $("#authBox");
-            const formLogin = $("#formLogin");
-            const formRegister = $("#formRegister");
-            const abrirLogin = () => {
-                modal.classList.add("ativo");
-                modal.setAttribute("aria-hidden", "false");
-                document.body.classList.add("modal-aberto");
-            };
-            const fecharLogin = () => {
-                modal.classList.remove("ativo");
-                modal.setAttribute("aria-hidden", "true");
-                document.body.classList.remove("modal-aberto");
-            };
-            $("#btn-abrir-login").addEventListener("click", e => { e.preventDefault(); abrirLogin(); });
-            $("#fechar-modal").addEventListener("click", fecharLogin);
-            modal.addEventListener("click", e => { if (e.target === modal) fecharLogin(); });
-            document.addEventListener("keydown", e => { if (e.key === "Escape") { fecharLogin(); fecharMenuMobile(); } });
-            $$(".js-abrir-login").forEach(link => link.addEventListener("click", e => { e.preventDefault(); abrirLogin(); }));
-            $("#goToRegister").addEventListener("click", () => {
-                authBox.classList.add("modo-registro");
-                formLogin.classList.remove("active-form");
-                formRegister.classList.add("active-form");
-            });
-            $("#goToLogin").addEventListener("click", () => {
-                authBox.classList.remove("modo-registro");
-                formRegister.classList.remove("active-form");
-                formLogin.classList.add("active-form");
-            });
+    // Revelação progressiva: sem animações para quem prefere movimento reduzido.
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } }); }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+      $$('.reveal').forEach(el => io.observe(el));
+    } else $$('.reveal').forEach(el => el.classList.add('revealed'));
 
-            // ==========================================
-            // CADASTRO DEMONSTRATIVO EM 3 ETAPAS
-            // ==========================================
-            let etapaAtual = 1;
-            const paginas = $$(".form-step-page");
-            const btnAvancar = $("#btnStepAvancar");
-            const btnVoltar = $("#btnStepVoltar");
-            const dataNascimento = $("#regDataNasc");
-            const blocoResponsavel = $("#blocoResponsavel");
-
-            function atualizarEtapas() {
-                paginas.forEach((pagina, i) => pagina.classList.toggle("active", i + 1 === etapaAtual));
-                [1, 2, 3].forEach(n => $("#dot" + n).classList.toggle("active", n <= etapaAtual));
-                [1, 2].forEach(n => $("#line" + n).classList.toggle("active", n < etapaAtual));
-                const titulos = ["Informações Pessoais", "Contato e Endereço", "Finalizar Cadastro"];
-                const subtitulos = ["Preencha os dados do paciente.", "Informe os dados de localização.", "Convênio, responsável e acesso."];
-                $("#registroEtiquetaStep").textContent = `ETAPA ${etapaAtual} DE 3`;
-                $("#registroTituloStep").textContent = titulos[etapaAtual - 1];
-                $("#registroSubtituloStep").textContent = subtitulos[etapaAtual - 1];
-                btnVoltar.style.display = etapaAtual > 1 ? "block" : "none";
-                btnAvancar.textContent = etapaAtual === 3 ? "Finalizar cadastro" : "Continuar →";
-            }
-            function validarEtapa() {
-                const campos = [...paginas[etapaAtual - 1].querySelectorAll("input[required], select[required]")];
-                for (const campo of campos) {
-                    if (!campo.checkValidity()) { campo.reportValidity(); campo.focus(); return false; }
-                }
-                if (etapaAtual === 3 && $("#regSenha").value.length < 6) {
-                    $("#regSenha").setCustomValidity("A senha demonstrativa precisa ter pelo menos 6 caracteres.");
-                    $("#regSenha").reportValidity();
-                    $("#regSenha").setCustomValidity("");
-                    return false;
-                }
-                return true;
-            }
-            dataNascimento.addEventListener("change", () => {
-                if (!dataNascimento.value) return;
-                const nascimento = new Date(dataNascimento.value + "T00:00:00");
-                const hoje = new Date();
-                let idade = hoje.getFullYear() - nascimento.getFullYear();
-                if (hoje.getMonth() < nascimento.getMonth() || (hoje.getMonth() === nascimento.getMonth() && hoje.getDate() < nascimento.getDate())) idade--;
-                blocoResponsavel.style.display = idade < 18 ? "block" : "none";
-            });
-            btnAvancar.addEventListener("click", () => {
-                if (!validarEtapa()) return;
-                if (etapaAtual < 3) { etapaAtual++; atualizarEtapas(); }
-                else {
-                    alert("Formulário demonstrativo concluído. Os dados não foram enviados nem salvos. Para cadastrar pacientes de verdade, será necessário um backend seguro.");
-                    formRegister.reset(); etapaAtual = 1; atualizarEtapas(); fecharLogin();
-                    authBox.classList.remove("modo-registro");
-                    formRegister.classList.remove("active-form"); formLogin.classList.add("active-form");
-                }
-            });
-            btnVoltar.addEventListener("click", () => { if (etapaAtual > 1) { etapaAtual--; atualizarEtapas(); } });
-            atualizarEtapas();
-
-            // ==========================================
-            // FAQ EXPANSÍVEL
-            // ==========================================
-            $$(".pergunta").forEach((item, index) => {
-                const titulo = item.querySelector("h2");
-                const resposta = item.querySelector("p");
-                resposta.hidden = true;
-                titulo.tabIndex = 0;
-                titulo.setAttribute("role", "button");
-                titulo.setAttribute("aria-expanded", "false");
-                titulo.setAttribute("aria-controls", `resposta-faq-${index + 1}`);
-                resposta.id = `resposta-faq-${index + 1}`;
-                const alternar = () => {
-                    const abrir = resposta.hidden;
-                    resposta.hidden = !abrir;
-                    titulo.setAttribute("aria-expanded", String(abrir));
-                    item.classList.toggle("pergunta-aberta", abrir);
-                };
-                titulo.addEventListener("click", alternar);
-                titulo.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); alternar(); } });
-            });
+    // Navegação: o navegador cuida da rolagem/âncoras; CSS aplica o offset do header.
+    const navLinks = $$('.nav-desktop a');
+    const sections = $$('main section[id]');
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(a => a.classList.toggle('current', a.hash === '#' + entry.target.id));
         });
-                  const usuarios = {
-              "admin@icon.com": {
-                  senha: "1234",
-                  nivel: "administrador"
-              },
-              "medico@icon.com": {
-                  senha: "1234",
-                  nivel: "medico"
-              },
-              "cliente@icon.com": {
-                  senha: "1234",
-                  nivel: "cliente"
-              }
-          };
+      }, { rootMargin: '-20% 0px -65% 0px' });
+      sections.forEach(s => sectionObserver.observe(s));
+    }
 
-          formLogin.addEventListener("submit", e => {
-              e.preventDefault();
+    // Equipe fictícia e filtros com atualização sem recarregar a página.
+    const professionals = [
+      ['Mariana Silva','Neuropsicologia','Neuropsicóloga','CRP 00/001XX'],
+      ['João Oliveira','Neurologia','Neurologista','CRM 00/002XX'],
+      ['Ana Souza','Psicologia','Psicóloga clínica','CRP 00/003XX'],
+      ['Rafael Costa','Psiquiatria','Psiquiatra','CRM 00/004XX'],
+      ['Camila Mendes','Neuropsicologia','Neuropsicóloga','CRP 00/005XX'],
+      ['Lucas Ferreira','Psicologia','Psicólogo clínico','CRP 00/006XX'],
+      ['Beatriz Almeida','Psicologia','Psicóloga clínica','CRP 00/007XX'],
+      ['Isabela Rocha','Neuropsicologia','Neuropsicóloga','CRP 00/008XX'],
+      ['Gabriel Martins','Neurologia','Neurologista','CRM 00/009XX'],
+      ['Laura Ribeiro','Psiquiatria','Psiquiatra','CRM 00/010XX'],
+      ['Pedro Henrique','Psicologia','Psicólogo clínico','CRP 00/011XX'],
+      ['Sofia Carvalho','Neuropsicologia','Neuropsicóloga','CRP 00/012XX']
+    ];
+    const teamGrid = $('#team-grid');
+    function renderTeam(filter = 'Todos') {
+      const result = professionals.filter(p => filter === 'Todos' || p[1] === filter);
+      teamGrid.replaceChildren();
+      result.forEach((p, i) => {
+        const article = document.createElement('article'); article.className = 'person';
+        const initials = p[0].split(' ').map(s => s[0]).slice(0, 2).join('');
+        const art = document.createElement('div'); art.className = 'person-art'; art.setAttribute('aria-hidden', 'true');
+        const symbol = document.createElement('span'); symbol.textContent = initials; art.appendChild(symbol);
+        const body = document.createElement('div'); body.className = 'person-info';
+        const type = document.createElement('span'); type.className = 'person-type'; type.textContent = p[1];
+        const title = document.createElement('h3'); title.textContent = p[0];
+        const role = document.createElement('p'); role.textContent = p[2];
+        const license = document.createElement('small'); license.textContent = p[3] + ' · fictício';
+        body.append(type, title, role, license); article.append(art, body); teamGrid.append(article);
+      });
+      $('#team-count').textContent = `${result.length} ${result.length === 1 ? 'profissional' : 'profissionais'}`;
+      $$('.filter-btn').forEach(b => { const active = b.dataset.filter === filter; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); });
+    }
+    $$('.filter-btn').forEach(btn => btn.addEventListener('click', () => renderTeam(btn.dataset.filter)));
+    renderTeam();
 
-              if (!formLogin.reportValidity()) return;
+    // FAQ: permite expandir respostas, mas mantém somente uma aberta por vez.
+    $$('.faq-list details').forEach(item => item.addEventListener('toggle', () => { if (item.open) $$('.faq-list details').forEach(other => { if (other !== item) other.open = false; }); }));
 
-              const email = document.querySelector("#loginEmail").value.trim().toLowerCase();
-              const senha = document.querySelector("#loginSenha").value;
+    // Modal compartilhado para serviços e portal; HTML é criado sem conteúdo externo.
+    const serviceInfo = [
+      ['Avaliação Neuropsicológica','Investiga aspectos de memória, atenção, linguagem, raciocínio e funcionamento executivo. O processo pode envolver entrevistas, testes e devolutiva para apoiar decisões clínicas.'],
+      ['Psicoterapia','Acompanhamento psicológico que proporciona um espaço protegido de escuta, reflexão e desenvolvimento de recursos para lidar com experiências e desafios.'],
+      ['Avaliação Cognitiva','Explora habilidades cognitivas específicas para identificar pontos fortes, demandas de acompanhamento e possibilidades de intervenção.'],
+      ['Reabilitação Cognitiva','Conjunto de estratégias individualizadas para fortalecer ou compensar habilidades cognitivas e favorecer a autonomia em atividades do cotidiano.'],
+      ['Avaliação do Neurodesenvolvimento','Examina características do desenvolvimento, considerando aprendizagem, comportamento, linguagem e contexto familiar/escolar.'],
+      ['Laudos e Relatórios','Documentos técnicos que sintetizam resultados de avaliações, observações e recomendações, respeitando os critérios éticos e profissionais aplicáveis.']
+    ];
+    const dialog = $('#site-dialog'), dialogTitle = $('#dialog-title'), dialogContent = $('#dialog-content');
+    let lastFocus = null;
+    function openDialog(title, message) {
+      lastFocus = document.activeElement;
+      dialogTitle.textContent = title;
+      dialogContent.replaceChildren();
+      const p = document.createElement('p'); p.textContent = message; dialogContent.appendChild(p);
+      dialog.showModal();
+      $('.dialog-close').focus();
+    }
+    $$('[data-service]').forEach(btn => btn.addEventListener('click', () => { const info = serviceInfo[Number(btn.dataset.service)]; if (info) openDialog(...info); }));
+    $$('[data-modal="portal"]').forEach(btn => btn.addEventListener('click', () => { closeMenu(); openDialog('Portal institucional', 'Esta página é parte de um projeto acadêmico fictício. A autenticação e o agendamento real não estão disponíveis nesta demonstração.'); }));
+    function closeDialog() { if (dialog.open) dialog.close(); }
+    $('.dialog-close').addEventListener('click', closeDialog);
+    $('.dialog-ok').addEventListener('click', closeDialog);
+    dialog.addEventListener('click', e => { if (e.target === dialog) closeDialog(); });
+    dialog.addEventListener('close', () => { if (lastFocus && lastFocus.isConnected) lastFocus.focus(); });
 
-              const usuario = usuarios[email];
-
-              if (!usuario || usuario.senha !== senha) {
-                  alert("E-mail ou senha incorretos!");
-                  return;
-              }
-
-              const destinos = {
-                  administrador: "dashboard_administrador.html",
-                  medico: "dashboard_medico.html",
-                  cliente: "dashboard_cliente.html"
-              };
-
-              window.location.href = destinos[usuario.nivel];
-          });
-    </script>
+    // Demonstração acadêmica: impede envio real e jamais armazena dados.
+    const contactForm = $('#contact-form');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const feedback = $('#form-feedback');
+      if (!contactForm.checkValidity()) { contactForm.reportValidity(); feedback.textContent = 'Preencha os campos para visualizar a mensagem de demonstração.'; return; }
+      feedback.textContent = 'Demonstração concluída. Nenhuma mensagem foi enviada ou armazenada; este formulário é apenas ilustrativo.';
+      contactForm.reset();
+    });
+  })();
+  </script>
 </body>
-
 </html>
