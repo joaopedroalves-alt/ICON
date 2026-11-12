@@ -125,7 +125,7 @@ function init(){
  dialog.addEventListener('submit',e=>{
   if(e.target.id==='if-request'){
    e.preventDefault();let f=new FormData(e.target),service=String(f.get('service')),date=String(f.get('date')),time=String(f.get('time')),day=new Date(date+'T12:00:00').getDay();
-   if(date<today()||[0,6].includes(day)||!(/^\d\d:\d\d$/.test(time))||mins(time)<480||mins(time)+(duration[service]||60)>1080||mins(time)%15!==0){notify('Informe um dia útil e horário entre 08h e 18h, em intervalos de 15 minutos.');return;}
+   if(date<today()||(date===today()&&mins(time)<=new Date().getHours()*60+new Date().getMinutes())||[0,6].includes(day)||!(/^\d\d:\d\d$/.test(time))||mins(time)<480||mins(time)+(duration[service]||60)>1080||mins(time)%15!==0){notify('Informe um dia útil e horário entre 08h e 18h, em intervalos de 15 minutos.');return;}
    const db=load(),id='FLX-'+Date.now().toString(36).toUpperCase();
    db.requests.push({id,patient:'Lucas Mendes',professional:'Dra. Mariana Silva',date,time,service,mode:String(f.get('mode')),room:'',status:'Recebida',createdAt:new Date().toISOString()});
    log(db,'Paciente','Solicitou '+service+' em '+format(date)+' às '+time+'.');
