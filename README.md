@@ -48,20 +48,38 @@ No botão **Acessar portal** do INDEX, utilize a senha pública de teste **1234*
 5. Consulte o botão **Histórico** da janela de fluxo para mostrar o passo a passo.
 6. Clique em **Tema escuro** e **Tutorial** para demonstrar classes CSS, eventos e manipulação de elementos.
 
-A sincronização utiliza um array de solicitações e um array de ações demonstrativas, guardados sob a chave localStorage **icon.fluxo.v1**. A implementação está em **icon-integracao.js**. O visual está em **icon-integracao.css**.
+A sincronização utiliza um array de solicitações e um array de ações demonstrativas, guardados sob a chave localStorage **icon.fluxo.v1**. A implementação está em **icon-integracao.js**. O visual de todas as páginas está no arquivo unificado **icon.css** (seção [06] de integração).
 
 ## Organização dos arquivos
 
 | Arquivo | Função |
 | --- | --- |
-| index.html e index.css | Página inicial |
+| index.html | Página institucional e portal de login/cadastro |
 | cerebro-hero.js | Ilustração interativa do cérebro |
-| dashboard_administrador.html e dashboard-admin.css | Administrador |
-| dashboard_medico.html e dashboard-medico.css | Profissional |
-| dashboard-secretario.html e dashboard-secretario.css | Secretaria |
-| dashboard-cliente.html e dashboard-cliente.css | Paciente |
+| dashboard_administrador.html | Painel do administrador |
+| dashboard_medico.html | Painel do profissional |
+| dashboard-secretario.html | Painel da secretaria |
+| dashboard-cliente.html | Painel do paciente (versão principal) |
+| dashboard_cliente.html | Cópia legada da página do paciente |
 | icon-integracao.js | Fluxo compartilhado, histórico, tutorial e alternância de tema |
-| icon-integracao.css | Estilos dos recursos compartilhados |
+| **icon.css** | **Todos os estilos das páginas, por seção e perfil, incluindo modo escuro** |
+
+
+## CSS unificado — onde editar cada parte
+
+Agora todas as páginas HTML carregam **somente** `icon.css`. Para não misturar estilos com nomes iguais em páginas diferentes, cada área possui uma classe no `<body>`:
+
+| Marcação no `icon.css` | Conteúdo | Classe da página |
+| --- | --- | --- |
+| `[01]` | Site institucional e modal de login/cadastro | `icon-page-home` |
+| `[02]` | Administrador | `icon-page-admin` |
+| `[03]` | Médico | `icon-page-medico` |
+| `[04]` | Secretário | `icon-page-secretario` |
+| `[05]` | Paciente | `icon-page-paciente` |
+| `[06]` | Modo escuro, fluxo, histórico e tutorial nos quatro dashboards | `icon-dashboard` |
+| `[07]` | Regras da versão institucional antiga (sem página em uso) | `icon-page-legacy` |
+
+**Como buscar:** abra `icon.css` e pesquise `[03]` para achar o começo do CSS do médico. Para corrigir algo compartilhado (inclusive `body.if-dark`), procure `[06]`. Evite remover os prefixos `body.icon-page-*` e `body.icon-dashboard`: eles impedem que as regras de um painel afetem outro. Os arquivos CSS separados foram consolidados; suas versões anteriores continuam recuperáveis pelo histórico de commits do GitHub. O arquivo com erro de grafia `dashbord-cliente.css` era uma duplicata do CSS do paciente e não precisa ser mantido.
 
 ## Conceitos que podem ser explicados na apresentação
 
