@@ -7,7 +7,7 @@
 ## O que o sistema inclui
 
 - Página institucional com serviços, especialidades e profissionais fictícios. As **oito especialidades** usam cartões expansíveis: clique ou pressione Enter/Espaço para revelar uma explicação e um link interno. Os cartões não saltam mais no hover e são responsivos.
-- Portal de acesso e cadastro ilustrativos, com transição deslizante.
+- Portal de acesso e **cadastro demonstrativo em três etapas**, com transição deslizante, validação por etapa e opção de responsável fictício.
 - Dashboard do Administrador, do Profissional, do Secretário e do Paciente.
 - **Fluxo integrado demonstrativo:** paciente solicita um horário; secretaria confirma; profissional e administração visualizam.
 - **Histórico:** mostra quando um pedido fictício foi criado, confirmado ou cancelado.
@@ -38,6 +38,20 @@ No botão **Acessar portal** do INDEX, utilize a senha pública de teste **1234*
 | paciente | dashboard-cliente.html |
 
 **Isso não é autenticação real.** Como as páginas são públicas, qualquer pessoa pode abrir o HTML diretamente. As credenciais existem somente para demonstrar redirecionamentos.
+
+## Cadastro em três etapas (restauração do cadastro antigo)
+
+Em `index.html`, clique em **Acessar portal → Realizar cadastro**. O registro agora tem:
+
+1. **Informações pessoais:** nome fictício, nascimento de exemplo, gênero e estado civil opcionais.
+2. **Contato e responsável:** e-mail de exemplo, telefone, cidade, estado e dados de responsável **apenas se** a opção for marcada.
+3. **Convênio e acesso:** modalidade particular ou convênio, identificação fictícia opcional, perfil de demonstração e senha pública `1234`.
+
+O formulário possui indicadores de progresso, botões **Continuar/Voltar**, validação da etapa visível e tela de conclusão. O cadastro pode ser fechado a qualquer momento sem persistir as informações. Um retorno ao login exibe as contas predefinidas.
+
+**O formulário não cria uma conta real, não armazena dados, não conecta um servidor e não modifica os quatro perfis públicos de teste.** Não digite CPF, RG, informações de saúde, carteirinhas, endereços ou senhas reais. Alguns dados clínicos presentes na versão histórica não foram recuperados por motivos de privacidade. A ideia é demonstrar a interface de cadastro, não coletar informações de pacientes.
+
+Para testar manualmente, avance com um nome de exemplo, e-mail `teste@icon.test`, marque e desmarque o responsável para conferir os campos condicionais e finalize com o perfil **paciente** e a senha `1234`. Em seguida, use o botão **Ir para o login** e entre com o usuário `paciente` e a senha `1234`.
 
 ## Demonstração: um agendamento atravessando os quatro dashboards
 
