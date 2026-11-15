@@ -417,20 +417,145 @@
           <button type="button" class="portal-mobile-switch" data-portal-mode="register">Ainda não tenho acesso · Realizar cadastro →</button>
         </div>
         <div class="portal-register-panel" id="portal-register-panel" hidden>
-          <span class="portal-auth-kicker portal-dark-kicker">CADASTRO DEMONSTRATIVO</span>
+          <span class="portal-auth-kicker portal-dark-kicker">CADASTRO / SIMULAÇÃO ACADÊMICA</span>
           <h2 id="portal-register-heading">Realizar cadastro</h2>
-          <p class="portal-auth-subtitle">Conheça a experiência de registro. Nenhuma conta real será criada.</p>
-          <form id="portal-register-form" class="portal-auth-form" novalidate>
-            <label for="portal-register-name">Nome completo</label>
-            <input id="portal-register-name" name="name" type="text" autocomplete="off" placeholder="Nome fictício" maxlength="90" required>
-            <label for="portal-register-email">E-mail demonstrativo</label>
-            <input id="portal-register-email" name="email" type="email" autocomplete="off" placeholder="exemplo@icon.test" maxlength="100" required>
-            <label for="portal-register-profile">Perfil demonstrativo</label>
-            <select id="portal-register-profile" name="profile" required><option value="paciente">Paciente</option><option value="medico">Profissional</option><option value="secretario">Secretário</option><option value="admin">Administrador</option></select>
+          <p class="portal-auth-subtitle">Três etapas inspiradas no cadastro original do ICON. Utilize <strong>somente dados inventados</strong>: não há envio, armazenamento ou criação de contas.</p>
+
+          <div class="portal-register-progress" id="portal-register-progress" aria-label="Progresso do cadastro">
+            <ol class="portal-register-steps">
+              <li data-step-indicator="0" aria-current="step"><span class="portal-register-number">1</span><span>Dados pessoais</span></li>
+              <li data-step-indicator="1"><span class="portal-register-number">2</span><span>Contato</span></li>
+              <li data-step-indicator="2"><span class="portal-register-number">3</span><span>Convênio</span></li>
+            </ol>
+            <div class="portal-register-track" role="progressbar" aria-label="Etapa atual do cadastro" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"><span id="portal-register-progress-bar"></span></div>
+          </div>
+
+          <form id="portal-register-form" class="portal-auth-form portal-register-form" novalidate autocomplete="off">
+            <p id="portal-register-step-label" class="portal-register-step-label" aria-live="polite">Etapa 1 de 3 · Informações pessoais</p>
+
+            <fieldset class="portal-register-step" data-register-step="0">
+              <legend>1. Informações pessoais</legend>
+              <div class="portal-register-grid">
+                <div class="portal-register-field portal-register-wide">
+                  <label for="portal-register-name">Nome completo fictício *</label>
+                  <input id="portal-register-name" name="name" type="text" placeholder="Ex.: Lucas Mendes" minlength="3" maxlength="90" autocomplete="off" required>
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-birth">Data de nascimento de exemplo</label>
+                  <input id="portal-register-birth" name="birth" type="date" autocomplete="off">
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-gender">Gênero (opcional)</label>
+                  <select id="portal-register-gender" name="gender">
+                    <option value="">Prefiro não informar</option>
+                    <option>Feminino</option><option>Masculino</option><option>Outro</option>
+                  </select>
+                </div>
+                <div class="portal-register-field portal-register-wide">
+                  <label for="portal-register-civil">Estado civil (opcional)</label>
+                  <select id="portal-register-civil" name="civil">
+                    <option value="">Selecione, se desejar</option>
+                    <option>Solteiro(a)</option><option>Casado(a)</option><option>União estável</option><option>Divorciado(a)</option><option>Viúvo(a)</option>
+                  </select>
+                </div>
+              </div>
+              <p class="portal-register-note">Para proteger a privacidade, esta demonstração não solicita CPF, RG ou informações sobre condições de saúde.</p>
+            </fieldset>
+
+            <fieldset class="portal-register-step" data-register-step="1" hidden disabled>
+              <legend>2. Contato e responsável</legend>
+              <div class="portal-register-grid">
+                <div class="portal-register-field portal-register-wide">
+                  <label for="portal-register-email">E-mail fictício *</label>
+                  <input id="portal-register-email" name="email" type="email" placeholder="exemplo@icon.test" maxlength="100" autocomplete="off" required>
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-phone">Telefone ilustrativo</label>
+                  <input id="portal-register-phone" name="phone" type="tel" placeholder="(00) 00000-0000" maxlength="20" autocomplete="off">
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-city">Cidade de exemplo</label>
+                  <input id="portal-register-city" name="city" type="text" placeholder="Uberlândia" maxlength="70" autocomplete="off">
+                </div>
+                <div class="portal-register-field portal-register-wide">
+                  <label for="portal-register-state">Estado</label>
+                  <select id="portal-register-state" name="state">
+                    <option value="">Selecione uma UF</option>
+                    <option value="MG">Minas Gerais</option><option value="SP">São Paulo</option><option value="RJ">Rio de Janeiro</option><option value="GO">Goiás</option><option value="DF">Distrito Federal</option>
+                    <option value="outro">Outro estado</option>
+                  </select>
+                </div>
+                <label class="portal-guardian-toggle portal-register-wide" for="portal-register-guardian">
+                  <input type="checkbox" id="portal-register-guardian" name="needsGuardian">
+                  <span>Incluir responsável fictício (quando necessário)</span>
+                </label>
+                <div class="portal-guardian-fields portal-register-wide" id="portal-guardian-fields" hidden>
+                  <div class="portal-register-field portal-register-wide">
+                    <label for="portal-guardian-name">Nome do responsável fictício *</label>
+                    <input id="portal-guardian-name" name="guardianName" type="text" placeholder="Ex.: Maria Mendes" minlength="3" maxlength="90" data-guardian-required="true" disabled>
+                  </div>
+                  <div class="portal-register-field">
+                    <label for="portal-guardian-relation">Parentesco *</label>
+                    <input id="portal-guardian-relation" name="guardianRelation" type="text" placeholder="Ex.: mãe" maxlength="45" data-guardian-required="true" disabled>
+                  </div>
+                  <div class="portal-register-field">
+                    <label for="portal-guardian-phone">Contato fictício *</label>
+                    <input id="portal-guardian-phone" name="guardianPhone" type="tel" placeholder="(00) 00000-0000" maxlength="20" data-guardian-required="true" disabled>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="portal-register-step" data-register-step="2" hidden disabled>
+              <legend>3. Convênio e acesso</legend>
+              <div class="portal-register-grid">
+                <div class="portal-register-field portal-register-wide">
+                  <label for="portal-register-plan">Modalidade de atendimento *</label>
+                  <select id="portal-register-plan" name="plan" required>
+                    <option value="">Selecione uma opção</option><option value="particular">Particular</option>
+                    <option>Unimed</option><option>Bradesco Saúde</option><option>SulAmérica</option>
+                    <option>Amil</option><option>Hapvida</option><option>Outro convênio</option>
+                  </select>
+                </div>
+                <div class="portal-register-field portal-register-wide" id="portal-register-card-group" hidden>
+                  <label for="portal-register-card">Identificação ilustrativa do convênio</label>
+                  <input id="portal-register-card" name="card" type="text" placeholder="Apenas exemplo, nunca uma carteirinha real" maxlength="35" autocomplete="off" disabled>
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-profile">Perfil de demonstração *</label>
+                  <select id="portal-register-profile" name="profile" required>
+                    <option value="paciente">Paciente</option><option value="medico">Profissional</option><option value="secretario">Secretário</option><option value="admin">Administrador</option>
+                  </select>
+                </div>
+                <div class="portal-register-field">
+                  <label for="portal-register-password">Senha fictícia (1234) *</label>
+                  <input id="portal-register-password" name="password" type="password" value="1234" inputmode="numeric" minlength="4" maxlength="4" autocomplete="new-password" required>
+                </div>
+                <label class="portal-guardian-toggle portal-register-wide" for="portal-register-ack">
+                  <input id="portal-register-ack" name="acknowledgeDemo" type="checkbox" required>
+                  <span>Confirmo que estou usando somente dados fictícios.</span>
+                </label>
+              </div>
+              <p class="portal-register-note">Nenhuma senha ou informação é salva. Após finalizar, utilize os usuários públicos de teste para entrar.</p>
+            </fieldset>
+
             <p class="portal-form-feedback" id="portal-register-feedback" role="status" aria-live="polite"></p>
-            <button type="submit" class="portal-auth-submit">Concluir demonstração <span aria-hidden="true">→</span></button>
+            <div class="portal-register-actions">
+              <button type="button" class="portal-register-back" id="portal-register-prev" hidden>← Voltar</button>
+              <button type="button" class="portal-auth-submit" id="portal-register-next">Continuar <span aria-hidden="true">→</span></button>
+              <button type="submit" class="portal-auth-submit" id="portal-register-finish" hidden>Finalizar demonstração <span aria-hidden="true">✓</span></button>
+            </div>
           </form>
-          <p class="portal-auth-disclaimer">Cadastro ilustrativo: os dados não são enviados nem armazenados. Para entrar, utilize um dos quatro usuários de teste.</p>
+
+          <div class="portal-register-complete" id="portal-register-complete" role="status" aria-live="polite" tabindex="-1" hidden>
+            <span class="portal-register-complete-icon" aria-hidden="true">✓</span>
+            <h3>Cadastro demonstrativo concluído!</h3>
+            <p>Você percorreu as três etapas do cadastro original em uma interface atualizada. Nenhuma conta foi criada, nem os dados foram armazenados.</p>
+            <p>Para explorar os painéis, use <strong>admin, medico, secretario ou paciente</strong> com a senha <strong>1234</strong>.</p>
+            <button type="button" class="portal-auth-submit" id="portal-register-to-login">Ir para o login <span aria-hidden="true">→</span></button>
+          </div>
+
+          <p class="portal-auth-disclaimer">Projeto acadêmico fictício. Não informe documentos, dados clínicos, carteirinhas, endereços ou senhas reais.</p>
           <button type="button" class="portal-mobile-switch" data-portal-mode="login">Já tenho acesso · Fazer login →</button>
         </div>
       </section>
