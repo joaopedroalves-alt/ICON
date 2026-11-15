@@ -6,7 +6,7 @@
 
 ## O que o sistema inclui
 
-- Página institucional com serviços, especialidades e profissionais fictícios.
+- Página institucional com serviços, especialidades e profissionais fictícios. As **oito especialidades** usam cartões expansíveis: clique ou pressione Enter/Espaço para revelar uma explicação e um link interno. Os cartões não saltam mais no hover e são responsivos.
 - Portal de acesso e cadastro ilustrativos, com transição deslizante.
 - Dashboard do Administrador, do Profissional, do Secretário e do Paciente.
 - **Fluxo integrado demonstrativo:** paciente solicita um horário; secretaria confirma; profissional e administração visualizam.
