@@ -7,7 +7,7 @@
    SOBRE a superfície e ligados aos vizinhos mais próximos, em 3 dimensões.
    Pontos, dendritos, feixes e sinais de transmissão são geometrias WebGL.
 
-   Este arquivo funciona junto ao novo index.html e index.css.
+   Este arquivo funciona junto ao novo index.html e icon.css.
    O SVG inline no HTML permanece visível se WebGL/CDN não estiver disponível.
    ====================================================================== */
 (() => {
