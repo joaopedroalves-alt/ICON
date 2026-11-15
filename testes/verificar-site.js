@@ -117,4 +117,39 @@ assert.equal(sync('admin', base), true);
 assert.equal(base.appointments[0].status, 'Cancelado');
 verificacoes += 2;
 
+// Verifica também os outros três perfis e a consistência do cancelamento.
+fluxo.requests[0].status = 'Confirmada';
+fluxo.requests[0].time = '09:30';
+fluxo.requests[0].room = 'Consultório 01';
+const dadosPerfis = {
+  paciente: {appointments: [], requests: []},
+  secretario: {
+    appointments: [],
+    patients: [{id:'PAC-01',name:'Lucas Mendes'}],
+    professionals: [{id:'PRO-01',name:'Mariana Silva'}],
+    rooms: [{id:'SAL-01',name:'Consultório 01'}]
+  },
+  medico: {
+    appointments: [],
+    patients: [{id:'P-001',name:'Lucas Mendes'}],
+    profile: {name:'Dra. Mariana Silva'}
+  }
+};
+for (const [perfil, dados] of Object.entries(dadosPerfis)) {
+  assert.equal(sync(perfil, dados), true, perfil + ': deve importar o agendamento');
+  assert.equal(sync(perfil, dados), false, perfil + ': não pode duplicar');
+  assert.equal(dados.appointments.length, 1);
+  assert.equal(dados.appointments[0].status, 'Confirmado');
+  verificacoes += 4;
+}
+assert.equal(dadosPerfis.secretario.appointments[0].roomId, 'SAL-01');
+assert.equal(dadosPerfis.paciente.requests[0].status, 'Concluída');
+verificacoes += 2;
+fluxo.requests[0].status = 'Cancelada';
+for (const [perfil, dados] of Object.entries(dadosPerfis)) {
+  assert.equal(sync(perfil, dados), true);
+  assert.equal(dados.appointments[0].status, 'Cancelado');
+  verificacoes += 2;
+}
+
 console.log('ICON: ' + verificacoes + ' verificações passaram. CSS único preservado.');
