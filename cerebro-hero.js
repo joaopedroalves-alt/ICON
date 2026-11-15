@@ -2,7 +2,7 @@
    ICON — MODELO NEURAL 3D DO HERO
    Three.js via CDN (ES Module). Nenhum framework adicional.
 
-   Um cérebro anatômico estilizado é descrito por DOIS hemisférios.
+   Um cérebro anatômico estilizado é descrito por um único volume cortical.
    A superfície possui circunvoluções e sulcos; os neurônios são distribuídos
    SOBRE a superfície e ligados aos vizinhos mais próximos, em 3 dimensões.
    Pontos, dendritos, feixes e sinais de transmissão são geometrias WebGL.
@@ -70,48 +70,43 @@
   const rng = randomFactory(19042026);
   const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
 
-  /* Superfície cerebral contínua: cada conjunto de neurônios ocupa METADE
-     do mesmo volume cortical (x negativo/positivo), em vez de uma elipse
-     inteira para cada hemisfério. A fissura central permanece visível.
-     Não é um modelo médico anatômico; é uma representação artística 3D. */
+  /* Córtex artístico contínuo em dois lados de um MESMO cérebro.
+     A fissura longitudinal, os lobos e os sulcos afetam o relevo da malha,
+     e não apenas as linhas luminosas. Não é reconstrução anatômica clínica. */
   function brainSurface(side, v, theta) {
-    const ring = Math.sqrt(Math.max(0, 1 - v * v));
-    const lateral = Math.abs(Math.cos(theta));
+    const ring = Math.sqrt(Math.max(0, 1 - v*v));
+    const lateral = Math.max(0, Math.cos(theta));
     const depth = Math.sin(theta);
     const upper = Math.max(0, v);
     const lower = Math.max(0, -v);
     const frontal = Math.max(0, depth);
-    const temporal = Math.exp(-Math.pow((v + 0.32) / 0.27, 2))
-      * Math.pow(lateral, 1.8);
+    const posterior = Math.max(0, -depth);
+    const temporal = Math.exp(-Math.pow((v + 0.40) / 0.27, 2))
+      * Math.pow(lateral, 1.6) * (0.72 + 0.28 * frontal);
 
-    // Circunvoluções em escalas diferentes: ondulações, e não meridianos ovais.
+    // Pequenos giros irregulares criam circunvoluções sem serrilhar a silhueta.
     const folded =
-      0.060 * Math.sin(9.6 * theta + 6.1 * v + 0.4 * Math.sin(11 * v)) +
-      0.034 * Math.sin(17.8 * theta - 10.2 * v) +
-      0.016 * Math.cos(25.4 * theta + 7.7 * v);
+      0.060*Math.sin(9.8*theta + 6.4*v + 0.4*Math.sin(9*v)) +
+      0.036*Math.sin(17.1*theta - 10.7*v) +
+      0.018*Math.cos(24.6*theta + 8.7*v);
 
-    const width = 1 + 0.045 * upper - 0.16 * lower
-      + 0.055 * Math.sin(3.1 * depth + 3.5 * v);
+    // Sulco central e fissura lateral: canais que escavam a superfície.
+    const centralGroove = Math.exp(-Math.pow((depth - 0.10 - 0.14*v)/0.14,2))
+      * Math.pow(lateral,0.7) * (0.5 + 0.5*upper);
+    const lateralGroove = Math.exp(-Math.pow((v + 0.27 + 0.10*depth)/0.115,2))
+      * Math.pow(lateral,1.5);
+    const contours = 1 + 0.045*upper - 0.15*lower
+      + 0.07*frontal + 0.025*posterior;
+    const relief = 1 + 0.72*folded - 0.072*centralGroove - 0.085*lateralGroove;
 
-    // Ao contrário de dois elipsoides, o eixo da superfície começa na
-    // fissura central e se expande até a lateral do cérebro.
-    const x = side * (
-      0.030 + 1.035 * ring * lateral * width * (1 + folded * 0.73)
-      + 0.042 * temporal
-    );
-
-    // Depressão longitudinal no topo, lobo temporal e parte inferior menos
-    // esférica deixam a silhueta reconhecível de frente e no ângulo 3/4.
-    const fissure = 0.115 * upper * Math.exp(-Math.pow(x / 0.17, 2));
-    const y = 0.90 * v
-      + 0.027 * ring * Math.sin(7.2 * theta - 8.0 * v)
-      - fissure - 0.083 * temporal - 0.045 * lower;
-
-    const z = ring * depth
-      * (0.81 + 0.075 * upper + 0.085 * frontal)
-      * (1 + 0.70 * folded)
-      + 0.055 * frontal * ring * ring
-      + 0.018 * temporal;
+    const x = side * (0.028 + 1.005*ring*lateral*contours*relief
+      + 0.047*temporal);
+    const fissure = 0.105*upper*Math.exp(-Math.pow(x/0.20,2));
+    const y = 0.92*v + 0.025*ring*Math.sin(6.2*theta - 7.3*v)
+      - fissure - 0.073*temporal - 0.045*lower - 0.015*lateralGroove;
+    const z = ring*depth*(0.82 + 0.095*upper + 0.10*frontal + 0.025*posterior)
+      * (1 + 0.64*folded - 0.042*centralGroove)
+      + 0.035*frontal*ring*ring + 0.018*temporal;
 
     return { x, y, z, side };
   }
@@ -121,7 +116,7 @@
     const golden = Math.PI * (3 - Math.sqrt(5));
     for (let i = 0; i < count; i++) {
       const v = 1 - 2 * (i + 0.5) / count;
-      const theta = golden * i + (rng() - 0.5) * 0.15;
+      const theta = clamp(-Math.PI/2 + (golden*i) % Math.PI + (rng()-.5)*0.045, -Math.PI/2+.004, Math.PI/2-.004);
       result.push(brainSurface(side, v, theta));
     }
     return result;
@@ -245,13 +240,12 @@
     for (const side of [-1, 1]) {
       // Fileiras longitudinais sinuosas.
       for (let track = 0; track < 25; track++) {
-        const base = 2 * Math.PI * (track / 25);
+        const base = -Math.PI/2 + Math.PI*(track/24);
         let prev = null;
         for (let i = 0; i <= 76; i++) {
           const t = i / 76;
           const v = -0.93 + 1.86 * t;
-          const angle = base + 0.095 * Math.sin(15 * t + track * 1.7)
-            + 0.053 * Math.sin(31 * t - track);
+          const angle = clamp(base + 0.063*Math.sin(15*t+track*1.7) + 0.035*Math.sin(31*t-track), -Math.PI/2+.004, Math.PI/2-.004);
           const next = brainSurface(side, v, angle);
           if (prev) gyri.push(prev.x,prev.y,prev.z,next.x,next.y,next.z);
           prev = next;
@@ -262,7 +256,7 @@
         const base = -0.82 + 1.64 * (band / 9);
         let prev = null;
         for (let i = 0; i <= 105; i++) {
-          const theta = 2 * Math.PI * i / 105;
+          const theta = -Math.PI/2 + Math.PI*i/105;
           const v = clamp(base + 0.045 * Math.sin(5 * theta + band * 1.3), -.97, .97);
           const next = brainSurface(side, v, theta);
           if (prev) sulci.push(prev.x,prev.y,prev.z,next.x,next.y,next.z);
@@ -272,6 +266,27 @@
     }
     addSegments(gyri, 0x80d1cb, 0.39);
     addSegments(sulci, 0x246b7a, 0.34);
+    // Canais anatômicos: sulco central e fissura lateral, acompanhando o relevo.
+    const majorSulci = [];
+    for (const side of [-1,1]) {
+      let previous = null;
+      for (let i=0;i<=62;i++) {
+        const v = 0.76 - 1.24*i/62;
+        const theta = Math.asin(clamp(0.10+0.14*v,-0.9,0.9));
+        const p = brainSurface(side,v,theta);
+        if (previous) majorSulci.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
+        previous=p;
+      }
+      previous=null;
+      for (let i=0;i<=65;i++) {
+        const theta = -1.05 + 2.12*i/65;
+        const v = -0.27 - 0.10*Math.sin(theta);
+        const p = brainSurface(side,v,theta);
+        if (previous) majorSulci.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
+        previous=p;
+      }
+    }
+    addSegments(majorSulci,0x0e4252,0.62);
 
     // Ramificações/dendritos curtos saem de neurônios selecionados.
     for (let i = 0; i < neurons.length; i += compact ? 11 : 9) {
@@ -298,6 +313,111 @@
     }
     addSegments(stem, 0x5faaa9, 0.22);
     return edges;
+  }
+
+  // Uma malha real dá volume ao cérebro; as partículas ficam sobre a pele.
+  // Nível de detalhe mais baixo preserva desempenho em aparelhos modestos.
+  function makeCortex() {
+    const rows = compact ? 32 : 58;
+    const columns = compact ? 54 : 94;
+    for (const side of [-1,1]) {
+      const xyz = [], triangles = [];
+      for (let row=0;row<=rows;row++) {
+        const v = 0.995 - 1.99*row/rows;
+        for (let col=0;col<=columns;col++) {
+          const theta = -Math.PI/2 + Math.PI*col/columns;
+          const p = brainSurface(side,v,theta);
+          xyz.push(p.x,p.y,p.z);
+        }
+      }
+      for (let row=0;row<rows;row++) {
+        for (let col=0;col<columns;col++) {
+          const a = row*(columns+1)+col;
+          const b = a+columns+1;
+          triangles.push(a,b,a+1,b,b+1,a+1);
+        }
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position',new THREE.Float32BufferAttribute(xyz,3));
+      geometry.setIndex(triangles);
+      geometry.computeVertexNormals();
+      const material = new THREE.MeshStandardMaterial({
+        color:0x347e83,emissive:0x0c303c,emissiveIntensity:0.44,
+        metalness:0.19,roughness:0.61,transparent:true,
+        opacity:compact?0.47:0.56,depthWrite:false,side:THREE.DoubleSide,
+        polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1
+      });
+      const mesh = new THREE.Mesh(geometry,material);
+      mesh.renderOrder=-2;
+      mesh.frustumCulled=false;
+      brain.add(mesh);
+    }
+  }
+
+  // Cerebelo com pequenas pregas (folia), mais tronco cerebral afunilado.
+  // São figuras estilizadas e leves, não arquivos externos/modelos pesados.
+  function makeCerebellumAndStem() {
+    const foldLines = [];
+    for (const side of [-1,1]) {
+      const cx=side*0.235, cy=-0.91, cz=-0.51;
+      const rx=0.31, ry=0.195, rz=0.29;
+      const geometry=new THREE.SphereGeometry(1,compact?22:38,compact?14:25);
+      const positions=geometry.getAttribute('position');
+      for (let i=0;i<positions.count;i++) {
+        const x=positions.getX(i),y=positions.getY(i),z=positions.getZ(i);
+        const wrinkle=1+0.038*Math.sin(22*y)+0.012*Math.sin(13*x+10*y);
+        positions.setXYZ(i,x*wrinkle,y,z*wrinkle);
+      }
+      geometry.computeVertexNormals();
+      const material=new THREE.MeshStandardMaterial({
+        color:0x397c80,emissive:0x12343d,emissiveIntensity:0.37,
+        metalness:0.13,roughness:0.69,transparent:true,
+        opacity:0.85,depthWrite:false
+      });
+      const lobe=new THREE.Mesh(geometry,material);
+      lobe.scale.set(rx,ry,rz);
+      lobe.position.set(cx,cy,cz);
+      lobe.renderOrder=-1;
+      brain.add(lobe);
+      for(let band=0;band<11;band++) {
+        const lat=-0.83+1.66*band/10;
+        const radius=Math.sqrt(1-lat*lat);
+        let previous=null;
+        for(let j=0;j<=48;j++) {
+          const angle=2*Math.PI*j/48;
+          const wrinkle=1+0.038*Math.sin(22*lat);
+          const p={
+            x:cx+rx*radius*Math.cos(angle)*wrinkle,
+            y:cy+ry*lat,
+            z:cz+rz*radius*Math.sin(angle)*wrinkle
+          };
+          if(previous)foldLines.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
+          previous=p;
+        }
+      }
+    }
+    addSegments(foldLines,0x7bbab3,0.38);
+    const stemGeometry=new THREE.CylinderGeometry(0.115,0.158,0.42,compact?14:24,8);
+    const stemMaterial=new THREE.MeshStandardMaterial({
+      color:0x326871,emissive:0x102f3c,emissiveIntensity:0.38,
+      metalness:0.11,roughness:0.7,transparent:true,
+      opacity:0.84,depthWrite:false
+    });
+    const stem=new THREE.Mesh(stemGeometry,stemMaterial);
+    stem.position.set(0,-1.145,-0.25);
+    stem.rotation.x=-0.13;
+    stem.renderOrder=-1;
+    brain.add(stem);
+  }
+
+  function addCorticalLights() {
+    scene.add(new THREE.HemisphereLight(0xaee8e0,0x0c2c3b,1.12));
+    const key=new THREE.DirectionalLight(0xb0f4e7,2.15);
+    key.position.set(-2.2,2.7,4.5);
+    scene.add(key);
+    const rim=new THREE.DirectionalLight(0x7abbeb,1.4);
+    rim.position.set(2.6,0.9,-3.5);
+    scene.add(rim);
   }
 
   function makeNeurons() {
@@ -393,7 +513,7 @@
     if (w<2 || h<2) return;
     // Enquadramento ortográfico que preserva proporção e evita cortes laterais.
     const aspect = w/h;
-    const viewportHeight = Math.max(2.64,2.72/aspect);
+    const viewportHeight = Math.max(2.92,3.03/aspect);
     camera.left = -viewportHeight*aspect/2;
     camera.right = viewportHeight*aspect/2;
     camera.top = viewportHeight/2;
@@ -499,6 +619,9 @@
       camera.lookAt(0,0,0);
       brain = new THREE.Group();
       scene.add(brain);
+      addCorticalLights();
+      makeCortex();
+      makeCerebellumAndStem();
       const edges = makeNetwork(compact?OPTIONS.compactNodesPerHemisphere:OPTIONS.fullNodesPerHemisphere);
       makeNeurons();
       makePulses(edges);
