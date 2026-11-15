@@ -99,3 +99,172 @@
  #if-toast{left:9px;right:9px;bottom:79px;max-width:none}
 }
 @media(prefers-reduced-motion:reduce){.if-dock button,.if-bar button{transition:none}}
+
+
+
+/* ICON / Revisão de contraste do modo escuro — 2026-11-15.
+   Escopo: quatro dashboards atuais. Mantém a sidebar e os banners azuis
+   como componentes de destaque, sem alterar a identidade do tema claro.
+   Dados exibidos permanecem exclusivamente fictícios. */
+
+/* Tokens de leitura: não redefinir --ocean/--mint nem --white, usados em
+   textos/botões coloridos e sobre fundos especiais. */
+body.if-dark {
+  color-scheme: dark;
+  --ink: #e9f3f6;
+  --muted: #b7ccd4;
+  --line: #3f606d;
+  --paper: #193a49;
+  --surface: #193a49;
+  --wash: #12313f;
+  --soft: #1a3b49;
+  background: #0c2633 !important;
+  color: #e9f3f6 !important;
+}
+body.if-dark :is(.page-column,.main-column,.app-column,.app-main,.main-content,.page-content,#page-content,.app-shell) {
+  background-color: #102d3b !important;
+  color: #e7f2f5 !important;
+}
+body.if-dark :is(.topbar,.app-footer) {
+  background: #153746 !important;
+  border-color: #345965 !important;
+  color: #edf7f8 !important;
+}
+
+/* Superfícies administrativas que permaneciam claras no tema escuro. */
+body.if-dark :is(
+  .panel,.surface,.card,.table-panel,.stat,.stat-card,.metric-card,
+  .data-table-wrap,.notification-popover,.notify-pop,.notification-card,
+  .notification-row,.popover-item,.doc-row,.professional-card,.room-card,
+  .pro-card,.doctor-card,.date-tile,.calendar-day,.week-day,.week-col,
+  .agenda-day-header,.agenda-bar,.day-event,.week-event,.week-entry,
+  .room-toolbar,.patient-header,.record-note,.note-strip,.subtle-notice,
+  .notice,.form-info,.empty-state,.detail-feature,.permission-box,
+  .modal-explainer,.app-dialog,.app-modal,.app-modal-content
+) {
+  background: #193b4a !important;
+  border-color: #3b5d6a !important;
+  color: #eaf4f6 !important;
+}
+body.if-dark :is(.notification-row.is-read,.notification-card.unread,.pop-item.unread,.popover-item:hover,.pop-item:hover,.data-table tbody tr:hover,.calendar-day.today,.week-day.today,.day-slot.empty:hover) {
+  background: #234958 !important;
+  color: #eef7f8 !important;
+}
+/* Linhas e cabeçalhos de tabelas, cartões e pop-ups. */
+body.if-dark :is(.data-table th,.data-table thead,table th,th,.calendar-day-head,.week-title,.table-bottom,.notification-head,.popover-head,.pop-head,.tabs,.segmented,.segment,.filter-search,.global-search,.search-field,.agenda-controls,.date-tile) {
+  background-color: #214555 !important;
+  border-color: #406474 !important;
+  color: #e1eff2 !important;
+}
+body.if-dark :is(.data-table td,table td,.row-arrow,.table-link,.sort-heading) {
+  color: #dbe9ed !important;
+  border-color: #3a5966 !important;
+}
+body.if-dark :is(.table-panel,.surface,.panel,.card,.metric-card,.stat-card,.notification-popover,.notify-pop,.app-dialog,.app-modal)
+  :is(h1,h2,h3,h4,strong,label,.card-title,.section-title,.stat-value,.metric-value) {
+  color: #edf7f8 !important;
+}
+body.if-dark :is(.page-column,.main-column,.app-column,.app-main)
+  :is(.breadcrumb strong,.breadcrumbs strong,.top-label strong,.account-copy strong,.profile-copy strong,.top-profile strong,.user-shortcut strong,.page-heading h1,.page-title,.card-title,.section-title,.field label) {
+  color: #eaf5f7 !important;
+}
+body.if-dark :is(.page-column,.main-column,.app-column,.app-main)
+  :is(.page-heading p,.card-sub,.card-subtitle,.section-sub,.subtitle,.breadcrumb,.breadcrumbs,.top-label small,.account-copy small,.profile-copy small,.top-profile small,.stat-label,.metric-label,.helper-text,.hint,.empty-note,.muted) {
+  color: #b7ced6 !important;
+}
+body.if-dark :is(.panel,.surface,.card,.notification-popover,.notify-pop,.app-dialog,.app-modal)
+  :is(p,small,.card-sub,.description) {
+  color: #bcd0d7 !important;
+}
+
+/* Campos de pesquisa, formulários, filtros, botões secundários e seus placeholders. */
+body.if-dark :is(
+  input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]),
+  select,textarea,.input,.select,.textarea,.control,.filter-search,
+  .search-field,.global-search,.select-filter,.small-select-label select,
+  .segmented,.tabs,.segment,.date-filter input
+) {
+  background-color: #112e3c !important;
+  border-color: #476a78 !important;
+  color: #edf7f9 !important;
+}
+body.if-dark :is(input,textarea)::placeholder { color: #b5cbd3 !important; opacity: 1; }
+body.if-dark select option { background: #112e3c; color: #edf7f9; }
+body.if-dark :is(.btn,.btn-secondary,.btn-outline,.btn-ghost,.btn-quiet,.btn.outline,.btn.light,.icon-button,.icon-btn,.small-action,.select-filter,.notification-all,.notification-footer,.popover-footer,.pop-foot,.segmented button,.segment button,.tab,.tabs .tab):not(.primary):not(.btn-primary):not(.mint):not(.btn-mint):not(.danger):not(.btn-danger):not(.active):not(.selected) {
+  background-color: #244b5a !important;
+  border-color: #446b78 !important;
+  color: #eaf5f7 !important;
+}
+body.if-dark :is(.segmented button.active,.segment button.selected,.tab.active,.tabs .tab.active) {
+  background: #316472 !important;
+  border-color: #74c8bf !important;
+  color: #f4fffe !important;
+}
+body.if-dark :is(.btn,.icon-btn,.icon-button,.small-action,.tab,.segmented button):focus-visible {
+  outline: 3px solid #9fe4d9 !important;
+  outline-offset: 2px;
+}
+/* Estados e indicadores usam fundos escuros próprios: letras nunca ficam
+   claras sobre o amarelo/verde pastel do tema claro. */
+body.if-dark :is(.pill,.chip,.status,.role-tag,.mini-badge,.time-tag,.summary-pills>span) {
+  background-color: #294d5b !important;
+  color: #e2f0f3 !important;
+  border-color: #4b7381 !important;
+}
+body.if-dark :is(.pill.ok,.chip.success,.status-confirmado,.status-ativa,.status-ativo,.status-resolvida,.status-disponivel) {
+  background-color: #1b5047 !important;
+  color: #cbf4e6 !important;
+}
+body.if-dark :is(.pill.warning,.chip.warning,.status-a-confirmar,.status-recebida,.pill.pending,.pill.review) {
+  background-color: #614823 !important;
+  color: #ffe2ad !important;
+}
+body.if-dark :is(.pill.cancelled,.pill.closed,.chip.danger,.status-cancelado,.status-cancelada,.status-indisponivel) {
+  background-color: #603b41 !important;
+  color: #ffdade !important;
+}
+
+/* Janela do fluxo integrado, histórico e tutorial: antes permanecia toda
+   branca, mesmo quando o modo escuro estava selecionado. */
+body.if-dark #if-dialog {
+  background: #143542 !important;
+  color: #eaf5f7 !important;
+  border-color: #3d6571 !important;
+}
+body.if-dark :is(.if-tabs,.if-foot) {
+  background: #173c4b !important;
+  border-color: #3e6370 !important;
+  color: #bbd3d9 !important;
+}
+body.if-dark :is(.if-form,.if-metrics>div,.if-confirm,.if-guide p,.if-history li,.if-empty) {
+  background: #1c4351 !important;
+  border-color: #426775 !important;
+  color: #dcebf0 !important;
+}
+body.if-dark :is(.if-tabs button,.if-confirm button:not([type=submit])) {
+  background: #264e5d !important;
+  color: #e2f1f3 !important;
+  border-color: #477080 !important;
+}
+body.if-dark .if-tabs button[aria-current="page"] {
+  background: #39747b !important;
+  color: #ffffff !important;
+}
+body.if-dark :is(.if-grid input,.if-grid select,.if-confirm select) {
+  background: #112f3d !important;
+  color: #f4fbfc !important;
+  border-color: #527684 !important;
+}
+body.if-dark :is(.if-explain,.if-disclaimer,.if-item p,.if-item small,.if-history li p,.if-history li small,.if-metrics small,.if-foot) {
+  color: #bdd3db !important;
+}
+body.if-dark :is(.if-item strong,.if-guide strong,.if-form h3,.if-list-heading,.if-grid label,.if-confirm label,.if-history li strong,.if-metrics strong) {
+  color: #edfafb !important;
+}
+body.if-dark .if-item { border-color: #40616f !important; }
+body.if-dark .if-pill { background: #614823 !important; color: #ffe7af !important; }
+body.if-dark .if-pill.ok { background: #1b5047 !important; color: #cef8e5 !important; }
+body.if-dark .if-pill.off { background: #603b41 !important; color: #f9d6db !important; }
+body.if-dark .if-guide b { background: #326b68 !important; color: #f1fffa !important; }
+body.if-dark .if-link { color: #a7e4e2 !important; }
+body.if-dark :is(.if-primary,.if-confirm button[type=submit]) { background: #236b72 !important; color: #ffffff !important; }
