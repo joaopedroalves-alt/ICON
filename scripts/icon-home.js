@@ -114,9 +114,106 @@
     const switchDescription = $('#portal-switch-description');
     let focusBeforePortal = null;
     let portalMode = 'login';
+
+    // Cadastro de três etapas, inspirado nas páginas antigas do ICON.
+    // Tudo fica apenas na memória da aba durante o preenchimento: nada é enviado ou salvo.
+    const registrationForm = $('#portal-register-form');
+    const registrationSteps = $('[data-register-step]', registrationForm);
+    const registrationMarkers = $('[data-step-indicator]', $('#portal-register-progress'));
+    const registrationComplete = $('#portal-register-complete');
+    const registrationFeedback = $('#portal-register-feedback');
+    let registrationStep = 0;
+    const registrationStepLabels = [
+      'Etapa 1 de 3 · Informações pessoais',
+      'Etapa 2 de 3 · Contato e responsável',
+      'Etapa 3 de 3 · Convênio e acesso'
+    ];
+
+    function updateGuardianFields() {
+      const active = $('#portal-register-guardian').checked;
+      const group = $('#portal-guardian-fields');
+      group.hidden = !active;
+      $('input', group).forEach(input => {
+        input.disabled = !active;
+        input.required = active && input.dataset.guardianRequired === 'true';
+        if (!active) input.value = '';
+      });
+    }
+
+    function updatePlanFields() {
+      const plan = $('#portal-register-plan').value;
+      const cardGroup = $('#portal-register-card-group');
+      const cardInput = $('#portal-register-card');
+      const active = !!plan && plan !== 'particular';
+      cardGroup.hidden = !active;
+      cardInput.disabled = !active;
+      if (!active) cardInput.value = '';
+    }
+
+    function showRegistrationStep(index, focus = true) {
+      registrationStep = Math.max(0, Math.min(2, index));
+      registrationSteps.forEach((fieldset, i) => {
+        fieldset.hidden = i !== registrationStep;
+        fieldset.disabled = i !== registrationStep;
+      });
+      registrationMarkers.forEach((marker, i) => {
+        if (i === registrationStep) marker.setAttribute('aria-current', 'step');
+        else marker.removeAttribute('aria-current');
+      });
+      $('#portal-register-step-label').textContent = registrationStepLabels[registrationStep];
+      const progress = $('#portal-register-progress').querySelector('[role="progressbar"]');
+      progress.setAttribute('aria-valuenow', String(registrationStep + 1));
+      $('#portal-register-progress-bar').style.width = String((registrationStep + 1) / 3 * 100) + '%';
+      $('#portal-register-prev').hidden = registrationStep === 0;
+      $('#portal-register-next').hidden = registrationStep === 2;
+      $('#portal-register-finish').hidden = registrationStep !== 2;
+      registrationFeedback.textContent = '';
+      if (focus) {
+        const target = registrationSteps[registrationStep].querySelector('input:not([disabled]), select:not([disabled])');
+        if (target) target.focus();
+      }
+    }
+
+    function resetRegistration() {
+      registrationForm.reset();
+      updateGuardianFields();
+      updatePlanFields();
+      registrationForm.hidden = false;
+      registrationComplete.hidden = true;
+      showRegistrationStep(0, false);
+    }
+
+    function validateRegistrationStep() {
+      const fields = $('input, select, textarea', registrationSteps[registrationStep]);
+      for (const field of fields) {
+        if (field.disabled || field.checkValidity()) continue;
+        registrationFeedback.textContent = 'Confira os campos obrigatórios desta etapa.';
+        field.reportValidity();
+        field.focus();
+        return false;
+      }
+      if (registrationStep === 2 && $('#portal-register-password').value !== '1234') {
+        registrationFeedback.textContent = 'Use apenas a senha fictícia 1234 nesta demonstração.';
+        $('#portal-register-password').focus();
+        return false;
+      }
+      return true;
+    }
+
+    $('#portal-register-guardian').addEventListener('change', updateGuardianFields);
+    $('#portal-register-plan').addEventListener('change', updatePlanFields);
+    $('#portal-register-next').addEventListener('click', () => {
+      if (validateRegistrationStep()) showRegistrationStep(registrationStep + 1);
+    });
+    $('#portal-register-prev').addEventListener('click', () => showRegistrationStep(registrationStep - 1));
+    $('#portal-register-to-login').addEventListener('click', () => setPortalMode('login'));
+
     function setPortalMode(mode, focus = true) {
+      const lastMode = portalMode;
       portalMode = mode === 'register' ? 'register' : 'login';
       const register = portalMode === 'register';
+      // Cada abertura do cadastro começa limpa, evitando dados pendentes.
+      if (lastMode !== portalMode) resetRegistration();
       // Mantém o texto do painel de apresentação coerente com o formulário ativo.
       $('#portal-intro-heading').innerHTML = register
         ? 'Comece sua <em>jornada.</em>'
@@ -136,7 +233,7 @@
       portalDialog.setAttribute('aria-labelledby', register ? 'portal-register-heading' : 'portal-auth-heading');
       $('#portal-login-feedback').textContent = '';
       $('#portal-register-feedback').textContent = '';
-      if (focus) (register ? $('#portal-register-name') : $('#portal-username')).focus();
+      if (focus) (register ? (registrationComplete.hidden ? $('#portal-register-name') : $('#portal-register-to-login')) : $('#portal-username')).focus();
     }
     function openPortal() {
       closeMenu();
@@ -150,7 +247,10 @@
     $$('[data-portal-mode]').forEach(btn => btn.addEventListener('click', () => setPortalMode(btn.dataset.portalMode)));
     $('#portal-auth-close').addEventListener('click', () => portalDialog.close());
     portalDialog.addEventListener('click', e => { if (e.target === portalDialog) portalDialog.close(); });
-    portalDialog.addEventListener('close', () => { if (focusBeforePortal && focusBeforePortal.isConnected) focusBeforePortal.focus(); });
+    portalDialog.addEventListener('close', () => {
+      resetRegistration();
+      if (focusBeforePortal && focusBeforePortal.isConnected) focusBeforePortal.focus();
+    });
     $$('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => {
       const field = document.getElementById(btn.dataset.togglePassword);
       const visible = field.type === 'password';
@@ -181,13 +281,17 @@
         $('#portal-password').focus();
       }
     });
-    $('#portal-register-form').addEventListener('submit', e => {
+    registrationForm.addEventListener('submit', e => {
       e.preventDefault();
-      const form = e.currentTarget;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const feedback = $('#portal-register-feedback');
-      feedback.textContent = 'Cadastro demonstrativo concluído. Nenhuma conta foi criada ou armazenada. Utilize os usuários de teste para entrar.';
-      form.reset();
+      if (!validateRegistrationStep()) return;
+      if (registrationStep < 2) {
+        showRegistrationStep(registrationStep + 1);
+        return;
+      }
+      // A senha fictícia e os dados do formulário jamais são armazenados.
+      registrationForm.hidden = true;
+      registrationComplete.hidden = false;
+      registrationComplete.focus();
     });
     function closeDialog() { if (dialog.open) dialog.close(); }
     $('.dialog-close').addEventListener('click', closeDialog);
