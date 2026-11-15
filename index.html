@@ -211,9 +211,9 @@
       <section class="portal-auth-intro" aria-label="Apresentação do portal">
         <div class="portal-auth-logo"><span class="portal-auth-glyph" aria-hidden="true">✧</span><span>ICON <small>INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</small></span></div>
         <div class="portal-auth-intro-body">
-          <span class="portal-auth-kicker">PORTAL INSTITUCIONAL / DEMONSTRAÇÃO</span>
-          <h2>Bem-vindo <em>de volta.</em></h2>
-          <p>Um espaço para acompanhar atendimentos, organizar rotinas e conhecer os recursos do ICON.</p>
+          <span class="portal-auth-kicker" id="portal-intro-kicker">PORTAL INSTITUCIONAL / ACESSO</span>
+          <h2 id="portal-intro-heading" aria-live="polite">Bem-vindo <em>de volta.</em></h2>
+          <p id="portal-intro-description">Entre com um perfil de demonstração para conhecer os recursos do ICON.</p>
           <div class="portal-auth-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
         <div class="portal-auth-switch">
@@ -239,7 +239,7 @@
           <button type="button" class="portal-mobile-switch" data-portal-mode="register">Ainda não tenho acesso · Realizar cadastro →</button>
         </div>
         <div class="portal-register-panel" id="portal-register-panel" hidden>
-          <span class="portal-auth-kicker portal-dark-kicker">NOVA SOLICITAÇÃO</span>
+          <span class="portal-auth-kicker portal-dark-kicker">CADASTRO DEMONSTRATIVO</span>
           <h2 id="portal-register-heading">Realizar cadastro</h2>
           <p class="portal-auth-subtitle">Conheça a experiência de registro. Nenhuma conta real será criada.</p>
           <form id="portal-register-form" class="portal-auth-form" novalidate>
@@ -369,6 +369,17 @@
     function setPortalMode(mode, focus = true) {
       portalMode = mode === 'register' ? 'register' : 'login';
       const register = portalMode === 'register';
+      // Mantém o texto do painel de apresentação coerente com o formulário ativo.
+      $('#portal-intro-heading').innerHTML = register
+        ? 'Comece sua <em>jornada.</em>'
+        : 'Bem-vindo <em>de volta.</em>';
+      $('#portal-intro-kicker').textContent = register
+        ? 'PORTAL INSTITUCIONAL / CADASTRO'
+        : 'PORTAL INSTITUCIONAL / ACESSO';
+      $('#portal-intro-description').textContent = register
+        ? 'Preencha o formulário para conhecer a experiência de cadastro demonstrativo. Nenhuma conta real será criada.'
+        : 'Entre com um perfil de demonstração para conhecer os recursos do ICON.';
+      $('#portal-auth-close').setAttribute('aria-label', register ? 'Fechar cadastro do portal' : 'Fechar login do portal');
       portalContainer.classList.toggle('is-register', register);
       loginPanel.hidden = register;
       registerPanel.hidden = !register;
