@@ -65,6 +65,10 @@ A sincronização utiliza um array de solicitações e um array de ações demon
 | **icon.css** | **Todos os estilos das páginas, por seção e perfil, incluindo modo escuro** |
 
 
+## Imagem institucional da seção “O Instituto”
+
+A fotografia da seção “O Instituto”, abaixo do hero, é de **Vitaly Gariev**, disponibilizada no [Unsplash](https://unsplash.com/photos/two-women-talking-in-a-therapy-session-rG5elqddGzo) sob a **Licença Unsplash**. O `index.html` exibe a imagem pelo serviço do Unsplash e utiliza `imagens/imagematendimento.png` como reserva se a imagem externa falhar. A foto é ilustrativa e **não representa profissionais ou pacientes reais do ICON**.
+
 ## CSS unificado — onde editar cada parte
 
 Agora todas as páginas HTML carregam **somente** `icon.css`. Para não misturar estilos com nomes iguais em páginas diferentes, cada área possui uma classe no `<body>`:
