@@ -642,9 +642,12 @@ body.icon-page-home .specialty-feature .specialty-expand-hint{
   color: #a4e2d6;
   border-top-color: rgba(184,228,221,.25);
 }
-body.icon-page-home .specialty-action-open{display:none}
-body.icon-page-home .specialty-card[open] .specialty-action-open{display:inline}
-body.icon-page-home .specialty-card[open] .specialty-action-closed{display:none}
+/* Apenas um rótulo; o texto é atualizado pelo evento nativo toggle no HTML. */
+body.icon-page-home .specialty-action-label{
+  display:inline-block;
+  white-space:nowrap;
+  color:inherit;
+}
 body.icon-page-home .specialty-toggle-symbol{
   display: grid;
   place-items: center;
