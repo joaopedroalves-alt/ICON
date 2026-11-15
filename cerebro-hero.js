@@ -70,23 +70,49 @@
   const rng = randomFactory(19042026);
   const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
 
-  /* Uma superfície orgânica bilateral, vista inicialmente de frente.
-     x: largura dos dois hemisférios, y: altura, z: profundidade.
-     As perturbações harmônicas produzem circunvoluções sem perder o contorno. */
+  /* Superfície cerebral contínua: cada conjunto de neurônios ocupa METADE
+     do mesmo volume cortical (x negativo/positivo), em vez de uma elipse
+     inteira para cada hemisfério. A fissura central permanece visível.
+     Não é um modelo médico anatômico; é uma representação artística 3D. */
   function brainSurface(side, v, theta) {
     const ring = Math.sqrt(Math.max(0, 1 - v * v));
+    const lateral = Math.abs(Math.cos(theta));
+    const depth = Math.sin(theta);
+    const upper = Math.max(0, v);
+    const lower = Math.max(0, -v);
+    const frontal = Math.max(0, depth);
+    const temporal = Math.exp(-Math.pow((v + 0.32) / 0.27, 2))
+      * Math.pow(lateral, 1.8);
+
+    // Circunvoluções em escalas diferentes: ondulações, e não meridianos ovais.
     const folded =
-      0.070 * Math.sin(8.5 * theta + 6.0 * v + 0.6 * Math.sin(10 * v)) +
-      0.035 * Math.sin(16.3 * theta - 10.6 * v) +
-      0.022 * Math.cos(5.6 * theta + 13.5 * v);
-    const gyrus = 1 + folded;
-    const lower = 1 - 0.10 * Math.max(0, -v);
-    let x = side * (0.585 + 0.548 * ring * Math.cos(theta) * gyrus * lower);
-    // Marca a fissura entre os hemisférios sem produzir uma esfera dupla.
-    x = side * Math.max(0.055, Math.abs(x));
-    const y = 0.94 * v + 0.035 * ring * Math.sin(8 * theta - 7 * v);
-    const z = 0.83 * ring * Math.sin(theta) * (1 + folded * 0.85)
-      - 0.055 * Math.max(0, -v);
+      0.060 * Math.sin(9.6 * theta + 6.1 * v + 0.4 * Math.sin(11 * v)) +
+      0.034 * Math.sin(17.8 * theta - 10.2 * v) +
+      0.016 * Math.cos(25.4 * theta + 7.7 * v);
+
+    const width = 1 + 0.045 * upper - 0.16 * lower
+      + 0.055 * Math.sin(3.1 * depth + 3.5 * v);
+
+    // Ao contrário de dois elipsoides, o eixo da superfície começa na
+    // fissura central e se expande até a lateral do cérebro.
+    const x = side * (
+      0.030 + 1.035 * ring * lateral * width * (1 + folded * 0.73)
+      + 0.042 * temporal
+    );
+
+    // Depressão longitudinal no topo, lobo temporal e parte inferior menos
+    // esférica deixam a silhueta reconhecível de frente e no ângulo 3/4.
+    const fissure = 0.115 * upper * Math.exp(-Math.pow(x / 0.17, 2));
+    const y = 0.90 * v
+      + 0.027 * ring * Math.sin(7.2 * theta - 8.0 * v)
+      - fissure - 0.083 * temporal - 0.045 * lower;
+
+    const z = ring * depth
+      * (0.81 + 0.075 * upper + 0.085 * frontal)
+      * (1 + 0.70 * folded)
+      + 0.055 * frontal * ring * ring
+      + 0.018 * temporal;
+
     return { x, y, z, side };
   }
 
@@ -244,13 +270,13 @@
         }
       }
     }
-    addSegments(gyri, 0x74c0c4, 0.29);
-    addSegments(sulci, 0x246b7a, 0.24);
+    addSegments(gyri, 0x80d1cb, 0.39);
+    addSegments(sulci, 0x246b7a, 0.34);
 
     // Ramificações/dendritos curtos saem de neurônios selecionados.
     for (let i = 0; i < neurons.length; i += compact ? 11 : 9) {
       const p = neurons[i];
-      const normal = new THREE.Vector3(p.x-p.side*.585, p.y*.85, p.z).normalize();
+      const normal = new THREE.Vector3(p.x, p.y*.92, p.z).normalize();
       let tangent = new THREE.Vector3(rng()-.5, rng()-.5, rng()-.5);
       tangent.addScaledVector(normal, -normal.dot(tangent)).normalize();
       const mid = new THREE.Vector3(p.x,p.y,p.z).addScaledVector(tangent,.046).addScaledVector(normal,.017);
@@ -400,8 +426,8 @@
     const k = 1-Math.exp(-OPTIONS.mouseSmoothing*dt);
     mouse.smoothedX += ((mouse.active?mouse.x:0)-mouse.smoothedX)*k;
     mouse.smoothedY += ((mouse.active?mouse.y:0)-mouse.smoothedY)*k;
-    brain.rotation.y = -.24 + elapsed*OPTIONS.spinRadiansPerSecond + mouse.smoothedX*.36;
-    brain.rotation.x = -.09 - mouse.smoothedY*.23 + .025*Math.sin(elapsed*.43);
+    brain.rotation.y = -.48 + elapsed*OPTIONS.spinRadiansPerSecond + mouse.smoothedX*.31;
+    brain.rotation.x = -.13 - mouse.smoothedY*.20 + .021*Math.sin(elapsed*.43);
     brain.rotation.z = .018*Math.sin(elapsed*.32);
     brain.position.y = .023*Math.sin(elapsed*.76);
     updatePulses(dt);
