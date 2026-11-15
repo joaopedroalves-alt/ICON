@@ -304,14 +304,7 @@
     }
     addSegments(dendrites, 0x83c8b7, 0.40);
 
-    // Fibras no tronco inferior sugerem continuidade das vias neurais.
-    const stem = [];
-    for (let i = 0; i < 28; i++) {
-      const x = (i - 13.5) * .012;
-      const z = .12 * Math.sin(i * 2.4);
-      stem.push(x, -.76,z, x*.65,-1.04,z*.76, x*.65,-1.04,z*.76,x*.34,-1.23,z*.50);
-    }
-    addSegments(stem, 0x5faaa9, 0.22);
+    // Sem feixes pendentes: o volume inferior é representado pelo cerebelo.
     return edges;
   }
 
@@ -356,58 +349,49 @@
 
   // Cerebelo com pequenas pregas (folia), mais tronco cerebral afunilado.
   // São figuras estilizadas e leves, não arquivos externos/modelos pesados.
-  function makeCerebellumAndStem() {
-    const foldLines = [];
-    for (const side of [-1,1]) {
-      const cx=side*0.235, cy=-0.91, cz=-0.51;
-      const rx=0.31, ry=0.195, rz=0.29;
-      const geometry=new THREE.SphereGeometry(1,compact?22:38,compact?14:25);
-      const positions=geometry.getAttribute('position');
-      for (let i=0;i<positions.count;i++) {
-        const x=positions.getX(i),y=positions.getY(i),z=positions.getZ(i);
-        const wrinkle=1+0.038*Math.sin(22*y)+0.012*Math.sin(13*x+10*y);
-        positions.setXYZ(i,x*wrinkle,y,z*wrinkle);
-      }
-      geometry.computeVertexNormals();
-      const material=new THREE.MeshStandardMaterial({
-        color:0x397c80,emissive:0x12343d,emissiveIntensity:0.37,
-        metalness:0.13,roughness:0.69,transparent:true,
-        opacity:0.85,depthWrite:false
-      });
-      const lobe=new THREE.Mesh(geometry,material);
-      lobe.scale.set(rx,ry,rz);
-      lobe.position.set(cx,cy,cz);
-      lobe.renderOrder=-1;
-      brain.add(lobe);
-      for(let band=0;band<11;band++) {
-        const lat=-0.83+1.66*band/10;
-        const radius=Math.sqrt(1-lat*lat);
-        let previous=null;
-        for(let j=0;j<=48;j++) {
-          const angle=2*Math.PI*j/48;
-          const wrinkle=1+0.038*Math.sin(22*lat);
-          const p={
-            x:cx+rx*radius*Math.cos(angle)*wrinkle,
-            y:cy+ry*lat,
-            z:cz+rz*radius*Math.sin(angle)*wrinkle
-          };
-          if(previous)foldLines.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
-          previous=p;
-        }
+  // Cerebelo posterior único e achatado, discretamente integrado ao córtex.
+  // Sem cilindro ou extensões pendentes: a silhueta permanece cerebral.
+  function makeCerebellum() {
+    const cx=0, cy=-0.79, cz=-0.58;
+    const rx=0.46, ry=0.145, rz=0.235;
+    const geometry=new THREE.SphereGeometry(1,compact?26:42,compact?16:26);
+    const positions=geometry.getAttribute('position');
+    for (let i=0;i<positions.count;i++) {
+      const x=positions.getX(i), y=positions.getY(i), z=positions.getZ(i);
+      const wrinkle=1+0.022*Math.sin(17*y+3*x)+0.012*Math.cos(11*x+7*z);
+      positions.setXYZ(i,x*wrinkle,y*wrinkle,z*wrinkle);
+    }
+    geometry.computeVertexNormals();
+    const material=new THREE.MeshStandardMaterial({
+      color:0x387d84,emissive:0x123640,emissiveIntensity:0.29,
+      metalness:0.12,roughness:0.72,transparent:true,
+      opacity:0.72,depthWrite:false
+    });
+    const cerebellum=new THREE.Mesh(geometry,material);
+    cerebellum.scale.set(rx,ry,rz);
+    cerebellum.position.set(cx,cy,cz);
+    cerebellum.renderOrder=-1;
+    brain.add(cerebellum);
+
+    // Folhas cerebelares discretas, transversais à superfície posterior.
+    const folia=[];
+    for (let band=0;band<8;band++) {
+      const lat=-0.72+1.44*band/7;
+      const radius=Math.sqrt(1-lat*lat);
+      let previous=null;
+      for (let j=0;j<=56;j++) {
+        const angle=2*Math.PI*j/56;
+        const wrinkle=1+0.022*Math.sin(17*lat+3*radius*Math.cos(angle));
+        const p={
+          x:cx+rx*radius*Math.cos(angle)*wrinkle,
+          y:cy+ry*lat*wrinkle,
+          z:cz+rz*radius*Math.sin(angle)*wrinkle
+        };
+        if(previous)folia.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
+        previous=p;
       }
     }
-    addSegments(foldLines,0x7bbab3,0.38);
-    const stemGeometry=new THREE.CylinderGeometry(0.115,0.158,0.42,compact?14:24,8);
-    const stemMaterial=new THREE.MeshStandardMaterial({
-      color:0x326871,emissive:0x102f3c,emissiveIntensity:0.38,
-      metalness:0.11,roughness:0.7,transparent:true,
-      opacity:0.84,depthWrite:false
-    });
-    const stem=new THREE.Mesh(stemGeometry,stemMaterial);
-    stem.position.set(0,-1.145,-0.25);
-    stem.rotation.x=-0.13;
-    stem.renderOrder=-1;
-    brain.add(stem);
+    addSegments(folia,0x79b7b7,0.24);
   }
 
   function addCorticalLights() {
@@ -621,7 +605,7 @@
       scene.add(brain);
       addCorticalLights();
       makeCortex();
-      makeCerebellumAndStem();
+      makeCerebellum();
       const edges = makeNetwork(compact?OPTIONS.compactNodesPerHemisphere:OPTIONS.fullNodesPerHemisphere);
       makeNeurons();
       makePulses(edges);
