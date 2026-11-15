@@ -22,11 +22,11 @@
 
   const OPTIONS = Object.freeze({
     cdn: 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js',
-    dprMaximum: 1.7,
-    spinRadiansPerSecond: 0.074,
+    dprMaximum: 1.6,
+    spinRadiansPerSecond: 0.057,
     mouseSmoothing: 3.0,
-    fullNodesPerHemisphere: 1500,
-    compactNodesPerHemisphere: 720,
+    fullNodesPerHemisphere: 840,
+    compactNodesPerHemisphere: 390,
     maxFPScompact: 35,
   });
 
@@ -70,43 +70,48 @@
   const rng = randomFactory(19042026);
   const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
 
-  /* Córtex artístico contínuo em dois lados de um MESMO cérebro.
-     A fissura longitudinal, os lobos e os sulcos afetam o relevo da malha,
-     e não apenas as linhas luminosas. Não é reconstrução anatômica clínica. */
+  /* Cérebro artístico LOW-POLY: os hemisférios compartilham um contorno,
+     mas a fissura central permanece visível. As dobras deformam a superfície.
+     Modelo ilustrativo, não uma reconstrução anatômica para diagnóstico. */
   function brainSurface(side, v, theta) {
-    const ring = Math.sqrt(Math.max(0, 1 - v*v));
+    const ring = Math.sqrt(Math.max(0, 1-v*v));
     const lateral = Math.max(0, Math.cos(theta));
-    const depth = Math.sin(theta);
+    const depth = Math.sin(theta); // frente do cérebro em z positivo
     const upper = Math.max(0, v);
-    const lower = Math.max(0, -v);
-    const frontal = Math.max(0, depth);
-    const posterior = Math.max(0, -depth);
-    const temporal = Math.exp(-Math.pow((v + 0.40) / 0.27, 2))
-      * Math.pow(lateral, 1.6) * (0.72 + 0.28 * frontal);
+    const lower = Math.max(0,-v);
 
-    // Pequenos giros irregulares criam circunvoluções sem serrilhar a silhueta.
-    const folded =
-      0.060*Math.sin(9.8*theta + 6.4*v + 0.4*Math.sin(9*v)) +
-      0.036*Math.sin(17.1*theta - 10.7*v) +
-      0.018*Math.cos(24.6*theta + 8.7*v);
+    // Lobos integrados ao mesmo volume, evitando peças e protuberâncias soltas.
+    const frontal = Math.exp(-Math.pow((depth-0.63)/0.46,2))
+      * Math.exp(-Math.pow((v-0.15)/0.66,2));
+    const temporal = Math.exp(-Math.pow((v+0.36)/0.24,2))
+      * Math.exp(-Math.pow((depth-0.04)/0.58,2))
+      * Math.pow(lateral,1.3);
+    const occipital = Math.exp(-Math.pow((depth+0.70)/0.43,2))
+      * Math.exp(-Math.pow((v+0.06)/0.62,2));
 
-    // Sulco central e fissura lateral: canais que escavam a superfície.
-    const centralGroove = Math.exp(-Math.pow((depth - 0.10 - 0.14*v)/0.14,2))
-      * Math.pow(lateral,0.7) * (0.5 + 0.5*upper);
-    const lateralGroove = Math.exp(-Math.pow((v + 0.27 + 0.10*depth)/0.115,2))
-      * Math.pow(lateral,1.5);
-    const contours = 1 + 0.045*upper - 0.15*lower
-      + 0.07*frontal + 0.025*posterior;
-    const relief = 1 + 0.72*folded - 0.072*centralGroove - 0.085*lateralGroove;
+    // Sulcos em relevo, moderados para o estilo de poucos polígonos.
+    const folds =
+      0.047*Math.sin(7.8*theta + 5.2*v + 0.35*Math.sin(7*v)) +
+      0.026*Math.sin(13.2*theta - 8.5*v) +
+      0.011*Math.cos(18.2*theta + 10.4*v);
+    const centralSulcus = Math.exp(-Math.pow((depth-0.10-0.15*v)/0.14,2))
+      * Math.pow(lateral,0.75) * (0.55+0.45*upper);
+    const lateralSulcus = Math.exp(-Math.pow((v+0.30+0.09*depth)/0.12,2))
+      * Math.pow(lateral,1.4);
 
-    const x = side * (0.028 + 1.005*ring*lateral*contours*relief
-      + 0.047*temporal);
-    const fissure = 0.105*upper*Math.exp(-Math.pow(x/0.20,2));
-    const y = 0.92*v + 0.025*ring*Math.sin(6.2*theta - 7.3*v)
-      - fissure - 0.073*temporal - 0.045*lower - 0.015*lateralGroove;
-    const z = ring*depth*(0.82 + 0.095*upper + 0.10*frontal + 0.025*posterior)
-      * (1 + 0.64*folded - 0.042*centralGroove)
-      + 0.035*frontal*ring*ring + 0.018*temporal;
+    const width = 1 + 0.085*frontal + 0.060*occipital
+      + 0.105*temporal + 0.040*upper - 0.15*lower;
+    const relief = 1 + 0.75*folds - 0.062*centralSulcus
+      - 0.072*lateralSulcus;
+    const x = side * (0.032 + 0.99*ring*lateral*width*relief);
+    const fissure = 0.093*upper*Math.exp(-Math.pow(x/0.22,2));
+    const y = 0.90*v + 0.042*frontal + 0.014*occipital
+      - 0.060*temporal - 0.047*lower - fissure
+      + 0.013*ring*Math.sin(6.1*theta-6.8*v);
+    const z = ring*depth*(0.83 + 0.12*frontal + 0.045*occipital
+      + 0.045*upper - 0.025*lower)
+      * (1 + 0.58*folds - 0.035*centralSulcus)
+      + 0.026*Math.max(0,depth)*ring*ring;
 
     return { x, y, z, side };
   }
@@ -231,19 +236,19 @@
         used++;
       }
     });
-    addSegments(lineOcean, 0x2c8092, 0.26);
-    addSegments(lineCyan, 0x78bbd2, 0.39);
-    addSegments(lineMint, 0x83c8b7, 0.33);
+    addSegments(lineOcean, 0x2c8092, 0.14);
+    addSegments(lineCyan, 0x78bbd2, 0.25);
+    addSegments(lineMint, 0x83c8b7, 0.20);
 
     // Traçados orgânicos sobre as dobras, seguindo as coordenadas anatômicas.
     const gyri = [], sulci = [];
     for (const side of [-1, 1]) {
       // Fileiras longitudinais sinuosas.
-      for (let track = 0; track < 25; track++) {
-        const base = -Math.PI/2 + Math.PI*(track/24);
+      for (let track = 0; track < 13; track++) {
+        const base = -Math.PI/2 + Math.PI*(track/12);
         let prev = null;
-        for (let i = 0; i <= 76; i++) {
-          const t = i / 76;
+        for (let i = 0; i <= 48; i++) {
+          const t = i / 48;
           const v = -0.93 + 1.86 * t;
           const angle = clamp(base + 0.063*Math.sin(15*t+track*1.7) + 0.035*Math.sin(31*t-track), -Math.PI/2+.004, Math.PI/2-.004);
           const next = brainSurface(side, v, angle);
@@ -252,11 +257,11 @@
         }
       }
       // Curvas transversais, menos regulares e mais discretas.
-      for (let band = 0; band < 10; band++) {
-        const base = -0.82 + 1.64 * (band / 9);
+      for (let band = 0; band < 6; band++) {
+        const base = -0.80 + 1.60 * (band / 5);
         let prev = null;
-        for (let i = 0; i <= 105; i++) {
-          const theta = -Math.PI/2 + Math.PI*i/105;
+        for (let i = 0; i <= 58; i++) {
+          const theta = -Math.PI/2 + Math.PI*i/58;
           const v = clamp(base + 0.045 * Math.sin(5 * theta + band * 1.3), -.97, .97);
           const next = brainSurface(side, v, theta);
           if (prev) sulci.push(prev.x,prev.y,prev.z,next.x,next.y,next.z);
@@ -264,8 +269,8 @@
         }
       }
     }
-    addSegments(gyri, 0x80d1cb, 0.39);
-    addSegments(sulci, 0x246b7a, 0.34);
+    addSegments(gyri, 0x80d1cb, 0.21);
+    addSegments(sulci, 0x246b7a, 0.22);
     // Canais anatômicos: sulco central e fissura lateral, acompanhando o relevo.
     const majorSulci = [];
     for (const side of [-1,1]) {
@@ -286,10 +291,10 @@
         previous=p;
       }
     }
-    addSegments(majorSulci,0x0e4252,0.62);
+    addSegments(majorSulci,0x0e4252,0.46);
 
     // Ramificações/dendritos curtos saem de neurônios selecionados.
-    for (let i = 0; i < neurons.length; i += compact ? 11 : 9) {
+    for (let i = 0; i < neurons.length; i += compact ? 13 : 12) {
       const p = neurons[i];
       const normal = new THREE.Vector3(p.x, p.y*.92, p.z).normalize();
       let tangent = new THREE.Vector3(rng()-.5, rng()-.5, rng()-.5);
@@ -302,7 +307,7 @@
         dendrites.push(mid.x,mid.y,mid.z,branch.x,branch.y,branch.z);
       }
     }
-    addSegments(dendrites, 0x83c8b7, 0.40);
+    addSegments(dendrites, 0x83c8b7, 0.28);
 
     // Sem feixes pendentes: o volume inferior é representado pelo cerebelo.
     return edges;
@@ -311,50 +316,49 @@
   // Uma malha real dá volume ao cérebro; as partículas ficam sobre a pele.
   // Nível de detalhe mais baixo preserva desempenho em aparelhos modestos.
   function makeCortex() {
-    const rows = compact ? 32 : 58;
-    const columns = compact ? 54 : 94;
+    // Malha facetada com menos de um décimo das faces da versão original.
+    const rows = compact ? 18 : 25;
+    const columns = compact ? 28 : 36;
     for (const side of [-1,1]) {
       const xyz = [], triangles = [];
       for (let row=0;row<=rows;row++) {
-        const v = 0.995 - 1.99*row/rows;
+        const v=0.993-1.986*row/rows;
         for (let col=0;col<=columns;col++) {
-          const theta = -Math.PI/2 + Math.PI*col/columns;
-          const p = brainSurface(side,v,theta);
+          const theta=-Math.PI/2+Math.PI*col/columns;
+          const p=brainSurface(side,v,theta);
           xyz.push(p.x,p.y,p.z);
         }
       }
       for (let row=0;row<rows;row++) {
         for (let col=0;col<columns;col++) {
-          const a = row*(columns+1)+col;
-          const b = a+columns+1;
+          const a=row*(columns+1)+col;
+          const b=a+columns+1;
           triangles.push(a,b,a+1,b,b+1,a+1);
         }
       }
-      const geometry = new THREE.BufferGeometry();
+      const geometry=new THREE.BufferGeometry();
       geometry.setAttribute('position',new THREE.Float32BufferAttribute(xyz,3));
       geometry.setIndex(triangles);
       geometry.computeVertexNormals();
-      const material = new THREE.MeshStandardMaterial({
-        color:0x347e83,emissive:0x0c303c,emissiveIntensity:0.44,
-        metalness:0.19,roughness:0.61,transparent:true,
-        opacity:compact?0.47:0.56,depthWrite:false,side:THREE.DoubleSide,
+      const material=new THREE.MeshStandardMaterial({
+        color:0x56999b,emissive:0x103540,emissiveIntensity:0.26,
+        metalness:0.06,roughness:0.79,flatShading:true,
+        side:THREE.DoubleSide,depthWrite:true,
         polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1
       });
-      const mesh = new THREE.Mesh(geometry,material);
+      const mesh=new THREE.Mesh(geometry,material);
       mesh.renderOrder=-2;
       mesh.frustumCulled=false;
       brain.add(mesh);
     }
   }
 
-  // Cerebelo com pequenas pregas (folia), mais tronco cerebral afunilado.
-  // São figuras estilizadas e leves, não arquivos externos/modelos pesados.
   // Cerebelo posterior único e achatado, discretamente integrado ao córtex.
   // Sem cilindro ou extensões pendentes: a silhueta permanece cerebral.
   function makeCerebellum() {
-    const cx=0, cy=-0.79, cz=-0.58;
-    const rx=0.46, ry=0.145, rz=0.235;
-    const geometry=new THREE.SphereGeometry(1,compact?26:42,compact?16:26);
+    const cx=0, cy=-0.77, cz=-0.62;
+    const rx=0.35, ry=0.12, rz=0.19;
+    const geometry=new THREE.SphereGeometry(1,compact?12:18,compact?8:12);
     const positions=geometry.getAttribute('position');
     for (let i=0;i<positions.count;i++) {
       const x=positions.getX(i), y=positions.getY(i), z=positions.getZ(i);
@@ -363,9 +367,9 @@
     }
     geometry.computeVertexNormals();
     const material=new THREE.MeshStandardMaterial({
-      color:0x387d84,emissive:0x123640,emissiveIntensity:0.29,
-      metalness:0.12,roughness:0.72,transparent:true,
-      opacity:0.72,depthWrite:false
+      color:0x42787f,emissive:0x123640,emissiveIntensity:0.18,
+      metalness:0.05,roughness:0.82,flatShading:true,
+      depthWrite:true
     });
     const cerebellum=new THREE.Mesh(geometry,material);
     cerebellum.scale.set(rx,ry,rz);
@@ -391,7 +395,7 @@
         previous=p;
       }
     }
-    addSegments(folia,0x79b7b7,0.24);
+    addSegments(folia,0x79b7b7,0.15);
   }
 
   function addCorticalLights() {
@@ -411,8 +415,8 @@
       xyz.push(p.x,p.y,p.z);
       const c = palette[Math.floor(rng()*palette.length)];
       colors.push(c.r,c.g,c.b);
-      sizes.push(rng()<.11 ? 5.6 : 2.2+rng()*2.2);
-      alphas.push(.63+rng()*.36);
+      sizes.push(rng()<.08 ? 5.4 : 1.8+rng()*2.1);
+      alphas.push(.52+rng()*.35);
     });
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(xyz,3));
@@ -426,7 +430,7 @@
   }
 
   function makePulses(edges) {
-    const count = compact ? 24 : 48;
+    const count = compact ? 16 : 30;
     const positions = new Float32Array(count*3*3);
     const sizes = new Float32Array(count*3);
     const alphas = new Float32Array(count*3);
