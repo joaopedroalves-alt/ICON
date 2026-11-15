@@ -38,13 +38,20 @@ function sync(which,db){
   }
   if(which==='admin'){
    const p=db.patients?.find(x=>normalize(x.name)===normalize(r.patient)),pro=db.professionals?.find(x=>normalize(x.name)===normalize(r.professional)),svc=db.services?.find(x=>x.name===r.service);
-   const digit=r.room.match(/\d+/)?.[0],room=db.rooms?.find(x=>x.name.endsWith((digit||'').padStart(2,'0')));
-   if(p&&pro&&svc)item={id:r.id,date:r.date,time:r.time,patientId:p.id,professionalId:pro.id,serviceId:svc.id,roomId:room?.id||null,modality:r.mode,status};
+   // Os nomes das salas diferem entre secretaria e administração.
+   const adminRoomNames={'Consultório 01':'Sala 01','Consultório 02':'Sala 02','Sala Cognitiva':'Sala 03','Sala Multidisciplinar':'Sala 04'};
+   const room=db.rooms?.find(x=>x.name===adminRoomNames[r.room]);
+   if(p&&pro&&svc)item={id:r.id,date:r.date,time:r.time,patientId:p.id,professionalId:pro.id,serviceId:svc.id,roomId:r.mode==='Online'?null:room?.id||null,modality:r.mode,status};
   }
   if(!item)continue;
   const old=db.appointments.find(x=>x.id===r.id);
   if(!old){db.appointments.push(item);changed=true;}
-  else if(old.status!==status){old.status=status;changed=true;}
+  else {
+   // Sincroniza apenas os dados compartilhados, preservando outros campos.
+   for(const [field,value] of Object.entries(item)){
+    if(old[field]!==value){old[field]=value;changed=true;}
+   }
+  }
  }
  return changed;
 }
