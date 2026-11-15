@@ -118,8 +118,8 @@
     // Cadastro de três etapas, inspirado nas páginas antigas do ICON.
     // Tudo fica apenas na memória da aba durante o preenchimento: nada é enviado ou salvo.
     const registrationForm = $('#portal-register-form');
-    const registrationSteps = $('[data-register-step]', registrationForm);
-    const registrationMarkers = $('[data-step-indicator]', $('#portal-register-progress'));
+    const registrationSteps = $$('[data-register-step]', registrationForm);
+    const registrationMarkers = $$('[data-step-indicator]', $('#portal-register-progress'));
     const registrationComplete = $('#portal-register-complete');
     const registrationFeedback = $('#portal-register-feedback');
     let registrationStep = 0;
@@ -133,7 +133,7 @@
       const active = $('#portal-register-guardian').checked;
       const group = $('#portal-guardian-fields');
       group.hidden = !active;
-      $('input', group).forEach(input => {
+      $$('input', group).forEach(input => {
         input.disabled = !active;
         input.required = active && input.dataset.guardianRequired === 'true';
         if (!active) input.value = '';
@@ -184,7 +184,7 @@
     }
 
     function validateRegistrationStep() {
-      const fields = $('input, select, textarea', registrationSteps[registrationStep]);
+      const fields = $$('input, select, textarea', registrationSteps[registrationStep]);
       for (const field of fields) {
         if (field.disabled || field.checkValidity()) continue;
         registrationFeedback.textContent = 'Confira os campos obrigatórios desta etapa.';
