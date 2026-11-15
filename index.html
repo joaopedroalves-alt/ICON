@@ -477,7 +477,7 @@
 
     // Sincroniza um único rótulo com o estado nativo de cada cartão.
     // Evita exibir simultaneamente "Ver detalhes" e "Fechar detalhes".
-    $('.specialty-card').forEach(card => {
+    document.querySelectorAll('.specialty-card').forEach(card => {
       const label = $('.specialty-action-label', card);
       if (!label) return;
       const updateLabel = () => { label.textContent = card.open ? 'Fechar detalhes' : 'Ver detalhes'; };
