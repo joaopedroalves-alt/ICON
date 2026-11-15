@@ -25,8 +25,8 @@
     dprMaximum: 1.6,
     spinRadiansPerSecond: 0.057,
     mouseSmoothing: 3.0,
-    fullNodesPerHemisphere: 840,
-    compactNodesPerHemisphere: 390,
+    fullNodesPerHemisphere: 1250,
+    compactNodesPerHemisphere: 600,
     maxFPScompact: 35,
   });
 
@@ -236,9 +236,9 @@
         used++;
       }
     });
-    addSegments(lineOcean, 0x2c8092, 0.14);
-    addSegments(lineCyan, 0x78bbd2, 0.25);
-    addSegments(lineMint, 0x83c8b7, 0.20);
+    addSegments(lineOcean, 0x2c8092, 0.27);
+    addSegments(lineCyan, 0x78bbd2, 0.43);
+    addSegments(lineMint, 0x83c8b7, 0.36);
 
     // Traçados orgânicos sobre as dobras, seguindo as coordenadas anatômicas.
     const gyri = [], sulci = [];
@@ -269,8 +269,8 @@
         }
       }
     }
-    addSegments(gyri, 0x80d1cb, 0.21);
-    addSegments(sulci, 0x246b7a, 0.22);
+    addSegments(gyri, 0x80d1cb, 0.34);
+    addSegments(sulci, 0x246b7a, 0.31);
     // Canais anatômicos: sulco central e fissura lateral, acompanhando o relevo.
     const majorSulci = [];
     for (const side of [-1,1]) {
@@ -291,7 +291,7 @@
         previous=p;
       }
     }
-    addSegments(majorSulci,0x0e4252,0.46);
+    addSegments(majorSulci,0x2d8f9d,0.39);
 
     // Ramificações/dendritos curtos saem de neurônios selecionados.
     for (let i = 0; i < neurons.length; i += compact ? 13 : 12) {
@@ -307,7 +307,7 @@
         dendrites.push(mid.x,mid.y,mid.z,branch.x,branch.y,branch.z);
       }
     }
-    addSegments(dendrites, 0x83c8b7, 0.28);
+    addSegments(dendrites, 0x83c8b7, 0.37);
 
     // Sem feixes pendentes: o volume inferior é representado pelo cerebelo.
     return edges;
@@ -315,98 +315,9 @@
 
   // Uma malha real dá volume ao cérebro; as partículas ficam sobre a pele.
   // Nível de detalhe mais baixo preserva desempenho em aparelhos modestos.
-  function makeCortex() {
-    // Malha facetada com menos de um décimo das faces da versão original.
-    const rows = compact ? 18 : 25;
-    const columns = compact ? 28 : 36;
-    for (const side of [-1,1]) {
-      const xyz = [], triangles = [];
-      for (let row=0;row<=rows;row++) {
-        const v=0.993-1.986*row/rows;
-        for (let col=0;col<=columns;col++) {
-          const theta=-Math.PI/2+Math.PI*col/columns;
-          const p=brainSurface(side,v,theta);
-          xyz.push(p.x,p.y,p.z);
-        }
-      }
-      for (let row=0;row<rows;row++) {
-        for (let col=0;col<columns;col++) {
-          const a=row*(columns+1)+col;
-          const b=a+columns+1;
-          triangles.push(a,b,a+1,b,b+1,a+1);
-        }
-      }
-      const geometry=new THREE.BufferGeometry();
-      geometry.setAttribute('position',new THREE.Float32BufferAttribute(xyz,3));
-      geometry.setIndex(triangles);
-      geometry.computeVertexNormals();
-      const material=new THREE.MeshStandardMaterial({
-        color:0x56999b,emissive:0x103540,emissiveIntensity:0.26,
-        metalness:0.06,roughness:0.79,flatShading:true,
-        side:THREE.DoubleSide,depthWrite:true,
-        polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1
-      });
-      const mesh=new THREE.Mesh(geometry,material);
-      mesh.renderOrder=-2;
-      mesh.frustumCulled=false;
-      brain.add(mesh);
-    }
-  }
-
-  // Cerebelo posterior único e achatado, discretamente integrado ao córtex.
-  // Sem cilindro ou extensões pendentes: a silhueta permanece cerebral.
-  function makeCerebellum() {
-    const cx=0, cy=-0.77, cz=-0.62;
-    const rx=0.35, ry=0.12, rz=0.19;
-    const geometry=new THREE.SphereGeometry(1,compact?12:18,compact?8:12);
-    const positions=geometry.getAttribute('position');
-    for (let i=0;i<positions.count;i++) {
-      const x=positions.getX(i), y=positions.getY(i), z=positions.getZ(i);
-      const wrinkle=1+0.022*Math.sin(17*y+3*x)+0.012*Math.cos(11*x+7*z);
-      positions.setXYZ(i,x*wrinkle,y*wrinkle,z*wrinkle);
-    }
-    geometry.computeVertexNormals();
-    const material=new THREE.MeshStandardMaterial({
-      color:0x42787f,emissive:0x123640,emissiveIntensity:0.18,
-      metalness:0.05,roughness:0.82,flatShading:true,
-      depthWrite:true
-    });
-    const cerebellum=new THREE.Mesh(geometry,material);
-    cerebellum.scale.set(rx,ry,rz);
-    cerebellum.position.set(cx,cy,cz);
-    cerebellum.renderOrder=-1;
-    brain.add(cerebellum);
-
-    // Folhas cerebelares discretas, transversais à superfície posterior.
-    const folia=[];
-    for (let band=0;band<8;band++) {
-      const lat=-0.72+1.44*band/7;
-      const radius=Math.sqrt(1-lat*lat);
-      let previous=null;
-      for (let j=0;j<=56;j++) {
-        const angle=2*Math.PI*j/56;
-        const wrinkle=1+0.022*Math.sin(17*lat+3*radius*Math.cos(angle));
-        const p={
-          x:cx+rx*radius*Math.cos(angle)*wrinkle,
-          y:cy+ry*lat*wrinkle,
-          z:cz+rz*radius*Math.sin(angle)*wrinkle
-        };
-        if(previous)folia.push(previous.x,previous.y,previous.z,p.x,p.y,p.z);
-        previous=p;
-      }
-    }
-    addSegments(folia,0x79b7b7,0.15);
-  }
-
-  function addCorticalLights() {
-    scene.add(new THREE.HemisphereLight(0xaee8e0,0x0c2c3b,1.12));
-    const key=new THREE.DirectionalLight(0xb0f4e7,2.15);
-    key.position.set(-2.2,2.7,4.5);
-    scene.add(key);
-    const rim=new THREE.DirectionalLight(0x7abbeb,1.4);
-    rim.position.set(2.6,0.9,-3.5);
-    scene.add(rim);
-  }
+  // Sem malhas sólidas: todo o cérebro é definido exclusivamente pelos
+  // pontos neurais e pelas linhas de conexão criadas abaixo.
+  // O fundo é transparente e mantém a composição escura do hero.
 
   function makeNeurons() {
     const xyz = [], sizes = [], alphas = [], colors = [];
@@ -415,8 +326,8 @@
       xyz.push(p.x,p.y,p.z);
       const c = palette[Math.floor(rng()*palette.length)];
       colors.push(c.r,c.g,c.b);
-      sizes.push(rng()<.08 ? 5.4 : 1.8+rng()*2.1);
-      alphas.push(.52+rng()*.35);
+      sizes.push(rng()<.08 ? 5.8 : 2.2+rng()*2.1);
+      alphas.push(.60+rng()*.35);
     });
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(xyz,3));
@@ -607,9 +518,7 @@
       camera.lookAt(0,0,0);
       brain = new THREE.Group();
       scene.add(brain);
-      addCorticalLights();
-      makeCortex();
-      makeCerebellum();
+      // Rede neural transparente, sem qualquer Mesh ou superfície preenchida.
       const edges = makeNetwork(compact?OPTIONS.compactNodesPerHemisphere:OPTIONS.fullNodesPerHemisphere);
       makeNeurons();
       makePulses(edges);
