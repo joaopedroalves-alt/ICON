@@ -67,6 +67,41 @@ for (const pagina of paginas) {
   }
 }
 
+// O cadastro do portal tem as tres etapas originais em um unico fluxo acessivel.
+const indexCadastro = ler('index.html');
+const jsCadastro = ler('scripts/icon-home.js');
+const cssCadastro = ler('icon.css');
+const indicadores = Array.from(indexCadastro.matchAll(/data-step-indicator="([0-2])"/g), m => m[1]);
+const etapas = Array.from(indexCadastro.matchAll(/data-register-step="([0-2])"/g), m => m[1]);
+assert.deepEqual(indicadores, ['0','1','2'], 'cadastro: indicadores de tres etapas');
+assert.deepEqual(etapas, ['0','1','2'], 'cadastro: tres fieldsets distintos');
+verificacoes += 2;
+for(const id of [
+ 'portal-register-form','portal-register-name','portal-register-email',
+ 'portal-register-guardian','portal-guardian-fields','portal-register-plan',
+ 'portal-register-password','portal-register-prev','portal-register-next',
+ 'portal-register-finish','portal-register-complete','portal-register-to-login'
+]){
+ assert.ok(indexCadastro.includes('id="' + id + '"'), 'cadastro: faltou ' + id);
+ verificacoes++;
+}
+for(const pattern of [
+ /function showRegistrationStep\(/,
+ /function validateRegistrationStep\(/,
+ /function updateGuardianFields\(/,
+ /function updatePlanFields\(/,
+ /registrationForm\.addEventListener\('submit'/,
+ /registrationSteps\s*=\s*\$\$\('\[data-register-step\]'/,
+ /registrationMarkers\s*=\s*\$\$\('\[data-step-indicator\]'/
+]){
+ assert.match(jsCadastro, pattern, 'cadastro: logica ausente');
+ verificacoes++;
+}
+assert.match(cssCadastro, /body\.icon-page-home \.portal-register-step\[hidden\]/);
+verificacoes++;
+assert.ok(!/localStorage|sessionStorage/.test(jsCadastro.slice(jsCadastro.indexOf('    // Cadastro de três etapas'),jsCadastro.indexOf('    function setPortalMode('))), 'cadastro: nao persistir dados na logica das etapas');
+verificacoes++;
+
 for (const arquivo of arquivosJS) {
   const codigo = ler(arquivo);
   new vm.Script(codigo, {filename: arquivo});
