@@ -60,10 +60,37 @@ A sincronização utiliza um array de solicitações e um array de ações demon
 | dashboard_medico.html | Painel do profissional |
 | dashboard-secretario.html | Painel da secretaria |
 | dashboard-cliente.html | Painel do paciente (versão principal) |
-| dashboard_cliente.html | Cópia legada da página do paciente |
+| dashboard_cliente.html | Redireciona endereços antigos para o painel principal do paciente |
 | icon-integracao.js | Fluxo compartilhado, histórico, tutorial e alternância de tema |
-| **icon.css** | **Todos os estilos das páginas, por seção e perfil, incluindo modo escuro** |
+| scripts/icon-home.js | Interações e formulários da página institucional |
+| scripts/icon-admin.js | Funções exclusivas do painel administrativo |
+| scripts/icon-medico.js | Funções exclusivas do painel do profissional |
+| scripts/icon-secretario.js | Funções exclusivas do painel da secretaria |
+| scripts/icon-paciente.js | Funções exclusivas do painel do paciente |
+| testes/verificar-site.js | Verificação de recursos, sintaxe JavaScript e fluxo integrado |
+| **icon.css** | **Única folha CSS local, usada por todas as páginas e dividida por seções comentadas** |
 
+
+## Organização e manutenção
+
+O projeto mantém **um único arquivo CSS local**, `icon.css`, exatamente como definido para a apresentação.
+É comum que sistemas publicados agrupem estilos em um ou poucos arquivos; isso não significa que o código-fonte deva obrigatoriamente ficar misturado.
+
+Para facilitar o aprendizado e reduzir o risco de quebrar outras telas, o **JavaScript de cada dashboard agora está separado de seu HTML**. Assim, cada página contém a estrutura HTML, `icon.css` cuida do visual e o arquivo de `scripts/` cuida das interações. O arquivo `icon-integracao.js` continua sendo o ponto compartilhado para os agendamentos de exemplo.
+
+A antiga URL `dashboard_cliente.html` redireciona para `dashboard-cliente.html`, evitando manter duas versões diferentes do painel do paciente.
+
+## Como verificar antes de publicar
+
+Com Node.js instalado, na pasta do projeto execute:
+
+```bash
+node testes/verificar-site.js
+```
+
+A verificação não exige baixar bibliotecas: confere se os links de arquivos existem, se as páginas usam somente `icon.css`, se os arquivos JavaScript têm sintaxe válida e se um pedido fictício é sincronizado sem duplicar agendamentos. Ela também confere a atualização de sala, horário e cancelamento entre os dados compartilhados.
+
+**Importante:** esses testes não substituem abrir o site no computador e no celular. Antes de apresentar, confirme manualmente o menu **Acessar portal**, os quatro perfis, os cards de especialidades/serviços, o modo escuro e o fluxo paciente → secretaria → profissional → administrador.
 
 ## Imagem institucional da seção “O Instituto”
 
