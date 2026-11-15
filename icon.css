@@ -733,6 +733,93 @@ body.icon-page-home .specialty-feature .specialty-symbol{pointer-events:none}
   body.icon-page-home .specialty-card{transition:none}
 }
 
+/* ICON / Serviços: expandir com HTML nativo, sem depender do JavaScript da página */
+body.icon-page-home details.service-card{
+  display:block;
+  position:relative;
+  overflow:visible;
+  min-height:304px;
+}
+body.icon-page-home .service-card .service-summary{
+  display:flex;
+  flex-direction:column;
+  min-height:250px;
+  list-style:none;
+  cursor:pointer;
+  outline-offset:5px;
+}
+body.icon-page-home .service-card .service-summary::-webkit-details-marker{display:none}
+body.icon-page-home .service-card .service-summary::marker{content:""}
+body.icon-page-home .service-card .service-summary:focus-visible{
+  outline:3px solid #2c938f;
+}
+body.icon-page-home .service-card .service-toggle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  margin-top:auto;
+  padding-top:15px;
+  border-top:1px solid #d8e6e2;
+  font-size:11px;
+  font-weight:800;
+  color:#246d76;
+}
+body.icon-page-home .service-card .service-toggle-icon{
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  flex-shrink:0;
+  border:1px solid #9dccca;
+  border-radius:50%;
+  font-size:21px;
+  font-weight:400;
+  line-height:1;
+}
+body.icon-page-home .service-card[open]{
+  background:#f2f9f5;
+  border-color:#83c8b7;
+}
+body.icon-page-home .service-card[open] .service-toggle-icon{
+  font-size:0;
+  background:#276b73;
+  color:white;
+  border-color:#276b73;
+}
+body.icon-page-home .service-card[open] .service-toggle-icon::after{
+  content:"−";
+  font-size:22px;
+  line-height:1;
+}
+body.icon-page-home .service-card .service-detail{
+  padding:20px 0 3px;
+  margin-top:14px;
+  border-top:1px solid #d8e6e2;
+}
+body.icon-page-home .service-card .service-detail-eyebrow{
+  color:#2a7e78;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.1em;
+}
+body.icon-page-home .service-card .service-detail p{
+  margin:10px 0 0;
+  color:#45616b;
+  font-size:13px;
+  line-height:1.75;
+}
+body.icon-page-home .service-card .service-detail .service-detail-disclaimer{
+  color:#66848b;
+  font-size:10px;
+  font-style:italic;
+}
+@media(max-width:680px){
+  body.icon-page-home .service-card .service-summary{min-height:198px}
+  body.icon-page-home details.service-card{min-height:260px}
+}
+
 /* ========================================================================
   [02] DASHBOARD-ADMIN.CSS — ADMINISTRADOR
   Escopo: body.icon-page-admin
