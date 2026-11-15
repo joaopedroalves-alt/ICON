@@ -574,6 +574,162 @@ body.icon-page-home .portal-auth.is-register .portal-auth-panel{animation:none}
 
 
 
+
+/* ICON: Especialidades expansíveis — interação com finalidade (details/summary) */
+body.icon-page-home .specialty-instruction{
+  margin: -13px 0 22px; color: #52747a; font-size: 13px; line-height: 1.65;
+}
+body.icon-page-home .specialty-disclaimer{
+  margin: 22px 0 0; color: #637b80; font-size: 11px; line-height: 1.6;
+}
+body.icon-page-home .specialty-card{
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transform: none;
+}
+body.icon-page-home .specialty-card:hover{
+  transform: none;
+  border-color: #81c5bc;
+  box-shadow: 0 11px 26px rgba(15,65,73,.07);
+}
+body.icon-page-home .specialty-card[open]{
+  background: #ffffff;
+  border-color: #83c8b7;
+  box-shadow: 0 14px 32px rgba(17,68,79,.09);
+}
+body.icon-page-home .specialty-feature[open],
+body.icon-page-home .specialty-feature[open]:hover{
+  background: linear-gradient(130deg,#17495a,#0b3142);
+  border-color: #6fb6ae;
+}
+body.icon-page-home .specialty-accent[open]{
+  background: #dbeee8;
+}
+body.icon-page-home .specialty-summary{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+body.icon-page-home .specialty-summary::-webkit-details-marker{display:none}
+body.icon-page-home .specialty-summary::marker{content:""}
+body.icon-page-home .specialty-summary:focus-visible{
+  outline: 3px solid #339a93;
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+body.icon-page-home .specialty-summary h3{
+  margin-top: auto;
+}
+body.icon-page-home .specialty-expand-hint{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 17px;
+  margin-top: 17px;
+  border-top: 1px solid rgba(35,100,103,.17);
+  color: #206e73;
+  font: 750 10px/1.4 var(--font);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+body.icon-page-home .specialty-feature .specialty-expand-hint{
+  color: #a4e2d6;
+  border-top-color: rgba(184,228,221,.25);
+}
+body.icon-page-home .specialty-action-open{display:none}
+body.icon-page-home .specialty-card[open] .specialty-action-open{display:inline}
+body.icon-page-home .specialty-card[open] .specialty-action-closed{display:none}
+body.icon-page-home .specialty-toggle-symbol{
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #a2cec6;
+  border-radius: 50%;
+  color: #12646b;
+  font: 500 20px/1 var(--font);
+}
+body.icon-page-home .specialty-feature .specialty-toggle-symbol{
+  border-color: rgba(169,228,215,.5);
+  color: #b4e9dd;
+}
+body.icon-page-home .specialty-card[open] .specialty-toggle-symbol{
+  color: #ffffff;
+  background: #236d77;
+  border-color: #236d77;
+}
+body.icon-page-home .specialty-card[open] .specialty-toggle-symbol::before{content:"−"}
+body.icon-page-home .specialty-card[open] .specialty-toggle-symbol{font-size:0}
+body.icon-page-home .specialty-card[open] .specialty-toggle-symbol::before{font-size:20px}
+body.icon-page-home .specialty-detail{
+  position: relative;
+  z-index: 1;
+  padding-top: 20px;
+  margin-top: 17px;
+  border-top: 1px solid #d3e6e0;
+}
+body.icon-page-home .specialty-detail-kicker{
+  display: block;
+  margin-bottom: 8px;
+  color: #287e7a;
+  font: 800 9px/1.4 var(--font);
+  letter-spacing: .1em;
+}
+body.icon-page-home .specialty-detail p{
+  margin: 0 0 17px;
+  max-width: 50ch;
+  color: #455e66;
+  font-size: 12px;
+  line-height: 1.7;
+}
+body.icon-page-home .specialty-detail-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #176a71;
+  font: 750 11px/1.5 var(--font);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+body.icon-page-home .specialty-detail-link:hover,
+body.icon-page-home .specialty-detail-link:focus-visible{
+  color: #0a454e;
+}
+body.icon-page-home .specialty-feature .specialty-detail{
+  border-top-color: rgba(185,231,220,.3);
+}
+body.icon-page-home .specialty-feature .specialty-detail-kicker,
+body.icon-page-home .specialty-feature .specialty-detail-link{
+  color: #a6eadb;
+}
+body.icon-page-home .specialty-feature .specialty-detail p{
+  color: #c3e2e3;
+  max-width: 58ch;
+}
+body.icon-page-home .specialty-feature .specialty-detail-link:hover,
+body.icon-page-home .specialty-feature .specialty-detail-link:focus-visible{
+  color: #ffffff;
+}
+body.icon-page-home .specialty-feature .specialty-symbol{pointer-events:none}
+@media(max-width:620px){
+  body.icon-page-home .specialty-grid{grid-template-columns:1fr;grid-auto-rows:auto}
+  body.icon-page-home .specialty-feature{grid-column:auto}
+  body.icon-page-home .specialty-card{min-height:0;padding:23px 22px}
+  body.icon-page-home .specialty-summary{min-height:178px}
+  body.icon-page-home .specialty-feature .specialty-summary{min-height:185px}
+  body.icon-page-home .specialty-instruction{margin-top:0}
+}
+@media(prefers-reduced-motion:reduce){
+  body.icon-page-home .specialty-card{transition:none}
+}
+
 /* ========================================================================
   [02] DASHBOARD-ADMIN.CSS — ADMINISTRADOR
   Escopo: body.icon-page-admin
