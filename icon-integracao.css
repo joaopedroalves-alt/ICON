@@ -268,3 +268,156 @@ body.if-dark .if-pill.off { background: #603b41 !important; color: #f9d6db !impo
 body.if-dark .if-guide b { background: #326b68 !important; color: #f1fffa !important; }
 body.if-dark .if-link { color: #a7e4e2 !important; }
 body.if-dark :is(.if-primary,.if-confirm button[type=submit]) { background: #236b72 !important; color: #ffffff !important; }
+
+
+/* ICON — Contraste de métricas e texto dos quatro perfis | revisão 2
+   Complementa a camada compartilhada do tema escuro. As regras abaixo
+   são ativadas SOMENTE com body.if-dark; o modo claro permanece intacto. */
+
+/* Os números de KPIs tinham cores #1a4450, #18485b, #173e50 e #244e5d,
+   praticamente invisíveis sobre as superfícies escuras. */
+body.if-dark :is(.metric-number,.metric-value,.stat-value,.stat strong,
+  .request-stats strong,.summary-pills strong,.circle-count,.sub-count,
+  .pending-number,.donut-hole strong,.volume-value,.report-value,
+  .week-day .daynum,.date-tile strong) {
+  color: #f1fbfd !important;
+}
+body.if-dark :is(.metric-top,.metric-foot,.metric-bottom,.stat-label,.stat small,
+  .chart-caption,.volume-hour,.chart-foot,.request-stats span,
+  .summary-pills>span,.week-day .weekday,.date-tile small,.date-tile span,
+  .report-filters>span,.result-count,.table-note,.table-bottom,.section-flag>span,
+  .section-flag small,.panel-description) {
+  color: #c5d9df !important;
+}
+/* Destaques numéricos, tendências e contadores com cor de acento legível. */
+body.if-dark :is(.metric-foot strong,.stat-trend,.hbar-row strong,
+  .progress-row strong,.volume-value,.report-value,.summary-pills strong,
+  .request-stats strong,.chart-value) {
+  color: #a8ead9 !important;
+}
+
+/* Administrador: indicadores, relatórios, gráfico SVG e calendário. */
+body.if-dark :is(.metric-card.featured,.pending-number,.circle-count,
+  .donut-hole,.calendar-day-head span,.privacy-strip,.appointment-panel,
+  .pending-item,.filter-search,.detail-feature) {
+  background-color: #214655 !important;
+  border-color: #456777 !important;
+}
+body.if-dark :is(.donut-hole strong,.pending-number,.calendar-day-head span,
+  .appointment-date,.appointment-main strong,.inline-subtitle,.simple-data-list strong,
+  .privacy-strip strong,.panel-head h2,.section-mini h2) {
+  color: #effbfc !important;
+}
+body.if-dark :is(.pending-item,.activity-list>div,.activity-list span,
+  .simple-data-list>div,.calendar-event,.calendar-event span,.hbar-row span,
+  .appointment-main small,.activity-list small) {
+  color: #c4d9df !important;
+}
+body.if-dark :is(.calendar-event,.time-tag) {
+  background: #245063 !important;
+  border-color: #437382 !important;
+  color: #e3f5f6 !important;
+}
+body.if-dark :is(.bar-chart .chart-num,.bar-chart .chart-label) {
+  fill: #d5edf1 !important;
+}
+body.if-dark :is(.donut-hole,.hbar-track,.volume-track,.progress-line) {
+  background: #102f3e !important;
+}
+body.if-dark .table-empty { color: #bdd2d8 !important; }
+
+/* Médico: números em cartões, agenda, gráficos e fichas. */
+body.if-dark :is(.stat-card,.stat,.record-note,.appointment-tile,
+  .day-slot.empty,.week-entry,.notification-card,.note-strip,.patient-header) {
+  background: #1b4050 !important;
+  border-color: #406777 !important;
+  color: #eaf5f8 !important;
+}
+body.if-dark :is(.schedule-hour,.schedule-details strong,.table-person strong,
+  .week-entry,.week-entry b,.appointment-tile strong,.progress-row strong,
+  .empty-state strong,.notification-card strong,.modal-summary strong,
+  .record-note strong,.page-section-label) {
+  color: #e6f6f7 !important;
+}
+body.if-dark :is(.schedule-details small,.week-placeholder,.notification-card p,
+  .modal-summary p,.timeline-entry span,.chart-caption,.empty-state p,
+  .appointment-tile small,.week-day .weekday) {
+  color: #bdd5dc !important;
+}
+body.if-dark .week-entry:hover { background: #28576a !important; }
+
+/* Secretaria: valores em métricas, tabelas, resumo e agenda. */
+body.if-dark :is(.metric-card,.request-stats>div,.summary-pills>span,
+  .request-summary,.room-mini,.day-event,.week-event,.week-title,
+  .notification-line,.room-toolbar) {
+  background: #1c4151 !important;
+  border-color: #426a79 !important;
+  color: #eaf6f8 !important;
+}
+body.if-dark :is(.summary-pills strong,.appointment-hour,.appointment-identity strong,
+  .room-card h2,.professional-card h2,.agenda-day-header strong,
+  .request-stats strong,.confirmation-info strong,.volume-value) {
+  color: #e9fafb !important;
+}
+body.if-dark :is(.room-mini span:not(.status),.request-summary span:not(.request-symbol),
+  .confirmation-info span,.date-nav-label span,.event-main small,
+  .appointment-pro,.table-foot span,.room-empty,.week-empty,
+  .request-stats span,.room-toolbar label) {
+  color: #bdd3da !important;
+}
+
+/* Paciente: totais, datas e detalhes que permaneciam com texto escuro. */
+body.if-dark :is(.stat strong,.date-tile strong,.detail-item strong,.doctor h3,
+  .card-title,.compact-copy strong,.list-section-title,.faq summary,
+  .appt-content h3,.visit-reminder strong) {
+  color: #eaf9fa !important;
+}
+body.if-dark :is(.stat small,.date-tile small,.date-tile span,.doctor p,
+  .doctor-bottom,.detail-item small,.compact-copy small,.subtle,
+  .visit-reminder,.visit-reminder p,.faq p) {
+  color: #c3d8de !important;
+}
+body.if-dark :is(.date-tile,.detail-item,.doctor-avatar,.tabs,
+  .stat-icon,.stat-icon.blue,.stat-icon.ivory,.mini-badge,
+  .visit-reminder,.feature-layout) {
+  background: #224b5a !important;
+  border-color: #497080 !important;
+}
+/* Ícones em superfícies coloridas ganham fundo e texto coordenados. */
+body.if-dark :is(.metric-icon,.stat-icon,.stat-icon.mint,.stat-icon.gold,
+  .stat-icon.blue,.stat-icon.ivory,.panel-icon,.mini-avatar,
+  .request-symbol,.compact-icon,.doc-icon) {
+  background: #2b5965 !important;
+  color: #a8e9df !important;
+  border-color: #4d7781 !important;
+}
+/* Etiquetas que usam nomes distintos entre os painéis. */
+body.if-dark :is(.status-agendado,.status-em-analise,.status-concluido,
+  .pill.confirmed,.pill.available,.pill.done,.pill.answered) {
+  background: #1d514c !important;
+  color: #d5f8eb !important;
+}
+body.if-dark :is(.status-em-analise,.pill.pending,.pill.review) {
+  background: #614823 !important;
+  color: #ffe5b2 !important;
+}
+body.if-dark :is(.notice,.form-info,.subtle-notice,.record-note,.modal-summary,
+  .empty-state,.faq details,.detail-item) {
+  border-color: #436a78 !important;
+  color: #d9edf1 !important;
+}
+body.if-dark :is(.notice strong,.detail-item strong,.faq summary) {
+  color: #f0fbfd !important;
+}
+/* Texto informativo em cartões claros/escuros: garante herança explícita
+   sem tocar em barras laterais, hero banners ou botões principais. */
+body.if-dark :is(.metric-card,.stat-card,.request-stats>div,.stat,.panel,.surface,.card)
+  :is(.metric-number,.metric-value,.stat-value,.date-value,.amount,.count,.number,
+      .value,.kpi-value,.summary-value) {
+  color: #f2fcff !important;
+}
+body.if-dark :is(.metric-card,.stat-card,.panel,.surface,.card)
+  :is(.metric-top,.metric-foot,.metric-bottom,.stat-label,.helper-text,
+      .supporting-text,.muted-text,.metadata,.card-subtitle) {
+  color: #c9dce1 !important;
+}
