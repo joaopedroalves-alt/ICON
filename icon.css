@@ -6451,3 +6451,94 @@ body.nojs-static:has(#view-cadastro:target) .sidebar nav a[href="#view-cadastro"
 body.nojs-static:has(#view-ajuda:target) .sidebar nav a[href="#view-ajuda"],
 body.nojs-static:not(:has(.academic-static-section:target)) .sidebar nav a[href="#view-overview"],
 body.nojs-static:not(:has(.academic-static-section:target)) .sidebar nav a[href="#view-inicio"]{background:linear-gradient(95deg,rgba(131,200,183,.21),rgba(131,200,183,.075))!important;color:#f4fffd!important;font-weight:800!important;border-left:3px solid #83c8b7!important;padding-left:12px!important}
+
+
+/* ================================================================
+   ICON | acabamento visual dos quatro painéis sem JavaScript
+   Cards, navegação por âncoras e interações HTML/CSS nativas.
+   ================================================================ */
+body.nojs-static {
+  --icon-surface: #ffffff;
+  --icon-outline: rgba(23,70,91,.105);
+  --icon-focus: #228f9d;
+}
+body.nojs-static .academic-static-section {
+  scroll-margin-top: 30px;
+}
+body.nojs-static .visual-hero {
+  isolation: isolate;
+  box-shadow: 0 22px 56px rgba(18,64,80,.12);
+}
+body.nojs-static .visual-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 86% 14%, rgba(131,200,183,.13), transparent 52%);
+}
+body.nojs-static .visual-panel {
+  border: 1px solid var(--icon-outline);
+  box-shadow: 0 9px 30px rgba(32,74,91,.045);
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  body.nojs-static .visual-panel:hover {
+    border-color: rgba(120,187,210,.37);
+    box-shadow: 0 15px 40px rgba(32,74,91,.085);
+    transform: translateY(-2px);
+  }
+  body.nojs-static .visual-hero-cta,
+  body.nojs-static .sidebar a,
+  body.nojs-static .academic-topbar-right a {
+    transition: background-color .2s ease, box-shadow .2s ease, color .2s ease, transform .2s ease;
+  }
+  body.nojs-static .visual-hero-cta:hover { transform: translateY(-2px); }
+}
+body.nojs-static :is(a, button, summary, input, select, textarea):focus-visible,
+.portal-auth-modal :is(a, button, label, input, select):focus-visible {
+  outline: 3px solid var(--icon-focus);
+  outline-offset: 3px;
+}
+body.nojs-static .sidebar .nav-link {
+  border-radius: 10px;
+}
+body.nojs-static .visual-panel summary {
+  cursor: pointer;
+}
+body.nojs-static .visual-panel details[open] > summary {
+  color: #17465b;
+}
+body.nojs-static .visual-form-grid :is(input, select) {
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+body.nojs-static .visual-form-grid :is(input, select):focus {
+  border-color: #78bbd2;
+  box-shadow: 0 0 0 3px rgba(120,187,210,.17);
+}
+body.nojs-static .visual-hero-buttons a:active,
+body.nojs-static .sidebar a:active { transform: translateY(1px); }
+@media (max-width: 950px) {
+  body.nojs-static .sidebar nav {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+  }
+  body.nojs-static .sidebar nav::-webkit-scrollbar { display: none; }
+  body.nojs-static .sidebar nav a { scroll-snap-align: start; }
+  body.nojs-static .academic-static-section { scroll-margin-top: 18px; }
+}
+@media (max-width: 560px) {
+  body.nojs-static .visual-hero { border-radius: 18px; }
+  body.nojs-static .visual-panel { border-radius: 15px; }
+  body.nojs-static .visual-hero-buttons { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.nojs-static *, body.nojs-static *::before, body.nojs-static *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
