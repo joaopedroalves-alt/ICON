@@ -6423,3 +6423,31 @@ body.nojs-static .visual-help-list{padding:0 0 2px}
  body.nojs-static .visual-week-chip{font-size:8px}
  body.nojs-static .visual-form-grid{grid-template-columns:1fr}
 }
+
+/* O item selecionado segue a seção aberta, sem JavaScript. */
+body.nojs-static:has(#view-overview:target) .sidebar nav a[href="#view-overview"],
+body.nojs-static:has(#view-users:target) .sidebar nav a[href="#view-users"],
+body.nojs-static:has(#view-professionals:target) .sidebar nav a[href="#view-professionals"],
+body.nojs-static:has(#view-patients:target) .sidebar nav a[href="#view-patients"],
+body.nojs-static:has(#view-secretaries:target) .sidebar nav a[href="#view-secretaries"],
+body.nojs-static:has(#view-services:target) .sidebar nav a[href="#view-services"],
+body.nojs-static:has(#view-appointments:target) .sidebar nav a[href="#view-appointments"],
+body.nojs-static:has(#view-rooms:target) .sidebar nav a[href="#view-rooms"],
+body.nojs-static:has(#view-reports:target) .sidebar nav a[href="#view-reports"],
+body.nojs-static:has(#view-settings:target) .sidebar nav a[href="#view-settings"],
+body.nojs-static:has(#view-agenda:target) .sidebar nav a[href="#view-agenda"],
+body.nojs-static:has(#view-evaluations:target) .sidebar nav a[href="#view-evaluations"],
+body.nojs-static:has(#view-records:target) .sidebar nav a[href="#view-records"],
+body.nojs-static:has(#view-documents:target) .sidebar nav a[href="#view-documents"],
+body.nojs-static:has(#view-notifications:target) .sidebar nav a[href="#view-notifications"],
+body.nojs-static:has(#view-profile:target) .sidebar nav a[href="#view-profile"],
+body.nojs-static:has(#view-requests:target) .sidebar nav a[href="#view-requests"],
+body.nojs-static:has(#view-inicio:target) .sidebar nav a[href="#view-inicio"],
+body.nojs-static:has(#view-agendamentos:target) .sidebar nav a[href="#view-agendamentos"],
+body.nojs-static:has(#view-profissionais:target) .sidebar nav a[href="#view-profissionais"],
+body.nojs-static:has(#view-documentos:target) .sidebar nav a[href="#view-documentos"],
+body.nojs-static:has(#view-solicitacoes:target) .sidebar nav a[href="#view-solicitacoes"],
+body.nojs-static:has(#view-cadastro:target) .sidebar nav a[href="#view-cadastro"],
+body.nojs-static:has(#view-ajuda:target) .sidebar nav a[href="#view-ajuda"],
+body.nojs-static:not(:has(.academic-static-section:target)) .sidebar nav a[href="#view-overview"],
+body.nojs-static:not(:has(.academic-static-section:target)) .sidebar nav a[href="#view-inicio"]{background:linear-gradient(95deg,rgba(131,200,183,.21),rgba(131,200,183,.075))!important;color:#f4fffd!important;font-weight:800!important;border-left:3px solid #83c8b7!important;padding-left:12px!important}
