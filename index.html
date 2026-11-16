@@ -376,7 +376,7 @@
   <footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><a class="brand" href="#inicio" aria-label="ICON — voltar ao início"><svg class="brand-mark" viewBox="0 0 46 46" fill="none" aria-hidden="true"><path d="M22.8 6.5c-5.5-5.4-15.2-1-15.2 6.4-5.9 5.4-3.4 13.1 1.5 14.9-1.6 7.7 8 13.8 13.7 8.2V6.5Zm.4 0c5.5-5.4 15.2-1 15.2 6.4 5.9 5.4 3.4 13.1-1.5 14.9 1.6 7.7-8 13.8-13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="23" cy="6.5" r="2" fill="#83C8B7"/></svg><span class="brand-copy"><strong>ICON</strong><small>Instituto de Cognição e Neuropsicologia</small></span></a><p>Um olhar científico, humano e integrado sobre o universo da mente.</p></div><div class="footer-col"><h3>Explore</h3><a href="#sobre">Sobre o ICON</a><a href="#especialidades">Especialidades</a><a href="#servicos">Serviços</a><a href="#profissionais">Profissionais</a></div><div class="footer-col"><h3>Institucional</h3><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas frequentes</a><a href="#contato">Contato</a><a href="#portal-auth-dialog">Portal institucional</a></div><div class="footer-col"><h3>Contato ilustrativo</h3><span>contato@icon.exemplo.com.br</span><span>(34) 3333-0000</span><span>Uberlândia, Minas Gerais</span></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> ICON — Todos os direitos reservados.</span><span>Projeto acadêmico fictício · Não representa serviço real de saúde</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
 
 
-  <!-- Portal HTML e CSS: abre pelo fragmento #portal-auth-dialog, sem JavaScript. -->
+  <!-- Portal institucional: abertura CSS e login de demonstração. -->
   <div class="portal-auth-dialog nojs-portal-dialog" id="portal-auth-dialog" role="dialog" aria-labelledby="portal-auth-heading">
     <a class="nojs-portal-backdrop" href="#inicio" aria-label="Fechar portal"></a>
     <div class="portal-auth nojs-portal" id="portal-auth">
@@ -385,20 +385,28 @@
       <a class="portal-auth-close" href="#inicio" aria-label="Fechar acesso ao portal">×</a>
       <section class="portal-auth-intro" aria-label="Apresentação do portal">
         <div class="portal-auth-logo"><span class="portal-auth-glyph" aria-hidden="true">✧</span><span>ICON <small>INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</small></span></div>
-        <div class="portal-auth-intro-body"><span class="portal-auth-kicker">PORTAL ACADÊMICO</span><h2>Conheça nosso <em>portal.</em></h2><p>Explore os quatro perfis e um cadastro ilustrativo em três etapas.</p></div>
+        <div class="portal-auth-intro-body"><span class="portal-auth-kicker">PORTAL ICON / ACESSO</span><h2>Conheça nosso <em>portal.</em></h2><p>Explore os quatro perfis e um cadastro ilustrativo em três etapas.</p></div>
         <div class="portal-auth-switch">
-          <p>Deseja conhecer o cadastro?</p>
+          <p>Não possui acesso?</p>
           <label class="portal-switch-button nojs-to-register" for="portal-mode-register">Realizar cadastro ↗</label>
-          <label class="portal-switch-button nojs-to-login" for="portal-mode-login">Ver painéis ↗</label>
+          <label class="portal-switch-button nojs-to-login" for="portal-mode-login">Fazer login ↗</label>
         </div>
       </section>
       <section class="portal-auth-panel" aria-label="Portal demonstrativo">
         <div class="portal-login-panel">
-          <span class="portal-auth-kicker portal-dark-kicker">ACESSO DEMONSTRATIVO</span>
-          <h2 id="portal-auth-heading">Escolha seu painel</h2>
-          <p class="portal-auth-subtitle">A navegação é feita diretamente por links HTML. Não há login, senhas ou autenticação nesta versão escolar.</p>
-          <div class="nojs-profile-grid"><a class="nojs-profile-link" href="dashboard_administrador.html"><span>Administrador</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard_medico.html"><span>Profissional</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard-secretario.html"><span>Secretaria</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard-cliente.html"><span>Paciente</span><small>Abrir painel demonstrativo ↗</small></a></div>
-          <p class="portal-auth-disclaimer">Dados e contas inteiramente fictícios. Nenhuma informação real deve ser utilizada.</p>
+          <span class="portal-auth-kicker portal-dark-kicker">ÁREA DE ACESSO</span>
+          <h2 id="portal-auth-heading">Entrar no portal</h2>
+          <p class="portal-auth-subtitle">Entre para conhecer a experiência de cada perfil do ICON.</p>
+          <form id="icon-login-form" class="portal-auth-form" autocomplete="off">
+            <label for="icon-login-user">Usuário</label>
+            <input id="icon-login-user" name="username" type="text" placeholder="admin, medico, paciente ou secretario" autocomplete="off" required>
+            <label for="icon-login-pass">Senha</label>
+            <input id="icon-login-pass" name="password" type="password" placeholder="Digite sua senha" autocomplete="off" required>
+            <p id="icon-login-message" class="portal-form-feedback" role="status" aria-live="polite"></p>
+            <button class="portal-auth-submit" type="submit">Acessar meu painel <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="portal-demo-credentials"><strong>Credenciais de demonstração</strong><span>admin · medico · paciente · secretario</span><span>Senha: <b>1234</b></span></div>
+          <p class="portal-auth-disclaimer">Acesso ilustrativo. Não insira dados ou senhas reais.</p>
           <label class="portal-mobile-switch" for="portal-mode-register">Conhecer cadastro de 3 etapas →</label>
         </div>
         <div class="portal-register-panel">
@@ -429,7 +437,7 @@
               <div class="nojs-wizard-actions"><label class="nojs-back" for="cad-etapa-2">← Voltar</label><label class="portal-auth-submit" for="cad-etapa-final">Concluir demonstração ✓</label></div>
             </section>
             <section class="nojs-step nojs-step-final"><span class="nojs-finish-icon">✓</span><h3>Cadastro demonstrativo concluído!</h3><p>Você percorreu as três etapas. Nenhum dado foi enviado ou salvo, e nenhuma conta real foi criada.</p>
-              <label class="nojs-back" for="cad-etapa-1">Refazer etapas</label><label class="portal-switch-button" for="portal-mode-login">Ver painéis ↗</label>
+              <label class="nojs-back" for="cad-etapa-1">Refazer etapas</label><label class="portal-switch-button" for="portal-mode-login">Fazer login ↗</label>
             </section>
           </div>
           <p class="portal-auth-disclaimer">Ambiente fictício para aprendizado. Não insira informações pessoais ou clínicas reais.</p>
@@ -439,5 +447,6 @@
     </div>
   </div>
 
-  </body>
+    <script src="acesso-portal.js?v=20261116-login" defer></script>
+</body>
 </html>
