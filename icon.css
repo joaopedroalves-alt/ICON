@@ -6639,3 +6639,142 @@ body.nojs-static .visual-chart-note { color: #547481; line-height: 1.6; }
  body.nojs-static .academic-static-card { min-width: 0; }
  body.nojs-static .visual-panel-head { flex-wrap: wrap; }
 }
+
+
+/* ===================================================================
+   ICON / Indicadores 2.0
+   Todos os perfis: cartões mais informativos, sem ícones minúsculos.
+   HTML e CSS puro; barras decorativas não são gráficos de dados.
+   =================================================================== */
+body.nojs-static .academic-stat-grid {
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));
+  gap:17px;
+  align-items:stretch;
+  margin:22px 0 27px;
+}
+body.nojs-static .academic-stat-grid .icon-metric-redesign {
+  --metric-ink:#17465b;
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:20px;
+  min-width:0;
+  min-height:242px;
+  padding:23px 23px 19px;
+  overflow:hidden;
+  border:1px solid #dce9e6;
+  border-radius:19px;
+  background:linear-gradient(155deg,#fff 0%,#fff 67%,#f7fbfa 100%);
+  box-shadow:0 9px 25px rgba(20,65,77,.055);
+  transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease;
+}
+body.nojs-static .academic-stat-grid .icon-metric-redesign::before {
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  top:-120px;right:-62px;
+  border-radius:50%;
+  background:radial-gradient(circle,#e1f3ee 0%,rgba(225,243,238,0) 72%);
+  pointer-events:none;z-index:-1;
+}
+body.nojs-static .icon-metric-redesign .visual-metric-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:0;
+}
+body.nojs-static .icon-metric-redesign .visual-metric-icon {
+  display:grid;
+  flex:0 0 58px;
+  place-items:center;
+  width:58px;height:58px;
+  padding:0;
+  border-radius:17px;
+  background:linear-gradient(145deg,#d9f1e9,#e9f5f3);
+  color:#216e77;
+  border:1px solid #cce6df;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.9);
+  font:normal 28px/1 "Apple Color Emoji","Segoe UI Emoji",system-ui,sans-serif;
+  overflow:visible;
+}
+body.nojs-static .icon-metric-redesign .visual-metric-top small {
+  font:800 10px/1.4 Inter,system-ui,sans-serif;
+  color:#718b94;
+  letter-spacing:.095em;
+  text-transform:uppercase;
+  text-align:right;
+  max-width:55%;
+}
+body.nojs-static .icon-metric-main {display:flex; flex-direction:column; gap:7px; min-width:0;}
+body.nojs-static .academic-stat-grid .icon-metric-redesign .icon-metric-main>strong {
+  display:block;
+  font:850 clamp(33px,3.5vw,50px)/1.05 Manrope,Inter,system-ui,sans-serif;
+  letter-spacing:-.055em;
+  color:var(--metric-ink);
+  margin:0;
+  overflow-wrap:anywhere;
+}
+body.nojs-static .icon-metric-redesign .visual-metric-label {
+  display:block;
+  margin:0;
+  font:750 14px/1.42 Inter,system-ui,sans-serif;
+  color:#337f79;
+  overflow-wrap:anywhere;
+}
+body.nojs-static .icon-metric-footer {
+  display:grid;
+  grid-template-columns:4px minmax(0,1fr);
+  gap:13px;
+  align-items:center;
+  padding-top:16px;
+  border-top:1px solid #e4eeeb;
+  min-width:0;
+}
+body.nojs-static .icon-metric-rule {
+  display:flex!important;
+  flex-direction:column;
+  justify-content:center;
+  gap:3px;
+  align-self:stretch;
+  margin:0!important;
+}
+body.nojs-static .icon-metric-rule i {
+  display:block;
+  width:4px;height:7px;
+  border-radius:8px;
+  background:#9bd6c7;
+}
+body.nojs-static .icon-metric-rule i:nth-child(2){background:#65bbaa}
+body.nojs-static .icon-metric-rule i:nth-child(3){background:#3e968d}
+body.nojs-static .icon-metric-rule i:nth-child(4){background:#17465b}
+body.nojs-static .icon-metric-context {display:flex; flex-direction:column; gap:3px;min-width:0}
+body.nojs-static .icon-metric-context b {
+  color:#284e5c;
+  font:750 11px/1.35 Inter,system-ui,sans-serif;
+}
+body.nojs-static .icon-metric-context span {
+  color:#667f87!important;
+  margin:0!important;
+  font:500 10px/1.5 Inter,system-ui,sans-serif!important;
+  overflow-wrap:anywhere;
+}
+body.nojs-static .icon-metric-redesign .visual-metric-spark {display:none!important}
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+ body.nojs-static .academic-stat-grid .icon-metric-redesign:hover {
+   transform:translateY(-3px);
+   box-shadow:0 17px 34px rgba(20,65,77,.09);
+   border-color:#b7ddd3;
+ }
+}
+@media(max-width:790px){
+ body.nojs-static .academic-stat-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+ body.nojs-static .academic-stat-grid .icon-metric-redesign {min-height:215px;padding:19px;gap:15px}
+}
+@media(max-width:460px){
+ body.nojs-static .academic-stat-grid {grid-template-columns:1fr}
+ body.nojs-static .academic-stat-grid .icon-metric-redesign {min-height:185px}
+ body.nojs-static .academic-stat-grid .icon-metric-redesign .icon-metric-main>strong {font-size:39px}
+}
