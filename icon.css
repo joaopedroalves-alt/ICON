@@ -6259,3 +6259,16 @@ body.nojs-static .if-dock,body.nojs-static .if-bar,body.nojs-static .if-toast{di
  body.nojs-static .academic-topbar-right span{display:none}
  body.nojs-static .sidebar nav a svg{display:none!important}
 }
+
+/* Refinos: contador coerente com filtro e navegação do portal. */
+body.icon-page-home:has(.nojs-portal-dialog:target){overflow:hidden}
+body.icon-page-home .team:has(#filtro-prof-1:checked) #team-count,
+body.icon-page-home .team:has(#filtro-prof-2:checked) #team-count,
+body.icon-page-home .team:has(#filtro-prof-3:checked) #team-count,
+body.icon-page-home .team:has(#filtro-prof-4:checked) #team-count{font-size:0}
+body.icon-page-home .team:has(#filtro-prof-1:checked) #team-count::after,
+body.icon-page-home .team:has(#filtro-prof-2:checked) #team-count::after{content:"4 profissionais fictícios";font-size:11px}
+body.icon-page-home .team:has(#filtro-prof-3:checked) #team-count::after,
+body.icon-page-home .team:has(#filtro-prof-4:checked) #team-count::after{content:"2 profissionais fictícios";font-size:11px}
+body.icon-page-home .nojs-register-wizard label:focus-visible,
+body.icon-page-home .nojs-portal label:focus-visible{outline:2px solid #78bbd2;outline-offset:2px}
