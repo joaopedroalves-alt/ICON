@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="icon.css">
-  <script src="icon-integracao.js"></script>
+  <link rel="stylesheet" href="icon.css?v=20261116-estatico">
+  
 </head>
-<body class="icon-page-medico icon-dashboard">
+<body class="icon-page-medico icon-dashboard nojs-static">
   <!-- Sprites SVG locais: a navegação funciona sem biblioteca de ícones. -->
   <svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true">
     <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.3"/><rect x="14" y="3" width="7" height="7" rx="1.3"/><rect x="3" y="14" width="7" height="7" rx="1.3"/><rect x="14" y="14" width="7" height="7" rx="1.3"/></symbol>
@@ -57,17 +57,17 @@
       <div class="workspace-label"><span class="workspace-line"></span> ESPAÇO CLÍNICO <span class="workspace-line"></span></div>
       <nav class="side-navigation" id="side-navigation" aria-label="Navegação principal">
         <div class="nav-caption">ÁREA DE TRABALHO</div>
-        <button type="button" class="nav-item active" data-view="overview" aria-current="page"><svg><use href="#i-grid"/></svg><span>Visão geral</span></button>
-        <button type="button" class="nav-item" data-view="agenda"><svg><use href="#i-calendar"/></svg><span>Agenda</span></button>
-        <button type="button" class="nav-item" data-view="patients"><svg><use href="#i-users"/></svg><span>Pacientes</span></button>
-        <button type="button" class="nav-item" data-view="evaluations"><svg><use href="#i-brain"/></svg><span>Avaliações</span></button>
-        <button type="button" class="nav-item" data-view="records"><svg><use href="#i-file-heart"/></svg><span>Prontuários</span></button>
+        <a class="nav-item active" href="#view-overview"><svg><use href="#i-grid"/></svg><span>Visão geral</span></a>
+        <a class="nav-item" href="#view-agenda"><svg><use href="#i-calendar"/></svg><span>Agenda</span></a>
+        <a class="nav-item" href="#view-patients"><svg><use href="#i-users"/></svg><span>Pacientes</span></a>
+        <a class="nav-item" href="#view-evaluations"><svg><use href="#i-brain"/></svg><span>Avaliações</span></a>
+        <a class="nav-item" href="#view-records"><svg><use href="#i-file-heart"/></svg><span>Prontuários</span></a>
         <div class="nav-caption nav-caption-secondary">DOCUMENTAÇÃO</div>
-        <button type="button" class="nav-item" data-view="reports"><svg><use href="#i-file"/></svg><span>Laudos e relatórios</span></button>
-        <button type="button" class="nav-item" data-view="documents"><svg><use href="#i-folder"/></svg><span>Documentos</span></button>
+        <a class="nav-item" href="#view-reports"><svg><use href="#i-file"/></svg><span>Laudos e relatórios</span></a>
+        <a class="nav-item" href="#view-documents"><svg><use href="#i-folder"/></svg><span>Documentos</span></a>
         <div class="nav-caption nav-caption-secondary">MINHA CONTA</div>
-        <button type="button" class="nav-item" data-view="notifications"><svg><use href="#i-bell"/></svg><span>Notificações</span><span class="nav-count" id="sidebar-notification-count">0</span></button>
-        <button type="button" class="nav-item" data-view="profile"><svg><use href="#i-user"/></svg><span>Meu perfil</span></button>
+        <a class="nav-item" href="#view-notifications"><svg><use href="#i-bell"/></svg><span>Notificações</span><span class="nav-count" id="sidebar-notification-count">0</span></a>
+        <a class="nav-item" href="#view-profile"><svg><use href="#i-user"/></svg><span>Meu perfil</span></a>
       </nav>
       <div class="sidebar-bottom">
         <div class="mini-insight"><span class="mini-insight-icon"><svg><use href="#i-activity"/></svg></span><strong>Um cuidado mais inteligente.</strong><p>Ciência, atenção e precisão em cada etapa.</p><div class="mini-orbit"></div></div>
@@ -76,34 +76,87 @@
     </aside>
 
     <div class="main-column">
-      <header class="topbar">
-        <div class="topbar-left">
-          <button type="button" class="icon-button menu-toggle" id="menu-toggle" aria-label="Abrir menu lateral" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
-          <div class="breadcrumb"><span>Área profissional</span><svg><use href="#i-chevron"/></svg><strong id="topbar-current-view">Visão geral</strong></div>
-        </div>
-        <div class="topbar-right">
-          <form id="global-search-form" class="global-search" role="search"><svg><use href="#i-search"/></svg><label for="global-search" class="sr-only">Buscar paciente</label><input id="global-search" type="search" placeholder="Buscar paciente..." autocomplete="off"><kbd>↵</kbd></form>
-          <span class="topbar-divider"></span>
-          <button type="button" id="notification-shortcut" class="icon-button notification-button" aria-label="Abrir notificações"><svg><use href="#i-bell"/></svg><span id="topbar-notification-count" class="notification-indicator" hidden></span></button>
-          <button type="button" class="user-shortcut" id="profile-shortcut" aria-label="Abrir meu perfil"><span class="avatar avatar-header" id="header-avatar">MS</span><span class="user-shortcut-copy"><strong id="header-name">Dra. Mariana Silva</strong><small id="header-role">Neuropsicóloga</small></span><svg><use href="#i-chevron"/></svg></button>
-        </div>
-      </header>
-
-      <main id="main-content" class="main-content" tabindex="-1" aria-live="off">
-        <!-- Conteúdo de cada seção inserido via dashboard-medico.js, sem recarga. -->
-      </main>
+      <header class="topbar academic-static-topbar"><div class="academic-topbar-label">ICON <span>/ Profissional</span></div><div class="academic-topbar-right"><span>Protótipo escolar · HTML e CSS</span><a href="index.html">Site institucional ↗</a></div></header>
+      <main id="main-content" class="main-content" tabindex="-1" aria-live="off"><div class="academic-static-pages"><section class="academic-static-section" id="view-overview" aria-labelledby="heading-overview">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-overview">Visão geral</h1><p>Meu espaço profissional. Visão fictícia das atividades ilustrativas.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>03 consultas de exemplo</strong></div><div class="academic-stat"><span>02</span><strong>02 avaliações demonstrativas</strong></div><div class="academic-stat"><span>03</span><strong>01 documento fictício</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Próximo compromisso</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Lucas Mendes</td><td>17/11/2026 · 09h30</td><td>Painel demonstrativo</td><td><span class="academic-status">Confirmado</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Os registros desta tela são estáticos e não correspondem a pacientes reais.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-agenda" aria-labelledby="heading-agenda">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-agenda">Agenda</h1><p>Compromissos de exemplo. Organização visual de atendimentos fictícios.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>03 horários ilustrativos</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>17/11/2026</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>09h30 · Lucas Mendes</td><td>Avaliação Neuropsicológica</td><td>Compromissos de exemplo</td><td><span class="academic-status">Confirmado</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>18/11/2026 — 10h00 — Beatriz Costa — Psicoterapia.</p></details><details class="academic-accordion"><summary>Detalhe 2 <span aria-hidden="true">+</span></summary><p>19/11/2026 — 14h00 — Gabriel Santos — Avaliação Cognitiva.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-patients" aria-labelledby="heading-patients">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-patients">Pacientes</h1><p>Pessoas fictícias. Lista apenas para demonstração da interface.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>03 pessoas de exemplo</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Paciente</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Lucas Mendes</td><td>Identificador fictício</td><td>Pessoas fictícias</td><td><span class="academic-status">Exemplo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Beatriz Costa.</p></details><details class="academic-accordion"><summary>Detalhe 2 <span aria-hidden="true">+</span></summary><p>Gabriel Santos.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-evaluations" aria-labelledby="heading-evaluations">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-evaluations">Avaliações</h1><p>Avaliações ilustrativas. Exemplos de atividades cognitivas.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 modelos de avaliação</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Avaliação</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Neuropsicológica</td><td>Memória e atenção</td><td>Avaliações ilustrativas</td><td><span class="academic-status">Exemplo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Exercício didático — sem instrumentos, laudos ou prontuários reais.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-records" aria-labelledby="heading-records">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-records">Prontuários</h1><p>Demonstração visual. Nenhum prontuário verdadeiro é exibido.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>00 dados clínicos reais</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Documento</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Registro demonstrativo</td><td>Sem dados sensíveis</td><td>Demonstração visual</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Não use esta página para registrar, transmitir ou armazenar dados de saúde.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-reports" aria-labelledby="heading-reports">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-reports">Relatórios</h1><p>Modelos de relatório. Visualização sem processamento automático.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>01 modelo estático</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Resumo</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Acompanhamento ilustrativo</td><td>Sem validade clínica</td><td>Modelos de relatório</td><td><span class="academic-status">Exemplo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Esta visualização não emite laudos reais.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-documents" aria-labelledby="heading-documents">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-documents">Documentos</h1><p>Materiais ilustrativos. Exemplo de organização documental.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 cartões de exemplo</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Documento</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Orientações gerais</td><td>Conteúdo acadêmico</td><td>Materiais ilustrativos</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>A versão estática não aceita upload ou download de registros reais.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-notifications" aria-labelledby="heading-notifications">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-notifications">Notificações</h1><p>Comunicados demonstrativos. Mensagens fixas para fins didáticos.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 mensagens ilustrativas</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Aviso</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Reunião de equipe</td><td>Exemplo acadêmico</td><td>Comunicados demonstrativos</td><td><span class="academic-status">Informativo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Os avisos não são enviados ou atualizados automaticamente.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-profile" aria-labelledby="heading-profile">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-profile">Perfil</h1><p>Profissional fictício. Dados criados apenas para demonstração.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>01 perfil de exemplo</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Profissional</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Dra. Mariana Silva</td><td>Neuropsicologia</td><td>Profissional fictício</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Nenhum dado é salvo ao preencher campos nesta versão.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section></div></main>
       <footer class="app-footer"><span>ICON © 2026 · Painel do profissional</span><span><svg><use href="#i-info"/></svg> Projeto acadêmico · Dados inteiramente fictícios · Não inserir dados reais</span></footer>
     </div>
   </div>
 
-  <!-- <dialog> nativo: modal acessível por teclado, Escape e retenção de foco. -->
-  <dialog id="app-modal" class="app-modal" aria-labelledby="modal-title">
-    <div class="modal-heading"><div><span class="eyebrow" id="modal-eyebrow">ICON / ÁREA CLÍNICA</span><h2 id="modal-title">Detalhes</h2></div><button type="button" class="icon-button" id="modal-close" aria-label="Fechar janela"><svg><use href="#i-close"/></svg></button></div>
-    <div class="modal-content" id="modal-content"></div>
-  </dialog>
+  <!-- 
   <div class="toast-stack" id="toast-stack" role="status" aria-live="polite"></div>
-  <noscript><div class="noscript">O painel demonstrativo do ICON precisa de JavaScript ativado para funcionar.</div></noscript>
+  
   <!-- Script da demonstração integrado: basta publicar HTML + CSS. -->
-  <script src="scripts/icon-medico.js?v=20261115-organizado"></script>
+  
 </body>
 </html>
