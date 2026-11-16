@@ -6778,3 +6778,60 @@ body.nojs-static .icon-metric-redesign .visual-metric-spark {display:none!import
  body.nojs-static .academic-stat-grid .icon-metric-redesign {min-height:185px}
  body.nojs-static .academic-stat-grid .icon-metric-redesign .icon-metric-main>strong {font-size:39px}
 }
+
+
+/* ICON / correção do gráfico semanal: guia não ocupa uma coluna do grid. */
+body.nojs-static .visual-chart {
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  align-items:end;
+  gap:clamp(5px,1.15vw,13px);
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+body.nojs-static .visual-chart-guide {
+  display:none!important;
+}
+body.nojs-static .visual-chart-item {
+  min-width:0;
+  height:100%;
+  grid-row:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  overflow:hidden;
+}
+body.nojs-static .visual-chart-bar {
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  flex:1 1 auto;
+  min-height:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+body.nojs-static .visual-chart-bar span {
+  width:clamp(8px,65%,38px);
+  max-width:100%;
+  min-height:0;
+}
+body.nojs-static .visual-chart-item small {
+  flex:0 0 auto;
+  display:block;
+  width:100%;
+  text-align:center;
+  white-space:nowrap;
+  font-size:clamp(8px,.85vw,11px);
+}
+body.nojs-static .visual-chart-note {
+  clear:both;
+  margin-top:15px;
+}
+@media(max-width:560px) {
+  body.nojs-static .visual-chart {gap:5px;height:175px}
+  body.nojs-static .visual-chart-bar span {width:65%;border-radius:5px 5px 0 0}
+}
