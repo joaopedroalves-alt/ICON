@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="icon.css">
-  <script src="icon-integracao.js"></script>
+  <link rel="stylesheet" href="icon.css?v=20261116-estatico">
+  
 </head>
-<body class="icon-page-paciente icon-dashboard">
+<body class="icon-page-paciente icon-dashboard nojs-static">
 <a href="#principal" class="skip">Ir para o conteúdo principal</a>
 <!-- Símbolos SVG internos: sem biblioteca externa de ícones. -->
 <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@
 </svg>
 
 <div class="app">
-  <button id="sidebar-scrim" class="mobile-scrim" type="button" aria-label="Fechar menu" hidden></button>
+  
   <aside class="sidebar" id="sidebar" aria-label="Menu do paciente">
     <a class="brand" href="https://joaopedroalves-alt.github.io/ICON/" aria-label="ICON — site institucional">
       <span class="brand-symbol"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 8c-8-9-19-3-19 7-4 7 0 14 7 15-1 7 5 13 12 10V8Zm0 0c8-9 19-3 19 7 4 7 0 14-7 15 1 7-5 13-12 10V8Z" stroke="currentColor" stroke-width="1.7"/><path d="M12 17c5-1 7 1 8 5m-9 5c5-1 7 2 9 5m16-15c-5-1-7 1-8 5m9 5c-5-1-7 2-9 5" stroke="currentColor" stroke-width="1.3"/><circle cx="24" cy="7" r="2.5" fill="#83C8B7"/></svg></span>
@@ -54,13 +54,13 @@
     </a>
     <div class="side-caption">Minha área</div>
     <nav class="sidenav" aria-label="Navegação principal">
-      <button class="nav-link active" type="button" data-nav="inicio" aria-current="page"><svg class="ico"><use href="#i-home"/></svg>Início</button>
-      <button class="nav-link" type="button" data-nav="agendamentos"><svg class="ico"><use href="#i-calendar"/></svg>Meus agendamentos</button>
-      <button class="nav-link" type="button" data-nav="profissionais"><svg class="ico"><use href="#i-users"/></svg>Meus profissionais</button>
-      <button class="nav-link" type="button" data-nav="documentos"><svg class="ico"><use href="#i-file"/></svg>Meus documentos</button>
-      <button class="nav-link" type="button" data-nav="solicitacoes"><svg class="ico"><use href="#i-inbox"/></svg>Minhas solicitações <span class="side-badge" id="side-request-count">2</span></button>
-      <button class="nav-link" type="button" data-nav="cadastro"><svg class="ico"><use href="#i-user"/></svg>Meu cadastro</button>
-      <button class="nav-link" type="button" data-nav="ajuda"><svg class="ico"><use href="#i-help"/></svg>Ajuda</button>
+      <a class="nav-link active" href="#view-inicio"><svg class="ico"><use href="#i-home"/></svg>Início</a>
+      <a class="nav-link" href="#view-agendamentos"><svg class="ico"><use href="#i-calendar"/></svg>Meus agendamentos</a>
+      <a class="nav-link" href="#view-profissionais"><svg class="ico"><use href="#i-users"/></svg>Meus profissionais</a>
+      <a class="nav-link" href="#view-documentos"><svg class="ico"><use href="#i-file"/></svg>Meus documentos</a>
+      <a class="nav-link" href="#view-solicitacoes"><svg class="ico"><use href="#i-inbox"/></svg>Minhas solicitações <span class="side-badge" id="side-request-count">2</span></a>
+      <a class="nav-link" href="#view-cadastro"><svg class="ico"><use href="#i-user"/></svg>Meu cadastro</a>
+      <a class="nav-link" href="#view-ajuda"><svg class="ico"><use href="#i-help"/></svg>Ajuda</a>
     </nav>
     <div class="side-bottom">
       <div class="side-reassure"><svg class="ico"><use href="#i-shield"/></svg><strong>Seu espaço de cuidado</strong><p>Organize sua rotina com tranquilidade. Todos os dados desta versão são fictícios.</p></div>
@@ -68,30 +68,68 @@
     </div>
   </aside>
   <div class="app-main">
-    <header class="topbar">
-      <div class="top-left">
-        <button type="button" class="icon-btn mobile-menu" id="mobile-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu"><svg class="ico"><use href="#i-menu"/></svg></button>
-        <div class="top-label"><small>Portal do paciente</small><strong id="breadcrumb">Início</strong></div>
-      </div>
-      <div class="top-right">
-        <span class="mini-badge">Ambiente demonstrativo</span>
-        <div class="notification-wrap">
-          <button class="icon-btn" id="notifications-toggle" type="button" aria-label="Abrir notificações" aria-controls="notification-pop" aria-expanded="false"><svg class="ico"><use href="#i-bell"/></svg><span id="notify-count" class="notify-count">3</span></button>
-          <div class="notify-pop" id="notification-pop" hidden></div>
-        </div>
-        <button type="button" class="top-profile" data-nav="cadastro" aria-label="Ir para meu cadastro"><span class="avatar" id="header-avatar">LM</span><span class="profile-words"><strong id="header-name">Lucas Mendes</strong><small>Paciente · demo</small></span><svg class="ico"><use href="#i-chevron"/></svg></button>
-      </div>
-    </header>
-    <main id="principal" class="content" tabindex="-1">
-      <div id="page-content" aria-live="off"></div>
-      <div class="footer-note">ICON — Instituto de Cognição e Neuropsicologia · Protótipo acadêmico · Não insira dados reais.</div>
-    </main>
+    <header class="topbar academic-static-topbar"><div class="academic-topbar-label">ICON <span>/ Paciente</span></div><div class="academic-topbar-right"><span>Protótipo escolar · HTML e CSS</span><a href="index.html">Site institucional ↗</a></div></header>
+      <main id="principal" class="content" tabindex="-1"><div class="academic-static-pages"><section class="academic-static-section" id="view-inicio" aria-labelledby="heading-inicio">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-inicio">Início</h1><p>Meu espaço ICON. Acompanhamento fictício do paciente.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 agendamentos de exemplo</strong></div><div class="academic-stat"><span>02</span><strong>01 documento ilustrativo</strong></div><div class="academic-stat"><span>03</span><strong>02 solicitações fictícias</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Próximo atendimento</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>17/11/2026 · 09h30</td><td>Dra. Mariana Silva</td><td>Meu espaço ICON</td><td><span class="academic-status">Confirmado</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>As informações do painel são exemplos estáticos.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-agendamentos" aria-labelledby="heading-agendamentos">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-agendamentos">Meus agendamentos</h1><p>Agenda de exemplo. Horários apenas para mostrar como seria a experiência.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 atendimentos ilustrativos</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>17/11/2026</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>09h30 · Avaliação Neuropsicológica</td><td>Dra. Mariana Silva</td><td>Agenda de exemplo</td><td><span class="academic-status">Confirmado</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>18/11/2026 — 10h00 — Retorno ilustrativo.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-profissionais" aria-labelledby="heading-profissionais">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-profissionais">Meus profissionais</h1><p>Equipe fictícia. Conheça profissionais do exemplo acadêmico.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 profissionais demonstrativos</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Profissional</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Dra. Mariana Silva</td><td>Neuropsicologia</td><td>Equipe fictícia</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Dr. Rafael Costa — Psicologia Clínica.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-documentos" aria-labelledby="heading-documentos">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-documentos">Meus documentos</h1><p>Documentos de demonstração. Nenhum arquivo clínico real disponível.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>01 documento ilustrativo</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Documento</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Orientações gerais</td><td>Sem dados reais</td><td>Documentos de demonstração</td><td><span class="academic-status">Exemplo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Esta página não gera documentos nem permite envio de arquivos.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-solicitacoes" aria-labelledby="heading-solicitacoes">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-solicitacoes">Minhas solicitações</h1><p>Pedidos ilustrativos. Exemplo visual de atendimento administrativo.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>02 solicitações simuladas</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Pedido</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Alteração de horário</td><td>Aguardando análise</td><td>Pedidos ilustrativos</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Os pedidos não são transmitidos à secretaria.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-cadastro" aria-labelledby="heading-cadastro">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-cadastro">Meu cadastro</h1><p>Perfil de exemplo. Informações inventadas do personagem.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>01 usuário fictício</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Paciente</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Lucas Mendes</td><td>Cadastro de demonstração</td><td>Perfil de exemplo</td><td><span class="academic-status">Fictício</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>Para ver o formulário escolar de três etapas, retorne ao site e escolha Realizar cadastro.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section>
+<section class="academic-static-section" id="view-ajuda" aria-labelledby="heading-ajuda">
+   <div class="academic-eyebrow">ICON / DEMONSTRAÇÃO ACADÊMICA</div>
+   <div class="academic-static-head"><div><h1 id="heading-ajuda">Ajuda</h1><p>Perguntas frequentes. Explicações sobre esta versão HTML e CSS.</p></div><span class="academic-mode-pill">HTML + CSS</span></div>
+   <div class="academic-stat-grid"><div class="academic-stat"><span>01</span><strong>04 perfis demonstrativos</strong></div></div>
+   <section class="academic-static-card"><h2>Exemplo de registro</h2><div class="academic-table-wrap"><table><thead><tr><th>Ajuda</th><th>Informações</th><th>Descrição</th><th>Situação</th></tr></thead><tbody><tr><td>Como navegar?</td><td>Use o menu e abra as caixas de detalhes</td><td>Perguntas frequentes</td><td><span class="academic-status">Informativo</span></td></tr></tbody></table></div></section>
+   <section class="academic-static-card"><h2>Explorar detalhes</h2><p class="academic-help">Clique nas caixas abaixo para expandir as informações sem usar JavaScript.</p><details class="academic-accordion"><summary>Mais informações <span aria-hidden="true">+</span></summary><p>O projeto é estático: não envia mensagens, não agenda consultas e não armazena informações.</p></details></section>
+   <div class="academic-static-footnote">Protótipo escolar · Conteúdo fictício · Sem autenticação, armazenamento ou sincronização de agendamentos</div>
+  </section></div><p class="academic-static-footnote">ICON — Instituto de Cognição e Neuropsicologia · Protótipo acadêmico.</p></main>
   </div>
 </div>
 
-<div id="modal-layer" class="modal-layer" hidden role="presentation"><div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div></div>
-<div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
 
-<script src="scripts/icon-paciente.js?v=20261115-organizado"></script>
+
+
 </body>
 </html>
