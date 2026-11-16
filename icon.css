@@ -6189,3 +6189,73 @@ body.icon-page-home .nojs-step-final .portal-switch-button{display:inline-flex;v
  body.icon-page-home .nojs-guardian-fields{grid-template-columns:1fr}
  body.icon-page-home .nojs-profile-grid{grid-template-columns:1fr}
 }
+
+/* ======================================================================
+   [09] DASHBOARDS ESCOLARES ESTÁTICOS — HTML + CSS, SEM JAVASCRIPT
+   Cada menu usa #view-... e :target; as janelas são <details>.
+   ====================================================================== */
+body.nojs-static .academic-static-pages{color:#254550;width:100%;max-width:1320px;margin:0 auto}
+body.nojs-static .academic-static-section{display:none;min-height:60vh}
+body.nojs-static .academic-static-section:first-of-type{display:block}
+body.nojs-static .academic-static-pages:has(.academic-static-section:target) .academic-static-section:first-of-type{display:none}
+body.nojs-static .academic-static-section:target{display:block!important}
+body.nojs-static .academic-static-section:focus-within{outline:none}
+body.nojs-static .academic-eyebrow{font:800 10px/1.6 'DM Sans',Inter,system-ui,sans-serif;letter-spacing:.14em;color:#468d96;text-transform:uppercase;margin-bottom:10px}
+body.nojs-static .academic-static-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin:0 0 26px}
+body.nojs-static .academic-static-head h1{font:800 clamp(29px,3vw,41px)/1.15 Manrope,Inter,system-ui,sans-serif;letter-spacing:-.04em;color:#17465b;margin:0 0 10px}
+body.nojs-static .academic-static-head p{font:500 13px/1.8 'DM Sans',Inter,system-ui,sans-serif;color:#687f87;max-width:690px;margin:0}
+body.nojs-static .academic-mode-pill{white-space:nowrap;background:#e3f4ed;color:#267a73;border:1px solid #c2e3d6;border-radius:99px;padding:8px 14px;font:800 10px Inter,system-ui,sans-serif;letter-spacing:.05em}
+body.nojs-static .academic-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:21px}
+body.nojs-static .academic-stat{padding:20px 19px;background:#fff;border:1px solid #e1ebe8;border-radius:14px;box-shadow:0 12px 28px rgba(15,65,77,.045);min-height:100px}
+body.nojs-static .academic-stat span{display:block;color:#75bbae;font:800 10px Inter,system-ui,sans-serif;margin-bottom:10px}
+body.nojs-static .academic-stat strong{display:block;color:#183f51;font:800 clamp(14px,1.65vw,19px)/1.3 Manrope,Inter,system-ui,sans-serif}
+body.nojs-static .academic-static-card{background:#fff;border:1px solid #e0eae7;border-radius:15px;box-shadow:0 12px 30px rgba(25,72,80,.04);padding:23px 23px 21px;margin:0 0 18px}
+body.nojs-static .academic-static-card h2{font:800 18px/1.4 Manrope,Inter,system-ui,sans-serif;color:#17465b;margin:0 0 15px}
+body.nojs-static .academic-static-card .academic-help{font:500 12px/1.65 Inter,system-ui,sans-serif;color:#72868d;margin:0 0 13px}
+body.nojs-static .academic-table-wrap{overflow-x:auto;max-width:100%;border-radius:9px;border:1px solid #e6eeeb}
+body.nojs-static .academic-table-wrap table{width:100%;border-collapse:collapse;font:500 12px/1.5 'DM Sans',Inter,system-ui,sans-serif;min-width:520px;color:#355c66}
+body.nojs-static .academic-table-wrap th{background:#eff6f4;color:#456a71;text-align:left;padding:12px 15px;font:800 10px/1.4 Inter,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.03em}
+body.nojs-static .academic-table-wrap td{padding:15px;border-top:1px solid #e5eeeb}
+body.nojs-static .academic-status{background:#e1f4eb;color:#236f5f;border-radius:99px;padding:6px 10px;font:800 10px Inter,system-ui,sans-serif;white-space:nowrap}
+body.nojs-static .academic-accordion{border:1px solid #e0ebe7;border-radius:8px;margin-top:9px;overflow:hidden;background:#fbfdfc}
+body.nojs-static .academic-accordion summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:13px 16px;color:#285260;font:750 12px Inter,system-ui,sans-serif}
+body.nojs-static .academic-accordion summary::-webkit-details-marker{display:none}
+body.nojs-static .academic-accordion summary span{font-size:18px;color:#4d999a}
+body.nojs-static .academic-accordion[open] summary span{transform:rotate(45deg)}
+body.nojs-static .academic-accordion p{margin:0;padding:0 16px 16px;font:500 12px/1.75 Inter,system-ui,sans-serif;color:#647d84}
+body.nojs-static .academic-static-footnote{font:500 11px/1.7 Inter,system-ui,sans-serif;color:#849ba1;margin-top:20px}
+body.nojs-static .academic-static-topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 26px;min-height:70px}
+body.nojs-static .academic-topbar-label{font:900 15px Manrope,Inter,system-ui,sans-serif;color:#17465b}
+body.nojs-static .academic-topbar-label span{font-weight:600;font-size:12px;color:#7b939a}
+body.nojs-static .academic-topbar-right{display:flex;align-items:center;gap:16px;font:600 11px Inter,system-ui,sans-serif;color:#718b90}
+body.nojs-static .academic-topbar-right a{color:#246e78;text-decoration:none;font-weight:800}
+body.nojs-static .academic-topbar-right a:hover{text-decoration:underline}
+/* Mantém a identidade dos menus existentes, agora com <a> no lugar de <button>. */
+body.nojs-static .sidebar nav a{cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+body.nojs-static .sidebar nav a:focus-visible{outline:2px solid #83c8b7;outline-offset:-1px}
+body.nojs-static .sidebar nav a:hover{background:rgba(131,200,183,.12)}
+body.nojs-static .sidebar nav a svg{flex:0 0 19px}
+body.nojs-static .academic-static-section{scroll-margin-top:15px}
+/* Oculta elementos antigos que dependiam de JavaScript. */
+body.nojs-static .if-dock,body.nojs-static .if-bar,body.nojs-static .if-toast{display:none!important}
+@media(max-width:950px){
+ body.nojs-static .sidebar{position:relative!important;inset:auto!important;transform:none!important;width:100%!important;height:auto!important;max-height:none!important;padding:10px 13px!important;overflow:visible!important;box-shadow:none!important}
+ body.nojs-static .sidebar nav{display:flex!important;flex-direction:row!important;overflow-x:auto!important;gap:6px;padding:8px 0!important;white-space:nowrap;scrollbar-width:thin}
+ body.nojs-static .sidebar nav a{display:inline-flex!important;flex:0 0 auto;width:auto!important;padding:11px 13px!important;min-height:38px!important;border-radius:8px!important}
+ body.nojs-static .sidebar .nav-label,body.nojs-static .sidebar .nav-caption,body.nojs-static .sidebar .side-label,body.nojs-static .sidebar .side-caption,body.nojs-static .sidebar .workspace-label,body.nojs-static .sidebar .side-kicker,body.nojs-static .sidebar .side-unit,body.nojs-static .sidebar .side-bottom,body.nojs-static .sidebar .sidebar-bottom,body.nojs-static .sidebar .sidebar-footer,body.nojs-static .sidebar .side-footer{display:none!important}
+ body.nojs-static .shell,body.nojs-static .app-shell,body.nojs-static .app{display:block!important;min-width:0!important;width:100%!important}
+ body.nojs-static .page-column,body.nojs-static .app-column,body.nojs-static .app-main{margin-left:0!important;width:100%!important;min-width:0!important}
+ body.nojs-static .sidebar-overlay,body.nojs-static .sidebar-scrim,body.nojs-static .sidebar-backdrop,body.nojs-static .mobile-scrim{display:none!important}
+ body.nojs-static .main-content,body.nojs-static .content{padding:25px 20px!important}
+ body.nojs-static .academic-static-topbar{padding:12px 20px;min-height:60px}
+}
+@media(max-width:580px){
+ body.nojs-static .academic-static-head{flex-direction:column;gap:10px}
+ body.nojs-static .academic-static-head h1{font-size:29px}
+ body.nojs-static .academic-static-card{padding:17px 15px}
+ body.nojs-static .academic-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ body.nojs-static .academic-stat{padding:14px;min-height:92px}
+ body.nojs-static .academic-stat strong{font-size:13px}
+ body.nojs-static .academic-topbar-right span{display:none}
+ body.nojs-static .sidebar nav a svg{display:none!important}
+}
