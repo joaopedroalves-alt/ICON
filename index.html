@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="icon.css?v=20261115-sem-barra">
+  <link rel="stylesheet" href="icon.css?v=20261116-html-css">
   <script src="cerebro-hero.js?v=transparent-network-20261115" defer></script>
 </head>
 <body class="icon-page-home">
@@ -35,18 +35,17 @@
         <a href="#como-funciona">Como funciona</a>
       </nav>
       <div class="header-actions">
-        <button class="portal-link" type="button" data-modal="portal">Acessar portal <span aria-hidden="true">↗</span></button>
-        <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
-          <span></span><span></span><span></span>
-        </button>
+        <a class="portal-link" href="#portal-auth-dialog">Acessar portal <span aria-hidden="true">↗</span></a>
+        <details class="menu-nojs">
+          <summary class="menu-toggle" aria-label="Abrir navegação"><span></span><span></span><span></span></summary>
+          <nav class="nav-mobile" aria-label="Navegação móvel">
+            <a href="#inicio">Início</a><a href="#sobre">O Instituto</a><a href="#especialidades">Especialidades</a>
+            <a href="#servicos">Serviços</a><a href="#profissionais">Equipe</a><a href="#como-funciona">Como funciona</a>
+            <a href="#faq">Dúvidas</a><a href="#contato">Contato</a><a href="#portal-auth-dialog">Acessar portal ↗</a>
+          </nav>
+        </details>
       </div>
     </div>
-    <nav class="nav-mobile" id="mobile-menu" aria-label="Navegação para dispositivos móveis" hidden>
-      <a href="#inicio">Início</a><a href="#sobre">O Instituto</a><a href="#especialidades">Especialidades</a>
-      <a href="#servicos">Serviços</a><a href="#profissionais">Equipe</a><a href="#como-funciona">Como funciona</a>
-      <a href="#faq">Dúvidas frequentes</a><a href="#contato">Contato</a>
-      <button type="button" data-modal="portal">Acessar portal ↗</button>
-    </nav>
   </header>
 
   <main id="conteudo">
@@ -344,8 +343,18 @@
     <section class="team section-pad" id="profissionais" aria-labelledby="team-title">
       <div class="wrap">
         <div class="section-intro reveal"><div><span class="eyebrow eyebrow-dark"><span class="eyebrow-line"></span> QUEM CUIDA</span><h2 class="section-heading" id="team-title">Pessoas que estudam pessoas. <em>E as escutam.</em></h2></div><p>Conheça a equipe fictícia multidisciplinar que ilustra o modelo de atuação do instituto.</p></div>
-        <div class="team-toolbar"><div class="filter-bar" role="group" aria-label="Filtrar profissionais"><button class="filter-btn active" type="button" data-filter="Todos" aria-pressed="true">Todos</button><button class="filter-btn" type="button" data-filter="Neuropsicologia" aria-pressed="false">Neuropsicólogos</button><button class="filter-btn" type="button" data-filter="Psicologia" aria-pressed="false">Psicólogos</button><button class="filter-btn" type="button" data-filter="Psiquiatria" aria-pressed="false">Psiquiatras</button><button class="filter-btn" type="button" data-filter="Neurologia" aria-pressed="false">Neurologistas</button></div><span class="team-count" id="team-count" aria-live="polite">12 profissionais</span></div>
-        <div class="team-grid" id="team-grid" aria-live="polite"></div>
+        <div class="team-toolbar"><div class="filter-bar" role="group" aria-label="Filtrar profissionais"><input class="nojs-filter-input" type="radio" name="filtro-profissionais" id="filtro-prof-0" value="Todos" checked><label class="filter-btn" for="filtro-prof-0">Todos</label><input class="nojs-filter-input" type="radio" name="filtro-profissionais" id="filtro-prof-1" value="Neuropsicologia" ><label class="filter-btn" for="filtro-prof-1">Neuropsicólogos</label><input class="nojs-filter-input" type="radio" name="filtro-profissionais" id="filtro-prof-2" value="Psicologia" ><label class="filter-btn" for="filtro-prof-2">Psicólogos</label><input class="nojs-filter-input" type="radio" name="filtro-profissionais" id="filtro-prof-3" value="Psiquiatria" ><label class="filter-btn" for="filtro-prof-3">Psiquiatras</label><input class="nojs-filter-input" type="radio" name="filtro-profissionais" id="filtro-prof-4" value="Neurologia" ><label class="filter-btn" for="filtro-prof-4">Neurologistas</label></div><span class="team-count" id="team-count">12 profissionais fictícios</span></div><div class="team-grid" id="team-grid"><article class="person" data-specialty="Neuropsicologia"><div class="person-art" aria-hidden="true"><span>MS</span></div><div class="person-info"><span class="person-type">Neuropsicologia</span><h3>Mariana Silva</h3><p>Neuropsicóloga</p><small>CRP 00/001XX · fictício</small></div></article>
+<article class="person" data-specialty="Neurologia"><div class="person-art" aria-hidden="true"><span>JO</span></div><div class="person-info"><span class="person-type">Neurologia</span><h3>João Oliveira</h3><p>Neurologista</p><small>CRM 00/002XX · fictício</small></div></article>
+<article class="person" data-specialty="Psicologia"><div class="person-art" aria-hidden="true"><span>AS</span></div><div class="person-info"><span class="person-type">Psicologia</span><h3>Ana Souza</h3><p>Psicóloga clínica</p><small>CRP 00/003XX · fictício</small></div></article>
+<article class="person" data-specialty="Psiquiatria"><div class="person-art" aria-hidden="true"><span>RC</span></div><div class="person-info"><span class="person-type">Psiquiatria</span><h3>Rafael Costa</h3><p>Psiquiatra</p><small>CRM 00/004XX · fictício</small></div></article>
+<article class="person" data-specialty="Neuropsicologia"><div class="person-art" aria-hidden="true"><span>CM</span></div><div class="person-info"><span class="person-type">Neuropsicologia</span><h3>Camila Mendes</h3><p>Neuropsicóloga</p><small>CRP 00/005XX · fictício</small></div></article>
+<article class="person" data-specialty="Psicologia"><div class="person-art" aria-hidden="true"><span>LF</span></div><div class="person-info"><span class="person-type">Psicologia</span><h3>Lucas Ferreira</h3><p>Psicólogo clínico</p><small>CRP 00/006XX · fictício</small></div></article>
+<article class="person" data-specialty="Psicologia"><div class="person-art" aria-hidden="true"><span>BA</span></div><div class="person-info"><span class="person-type">Psicologia</span><h3>Beatriz Almeida</h3><p>Psicóloga clínica</p><small>CRP 00/007XX · fictício</small></div></article>
+<article class="person" data-specialty="Neuropsicologia"><div class="person-art" aria-hidden="true"><span>IR</span></div><div class="person-info"><span class="person-type">Neuropsicologia</span><h3>Isabela Rocha</h3><p>Neuropsicóloga</p><small>CRP 00/008XX · fictício</small></div></article>
+<article class="person" data-specialty="Neurologia"><div class="person-art" aria-hidden="true"><span>GM</span></div><div class="person-info"><span class="person-type">Neurologia</span><h3>Gabriel Martins</h3><p>Neurologista</p><small>CRM 00/009XX · fictício</small></div></article>
+<article class="person" data-specialty="Psiquiatria"><div class="person-art" aria-hidden="true"><span>LR</span></div><div class="person-info"><span class="person-type">Psiquiatria</span><h3>Laura Ribeiro</h3><p>Psiquiatra</p><small>CRM 00/010XX · fictício</small></div></article>
+<article class="person" data-specialty="Psicologia"><div class="person-art" aria-hidden="true"><span>PH</span></div><div class="person-info"><span class="person-type">Psicologia</span><h3>Pedro Henrique</h3><p>Psicólogo clínico</p><small>CRP 00/011XX · fictício</small></div></article>
+<article class="person" data-specialty="Neuropsicologia"><div class="person-art" aria-hidden="true"><span>SC</span></div><div class="person-info"><span class="person-type">Neuropsicologia</span><h3>Sofia Carvalho</h3><p>Neuropsicóloga</p><small>CRP 00/012XX · fictício</small></div></article></div>
         <p class="team-disclaimer">Profissionais, biografias e registros são fictícios, apresentados exclusivamente para fins acadêmicos.</p>
       </div>
     </section>
@@ -361,195 +370,74 @@
       <details><summary>Como solicitar mais informações? <span aria-hidden="true">+</span></summary><p>Esta é uma demonstração acadêmica. Os canais e o formulário da página são ilustrativos e não realizam agendamentos reais.</p></details>
     </div></div></section>
 
-    <section class="contact" id="contato" aria-labelledby="contact-title"><div class="wrap contact-grid"><div class="contact-copy reveal"><span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> VAMOS CONVERSAR?</span><h2 class="section-heading section-heading-light" id="contact-title">Toda jornada começa com uma <em>conversa.</em></h2><p>Conheça a proposta do ICON e descubra como a ciência pode inspirar uma experiência de cuidado mais humana.</p><div class="contact-meta"><span><strong>LOCALIZAÇÃO DEMONSTRATIVA</strong>Avenida das Acácias, 450 — Centro<br>Uberlândia / MG</span><span><strong>HORÁRIO ILUSTRATIVO</strong>Segunda a sexta, 08h às 18h</span></div></div><div class="contact-form-panel reveal"><span class="form-kicker">CONTATO INSTITUCIONAL</span><h3>Conte um pouco sobre o que você procura.</h3><p>Formulário demonstrativo: nenhuma informação é enviada ou armazenada.</p><form id="contact-form" novalidate><label for="contact-name">Seu nome</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required><label for="contact-email">Seu e-mail</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="exemplo@email.com" required><label for="contact-topic">Assunto</label><select id="contact-topic" name="topic" required><option value="">Selecione uma opção</option><option>Conhecer especialidades</option><option>Informações sobre avaliações</option><option>Informações institucionais</option></select><button class="btn btn-mint btn-submit" type="submit">Visualizar demonstração <span aria-hidden="true">↗</span></button><div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div></form></div></div></section>
+    <section class="contact" id="contato" aria-labelledby="contact-title"><div class="wrap contact-grid"><div class="contact-copy reveal"><span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> VAMOS CONVERSAR?</span><h2 class="section-heading section-heading-light" id="contact-title">Toda jornada começa com uma <em>conversa.</em></h2><p>Conheça a proposta do ICON e descubra como a ciência pode inspirar uma experiência de cuidado mais humana.</p><div class="contact-meta"><span><strong>LOCALIZAÇÃO DEMONSTRATIVA</strong>Avenida das Acácias, 450 — Centro<br>Uberlândia / MG</span><span><strong>HORÁRIO ILUSTRATIVO</strong>Segunda a sexta, 08h às 18h</span></div></div><div class="contact-form-panel reveal"><span class="form-kicker">CONTATO INSTITUCIONAL</span><h3>Conte um pouco sobre o que você procura.</h3><p>Formulário demonstrativo: nenhuma informação é enviada ou armazenada.</p><div class="nojs-contact-form"><label for="contact-name">Seu nome</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required><label for="contact-email">Seu e-mail</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="exemplo@email.com" required><label for="contact-topic">Assunto</label><select id="contact-topic" name="topic" required><option value="">Selecione uma opção</option><option>Conhecer especialidades</option><option>Informações sobre avaliações</option><option>Informações institucionais</option></select><details class="nojs-contact-demo"><summary class="btn btn-mint btn-submit">Visualizar demonstração <span aria-hidden="true">↗</span></summary><p>Este é um exemplo de formulário institucional. Nenhuma mensagem foi enviada ou armazenada.</p></details></div></div></div></section>
   </main>
 
-  <footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><a class="brand" href="#inicio" aria-label="ICON — voltar ao início"><svg class="brand-mark" viewBox="0 0 46 46" fill="none" aria-hidden="true"><path d="M22.8 6.5c-5.5-5.4-15.2-1-15.2 6.4-5.9 5.4-3.4 13.1 1.5 14.9-1.6 7.7 8 13.8 13.7 8.2V6.5Zm.4 0c5.5-5.4 15.2-1 15.2 6.4 5.9 5.4 3.4 13.1-1.5 14.9 1.6 7.7-8 13.8-13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="23" cy="6.5" r="2" fill="#83C8B7"/></svg><span class="brand-copy"><strong>ICON</strong><small>Instituto de Cognição e Neuropsicologia</small></span></a><p>Um olhar científico, humano e integrado sobre o universo da mente.</p></div><div class="footer-col"><h3>Explore</h3><a href="#sobre">Sobre o ICON</a><a href="#especialidades">Especialidades</a><a href="#servicos">Serviços</a><a href="#profissionais">Profissionais</a></div><div class="footer-col"><h3>Institucional</h3><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas frequentes</a><a href="#contato">Contato</a><button type="button" data-modal="portal">Portal institucional</button></div><div class="footer-col"><h3>Contato ilustrativo</h3><span>contato@icon.exemplo.com.br</span><span>(34) 3333-0000</span><span>Uberlândia, Minas Gerais</span></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> ICON — Todos os direitos reservados.</span><span>Projeto acadêmico fictício · Não representa serviço real de saúde</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
-
-  <!-- Dialog acessível com Escape, foco e fechamento no backdrop. -->
-  <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="Fechar janela">×</button><span class="eyebrow eyebrow-dark">ICON / INSTITUCIONAL</span><h2 id="dialog-title"></h2><div id="dialog-content"></div><button type="button" class="btn btn-dark dialog-ok">Entendi <span aria-hidden="true">↗</span></button></dialog>
+  <footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><a class="brand" href="#inicio" aria-label="ICON — voltar ao início"><svg class="brand-mark" viewBox="0 0 46 46" fill="none" aria-hidden="true"><path d="M22.8 6.5c-5.5-5.4-15.2-1-15.2 6.4-5.9 5.4-3.4 13.1 1.5 14.9-1.6 7.7 8 13.8 13.7 8.2V6.5Zm.4 0c5.5-5.4 15.2-1 15.2 6.4 5.9 5.4 3.4 13.1-1.5 14.9 1.6 7.7-8 13.8-13.7 8.2V6.5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="23" cy="6.5" r="2" fill="#83C8B7"/></svg><span class="brand-copy"><strong>ICON</strong><small>Instituto de Cognição e Neuropsicologia</small></span></a><p>Um olhar científico, humano e integrado sobre o universo da mente.</p></div><div class="footer-col"><h3>Explore</h3><a href="#sobre">Sobre o ICON</a><a href="#especialidades">Especialidades</a><a href="#servicos">Serviços</a><a href="#profissionais">Profissionais</a></div><div class="footer-col"><h3>Institucional</h3><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas frequentes</a><a href="#contato">Contato</a><a href="#portal-auth-dialog">Portal institucional</a></div><div class="footer-col"><h3>Contato ilustrativo</h3><span>contato@icon.exemplo.com.br</span><span>(34) 3333-0000</span><span>Uberlândia, Minas Gerais</span></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> ICON — Todos os direitos reservados.</span><span>Projeto acadêmico fictício · Não representa serviço real de saúde</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
 
 
-  <!-- ICON / Portal acadêmico: demonstração sem backend ou autenticação real. -->
-  <dialog class="portal-auth-dialog" id="portal-auth-dialog" aria-labelledby="portal-auth-heading">
-    <div class="portal-auth" id="portal-auth">
-      <button class="portal-auth-close" type="button" id="portal-auth-close" aria-label="Fechar acesso ao portal">×</button>
+  <!-- Portal HTML e CSS: abre pelo fragmento #portal-auth-dialog, sem JavaScript. -->
+  <div class="portal-auth-dialog nojs-portal-dialog" id="portal-auth-dialog" role="dialog" aria-labelledby="portal-auth-heading">
+    <a class="nojs-portal-backdrop" href="#inicio" aria-label="Fechar portal"></a>
+    <div class="portal-auth nojs-portal" id="portal-auth">
+      <input class="nojs-state" type="radio" name="portal-mode" id="portal-mode-login" checked>
+      <input class="nojs-state" type="radio" name="portal-mode" id="portal-mode-register">
+      <a class="portal-auth-close" href="#inicio" aria-label="Fechar acesso ao portal">×</a>
       <section class="portal-auth-intro" aria-label="Apresentação do portal">
         <div class="portal-auth-logo"><span class="portal-auth-glyph" aria-hidden="true">✧</span><span>ICON <small>INSTITUTO DE COGNIÇÃO E NEUROPSICOLOGIA</small></span></div>
-        <div class="portal-auth-intro-body">
-          <span class="portal-auth-kicker" id="portal-intro-kicker">PORTAL INSTITUCIONAL / ACESSO</span>
-          <h2 id="portal-intro-heading" aria-live="polite">Bem-vindo <em>de volta.</em></h2>
-          <p id="portal-intro-description">Entre com um perfil de demonstração para conhecer os recursos do ICON.</p>
-          <div class="portal-auth-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-        </div>
+        <div class="portal-auth-intro-body"><span class="portal-auth-kicker">PORTAL ACADÊMICO</span><h2>Conheça nosso <em>portal.</em></h2><p>Explore os quatro perfis e um cadastro ilustrativo em três etapas.</p></div>
         <div class="portal-auth-switch">
-          <p id="portal-switch-description">Ainda não possui acesso?</p>
-          <button type="button" id="portal-switch-mode" class="portal-switch-button" aria-controls="portal-auth">Realizar cadastro <span aria-hidden="true">↗</span></button>
+          <p>Deseja conhecer o cadastro?</p>
+          <label class="portal-switch-button nojs-to-register" for="portal-mode-register">Realizar cadastro ↗</label>
+          <label class="portal-switch-button nojs-to-login" for="portal-mode-login">Ver painéis ↗</label>
         </div>
       </section>
-      <section class="portal-auth-panel" aria-label="Acesso demonstrativo">
-        <div class="portal-login-panel" id="portal-login-panel">
-          <span class="portal-auth-kicker portal-dark-kicker">ACESSO À PLATAFORMA</span>
-          <h2 id="portal-auth-heading">Entrar na sua conta</h2>
-          <p class="portal-auth-subtitle">Escolha um perfil demonstrativo para abrir o respectivo painel.</p>
-          <form id="portal-login-form" class="portal-auth-form" novalidate>
-            <label for="portal-username">Usuário</label>
-            <input id="portal-username" name="username" type="text" autocomplete="username" placeholder="admin, medico, paciente ou secretario" required>
-            <label for="portal-password">Senha</label>
-            <div class="portal-password-field"><input id="portal-password" name="password" type="password" autocomplete="current-password" placeholder="Digite a senha de demonstração" required><button type="button" class="portal-show-password" aria-label="Mostrar senha" aria-pressed="false" data-toggle-password="portal-password">Mostrar</button></div>
-            <p class="portal-form-feedback" id="portal-login-feedback" role="alert" aria-live="polite"></p>
-            <button type="submit" class="portal-auth-submit">Acessar meu painel <span aria-hidden="true">→</span></button>
-          </form>
-          <div class="portal-demo-credentials"><strong>Acessos para teste</strong><span>admin · medico · paciente · secretario</span><span>Senha para todos: <b>1234</b></span></div>
-          <p class="portal-auth-disclaimer">Ambiente acadêmico fictício. Este acesso não protege informações nem representa autenticação real.</p>
-          <button type="button" class="portal-mobile-switch" data-portal-mode="register">Ainda não tenho acesso · Realizar cadastro →</button>
+      <section class="portal-auth-panel" aria-label="Portal demonstrativo">
+        <div class="portal-login-panel">
+          <span class="portal-auth-kicker portal-dark-kicker">ACESSO DEMONSTRATIVO</span>
+          <h2 id="portal-auth-heading">Escolha seu painel</h2>
+          <p class="portal-auth-subtitle">A navegação é feita diretamente por links HTML. Não há login, senhas ou autenticação nesta versão escolar.</p>
+          <div class="nojs-profile-grid"><a class="nojs-profile-link" href="dashboard_administrador.html"><span>Administrador</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard_medico.html"><span>Profissional</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard-secretario.html"><span>Secretaria</span><small>Abrir painel demonstrativo ↗</small></a><a class="nojs-profile-link" href="dashboard-cliente.html"><span>Paciente</span><small>Abrir painel demonstrativo ↗</small></a></div>
+          <p class="portal-auth-disclaimer">Dados e contas inteiramente fictícios. Nenhuma informação real deve ser utilizada.</p>
+          <label class="portal-mobile-switch" for="portal-mode-register">Conhecer cadastro de 3 etapas →</label>
         </div>
-        <div class="portal-register-panel" id="portal-register-panel" hidden>
-          <span class="portal-auth-kicker portal-dark-kicker">CADASTRO / SIMULAÇÃO ACADÊMICA</span>
+        <div class="portal-register-panel">
+          <span class="portal-auth-kicker portal-dark-kicker">CADASTRO DEMONSTRATIVO / 3 ETAPAS</span>
           <h2 id="portal-register-heading">Realizar cadastro</h2>
-          <p class="portal-auth-subtitle">Três etapas inspiradas no cadastro original do ICON. Utilize <strong>somente dados inventados</strong>: não há envio, armazenamento ou criação de contas.</p>
-
-          <div class="portal-register-progress" id="portal-register-progress" aria-label="Progresso do cadastro">
-            <ol class="portal-register-steps">
-              <li data-step-indicator="0" aria-current="step"><span class="portal-register-number">1</span><span>Dados pessoais</span></li>
-              <li data-step-indicator="1"><span class="portal-register-number">2</span><span>Contato</span></li>
-              <li data-step-indicator="2"><span class="portal-register-number">3</span><span>Convênio</span></li>
-            </ol>
-            <div class="portal-register-track" role="progressbar" aria-label="Etapa atual do cadastro" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"><span id="portal-register-progress-bar"></span></div>
+          <p class="portal-auth-subtitle">Preencha somente informações inventadas. Esta simulação não cria contas ou envia dados.</p>
+          <div class="nojs-register-wizard">
+            <input class="nojs-state" type="radio" name="etapa-cadastro" id="cad-etapa-1" checked>
+            <input class="nojs-state" type="radio" name="etapa-cadastro" id="cad-etapa-2">
+            <input class="nojs-state" type="radio" name="etapa-cadastro" id="cad-etapa-3">
+            <input class="nojs-state" type="radio" name="etapa-cadastro" id="cad-etapa-final">
+            <div class="nojs-step-counter"> <label for="cad-etapa-1">01 · Dados</label><label for="cad-etapa-2">02 · Contato</label><label for="cad-etapa-3">03 · Convênio</label> </div>
+            <section class="nojs-step nojs-step-1"><h3>Informações pessoais</h3>
+              <div class="nojs-field-grid"><label>Nome fictício <input type="text" placeholder="Ex.: Lucas Exemplo" autocomplete="off"></label><label>Data ilustrativa <input type="date" autocomplete="off"></label><label>Gênero (opcional) <select><option>Prefiro não informar</option><option>Feminino</option><option>Masculino</option><option>Outro</option></select></label><label>Estado civil <select><option>Selecione</option><option>Solteiro(a)</option><option>Casado(a)</option><option>União estável</option></select></label></div>
+              <p class="nojs-help">Sem CPF, RG ou informações clínicas reais.</p>
+              <div class="nojs-wizard-actions"><label class="portal-auth-submit" for="cad-etapa-2">Continuar →</label></div>
+            </section>
+            <section class="nojs-step nojs-step-2"><h3>Contato e responsável</h3>
+              <div class="nojs-field-grid"><label>E-mail fictício <input type="email" placeholder="teste@icon.test" autocomplete="off"></label><label>Telefone ilustrativo <input type="tel" placeholder="(00) 00000-0000" autocomplete="off"></label><label>Cidade <input type="text" placeholder="Uberlândia" autocomplete="off"></label><label>Estado <select><option>Minas Gerais</option><option>São Paulo</option><option>Goiás</option><option>Outro</option></select></label></div>
+              <div class="nojs-guardian-wrap"><label class="nojs-checkbox-label"><input type="checkbox" id="cad-tem-responsavel"> Incluir responsável fictício</label>
+                <div class="nojs-guardian-fields"><label>Nome de exemplo <input type="text" placeholder="Nome do responsável" autocomplete="off"></label><label>Parentesco <input type="text" placeholder="Ex.: mãe" autocomplete="off"></label></div>
+              </div>
+              <div class="nojs-wizard-actions"><label class="nojs-back" for="cad-etapa-1">← Voltar</label><label class="portal-auth-submit" for="cad-etapa-3">Continuar →</label></div>
+            </section>
+            <section class="nojs-step nojs-step-3"><h3>Convênio e acesso</h3>
+              <div class="nojs-field-grid"><label>Modalidade <select><option>Particular</option><option>Unimed</option><option>Amil</option><option>Bradesco Saúde</option><option>Outro convênio</option></select></label><label>Perfil de exemplo <select><option>Paciente</option><option>Profissional</option><option>Secretário</option><option>Administrador</option></select></label></div>
+              <p class="nojs-help">Este cadastro é apenas visual: sem JavaScript, autenticação ou armazenamento. Acesse os painéis pelos links do login.</p>
+              <div class="nojs-wizard-actions"><label class="nojs-back" for="cad-etapa-2">← Voltar</label><label class="portal-auth-submit" for="cad-etapa-final">Concluir demonstração ✓</label></div>
+            </section>
+            <section class="nojs-step nojs-step-final"><span class="nojs-finish-icon">✓</span><h3>Cadastro demonstrativo concluído!</h3><p>Você percorreu as três etapas. Nenhum dado foi enviado ou salvo, e nenhuma conta real foi criada.</p>
+              <label class="nojs-back" for="cad-etapa-1">Refazer etapas</label><label class="portal-switch-button" for="portal-mode-login">Ver painéis ↗</label>
+            </section>
           </div>
-
-          <form id="portal-register-form" class="portal-auth-form portal-register-form" novalidate autocomplete="off">
-            <p id="portal-register-step-label" class="portal-register-step-label" aria-live="polite">Etapa 1 de 3 · Informações pessoais</p>
-
-            <fieldset class="portal-register-step" data-register-step="0">
-              <legend>1. Informações pessoais</legend>
-              <div class="portal-register-grid">
-                <div class="portal-register-field portal-register-wide">
-                  <label for="portal-register-name">Nome completo fictício *</label>
-                  <input id="portal-register-name" name="name" type="text" placeholder="Ex.: Lucas Mendes" minlength="3" maxlength="90" autocomplete="off" required>
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-birth">Data de nascimento de exemplo</label>
-                  <input id="portal-register-birth" name="birth" type="date" autocomplete="off">
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-gender">Gênero (opcional)</label>
-                  <select id="portal-register-gender" name="gender">
-                    <option value="">Prefiro não informar</option>
-                    <option>Feminino</option><option>Masculino</option><option>Outro</option>
-                  </select>
-                </div>
-                <div class="portal-register-field portal-register-wide">
-                  <label for="portal-register-civil">Estado civil (opcional)</label>
-                  <select id="portal-register-civil" name="civil">
-                    <option value="">Selecione, se desejar</option>
-                    <option>Solteiro(a)</option><option>Casado(a)</option><option>União estável</option><option>Divorciado(a)</option><option>Viúvo(a)</option>
-                  </select>
-                </div>
-              </div>
-              <p class="portal-register-note">Para proteger a privacidade, esta demonstração não solicita CPF, RG ou informações sobre condições de saúde.</p>
-            </fieldset>
-
-            <fieldset class="portal-register-step" data-register-step="1" hidden disabled>
-              <legend>2. Contato e responsável</legend>
-              <div class="portal-register-grid">
-                <div class="portal-register-field portal-register-wide">
-                  <label for="portal-register-email">E-mail fictício *</label>
-                  <input id="portal-register-email" name="email" type="email" placeholder="exemplo@icon.test" maxlength="100" autocomplete="off" required>
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-phone">Telefone ilustrativo</label>
-                  <input id="portal-register-phone" name="phone" type="tel" placeholder="(00) 00000-0000" maxlength="20" autocomplete="off">
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-city">Cidade de exemplo</label>
-                  <input id="portal-register-city" name="city" type="text" placeholder="Uberlândia" maxlength="70" autocomplete="off">
-                </div>
-                <div class="portal-register-field portal-register-wide">
-                  <label for="portal-register-state">Estado</label>
-                  <select id="portal-register-state" name="state">
-                    <option value="">Selecione uma UF</option>
-                    <option value="MG">Minas Gerais</option><option value="SP">São Paulo</option><option value="RJ">Rio de Janeiro</option><option value="GO">Goiás</option><option value="DF">Distrito Federal</option>
-                    <option value="outro">Outro estado</option>
-                  </select>
-                </div>
-                <label class="portal-guardian-toggle portal-register-wide" for="portal-register-guardian">
-                  <input type="checkbox" id="portal-register-guardian" name="needsGuardian">
-                  <span>Incluir responsável fictício (quando necessário)</span>
-                </label>
-                <div class="portal-guardian-fields portal-register-wide" id="portal-guardian-fields" hidden>
-                  <div class="portal-register-field portal-register-wide">
-                    <label for="portal-guardian-name">Nome do responsável fictício *</label>
-                    <input id="portal-guardian-name" name="guardianName" type="text" placeholder="Ex.: Maria Mendes" minlength="3" maxlength="90" data-guardian-required="true" disabled>
-                  </div>
-                  <div class="portal-register-field">
-                    <label for="portal-guardian-relation">Parentesco *</label>
-                    <input id="portal-guardian-relation" name="guardianRelation" type="text" placeholder="Ex.: mãe" maxlength="45" data-guardian-required="true" disabled>
-                  </div>
-                  <div class="portal-register-field">
-                    <label for="portal-guardian-phone">Contato fictício *</label>
-                    <input id="portal-guardian-phone" name="guardianPhone" type="tel" placeholder="(00) 00000-0000" maxlength="20" data-guardian-required="true" disabled>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-
-            <fieldset class="portal-register-step" data-register-step="2" hidden disabled>
-              <legend>3. Convênio e acesso</legend>
-              <div class="portal-register-grid">
-                <div class="portal-register-field portal-register-wide">
-                  <label for="portal-register-plan">Modalidade de atendimento *</label>
-                  <select id="portal-register-plan" name="plan" required>
-                    <option value="">Selecione uma opção</option><option value="particular">Particular</option>
-                    <option>Unimed</option><option>Bradesco Saúde</option><option>SulAmérica</option>
-                    <option>Amil</option><option>Hapvida</option><option>Outro convênio</option>
-                  </select>
-                </div>
-                <div class="portal-register-field portal-register-wide" id="portal-register-card-group" hidden>
-                  <label for="portal-register-card">Identificação ilustrativa do convênio</label>
-                  <input id="portal-register-card" name="card" type="text" placeholder="Apenas exemplo, nunca uma carteirinha real" maxlength="35" autocomplete="off" disabled>
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-profile">Perfil de demonstração *</label>
-                  <select id="portal-register-profile" name="profile" required>
-                    <option value="paciente">Paciente</option><option value="medico">Profissional</option><option value="secretario">Secretário</option><option value="admin">Administrador</option>
-                  </select>
-                </div>
-                <div class="portal-register-field">
-                  <label for="portal-register-password">Senha fictícia (1234) *</label>
-                  <input id="portal-register-password" name="password" type="password" value="1234" inputmode="numeric" minlength="4" maxlength="4" autocomplete="new-password" required>
-                </div>
-                <label class="portal-guardian-toggle portal-register-wide" for="portal-register-ack">
-                  <input id="portal-register-ack" name="acknowledgeDemo" type="checkbox" required>
-                  <span>Confirmo que estou usando somente dados fictícios.</span>
-                </label>
-              </div>
-              <p class="portal-register-note">Nenhuma senha ou informação é salva. Após finalizar, utilize os usuários públicos de teste para entrar.</p>
-            </fieldset>
-
-            <p class="portal-form-feedback" id="portal-register-feedback" role="status" aria-live="polite"></p>
-            <div class="portal-register-actions">
-              <button type="button" class="portal-register-back" id="portal-register-prev" hidden>← Voltar</button>
-              <button type="button" class="portal-auth-submit" id="portal-register-next">Continuar <span aria-hidden="true">→</span></button>
-              <button type="submit" class="portal-auth-submit" id="portal-register-finish" hidden>Finalizar demonstração <span aria-hidden="true">✓</span></button>
-            </div>
-          </form>
-
-          <div class="portal-register-complete" id="portal-register-complete" role="status" aria-live="polite" tabindex="-1" hidden>
-            <span class="portal-register-complete-icon" aria-hidden="true">✓</span>
-            <h3>Cadastro demonstrativo concluído!</h3>
-            <p>Você percorreu as três etapas do cadastro original em uma interface atualizada. Nenhuma conta foi criada, nem os dados foram armazenados.</p>
-            <p>Para explorar os painéis, use <strong>admin, medico, secretario ou paciente</strong> com a senha <strong>1234</strong>.</p>
-            <button type="button" class="portal-auth-submit" id="portal-register-to-login">Ir para o login <span aria-hidden="true">→</span></button>
-          </div>
-
-          <p class="portal-auth-disclaimer">Projeto acadêmico fictício. Não informe documentos, dados clínicos, carteirinhas, endereços ou senhas reais.</p>
-          <button type="button" class="portal-mobile-switch" data-portal-mode="login">Já tenho acesso · Fazer login →</button>
+          <p class="portal-auth-disclaimer">Ambiente fictício para aprendizado. Não insira informações pessoais ou clínicas reais.</p>
+          <label for="portal-mode-login" class="portal-mobile-switch">Já tenho acesso · Ver painéis →</label>
         </div>
       </section>
     </div>
-  </dialog>
+  </div>
 
-  <script src="scripts/icon-home.js?v=20261115-cadastro3"></script>
-</body>
+  </body>
 </html>
