@@ -6542,3 +6542,100 @@ body.nojs-static .sidebar a:active { transform: translateY(1px); }
     animation-duration: .01ms !important;
   }
 }
+
+
+/* ICON | auditoria de legibilidade, cartões e imagens — sem scripts */
+body.icon-page-home .about-image-frame {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 32% 26%, #cfeee8, transparent 45%), linear-gradient(140deg,#e6f3f0,#a8d2d6 58%,#568e9e);
+}
+body.icon-page-home .about-image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: inherit;
+}
+body.icon-page-home .icon-photo-caption {
+  max-width: 430px;
+  margin: 12px 0 0;
+  color: #4d7180;
+  font-size: 12px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+body.icon-page-home .person-art {
+  min-width: 0;
+  isolation: isolate;
+}
+body.icon-page-home .person-art span {
+  flex: none;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  line-height: 1;
+  max-width: calc(100% - 24px);
+  box-shadow: 0 10px 26px rgba(20,77,90,.1);
+}
+body.icon-page-home .person-info,
+body.icon-page-home .specialty-card,
+body.icon-page-home .service-card { min-width: 0; }
+body.icon-page-home .person-info :is(h3,p,small),
+body.icon-page-home .specialty-card :is(h3,p),
+body.icon-page-home .service-card :is(h3,p) {
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+body.nojs-static .icon-section-context,
+body.nojs-static .icon-card-explainer {
+  color: #52717c;
+  font: 500 12px/1.7 Inter,system-ui,sans-serif;
+  max-width: 850px;
+}
+body.nojs-static .icon-section-context { margin: 9px 0 16px; }
+body.nojs-static .icon-card-explainer { margin: 7px 0 15px; }
+body.nojs-static .visual-panel-head :is(h3,p),
+body.nojs-static .visual-person-copy :is(strong,span,small),
+body.nojs-static .visual-info-grid :is(strong,span),
+body.nojs-static .visual-metric-label,
+body.nojs-static .academic-static-card :is(h2,p,td,th) {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+body.nojs-static .visual-panel-head h3,
+body.nojs-static .visual-person-copy strong,
+body.nojs-static .visual-info-grid strong { color: #17465b; }
+body.nojs-static .visual-panel-head p,
+body.nojs-static .visual-person-copy span,
+body.nojs-static .visual-person-copy small {
+  color: #51727d;
+  opacity: 1;
+}
+body.nojs-static .visual-panel-head { min-width: 0; }
+body.nojs-static .visual-person,
+body.nojs-static .visual-profile,
+body.nojs-static .visual-appt-row,
+body.nojs-static .visual-metric { min-width: 0; }
+body.nojs-static .visual-avatar,
+body.nojs-static .visual-profile-avatar,
+body.nojs-static .visual-initials {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  background: linear-gradient(145deg,#d4eee8,#b9d9e8);
+  color: #17465b;
+  border: 1px solid rgba(23,70,91,.11);
+}
+body.nojs-static .visual-chart-item small { color: #567786; font-weight: 700; }
+body.nojs-static .visual-chart-note { color: #547481; line-height: 1.6; }
+@media(max-width:700px) {
+ body.icon-page-home .about-image-frame img { min-height: 270px; max-height: 420px; }
+ body.nojs-static .academic-static-card { min-width: 0; }
+ body.nojs-static .visual-panel-head { flex-wrap: wrap; }
+}
