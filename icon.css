@@ -6082,3 +6082,110 @@ body.icon-page-home::-webkit-scrollbar{
   width:0;
   height:0;
 }
+
+/* ======================================================================
+   [08] VERSÃO ESCOLAR SEM JAVASCRIPT DE INTERFACE — 16/11/2026
+   O cérebro 3D continua em cerebro-hero.js; as demais interações usam HTML/CSS.
+   ====================================================================== */
+/* Sem IntersectionObserver, as seções devem aparecer imediatamente. */
+body.icon-page-home .reveal{opacity:1!important;transform:none!important}
+/* Navegação móvel nativa: <details> abre e fecha sem scripts. */
+body.icon-page-home .menu-nojs{display:none}
+body.icon-page-home .menu-nojs summary{list-style:none;cursor:pointer}
+body.icon-page-home .menu-nojs summary::-webkit-details-marker{display:none}
+body.icon-page-home .menu-nojs[open] .menu-toggle span:first-child{transform:translateY(6px) rotate(45deg)}
+body.icon-page-home .menu-nojs[open] .menu-toggle span:nth-child(2){opacity:0}
+body.icon-page-home .menu-nojs[open] .menu-toggle span:last-child{transform:translateY(-6px) rotate(-45deg)}
+body.icon-page-home .menu-nojs .nav-mobile{display:none!important}
+body.icon-page-home .menu-nojs[open] .nav-mobile{display:flex!important;position:absolute;left:0;right:0;top:100%;z-index:115;background:#092837;padding:18px 24px 28px;flex-direction:column;gap:14px;box-shadow:0 20px 28px rgba(0,0,0,.18)}
+body.icon-page-home .menu-nojs .nav-mobile a{color:#e8f4f3;text-decoration:none;font:700 13px 'DM Sans',sans-serif}
+@media(max-width:1060px){body.icon-page-home .menu-nojs{display:block}body.icon-page-home .menu-nojs .menu-toggle{display:flex}}
+/* Equipe antes criada pelo JavaScript: radio inputs filtram cartões usando CSS. */
+body.icon-page-home .nojs-filter-input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+body.icon-page-home .filter-bar:has(#filtro-prof-0:checked) label[for="filtro-prof-0"],
+body.icon-page-home .filter-bar:has(#filtro-prof-1:checked) label[for="filtro-prof-1"],
+body.icon-page-home .filter-bar:has(#filtro-prof-2:checked) label[for="filtro-prof-2"],
+body.icon-page-home .filter-bar:has(#filtro-prof-3:checked) label[for="filtro-prof-3"],
+body.icon-page-home .filter-bar:has(#filtro-prof-4:checked) label[for="filtro-prof-4"]{background:#194a5b;color:white;border-color:#194a5b}
+body.icon-page-home .team:has(#filtro-prof-1:checked) .person:not([data-specialty="Neuropsicologia"]),
+body.icon-page-home .team:has(#filtro-prof-2:checked) .person:not([data-specialty="Psicologia"]),
+body.icon-page-home .team:has(#filtro-prof-3:checked) .person:not([data-specialty="Psiquiatria"]),
+body.icon-page-home .team:has(#filtro-prof-4:checked) .person:not([data-specialty="Neurologia"]){display:none}
+body.icon-page-home .filter-bar label{cursor:pointer}
+body.icon-page-home .nojs-contact-demo{margin-top:10px}
+body.icon-page-home .nojs-contact-demo summary{list-style:none;cursor:pointer}
+body.icon-page-home .nojs-contact-demo summary::-webkit-details-marker{display:none}
+body.icon-page-home .nojs-contact-demo p{font:600 12px/1.65 'DM Sans',sans-serif;color:#d3eee9;padding:10px 0}
+body.icon-page-home .nojs-contact-form{display:flex;flex-direction:column;gap:8px}
+/* Janela via :target. Os links HTML abrem/fecham; o backdrop também é clicável. */
+body.icon-page-home .nojs-portal-dialog{display:none;position:fixed;z-index:9999;inset:0;width:100%;max-width:none;max-height:none;height:100dvh;border:0;border-radius:0;margin:0;padding:18px;overflow-y:auto;overflow-x:hidden;align-items:center;justify-content:center;background:transparent;box-shadow:none}
+body.icon-page-home .nojs-portal-dialog:target{display:flex}
+body.icon-page-home .nojs-portal-backdrop{position:fixed;inset:0;background:rgba(5,23,34,.80);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.icon-page-home .nojs-portal{position:relative;width:min(900px,calc(100vw - 24px));max-height:min(92dvh,900px);min-height:535px;overflow-y:auto;border:1px solid rgba(131,200,183,.32);border-radius:13px;background:white;box-shadow:0 28px 100px rgba(3,25,37,.38)}
+body.icon-page-home .nojs-portal .nojs-state,
+body.icon-page-home .nojs-register-wizard .nojs-state{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+body.icon-page-home .nojs-portal .portal-login-panel{display:block}
+body.icon-page-home .nojs-portal .portal-register-panel{display:none}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .portal-login-panel{display:none}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .portal-register-panel{display:block}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .portal-auth-intro{transform:translateX(100%)}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .portal-auth-panel{transform:translateX(-100%);justify-content:flex-start;padding-top:32px;padding-bottom:28px}
+body.icon-page-home .nojs-portal .portal-switch-button,
+body.icon-page-home .nojs-portal .portal-mobile-switch{cursor:pointer}
+body.icon-page-home .nojs-to-login{display:none!important}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .nojs-to-login{display:inline-flex!important}
+body.icon-page-home .nojs-portal:has(#portal-mode-register:checked) .nojs-to-register{display:none!important}
+body.icon-page-home .nojs-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 8px}
+body.icon-page-home .nojs-profile-link{padding:16px 12px;border:1px solid #d2e5df;border-radius:8px;background:#eff6f3;display:flex;flex-direction:column;gap:5px;text-decoration:none}
+body.icon-page-home .nojs-profile-link:hover,body.icon-page-home .nojs-profile-link:focus-visible{background:#d7eee8;border-color:#83c8b7}
+body.icon-page-home .nojs-profile-link span{font:800 13px Manrope,sans-serif;color:#153f4e}
+body.icon-page-home .nojs-profile-link small{font:600 10px 'DM Sans',sans-serif;color:#43757c}
+/* Wizard: cada radiobutton exibe uma etapa, como um controle de abas. */
+body.icon-page-home .nojs-register-wizard{position:relative}
+body.icon-page-home .nojs-step{display:none}
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-1:checked) .nojs-step-1,
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-2:checked) .nojs-step-2,
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-3:checked) .nojs-step-3,
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-final:checked) .nojs-step-final{display:block}
+body.icon-page-home .nojs-step-counter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:15px 0 18px}
+body.icon-page-home .nojs-step-counter label{display:block;padding:8px 4px;border-bottom:3px solid #deebe6;text-align:center;cursor:pointer;font:700 10px 'DM Sans',sans-serif;color:#738a90}
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-1:checked) .nojs-step-counter label:nth-child(1),
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-2:checked) .nojs-step-counter label:nth-child(2),
+body.icon-page-home .nojs-register-wizard:has(#cad-etapa-3:checked) .nojs-step-counter label:nth-child(3){color:#17465b;border-color:#83c8b7}
+body.icon-page-home .nojs-step h3{font:800 17px Manrope,sans-serif;color:#17465b;margin:0 0 15px}
+body.icon-page-home .nojs-step p{font:500 11px/1.65 'DM Sans',sans-serif;color:#59777d}
+body.icon-page-home .nojs-field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.icon-page-home .nojs-field-grid label,
+body.icon-page-home .nojs-guardian-fields label{display:flex;flex-direction:column;gap:6px;font:700 10px 'DM Sans',sans-serif;color:#335260}
+body.icon-page-home .nojs-field-grid input,
+body.icon-page-home .nojs-field-grid select,
+body.icon-page-home .nojs-guardian-fields input{width:100%;min-width:0;height:41px;border:1px solid #d3e2df;border-radius:5px;background:#fff;color:#17465b;padding:0 10px;font:500 11px 'DM Sans',sans-serif}
+body.icon-page-home .nojs-field-grid input:focus,
+body.icon-page-home .nojs-field-grid select:focus,
+body.icon-page-home .nojs-guardian-fields input:focus{outline:2px solid #78bbd2;outline-offset:1px}
+body.icon-page-home .nojs-guardian-wrap{padding:10px;background:#f1f8f5;border:1px solid #d6e8e2;margin-top:14px}
+body.icon-page-home .nojs-checkbox-label{display:flex;gap:8px;align-items:center;color:#305e67;font:700 11px 'DM Sans',sans-serif;cursor:pointer}
+body.icon-page-home .nojs-guardian-fields{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+body.icon-page-home .nojs-guardian-wrap:has(#cad-tem-responsavel:checked) .nojs-guardian-fields{display:grid}
+body.icon-page-home .nojs-wizard-actions{display:flex;gap:10px;margin-top:15px;align-items:center}
+body.icon-page-home .nojs-wizard-actions .portal-auth-submit{flex:1;cursor:pointer;margin:0;display:flex;align-items:center;justify-content:center;text-align:center}
+body.icon-page-home .nojs-back{border:1px solid #cadfda;padding:13px 14px;background:white;color:#17465b;cursor:pointer;font:700 11px 'DM Sans',sans-serif}
+body.icon-page-home .nojs-step-final{text-align:center}
+body.icon-page-home .nojs-step-final .nojs-finish-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;margin:0 auto 16px;background:#d9f0e6;color:#207d64;font-size:32px}
+body.icon-page-home .nojs-step-final .portal-switch-button{display:inline-flex;vertical-align:middle;background:#17465b;color:white;margin-left:8px}
+@media(max-width:720px){
+ body.icon-page-home .nojs-portal-dialog{padding:10px;align-items:flex-start}
+ body.icon-page-home .nojs-portal{display:flex;flex-direction:column;max-height:calc(100dvh - 20px);min-height:0;overflow-y:auto;width:min(450px,100%)}
+ body.icon-page-home .nojs-portal .portal-auth-intro,
+ body.icon-page-home .nojs-portal .portal-auth-panel{transform:none!important}
+ body.icon-page-home .nojs-portal .portal-auth-intro{flex:0 0 auto;min-height:125px}
+ body.icon-page-home .nojs-portal .portal-auth-panel{padding:24px 22px!important}
+ body.icon-page-home .nojs-profile-grid{gap:8px}
+ body.icon-page-home .nojs-field-grid{gap:9px}
+ body.icon-page-home .nojs-portal .portal-auth-close{z-index:20}
+}
+@media(max-width:390px){
+ body.icon-page-home .nojs-field-grid,
+ body.icon-page-home .nojs-guardian-fields{grid-template-columns:1fr}
+ body.icon-page-home .nojs-profile-grid{grid-template-columns:1fr}
+}
