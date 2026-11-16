@@ -1,66 +1,60 @@
 # ICON — Instituto de Cognição e Neuropsicologia
 
-**Projeto acadêmico fictício do primeiro ano**, desenvolvido com **HTML e CSS**. A única exceção de JavaScript é o arquivo `cerebro-hero.js`, que desenha o cérebro 3D na página inicial.
+Site institucional e painéis de gestão fictícios, desenvolvidos para apresentação de HTML e CSS.
 
-> O ICON não é uma clínica real. Não digite nomes, documentos, senhas, dados de saúde nem contatos reais.
+**Site:** https://joaopedroalves-alt.github.io/ICON/
 
-## Abrir o projeto
+## Arquivos principais
 
-- Site: https://joaopedroalves-alt.github.io/ICON/
-- Repositório: https://github.com/joaopedroalves-alt/ICON
-- Página inicial: `index.html`
-- CSS único: `icon.css`
-- Único JavaScript mantido: `cerebro-hero.js` (cérebro 3D)
-
-## Como funciona a versão sem JavaScript de interface
-
-A interface preserva navegação e caixas expansíveis sem scripts:
-
-1. O menu móvel da página inicial usa a tag HTML `<details>` com `<summary>`.
-2. O botão **Acessar portal** é um link para `#portal-auth-dialog`. O CSS mostra o portal usando `:target`.
-3. A escolha entre **Ver painéis** e **Realizar cadastro** usa botões de opção (`radio`) e seletores CSS `:checked` / `:has()`.
-4. O **cadastro demonstrativo de três etapas** (dados pessoais, contato/responsável e convênio) troca as telas por radio buttons e labels. O responsável aparece por uma checkbox e CSS.
-5. Os **quatro painéis** são páginas HTML estáticas, com menus de âncoras (`#view-...`) e CSS `:target`.
-6. A equipe da página inicial está escrita diretamente no HTML; os filtros são radio buttons controlados por CSS.
-7. As caixas de informações, serviços e dúvidas frequentes usam `<details>`.
-
-Tudo está no `icon.css`. Nenhum framework de interface é necessário.
-
-## Painéis
-
-| Página | Perfil |
+| Arquivo | Finalidade |
 | --- | --- |
-| `dashboard_administrador.html` | Administração |
-| `dashboard_medico.html` | Profissional |
-| `dashboard-secretario.html` | Secretaria |
-| `dashboard-cliente.html` | Paciente |
-| `dashboard_cliente.html` | Redirecionamento em HTML para o painel atual do paciente |
+| `index.html` | Página institucional, portal e cadastro ilustrativo em três etapas |
+| `icon.css` | Todos os estilos do projeto, em um único arquivo |
+| `cerebro-hero.js` | Animação 3D do cérebro na apresentação |
+| `acesso-portal.js` | Único JavaScript de interface: valida credenciais demonstrativas e direciona ao painel |
+| `dashboard_administrador.html` | Administração, usuários, equipe, pacientes, serviços, agendamentos, salas e relatórios |
+| `dashboard_medico.html` | Agenda do profissional, pacientes, avaliações, prontuários fictícios e documentos |
+| `dashboard-secretario.html` | Central de atendimento, agenda, salas, solicitações, pacientes e profissionais |
+| `dashboard-cliente.html` | Área do paciente, atendimentos, documentos, profissionais e solicitações |
 
-**Acesso:** página inicial → **Acessar portal** → escolha um dos quatro links de perfil. Não há senha, validação de login, permissões nem autenticação: o acesso é somente ilustrativo.
+## Acesso aos perfis
 
-## Limitações explicadas ao professor
+Na página inicial, clique em **Acessar portal**. Digite um dos seguintes usuários, todos com a senha **1234**:
 
-**Esta é uma demonstração de interface HTML/CSS, não um sistema funcional de clínica.**
+- `admin` → Administração
+- `medico` → Profissional
+- `secretario` → Secretaria
+- `paciente` → Paciente
 
-- O formulário de três etapas é visual; as etapas podem ser navegadas sem validação automática e não realizam cadastro real.
-- O formulário de contato exibe apenas uma mensagem explicativa.
-- Os dashboards mostram dados **fixos e fictícios**, não atualizam cadastros ou relatórios.
-- Não é possível criar agendamentos, trocar status, salvar dados, sincronizar painéis ou enviar notificações.
-- Não existe servidor, banco de dados ou armazenamento no navegador para essas funções.
-- Os links abrem arquivos HTML estáticos. O cérebro continua animado por `cerebro-hero.js`.
+O login é **somente uma demonstração visual** feita com JavaScript básico. As senhas estão no próprio código e os endereços dos painéis são públicos. **Não existe autenticação real, banco de dados, criptografia nem proteção de acesso.**
 
-Essas restrições são consequência intencional de retirar JavaScript além do cérebro. **Nunca prometa armazenamento ou autenticação real na apresentação.**
+## Conteúdo dos perfis
 
-## CSS único
+Todos os dashboards mostram conteúdos **fixos, fictícios e escritos diretamente no HTML**, incluindo:
 
-O arquivo `icon.css` contém os estilos de todas as páginas, separados por marcadores. As seções finais **[08]** e **[09]** tratam, respectivamente, das interações HTML/CSS na página inicial e dos dashboards estáticos. As regras de versões anteriores foram mantidas em parte para preservar o visual e permitir ajustes posteriores.
+- Cabeçalhos de boas-vindas e indicadores;
+- Agendas semanais, listas e horários;
+- Exemplos de pacientes, profissionais e salas;
+- Relatórios e gráficos feitos somente com HTML e CSS;
+- Documentos, solicitações e quadros organizacionais;
+- Caixas expansíveis usando `<details>` e `<summary>`.
 
-## Histórico e segurança
+A navegação das seções de cada painel é feita por links `#view-...` e CSS `:target`. Não há JavaScript carregado dentro dos dashboards. Cartões e tabelas já estão no HTML e permanecem visíveis sem scripts.
 
-Uma cópia de segurança da versão com JavaScript foi preservada na branch:
+O portal institucional e o cadastro de três etapas também usam CSS, `:target`, radio buttons e caixas expansíveis. O JavaScript do acesso **não participa dos efeitos visuais do cadastro nem dos dashboards**.
 
-`backup/antes-versao-sem-js-2026-11-16`
+## Limitações
 
-Ela contém os scripts e dashboards dinâmicos antigos. Os arquivos JavaScript desnecessários foram excluídos do ramo principal, mas continuam recuperáveis pelo histórico do GitHub e pelo backup.
+O ICON é um **projeto acadêmico fictício**, não um sistema de saúde em operação. A navegação e a apresentação funcionam, mas os formulários demonstrativos não criam contas, os agendamentos não são persistidos, e as informações não são compartilhadas entre perfis.
 
-**ICON — Projeto acadêmico fictício, sem validade clínica ou profissional.**
+**Não utilize dados pessoais, documentos, informações de saúde ou senhas reais.**
+
+## Segurança do trabalho no GitHub
+
+A branch `backup/antes-restaurar-dashboards-visuais-2026-11-16` preserva a versão estática anterior a esta atualização.
+
+A branch `backup/antes-versao-sem-js-2026-11-16` preserva a versão antiga dos dashboards dinâmicos caso seja necessária para referências futuras.
+
+---
+
+ICON — Instituto de Cognição e Neuropsicologia.
